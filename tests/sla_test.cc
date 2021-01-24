@@ -16,13 +16,75 @@
  *
  * -----------------------------------------------------------------------------
  *
- * TBD
+ * Test suite for the library.
  *
  */
 #include "sla_test.h"
 
+#include <cstdio>
+#include <cstring>
+#include <cmath>
+
 namespace sla {
 
+///////////////////////////////////////////////////////////////////////////////
+// HELPER FUNCTIONS
+///////////////////////////////////////////////////////////////////////////////
+
+// reports error in a function test
+static void err(const char *func, const char *test, bool &status) {
+    std::printf("Test '%s' of the function %s() FAILED", test, func);
+    status = false;
+}
+
+// validates a character string result
+static void vcs(const char *str, const char *str_ok, const char *func, const char *test, bool &status) {
+    if (std::strcmp(str, str_ok) != 0) {
+        err(func, test, status);
+        std::printf("\tExpected: '%s'", str_ok);
+        std::printf("\t  Actual: '%s'", str);
+    }
+}
+
+// validates an integer result
+static void viv(const int val, const int val_ok, const char *func, const char *test, bool &status) {
+    if (val != val_ok) {
+        err(func, test, status);
+        std::printf("\tExpected: %d", val_ok);
+        std::printf("\t  Actual: %d", val);
+    }
+}
+
+// validates a long result; in FORTRAN implementation of SLALIB, "long" values are INTEGER*4, so C/C++ `int`s
+// work just fine, there is no need to use `long`s
+static void vlv(const int val, const int val_ok, const char *func, const char *test, bool &status) {
+    static_assert(sizeof val >= 4, "`int` values must be at least 32-bit");
+    viv(val, val_ok, func, test, status);
+}
+
+// validates a double precision floating point result
+static void vvd(const double val, const double val_ok, const double tolerance,
+    const char *func, const char *test, bool &status) {
+    if (std::fabs(val - val_ok) > tolerance)  {
+        err(func, test, status);
+        std::printf("\tExpected: %30.19f", val_ok);
+        std::printf("\t  Actual: %30.19f", val);
+    }
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// INDIVIDUAL FUNCTION TESTS
+///////////////////////////////////////////////////////////////////////////////
+
 // TBD
+
+///////////////////////////////////////////////////////////////////////////////
+// MODULE ENTRY POINT
+///////////////////////////////////////////////////////////////////////////////
+
+bool sla_test() {
+    // TBD
+    return true;
+}
 
 }

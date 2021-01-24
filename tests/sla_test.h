@@ -24,7 +24,7 @@
 
 namespace sla {
 
-// TBD
+bool sla_test();
 
 } // sla
 

@@ -20,8 +20,14 @@
  *
  */
 #include "sla_test.h"
+#include <cstdio>
 
 int main(int argc, char** argv) {
-  // TBD
-  return 0;
+  if (sla::sla_test()) {
+      std::puts("SLALIB validation PASSED.");
+      return 0;
+  } else {
+      std::puts("SLALIB validation FAILED!");
+      return 1;
+  }
 }
