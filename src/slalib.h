@@ -24,7 +24,7 @@
 
 namespace sla {
 
-// TBD
+double airmas(double zenith_dist);
 
 } // sla
 

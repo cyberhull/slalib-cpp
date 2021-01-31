@@ -19,11 +19,13 @@
  * Test suite for the library.
  *
  */
-#include "sla_test.h"
-
 #include <cstdio>
 #include <cstring>
 #include <cmath>
+#include <resolv.h>
+
+#include "sla_test.h"
+#include "../src/slalib.h"
 
 namespace sla {
 
@@ -76,15 +78,18 @@ static void vvd(const double val, const double val_ok, const double tolerance,
 // INDIVIDUAL FUNCTION TESTS
 ///////////////////////////////////////////////////////////////////////////////
 
-// TBD
+void t_airmas(bool status) {
+    vvd(airmas(1.2354), 3.015698990074724, 1e-12, "sla::airmas", "", status );
+}
 
 ///////////////////////////////////////////////////////////////////////////////
 // MODULE ENTRY POINT
 ///////////////////////////////////////////////////////////////////////////////
 
 bool sla_test() {
-    // TBD
-    return true;
+    bool status = true;
+    t_airmas(status);
+    return status;
 }
 
 }
