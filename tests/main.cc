@@ -1,4 +1,4 @@
-/**
+/*
  * C++ Port of the SLALIB library.
  * Written by Vadim Sytnikov.
  * Copyright (C) 2021 CyberHULL, Ltd.
@@ -14,14 +14,11 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
  *
- * -----------------------------------------------------------------------------
- *
- * Program entry point.
- *
  */
 #include "sla_test.h"
 #include <cstdio>
 
+/// Test utility entry point.
 int main(int argc, char** argv) {
   if (sla::sla_test()) {
       std::puts("SLALIB validation PASSED.");

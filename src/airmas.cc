@@ -1,4 +1,4 @@
-/**
+/*
  * C++ Port of the SLALIB library.
  * Written by Vadim Sytnikov.
  * Copyright (C) 2021 CyberHULL, Ltd.
@@ -14,10 +14,6 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
  *
- * -----------------------------------------------------------------------------
- *
- * Function that calculates air mass at given zenith distance.
- *
  */
 #include "slalib.h"
 #include <cmath>
@@ -25,6 +21,8 @@
 namespace sla {
 
 /**
+ * Function that calculates air mass at given zenith distance.
+ *
  * Uses Hardie's (1962) polynomial fit to Bemporad's data for the relative air mass, X, in units of thickness at the
  * zenith as tabulated by Schoenberg (1929). This is adequate for all normal needs as it is accurate to better than
  * 0.1% up to X = 6.8 and better than 1% up to X = 10. Bemporad's tabulated values are unlikely to be trustworthy to

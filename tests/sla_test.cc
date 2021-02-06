@@ -1,4 +1,4 @@
-/**
+/*
  * C++ Port of the SLALIB library.
  * Written by Vadim Sytnikov.
  * Copyright (C) 2021 CyberHULL, Ltd.
@@ -13,10 +13,6 @@
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- *
- * -----------------------------------------------------------------------------
- *
- * Test suite for the library.
  *
  */
 #include <cstdio>
@@ -39,7 +35,7 @@ static void err(const char *func, const char *test, bool &status) {
     status = false;
 }
 
-// validates a character string result
+/// Validates a character string result.
 static void vcs(const char *str, const char *str_ok, const char *func, const char *test, bool &status) {
     if (std::strcmp(str, str_ok) != 0) {
         err(func, test, status);
@@ -48,7 +44,7 @@ static void vcs(const char *str, const char *str_ok, const char *func, const cha
     }
 }
 
-// validates an integer result
+/// Validates an integer result.
 static void viv(const int val, const int val_ok, const char *func, const char *test, bool &status) {
     if (val != val_ok) {
         err(func, test, status);
@@ -57,14 +53,14 @@ static void viv(const int val, const int val_ok, const char *func, const char *t
     }
 }
 
-// validates a long result; in FORTRAN implementation of SLALIB, "long" values are INTEGER*4, so C/C++ `int`s
-// work just fine, there is no need to use `long`s
+/// Validates a long result; in FORTRAN implementation of SLALIB, "long" values are INTEGER*4, so C/C++ `int`s
+/// work just fine, there is no need to use `long`s.
 static void vlv(const int val, const int val_ok, const char *func, const char *test, bool &status) {
     static_assert(sizeof val >= 4, "`int` values must be at least 32-bit");
     viv(val, val_ok, func, test, status);
 }
 
-// validates a double precision floating point result
+/// Validates a double precision floating point result.
 static void vvd(const double val, const double val_ok, const double tolerance,
     const char *func, const char *test, bool &status) {
     if (std::fabs(val - val_ok) > tolerance)  {
@@ -78,6 +74,7 @@ static void vvd(const double val, const double val_ok, const double tolerance,
 // INDIVIDUAL FUNCTION TESTS
 ///////////////////////////////////////////////////////////////////////////////
 
+/// Tests sla::airmas() function.
 void t_airmas(bool status) {
     vvd(airmas(1.2354), 3.015698990074724, 1e-12, "sla::airmas", "", status );
 }
@@ -86,6 +83,7 @@ void t_airmas(bool status) {
 // MODULE ENTRY POINT
 ///////////////////////////////////////////////////////////////////////////////
 
+/// Tests all SLALIB functions and procedures.
 bool sla_test() {
     bool status = true;
     t_airmas(status);
