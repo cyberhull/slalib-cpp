@@ -28,7 +28,8 @@ namespace sla {
  *
  * @param vec Axial vector (in radians); has the same direction as the Euler axis, and its magnitude is the
  *  amount of rotation in radians.
- * @param mat Output: rotation matrix that describes a rotation about some arbitrary axis, called the Euler axis.
+ * @param mat Output: rotation matrix that describes a rotation about some arbitrary axis, called the Euler axis. If
+ *   `vec` is zero-length, the unit matrix is returned.
  */
 void av2m(const vector<float> vec, matrix<float> mat) {
     // rotation angle and magnitude of axial vector
