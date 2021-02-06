@@ -20,7 +20,14 @@
 
 namespace sla {
 
+template<typename T>
+using vector = T[3];
+
+template<typename T>
+using matrix = T[3][3];
+
 double airmas(double zenith_dist);
+void cc2s(const vector<float> vec, matrix<float> mat);
 
 } // sla
 
