@@ -20,7 +20,7 @@
 
 namespace sla {
 /**
- * Procedure that forms rotation matrix corresponding to a given axial vector (single precision).
+ * Procedure that forms rotation matrix corresponding to a given axial vector (double precision).
  *
  * The reference frame rotates clockwise as seen looking along the axial vector from the origin.
  *
@@ -30,18 +30,18 @@ namespace sla {
  *  amount of rotation in radians.
  * @param mat Output: rotation matrix that describes a rotation about some arbitrary axis, called the Euler axis.
  */
-void av2m(const vector<float> vec, matrix<float> mat) {
+void dav2m(const vector<double> vec, matrix<double> mat) {
     // rotation angle and magnitude of axial vector
-    float x = vec[0];
-    float y = vec[1];
-    float z = vec[2];
-    float phi = std::sqrt(x * x + y * y + z * z);
-    float sin_phi = std::sin(phi);
-    float cos_phi = std::cos(phi);
-    float w = 1.0f - cos_phi;
+    double x = vec[0];
+    double y = vec[1];
+    double z = vec[2];
+    double phi = std::sqrt(x * x + y * y + z * z);
+    double sin_phi = std::sin(phi);
+    double cos_phi = std::cos(phi);
+    double w = 1.0 - cos_phi;
 
     // Euler axis - direction of axial vector
-    if (phi != 0.0f) {
+    if (phi != 0.0) {
         x = x / phi;
         y = y / phi;
         z = z / phi;

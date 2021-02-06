@@ -27,7 +27,8 @@ template<typename T>
 using matrix = T[3][3];
 
 double airmas(double zenith_dist);
-void cc2s(const vector<float> vec, matrix<float> mat);
+void av2m(const vector<float> vec, matrix<float> mat);
+void dav2m(const vector<double> vec, matrix<double> mat);
 
 } // sla
 
