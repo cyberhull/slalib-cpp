@@ -34,10 +34,10 @@ namespace sla {
  *  coordinates are longitude (+ve anticlockwise looking from the +ve latitude pole) and latitude.
  */
 void cc2s(const vector<float> cartesian, SphericalDir<float>& spherical) {
-    float x = cartesian[0];
-    float y = cartesian[1];
-    float z = cartesian[2];
-    float r = std::sqrt(x * x + y * y);
+    const float x = cartesian[0];
+    const float y = cartesian[1];
+    const float z = cartesian[2];
+    const float r = std::sqrt(x * x + y * y);
     spherical.sd_a = (r == 0.0f) ? 0.0f : std::atan2(y, x);
     spherical.sd_b = (z == 0.0f) ? 0.0f : std::atan2(z, r);
 }

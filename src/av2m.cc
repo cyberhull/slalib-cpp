@@ -36,10 +36,10 @@ void av2m(const vector<float> vec, matrix<float> mat) {
     float x = vec[0];
     float y = vec[1];
     float z = vec[2];
-    float phi = std::sqrt(x * x + y * y + z * z);
-    float sin_phi = std::sin(phi);
-    float cos_phi = std::cos(phi);
-    float w = 1.0f - cos_phi;
+    const float phi = std::sqrt(x * x + y * y + z * z);
+    const float sin_phi = std::sin(phi);
+    const float cos_phi = std::cos(phi);
+    const float w = 1.0f - cos_phi;
 
     // Euler axis - direction of axial vector
     if (phi != 0.0f) {

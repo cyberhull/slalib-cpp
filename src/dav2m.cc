@@ -36,10 +36,10 @@ void dav2m(const vector<double> vec, matrix<double> mat) {
     double x = vec[0];
     double y = vec[1];
     double z = vec[2];
-    double phi = std::sqrt(x * x + y * y + z * z);
-    double sin_phi = std::sin(phi);
-    double cos_phi = std::cos(phi);
-    double w = 1.0 - cos_phi;
+    const double phi = std::sqrt(x * x + y * y + z * z);
+    const double sin_phi = std::sin(phi);
+    const double cos_phi = std::cos(phi);
+    const double w = 1.0 - cos_phi;
 
     // Euler axis - direction of axial vector
     if (phi != 0.0) {
