@@ -23,4 +23,5 @@ project(SLALibrary)
 add_library(slalib
   airmas.cc
   av2m.cc dav2m.cc
+  cc2s.cc dcc2s.cc
   slalib.cc slalib.h)

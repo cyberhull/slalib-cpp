@@ -20,15 +20,34 @@
 
 namespace sla {
 
+/// Generic 3-component vector of floating-point elements.
 template<typename T>
 using vector = T[3];
 
+/// Generic 3x3 matrix of floating-point elements.
 template<typename T>
 using matrix = T[3][3];
+
+/// Structure representing partial spherical coordinates: longitude/latitude, or right ascension/declination
+template <typename T>
+struct SphericalDir {
+    T sd_a; ///< longitude or RA (radians)
+    T sd_b; ///< latitude or Dec (radians)
+};
+
+/// Structure representing full spherical coordinates: longitude, latitude, and distance
+template <typename T>
+struct SphericalCoords {
+    T sc_long; ///< longitude (radians)
+    T sc_lat;  ///< latitude (radians)
+    T sc_dist; ///< distance along long/lat ray
+};
 
 double airmas(double zenith_dist);
 void av2m(const vector<float> vec, matrix<float> mat);
 void dav2m(const vector<double> vec, matrix<double> mat);
+void cc2s(const vector<float> cartesian, SphericalDir<float>& spherical);
+void dcc2s(const vector<double> cartesian, SphericalDir<double>& spherical);
 
 } // sla
 
