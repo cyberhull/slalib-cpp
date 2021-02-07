@@ -48,6 +48,7 @@ void av2m(const vector<float> vec, matrix<float> mat);
 void dav2m(const vector<double> vec, matrix<double> mat);
 void cc2s(const vector<float> cartesian, SphericalDir<float>& spherical);
 void dcc2s(const vector<double> cartesian, SphericalDir<double>& spherical);
+void cs2c(const SphericalDir<float>& spherical, vector<float> cartesian);
 
 } // sla
 

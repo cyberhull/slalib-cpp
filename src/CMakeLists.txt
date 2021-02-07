@@ -24,4 +24,5 @@ add_library(slalib
   airmas.cc
   av2m.cc dav2m.cc
   cc2s.cc dcc2s.cc
+  cs2c.cc
   slalib.cc slalib.h)

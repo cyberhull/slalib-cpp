@@ -33,7 +33,7 @@ that you have to look at the markdown source to see the difference):
 - cr2af.f:         SUBROUTINE sla_CR2AF (NDP, ANGLE, SIGN, IDMSF)
 - cr2tf.f:         SUBROUTINE sla_CR2TF (NDP, ANGLE, SIGN, IHMSF)
 - cs2c6.f:         SUBROUTINE sla_CS2C6 (A, B, R, AD, BD, RD, V)
-- cs2c.f:          SUBROUTINE sla_CS2C (A, B, V)
++ cs2c.f:          SUBROUTINE sla_CS2C (A, B, V)
 - ctf2d.f:         SUBROUTINE sla_CTF2D (IHOUR, IMIN, SEC, DAYS, J)
 - ctf2r.f:         SUBROUTINE sla_CTF2R (IHOUR, IMIN, SEC, RAD, J)
 - daf2r.f:         SUBROUTINE sla_DAF2R (IDEG, IAMIN, ASEC, RAD, J)
