@@ -22,24 +22,24 @@
 namespace sla {
 
 /**
- *  Form a rotation matrix from the Euler angles - three successive rotations about specified
- *  Cartesian axes (double precision).
+ * Form a rotation matrix from the Euler angles - three successive rotations about specified
+ * Cartesian axes (double precision).
  *
- *  A rotation is positive when the reference frame rotates anticlockwise as seen looking towards the origin from the
- *  positive region of the specified axis.
+ * A rotation is positive when the reference frame rotates anticlockwise as seen looking towards the origin from the
+ * positive region of the specified axis.
  *
- *  The characters of `order` define which axes the three successive rotations are about. A typical value is 'ZXZ',
- *  indicating that `rmat` is to become the direction cosine matrix corresponding to rotations of the reference frame
- *  through `phi` radians about the old Z-axis, followed by `theta` radians about the resulting X-axis, then `psi`
- *  radians about the resulting Z-axis.
+ * The characters of `order` define which axes the three successive rotations are about. A typical value is 'ZXZ',
+ * indicating that `rmat` is to become the direction cosine matrix corresponding to rotations of the reference frame
+ * through `phi` radians about the old Z-axis, followed by `theta` radians about the resulting X-axis, then `psi`
+ * radians about the resulting Z-axis.
  *
- *  The axis names can be any of the following, in any order or combination: X, Y, Z, uppercase or lowercase,
- *  1, 2, 3. Normal axis labelling/numbering conventions apply; the xyz (=123) triad is right-handed. Thus, the 'ZXZ'
- *  example given above could be written 'zxz' or '313' (or even 'ZxZ' or '3xZ'). `order` is terminated by length or
- *  by the first unrecognized character.
+ * The axis names can be any of the following, in any order or combination: X, Y, Z, uppercase or lowercase,
+ * 1, 2, 3. Normal axis labelling/numbering conventions apply; the xyz (=123) triad is right-handed. Thus, the 'ZXZ'
+ * example given above could be written 'zxz' or '313' (or even 'ZxZ' or '3xZ'). `order` is terminated by length or
+ * by the first unrecognized character.
  *
- *  Fewer than three rotations are acceptable, in which case the later angle arguments are ignored. If all rotations
- *  are zero, the identity matrix is produced.
+ * Fewer than three rotations are acceptable, in which case the later angle arguments are ignored. If all rotations
+ * are zero, the identity matrix is produced.
  *
  * @param order Specifies about which axes the rotations occur.
  * @param phi First rotation (radians).
@@ -141,7 +141,7 @@ void deuler(const char* order, const double phi, const double theta, const doubl
         }
     }
 
-    // Copy the result
+    // copy the result
     for (i = 0; i < 3; i++) {
         for (j = 0; j < 3; j++) {
             rmat[i][j] = result[i][j];
