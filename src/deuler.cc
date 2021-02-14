@@ -41,6 +41,8 @@ namespace sla {
  * Fewer than three rotations are acceptable, in which case the later angle arguments are ignored. If all rotations
  * are zero, the identity matrix is produced.
  *
+ * Original FORTRAN code by P.T.Wallace.
+ *
  * @param order Specifies about which axes the rotations occur.
  * @param phi First rotation (radians).
  * @param theta Second rotation (radians).
