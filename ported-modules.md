@@ -123,7 +123,7 @@ that you have to look at the markdown source to see the difference):
 - intin.f:         SUBROUTINE sla_INTIN (STRING, NSTRT, IRESLT, JFLAG)
 - invf.f:          SUBROUTINE sla_INVF (FWDS,BKWDS,J)
 - kbj.f:           SUBROUTINE sla_KBJ (JB, E, K, J)
-- m2av.f:          SUBROUTINE sla_M2AV (RMAT, AXVEC)
+* m2av.f:          SUBROUTINE sla_M2AV (RMAT, AXVEC)
 - map.f:           SUBROUTINE sla_MAP (RM, DM, PR, PD, PX, RV, EQ, DATE, RA, DA)
 - mappa.f:         SUBROUTINE sla_MAPPA (EQ, DATE, AMPRMS)
 - mapqk.f:         SUBROUTINE sla_MAPQK (RM, DM, PR, PD, PX, RV, AMPRMS, RA, DA)
