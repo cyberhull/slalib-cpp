@@ -42,8 +42,8 @@ namespace sla {
  * @return An estimate of the air mass at given zenith distance, in units of that at the zenith.
  */
 double airmas(double zenith_dist) {
-  const double seczm1 = 1.0 / (std::cos(std::fmin(1.52, std::fabs(zenith_dist)))) - 1.0;
-  return 1.0 + seczm1 * (0.9981833 - seczm1 * (0.002875 + 0.0008083 * seczm1));
+    const double seczm1 = 1.0 / (std::cos(std::fmin(1.52, std::fabs(zenith_dist)))) - 1.0;
+    return 1.0 + seczm1 * (0.9981833 - seczm1 * (0.002875 + 0.0008083 * seczm1));
 }
 
 }
