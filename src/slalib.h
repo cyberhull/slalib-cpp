@@ -53,6 +53,7 @@ void dcs2c(const SphericalDir<double>& spherical, vector<double> cartesian);
 void euler(const char* order, float phi, float theta, float psi, matrix<float> rmat);
 void deuler(const char* order, double phi, double theta, double psi, matrix<double> rmat);
 void imxv(const matrix<float> rm, const vector<float> va, vector<float> vb);
+void dimxv(const matrix<double> rm, const vector<double> va, vector<double> vb);
 
 } // sla
 
