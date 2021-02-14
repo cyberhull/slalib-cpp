@@ -48,7 +48,7 @@ that you have to look at the markdown source to see the difference):
 + dcs2c.f:         SUBROUTINE sla_DCS2C (A, B, V)
 - dd2tf.f:         SUBROUTINE sla_DD2TF (NDP, DAYS, SIGN, IHMSF)
 - de2h.f:          SUBROUTINE sla_DE2H (HA, DEC, PHI, AZ, EL)
-- deuler.f:        SUBROUTINE sla_DEULER (ORDER, PHI, THETA, PSI, RMAT)
++ deuler.f:        SUBROUTINE sla_DEULER (ORDER, PHI, THETA, PSI, RMAT)
 - dfltin.f:        SUBROUTINE sla_DFLTIN (STRING, NSTRT, DRESLT, JFLAG)
 - dh2e.f:          SUBROUTINE sla_DH2E (AZ, EL, PHI, HA, DEC)
 - dimxv.f:         SUBROUTINE sla_DIMXV (DM, VA, VB)

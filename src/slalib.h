@@ -50,6 +50,7 @@ void cc2s(const vector<float> cartesian, SphericalDir<float>& spherical);
 void dcc2s(const vector<double> cartesian, SphericalDir<double>& spherical);
 void cs2c(const SphericalDir<float>& spherical, vector<float> cartesian);
 void dcs2c(const SphericalDir<double>& spherical, vector<double> cartesian);
+void deuler(const char* order, double phi, double theta, double psi, matrix<double> rmat);
 
 } // sla
 
