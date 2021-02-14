@@ -119,7 +119,7 @@ that you have to look at the markdown source to see the difference):
 - hfk5z.f:         SUBROUTINE sla_HFK5Z (RH, DH, EPOCH, R5, D5, DR5, DD5)
 - idchf.f:         SUBROUTINE sla__IDCHF (STRING, NPTR, NVEC, NDIGIT, DIGIT)
 - idchi.f:         SUBROUTINE sla__IDCHI (STRING, NPTR, NVEC, DIGIT)
-- imxv.f:          SUBROUTINE sla_IMXV (RM, VA, VB)
+* imxv.f:          SUBROUTINE sla_IMXV (RM, VA, VB)
 - intin.f:         SUBROUTINE sla_INTIN (STRING, NSTRT, IRESLT, JFLAG)
 - invf.f:          SUBROUTINE sla_INVF (FWDS,BKWDS,J)
 - kbj.f:           SUBROUTINE sla_KBJ (JB, E, K, J)
