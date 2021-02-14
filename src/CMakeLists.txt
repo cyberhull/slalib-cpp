@@ -27,5 +27,5 @@ add_library(slalib
   cs2c.cc dcs2c.cc
   euler.cc deuler.cc
   imxv.cc dimxv.cc
-  m2av.cc
+  m2av.cc dm2av.cc
   slalib.cc slalib.h)
