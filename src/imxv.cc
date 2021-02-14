@@ -27,11 +27,10 @@ namespace sla {
  * Original FORTRAN code by P.T.Wallace.
  *
  * @param rm Input matrix; must be unitary, as this routine assumes that the inverse and transpose are identical.
- * @param va Input vector.
- * @param vb Output: vector.
+ * @param va Input vector; may be the same as output.
+ * @param vb Output: vector; may be the same as input.
  */
 void imxv(const matrix<float> rm, const vector<float> va, vector<float> vb) {
-
     // inverse of matrix rm * vector va -> vector result
     vector<float> result;
     for (int j = 0; j < 3; j++) {
