@@ -130,7 +130,7 @@ that you have to look at the markdown source to see the difference):
 - mapqkz.f:        SUBROUTINE sla_MAPQKZ (RM, DM, AMPRMS, RA, DA)
 - moon.f:          SUBROUTINE sla_MOON (IY, ID, FD, PV)
 * mxm.f:           SUBROUTINE sla_MXM (A, B, C)
-- mxv.f:           SUBROUTINE sla_MXV (RM, VA, VB)
+* mxv.f:           SUBROUTINE sla_MXV (RM, VA, VB)
 - nutc80.f:        SUBROUTINE sla_NUTC80 (DATE, DPSI, DEPS, EPS0)
 - nutc.f:          SUBROUTINE sla_NUTC (DATE, DPSI, DEPS, EPS0)
 - nut.f:           SUBROUTINE sla_NUT (DATE, RMATN)
