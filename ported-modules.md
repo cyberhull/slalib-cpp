@@ -57,7 +57,7 @@ that you have to look at the markdown source to see the difference):
 * dm2av.f:         SUBROUTINE sla_DM2AV (RMAT, AXVEC)
 - dmat.f:          SUBROUTINE sla_DMAT (N, A, Y, D, JF, IW)
 - dmoon.f:         SUBROUTINE sla_DMOON (DATE, PV)
-- dmxm.f:          SUBROUTINE sla_DMXM (A, B, C)
+* dmxm.f:          SUBROUTINE sla_DMXM (A, B, C)
 - dmxv.f:          SUBROUTINE sla_DMXV (DM, VA, VB)
 - dpav.f:          DOUBLE PRECISION FUNCTION sla_DPAV (V1, V2)
 - dr2af.f:         SUBROUTINE sla_DR2AF (NDP, ANGLE, SIGN, IDMSF)
