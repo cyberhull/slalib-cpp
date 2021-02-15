@@ -24,7 +24,7 @@ namespace sla {
  *
  * The reference frame rotates clockwise as seen looking along the axial vector from the origin.
  *
- * Original FORTRAN code by P.T.Wallace.
+ * Original FORTRAN code by P.T. Wallace.
  *
  * @param vec Axial vector (in radians); has the same direction as the Euler axis, and its magnitude is the
  *  amount of rotation in radians.

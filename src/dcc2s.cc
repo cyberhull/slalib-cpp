@@ -26,7 +26,7 @@ namespace sla {
  * If `cartesian` is zero-length, zero longitude and latitude and B are returned. At either pole, zero longitude is
  * returned.
  *
- * Original FORTRAN code by P.T.Wallace.
+ * Original FORTRAN code by P.T. Wallace.
  *
  * @param cartesian Vector representing Cartesian coordinates of a point in space; these coordinates are right handed,
  *  with the x axis at zero longitude and latitude, and the z axis at the +ve latitude pole.

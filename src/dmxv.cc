@@ -24,7 +24,7 @@ namespace sla {
  *
  *   vector `vb` = matrix `rm` * vector `va`
  *
- * Original FORTRAN code by P.T.Wallace.
+ * Original FORTRAN code by P.T. Wallace.
  *
  * @param rm Transformation matrix.
  * @param va Vector to transform.

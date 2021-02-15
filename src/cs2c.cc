@@ -23,7 +23,7 @@ namespace sla {
 /**
  * Converts spherical coordinates to direction cosines (single precision).
  *
- * Original FORTRAN code by P.T.Wallace.
+ * Original FORTRAN code by P.T. Wallace.
  *
  * @param spherical Spherical coordinates in radians: RA/Dec, longitude (+ve anticlockwise looking
  *  from the +ve latitude pole)/latitude, etc.

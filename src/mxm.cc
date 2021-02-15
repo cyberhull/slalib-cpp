@@ -24,7 +24,7 @@ namespace sla {
  *
  *   matrix `c`  =  matrix `a`  x  matrix `b`
  *
- * Original FORTRAN code by P.T.Wallace.
+ * Original FORTRAN code by P.T. Wallace.
  *
  * @param a First matrix (first multiplicand).
  * @param b Second matrix (second multiplicand).

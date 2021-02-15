@@ -26,7 +26,7 @@ namespace sla {
  * The reference frame rotates clockwise as seen looking along the axial vector from the origin. If rmat is null,
  * so is the result.
  *
- * Original FORTRAN code by P.T.Wallace.
+ * Original FORTRAN code by P.T. Wallace.
  *
  * @param rmat Rotation matrix; describes a rotation about some arbitrary axis, called the Euler axis.
  * @param axis Output: axial vector; has the same direction as the Euler axis, and its magnitude is the amount of
