@@ -33,7 +33,7 @@ namespace sla {
  *   Hardie, R.H., 1962, in "Astronomical Techniques" ed. W.A. Hiltner, University of Chicago Press, p180.
  *   Schoenberg, E., 1929, Hdb. d. Ap., Berlin, Julius Springer, 2, 268.
  *
- *  Original FORTRAN code by P.W.Hill, St Andrews, P.T.Wallace
+ * Original FORTRAN code by P.W.Hill, St Andrews, P.T.Wallace
  *
  * @param zenith_dist Observed zenith distance (radians). Here, "observed" means "as affected by refraction". The sign
  *   of the distance is ignored. At zenith distances greater than about 87 degrees the air mass is held constant to

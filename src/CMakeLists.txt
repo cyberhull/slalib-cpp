@@ -28,4 +28,5 @@ add_library(slalib
   euler.cc deuler.cc
   imxv.cc dimxv.cc
   m2av.cc dm2av.cc
+  mxm.cc
   slalib.cc slalib.h)
