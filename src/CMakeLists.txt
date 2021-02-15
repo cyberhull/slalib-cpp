@@ -29,5 +29,5 @@ add_library(slalib
   imxv.cc dimxv.cc
   m2av.cc dm2av.cc
   mxm.cc dmxm.cc
-  mxv.cc
+  mxv.cc dmxv.cc
   slalib.cc slalib.h)

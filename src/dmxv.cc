@@ -20,7 +20,7 @@
 namespace sla {
 
 /**
- * Procedure that performs the 3D forward unitary transformation (single precision):
+ * Procedure that performs the 3D forward unitary transformation (double precision):
  *
  *   vector `vb` = matrix `rm` * vector `va`
  *
@@ -30,11 +30,11 @@ namespace sla {
  * @param va Vector to transform.
  * @param vb Output: vector `va` multiplied by matrix `rm`; can be the same as `va`.
  */
-void mxv(const matrix<float> rm, const vector<float> va, vector<float> vb) {
+void dmxv(const matrix<double> rm, const vector<double> va, vector<double> vb) {
     // matrix `rm` * vector `va` -> vector `result`
     vector<float> result;
     for (int j = 0; j < 3; j++) {
-        float element = 0.0f;
+        double element = 0.0f;
         for (int i = 0; i < 3; i++) {
             element += rm[i][j] * va[i];
         }
