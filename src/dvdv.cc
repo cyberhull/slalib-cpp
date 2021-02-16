@@ -20,7 +20,7 @@
 namespace sla {
 
 /**
- * Computes scalar product of two 3-element vectors (single precision).
+ * Computes scalar product of two 3-element vectors (double precision).
  *
  * @param va First vector.
  * @param vb Second vector.
@@ -29,7 +29,7 @@ namespace sla {
  *
  * @return Scalar product va.vb
  */
-float vdv(const vector<float> va, const vector<float> vb) {
+double dvdv(const vector<double> va, const vector<double> vb) {
     return va[0] * vb[0] + va[1] * vb[1] + va[2] * vb[2];
 }
 
