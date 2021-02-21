@@ -22,10 +22,10 @@ namespace sla {
 /**
  * Computes scalar product of two 3-element vectors (single precision).
  *
+ * Original FORTRAN code by P.T. Wallace.
+ *
  * @param va First vector.
  * @param vb Second vector.
- *
- * Original FORTRAN code by P.T. Wallace.
  *
  * @return Scalar product va.vb
  */
