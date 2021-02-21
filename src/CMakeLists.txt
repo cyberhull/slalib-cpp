@@ -32,5 +32,5 @@ add_library(slalib
   mxv.cc dmxv.cc
   vdv.cc dvdv.cc
   vn.cc dvn.cc
-  vxv.cc
+  vxv.cc dvxv.cc
   slalib.cc slalib.h)
