@@ -62,6 +62,7 @@ void mxv(const matrix<float> rm, const vector<float> va, vector<float> vb);
 float vdv(const vector<float> va, const vector<float> vb);
 double dvdv(const vector<double> va, const vector<double> vb);
 float vn(const vector<float> v, vector<float> uv);
+double dvn(const vector<double> v, vector<double> uv);
 
 } // sla
 
