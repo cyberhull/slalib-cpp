@@ -282,7 +282,7 @@ that you have to look at the markdown source to see the difference):
 * vdv.f:           REAL FUNCTION sla_VDV (VA, VB)
 - veri.f.in:       INTEGER FUNCTION sla_VERI ()
 - vers.f.in:       SUBROUTINE sla_VERS (VERSION)
-- vn.f:            SUBROUTINE sla_VN (V, UV, VM)
+* vn.f:            SUBROUTINE sla_VN (V, UV, VM)
 - vxv.f:           SUBROUTINE sla_VXV (VA, VB, VC)
 - wait.fdefault:   SUBROUTINE sla_WAIT (DELAY)
 - xy2xy.f:         SUBROUTINE sla_XY2XY (X1, Y1, COEFFS, X2, Y2)
