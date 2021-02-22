@@ -59,6 +59,7 @@ void dm2av(const matrix<double> rmat, vector<double> axis);
 void mxm(const matrix<float> a, const matrix<float> b, matrix<float> c);
 void dmxm(const matrix<double> a, const matrix<double> b, matrix<double> c);
 void mxv(const matrix<float> rm, const vector<float> va, vector<float> vb);
+void dmxv(const matrix<double> rm, const vector<double> va, vector<double> vb);
 float vdv(const vector<float> va, const vector<float> vb);
 double dvdv(const vector<double> va, const vector<double> vb);
 float vn(const vector<float> v, vector<float> uv);
