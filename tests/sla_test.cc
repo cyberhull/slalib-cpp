@@ -164,14 +164,14 @@ void t_vecmat(bool& status) {
     vvd(double(v4[1]), 0.06977111097651445, sp_tolerance, "sla::imxv", "Y", status);
     vvd(double(v4[2]), -0.8409302618566215, sp_tolerance, "sla::imxv", "Z", status);
 
-    return;
-
     // convert the combined matrix into an axial vector
     vector<float> v5;
     m2av(rm, v5);
     vvd(double(v5[0]), 0.006889040510209034, sp_tolerance, "sla::m2av", "X", status);
     vvd(double(v5[1]), -1.577473205461961, sp_tolerance, "sla::m2av", "Y", status);
     vvd(double(v5[2]), 0.5201843672856759, sp_tolerance, "sla::m2av", "Z", status);
+
+    return;
 
     // multiply the axial vector by a scalar and then normalize
     for (int i = 0; i < 3; i++) {

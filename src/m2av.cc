@@ -33,9 +33,9 @@ namespace sla {
  *  rotation in radians. The magnitude and direction can be separated by means of the routine sla::vn().
  */
 void m2av(const matrix<float> rmat, vector<float> axis) {
-    float x = rmat[2][1] - rmat[1][2];
-    float y = rmat[0][2] - rmat[2][0];
-    float z = rmat[1][0] - rmat[0][1];
+    float x = rmat[1][2] - rmat[2][1];
+    float y = rmat[2][0] - rmat[0][2];
+    float z = rmat[0][1] - rmat[1][0];
     float s2 = std::sqrt(x * x + y * y + z * z);
     if (s2 != 0.0f) {
         float c2 = rmat[0][0] + rmat[1][1] + rmat[2][2] - 1.0f;
