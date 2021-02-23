@@ -36,14 +36,14 @@ void mxv(const matrix<float> rm, const vector<float> va, vector<float> vb) {
     for (int j = 0; j < 3; j++) {
         float element = 0.0f;
         for (int i = 0; i < 3; i++) {
-            element += rm[i][j] * va[i];
+            element += rm[j][i] * va[i];
         }
         result[j] = element;
     }
 
     // return result vector
-    for (int i = 0; i < 3; i++) {
-        vb[i] = result[i];
+    for (int k = 0; k < 3; k++) {
+        vb[k] = result[k];
     }
 }
 

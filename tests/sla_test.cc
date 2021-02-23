@@ -142,8 +142,6 @@ void t_vecmat(bool& status) {
     vvd(double(rm[2][1]), -0.3283459407855694, sp_tolerance, "sla::mxm", "21", status);
     vvd(double(rm[2][2]), 0.01678926022795169, sp_tolerance, "sla::mxm", "22", status);
 
-    return;
-
     // create a vector
     vector<float> v1;
     cs2c({3.0123f, -0.999f}, v1 );
@@ -158,6 +156,8 @@ void t_vecmat(bool& status) {
     vvd(double(v3[0]), -0.7267487768696160, sp_tolerance, "sla::mxv", "X", status);
     vvd(double(v3[1]), 0.5011537352639822, sp_tolerance, "sla::mxv", "Y", status);
     vvd(double(v3[2]), 0.4697671220397141, sp_tolerance, "sla::mxv", "Z", status);
+
+    return;
 
     // de-rotate the vector using the combined matrix
     vector<float> v4;
