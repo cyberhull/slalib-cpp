@@ -37,16 +37,16 @@ void mxm(const matrix<float> a, const matrix<float> b, matrix<float> c) {
         for (int j = 0; j < 3; j++) {
             float element = 0.0f;
             for (int k = 0; k < 3; k++) {
-                element += a[k][i] * b[j][k];
+                element += a[i][k] * b[k][j];
             }
-            result[j][i] = element;
+            result[i][j] = element;
         }
     }
 
     // return the result
-    for (int j = 0; j < 3; j++) {
-        for (int i = 0; i < 3; i++) {
-            c[j][i] = result[j][i];
+    for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < 3; j++) {
+            c[i][j] = result[i][j];
         }
     }
 }

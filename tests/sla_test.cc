@@ -129,20 +129,20 @@ void t_vecmat(bool& status) {
     vvd(double(rm2[2][1]), -0.2599853247796050, sp_tolerance, "sla::euler", "21", status);
     vvd(double(rm2[2][2]), -0.1136384607117296, sp_tolerance, "sla::euler", "22", status);
 
-    return;
-
     // combine them
     matrix<float> rm;
     mxm(rm2, rm1, rm);
-    vvd(double(rm[0][0]), -0.09010460088585805, sp_tolerance, "sla::mxm", "11", status);
-    vvd(double(rm[1][0]), 0.3075993402463796, sp_tolerance, "sla::mxm", "12", status);
-    vvd(double(rm[2][0]), 0.9472400998581048, sp_tolerance, "sla::mxm", "13", status);
-    vvd(double(rm[0][1]), -0.3161868071070688, sp_tolerance, "sla::mxm", "21", status);
-    vvd(double(rm[1][1]), 0.8930686362478707, sp_tolerance, "sla::mxm", "22", status);
-    vvd(double(rm[2][1]), -0.3200848543149236, sp_tolerance, "sla::mxm", "23", status);
-    vvd(double(rm[0][2]), -0.9444083141897035, sp_tolerance, "sla::mxm", "31", status);
-    vvd(double(rm[1][2]), -0.3283459407855694, sp_tolerance, "sla::mxm", "32", status);
-    vvd(double(rm[2][2]), 0.01678926022795169, sp_tolerance, "sla::mxm", "33", status);
+    vvd(double(rm[0][0]), -0.09010460088585805, sp_tolerance, "sla::mxm", "00", status);
+    vvd(double(rm[0][1]), 0.3075993402463796, sp_tolerance, "sla::mxm", "01", status);
+    vvd(double(rm[0][2]), 0.9472400998581048, sp_tolerance, "sla::mxm", "02", status);
+    vvd(double(rm[1][0]), -0.3161868071070688, sp_tolerance, "sla::mxm", "10", status);
+    vvd(double(rm[1][1]), 0.8930686362478707, sp_tolerance, "sla::mxm", "11", status);
+    vvd(double(rm[1][2]), -0.3200848543149236, sp_tolerance, "sla::mxm", "12", status);
+    vvd(double(rm[2][0]), -0.9444083141897035, sp_tolerance, "sla::mxm", "20", status);
+    vvd(double(rm[2][1]), -0.3283459407855694, sp_tolerance, "sla::mxm", "21", status);
+    vvd(double(rm[2][2]), 0.01678926022795169, sp_tolerance, "sla::mxm", "22", status);
+
+    return;
 
     // create a vector
     vector<float> v1;
