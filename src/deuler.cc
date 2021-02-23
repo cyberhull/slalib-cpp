@@ -50,12 +50,11 @@ namespace sla {
  * @param rmat Output: rotation matrix.
  */
 void deuler(const char* order, const double phi, const double theta, const double psi, matrix<double> rmat) {
-    matrix<double> result, rotation, combined;
-
-    // initialize result matrix
+    // set result matrix to identity matrix
+    matrix<double> result;
     int i, j;
-    for (j = 0; j < 3; j++) {
-        for (i = 0; i < 3; i++) {
+    for (i = 0; i < 3; i++) {
+        for (j = 0; j < 3; j++) {
             result[i][j] = (i == j) ? 1.0 : 0.0;
         }
     }
@@ -70,8 +69,9 @@ void deuler(const char* order, const double phi, const double theta, const doubl
     for (int n = 0; n < l; n++) {
 
         // initialize rotation matrix for the current rotation
-        for (j = 0; j < 3; j++) {
-            for (i = 0; i < 3; i++) {
+        matrix<double> rotation;
+        for (i = 0; i < 3; i++) {
+            for (j = 0; j < 3; j++) {
                 rotation[i][j] = (i == j) ? 1.0 : 0.0;
             }
         }
@@ -127,6 +127,7 @@ void deuler(const char* order, const double phi, const double theta, const doubl
         }
 
         // apply the current rotation (matrix rotation x matrix result)
+        matrix<double> combined;
         for (i = 0; i < 3; i++) {
             for (j = 0; j < 3; j++) {
                 double element = 0.0;

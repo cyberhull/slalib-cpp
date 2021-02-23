@@ -116,20 +116,20 @@ void t_vecmat(bool& status) {
     vvd(double(rm1[2][1]), 0.1256229973879967, sp_tolerance, "sla::av2m", "21", status);
     vvd(double(rm1[2][2]), 0.9875948309655174, sp_tolerance, "sla::av2m", "22", status);
 
-    return;
-
     // make another
     matrix<float> rm2;
     euler("YZY", 2.345E0, -0.333E0, 2.222E0, rm2);
-    vvd(double(rm2[0][0]), -0.1681574770810878, sp_tolerance, "sla::euler", "11", status);
-    vvd(double(rm2[1][0]), 0.1981362273264315, sp_tolerance, "sla::euler", "12", status);
-    vvd(double(rm2[2][0]), 0.9656423242187410, sp_tolerance, "sla::euler", "13", status);
-    vvd(double(rm2[0][1]), -0.2285369373983370, sp_tolerance, "sla::euler", "21", status);
-    vvd(double(rm2[1][1]), 0.9450659587140423, sp_tolerance, "sla::euler", "22", status);
-    vvd(double(rm2[2][1]), -0.2337117924378156, sp_tolerance, "sla::euler", "23", status);
-    vvd(double(rm2[0][2]), -0.9589024617479674, sp_tolerance, "sla::euler", "31", status);
-    vvd(double(rm2[1][2]), -0.2599853247796050, sp_tolerance, "sla::euler", "32", status);
-    vvd(double(rm2[2][2]), -0.1136384607117296, sp_tolerance, "sla::euler", "33", status);
+    vvd(double(rm2[0][0]), -0.1681574770810878, sp_tolerance, "sla::euler", "00", status);
+    vvd(double(rm2[0][1]), 0.1981362273264315, sp_tolerance, "sla::euler", "01", status);
+    vvd(double(rm2[0][2]), 0.9656423242187410, sp_tolerance, "sla::euler", "02", status);
+    vvd(double(rm2[1][0]), -0.2285369373983370, sp_tolerance, "sla::euler", "10", status);
+    vvd(double(rm2[1][1]), 0.9450659587140423, sp_tolerance, "sla::euler", "11", status);
+    vvd(double(rm2[1][2]), -0.2337117924378156, sp_tolerance, "sla::euler", "12", status);
+    vvd(double(rm2[2][0]), -0.9589024617479674, sp_tolerance, "sla::euler", "20", status);
+    vvd(double(rm2[2][1]), -0.2599853247796050, sp_tolerance, "sla::euler", "21", status);
+    vvd(double(rm2[2][2]), -0.1136384607117296, sp_tolerance, "sla::euler", "22", status);
+
+    return;
 
     // combine them
     matrix<float> rm;
