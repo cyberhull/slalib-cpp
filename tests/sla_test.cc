@@ -157,14 +157,14 @@ void t_vecmat(bool& status) {
     vvd(double(v3[1]), 0.5011537352639822, sp_tolerance, "sla::mxv", "Y", status);
     vvd(double(v3[2]), 0.4697671220397141, sp_tolerance, "sla::mxv", "Z", status);
 
-    return;
-
     // de-rotate the vector using the combined matrix
     vector<float> v4;
     imxv(rm, v3, v4);
     vvd(double(v4[0]), -0.5366267667260526, sp_tolerance, "sla::imxv", "X", status);
     vvd(double(v4[1]), 0.06977111097651445, sp_tolerance, "sla::imxv", "Y", status);
     vvd(double(v4[2]), -0.8409302618566215, sp_tolerance, "sla::imxv", "Z", status);
+
+    return;
 
     // convert the combined matrix into an axial vector
     vector<float> v5;
