@@ -171,8 +171,6 @@ void t_vecmat(bool& status) {
     vvd(double(v5[1]), -1.577473205461961, sp_tolerance, "sla::m2av", "Y", status);
     vvd(double(v5[2]), 0.5201843672856759, sp_tolerance, "sla::m2av", "Z", status);
 
-    return;
-
     // multiply the axial vector by a scalar and then normalize
     for (int i = 0; i < 3; i++) {
         v5[i] *= 1000.0f;
@@ -201,27 +199,29 @@ void t_vecmat(bool& status) {
     dav[1] = 0.0987;
     dav[2] = 0.0654;
     dav2m(dav, drm1);
-    vvd(drm1[0][0], 0.9930075842721269, dp_tolerance, "sla::dav2m", "11", status);
-    vvd(drm1[1][0], 0.05902743090199868, dp_tolerance, "sla::dav2m", "12", status);
-    vvd(drm1[2][0], -0.1022335560329612, dp_tolerance, "sla::dav2m", "13", status);
-    vvd(drm1[0][1], -0.07113807138648245, dp_tolerance, "sla::dav2m", "21", status);
-    vvd(drm1[1][1], 0.9903204657727545, dp_tolerance, "sla::dav2m", "22", status);
-    vvd(drm1[2][1], -0.1191836812279541, dp_tolerance, "sla::dav2m", "23", status);
-    vvd(drm1[0][2], 0.09420887631983825, dp_tolerance, "sla::dav2m", "31", status);
-    vvd(drm1[1][2], 0.1256229973879967, dp_tolerance, "sla::dav2m", "32", status);
-    vvd(drm1[2][2], 0.9875948309655174, dp_tolerance, "sla::dav2m", "33", status);
+    vvd(drm1[0][0], 0.9930075842721269, dp_tolerance, "sla::dav2m", "00", status);
+    vvd(drm1[0][1], 0.05902743090199868, dp_tolerance, "sla::dav2m", "01", status);
+    vvd(drm1[0][2], -0.1022335560329612, dp_tolerance, "sla::dav2m", "02", status);
+    vvd(drm1[1][0], -0.07113807138648245, dp_tolerance, "sla::dav2m", "10", status);
+    vvd(drm1[1][1], 0.9903204657727545, dp_tolerance, "sla::dav2m", "11", status);
+    vvd(drm1[1][2], -0.1191836812279541, dp_tolerance, "sla::dav2m", "12", status);
+    vvd(drm1[2][0], 0.09420887631983825, dp_tolerance, "sla::dav2m", "20", status);
+    vvd(drm1[2][1], 0.1256229973879967, dp_tolerance, "sla::dav2m", "21", status);
+    vvd(drm1[2][2], 0.9875948309655174, dp_tolerance, "sla::dav2m", "22", status);
 
     matrix<double> drm2;
     deuler("YZY", 2.345, -0.333, 2.222, drm2);
-    vvd(drm2[0][0], -0.1681574770810878, dp_tolerance, "sla::deuler", "11", status);
-    vvd(drm2[1][0], 0.1981362273264315, dp_tolerance, "sla::deuler", "12", status);
-    vvd(drm2[2][0], 0.9656423242187410, dp_tolerance, "sla::deuler", "13", status);
-    vvd(drm2[0][1], -0.2285369373983370, dp_tolerance, "sla::deuler", "21", status);
-    vvd(drm2[1][1], 0.9450659587140423, dp_tolerance, "sla::deuler", "22", status);
-    vvd(drm2[2][1], -0.2337117924378156, dp_tolerance, "sla::deuler", "23", status);
-    vvd(drm2[0][2], -0.9589024617479674, dp_tolerance, "sla::deuler", "31", status);
-    vvd(drm2[1][2], -0.2599853247796050, dp_tolerance, "sla::deuler", "32", status);
-    vvd(drm2[2][2], -0.1136384607117296, dp_tolerance, "sla::deuler", "33", status);
+    vvd(drm2[0][0], -0.1681574770810878, dp_tolerance, "sla::deuler", "00", status);
+    vvd(drm2[0][1], 0.1981362273264315, dp_tolerance, "sla::deuler", "01", status);
+    vvd(drm2[0][2], 0.9656423242187410, dp_tolerance, "sla::deuler", "02", status);
+    vvd(drm2[1][0], -0.2285369373983370, dp_tolerance, "sla::deuler", "10", status);
+    vvd(drm2[1][1], 0.9450659587140423, dp_tolerance, "sla::deuler", "11", status);
+    vvd(drm2[1][2], -0.2337117924378156, dp_tolerance, "sla::deuler", "12", status);
+    vvd(drm2[2][0], -0.9589024617479674, dp_tolerance, "sla::deuler", "20", status);
+    vvd(drm2[2][1], -0.2599853247796050, dp_tolerance, "sla::deuler", "21", status);
+    vvd(drm2[2][2], -0.1136384607117296, dp_tolerance, "sla::deuler", "22", status);
+
+    return;
 
     matrix<double> drm;
     dmxm(drm2, drm1, drm);

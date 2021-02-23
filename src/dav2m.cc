@@ -49,13 +49,13 @@ void dav2m(const vector<double> vec, matrix<double> mat) {
     }
     // compute and return the rotation matrix
     mat[0][0] = x * x * w + cos_phi;
-    mat[1][0] = x * y * w + z * sin_phi;
-    mat[2][0] = x * z * w - y * sin_phi;
-    mat[0][1] = x * y * w - z * sin_phi;
+    mat[0][1] = x * y * w + z * sin_phi;
+    mat[0][2] = x * z * w - y * sin_phi;
+    mat[1][0] = x * y * w - z * sin_phi;
     mat[1][1] = y * y * w + cos_phi;
-    mat[2][1] = y * z * w + x * sin_phi;
-    mat[0][2] = x * z * w + y * sin_phi;
-    mat[1][2] = y * z * w - x * sin_phi;
+    mat[1][2] = y * z * w + x * sin_phi;
+    mat[2][0] = x * z * w + y * sin_phi;
+    mat[2][1] = y * z * w - x * sin_phi;
     mat[2][2] = z * z * w + cos_phi;
 }
 
