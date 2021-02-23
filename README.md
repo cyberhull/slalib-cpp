@@ -24,6 +24,17 @@ The FORTRAN source code used for the port is `SLABIB` version `2.5-7` bundled
 with the `starlink` software that can be [found on
 GitHub](https://github.com/Starlink/starlink/tree/master/libraries/sla).
 
+FORTRAN vs C++ Matrices
+-----------------------
+
+Original port of the FORTRAN SLALIB procedures operating on matrices attempted to
+take into account the fact that two-dimentional arrays in FORTRAN are stored in
+such a way that leftmost index changes first, which is the opposite to how such
+arrays are stored in C++. This led to compilations, and it's been decided to
+re-write matrix handling in C++ to treat indices more like in the original
+FORTRAN code. Once this refactoring is done, this section of the README file will
+be removed (it is here to "mark" the start of the refactoring).
+
 Hope you will find this C++ library useful.
 
 The CyberHULL Team.

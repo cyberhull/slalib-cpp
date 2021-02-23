@@ -106,15 +106,17 @@ void t_vecmat(bool& status) {
     av[1] = 0.0987f;
     av[2] = 0.0654f;
     av2m(av, rm1);
-    vvd(double(rm1[0][0]), 0.9930075842721269, sp_tolerance, "sla::av2m", "11", status);
-    vvd(double(rm1[1][0]), 0.05902743090199868, sp_tolerance, "sla::av2m", "12", status);
-    vvd(double(rm1[2][0]), -0.1022335560329612, sp_tolerance, "sla::av2m", "13", status);
-    vvd(double(rm1[0][1]), -0.07113807138648245, sp_tolerance, "sla::av2m", "21", status);
-    vvd(double(rm1[1][1]), 0.9903204657727545, sp_tolerance, "sla::av2m", "22", status);
-    vvd(double(rm1[2][1]), -0.1191836812279541, sp_tolerance, "sla::av2m", "23", status);
-    vvd(double(rm1[0][2]), 0.09420887631983825, sp_tolerance, "sla::av2m", "31", status);
-    vvd(double(rm1[1][2]), 0.1256229973879967, sp_tolerance, "sla::av2m", "32", status);
-    vvd(double(rm1[2][2]), 0.9875948309655174, sp_tolerance, "sla::av2m", "33", status);
+    vvd(double(rm1[0][0]), 0.9930075842721269, sp_tolerance, "sla::av2m", "00", status);
+    vvd(double(rm1[0][1]), 0.05902743090199868, sp_tolerance, "sla::av2m", "01", status);
+    vvd(double(rm1[0][2]), -0.1022335560329612, sp_tolerance, "sla::av2m", "02", status);
+    vvd(double(rm1[1][0]), -0.07113807138648245, sp_tolerance, "sla::av2m", "10", status);
+    vvd(double(rm1[1][1]), 0.9903204657727545, sp_tolerance, "sla::av2m", "11", status);
+    vvd(double(rm1[1][2]), -0.1191836812279541, sp_tolerance, "sla::av2m", "12", status);
+    vvd(double(rm1[2][0]), 0.09420887631983825, sp_tolerance, "sla::av2m", "20", status);
+    vvd(double(rm1[2][1]), 0.1256229973879967, sp_tolerance, "sla::av2m", "21", status);
+    vvd(double(rm1[2][2]), 0.9875948309655174, sp_tolerance, "sla::av2m", "22", status);
+
+    return;
 
     // make another
     matrix<float> rm2;
