@@ -32,18 +32,18 @@ namespace sla {
  */
 void dmxv(const matrix<double> rm, const vector<double> va, vector<double> vb) {
     // matrix `rm` * vector `va` -> vector `result`
-    vector<float> result;
+    vector<double> result;
     for (int j = 0; j < 3; j++) {
-        double element = 0.0f;
+        double element = 0.0;
         for (int i = 0; i < 3; i++) {
-            element += rm[i][j] * va[i];
+            element += rm[j][i] * va[i];
         }
         result[j] = element;
     }
 
     // return result vector
-    for (int i = 0; i < 3; i++) {
-        vb[i] = result[i];
+    for (int k = 0; k < 3; k++) {
+        vb[k] = result[k];
     }
 }
 
