@@ -38,8 +38,8 @@ void dcc2s(const vector<double> cartesian, SphericalDir<double>& spherical) {
     const double y = cartesian[1];
     const double z = cartesian[2];
     const double r = std::sqrt(x * x + y * y);
-    spherical.sd_a = (r == 0.0f) ? 0.0f : std::atan2(y, x);
-    spherical.sd_b = (z == 0.0f) ? 0.0f : std::atan2(z, r);
+    spherical.sd_a = (r == 0.0) ? 0.0 : std::atan2(y, x);
+    spherical.sd_b = (z == 0.0) ? 0.0 : std::atan2(z, r);
 }
 
 }
