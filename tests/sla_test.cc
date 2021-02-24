@@ -277,6 +277,28 @@ void t_vecmat(bool& status) {
     vvd(dv7[2], -0.5093390925544726, dp_tolerance, "sla::dvxv", "Z", status);
 }
 
+/// Tests sla::bear(), sla::dbear(), sla::pav(), and sla::dpav() functions.
+void t_bear(bool& status) {
+    vector<float> fv1, fv2;
+    vector<double> dv1, dv2;
+    const double a1 = 1.234;
+    const double b1 = -0.123;
+    const double a2 = 2.345;
+    const double b2 = 0.789;
+
+    vvd(double(bear(float(a1), float(b1), float(a2), float(b2))), 0.7045970341781791, 1.0e-6, "sla::bear", " ", status);
+    vvd(dbear(a1, b1, a2, b2), 0.7045970341781791, 1.0e-12, "sla::dbear", " ", status);
+    dcs2c({a1, b1}, dv1);
+    dcs2c({a2, b2}, dv2);
+
+    for (int i = 0; i < 3; i++) {
+        fv1[i] = float(dv1[i]);
+        fv2[i] = float(dv2[i]);
+    }
+    vvd(double(pav(fv1, fv2 )), 0.7045970341781791, 1.0e-6, "sla::pav", " ", status);
+    vvd(dpav(dv1, dv2), 0.7045970341781791, 1.0e-12, "sla::dpav", " ", status);
+}
+
 /// Tests sla::zd() function.
 void t_zd(bool& status) {
     vvd(zd(-1.023, -0.876, -0.432), 0.8963914139430839, 1.0e-12, "sla::zd", " ", status);
@@ -290,6 +312,7 @@ void t_zd(bool& status) {
 bool sla_test() {
     bool status = true;
     t_airmas(status);
+    t_bear(status);
     t_vecmat(status);
     t_zd(status);
     return status;

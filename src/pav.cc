@@ -21,9 +21,9 @@
 namespace sla {
 
 /**
- * Calculates position angle of one celestial direction with respect to another (double precision).
+ * Calculates position angle of one celestial direction with respect to another (single precision).
  *
- * The procedure sla::dbear() performs an equivalent function except that the points are specified in the form
+ * The procedure sla::bear() performs an equivalent function except that the points are specified in the form
  * of spherical coordinates.
  *
  * Original FORTRAN code by P.T. Wallace.
@@ -34,29 +34,14 @@ namespace sla {
  *   point v1; if v2 is a small distance east of v1, returned bearing is about +pi/2; if the two points are
  *   coincident, zero is returned.
  */
-double dpav(const vector<double> v1, const vector<double> v2) {
-    // unit vector to point 1
-    double x1 = v1[0];
-    double y1 = v1[1];
-    double z1 = v1[2];
-    const double length = std::sqrt(x1 * x1 + y1 * y1 + z1 * z1);
-    if (length != 0.0) {
-        x1 = x1 / length;
-        y1 = y1 / length;
-        z1 = z1 / length;
+float pav(const vector<float> v1, const vector<float> v2) {
+    // call the double precision version
+    vector<double> dv1, dv2;
+    for (int i = 0; i < 3; i++) {
+        dv1[i] = v1[i];
+        dv2[i] = v2[i];
     }
-    // vector to point 2
-    const double x2 = v2[0];
-    const double y2 = v2[1];
-    const double z2 = v2[2];
-
-    // position angle
-    const double sq = y2 * x1 - x2 * y1;
-    double cq = z2 * (x1 * x1 + y1 * y1) - z1 * (x2 * x1 + y2 * y1);
-    if (sq == 0.0 && cq == 0.0) {
-        cq = 1.0;
-    }
-    return std::atan2(sq, cq);
+    return float(dpav(dv1, dv2));
 }
 
 }
