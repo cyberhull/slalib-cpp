@@ -66,6 +66,7 @@ float vn(const vector<float> v, vector<float> uv);
 double dvn(const vector<double> v, vector<double> uv);
 void vxv(const vector<float> va, const vector<float> vb, vector<float> vc);
 void dvxv(const vector<double> va, const vector<double> vb, vector<double> vc);
+double zd(double ha, double dec, double phi);
 
 } // sla
 

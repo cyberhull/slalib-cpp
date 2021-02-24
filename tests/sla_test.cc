@@ -277,6 +277,11 @@ void t_vecmat(bool& status) {
     vvd(dv7[2], -0.5093390925544726, dp_tolerance, "sla::dvxv", "Z", status);
 }
 
+/// Tests sla::zd() function.
+void t_zd(bool& status) {
+    vvd(zd(-1.023, -0.876, -0.432), 0.8963914139430839, 1.0e-12, "sla::zd", " ", status);
+}
+
 ///////////////////////////////////////////////////////////////////////////////
 // MODULE ENTRY POINT
 ///////////////////////////////////////////////////////////////////////////////
@@ -286,6 +291,7 @@ bool sla_test() {
     bool status = true;
     t_airmas(status);
     t_vecmat(status);
+    t_zd(status);
     return status;
 }
 

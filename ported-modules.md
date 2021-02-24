@@ -286,4 +286,4 @@ that you have to look at the markdown source to see the difference):
 * vxv.f:           SUBROUTINE sla_VXV (VA, VB, VC)
 - wait.fdefault:   SUBROUTINE sla_WAIT (DELAY)
 - xy2xy.f:         SUBROUTINE sla_XY2XY (X1, Y1, COEFFS, X2, Y2)
-- zd.f:            DOUBLE PRECISION FUNCTION sla_ZD (HA, DEC, PHI)
+* zd.f:            DOUBLE PRECISION FUNCTION sla_ZD (HA, DEC, PHI)
