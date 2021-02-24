@@ -34,9 +34,9 @@ void dimxv(const matrix<double> rm, const vector<double> va, vector<double> vb) 
     // inverse of matrix rm * vector va -> vector result
     vector<double> result;
     for (int j = 0; j < 3; j++) {
-        double element = 0.0f;
+        double element = 0.0;
         for (int i = 0; i < 3; i++) {
-            element += rm[j][i] * va[i];
+            element += rm[i][j] * va[i];
         }
         result[j] = element;
     }
