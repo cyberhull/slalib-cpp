@@ -33,17 +33,17 @@ namespace sla {
  */
 double dvn(const vector<double> v, vector<double> uv) {
     // calculate input vector's modulus
-    double modulus = 0.0f;
+    double modulus = 0.0;
     for (int i = 0; i < 3; i++) {
-        float tmp = v[i];
+        double tmp = v[i];
         modulus += tmp * tmp;
     }
     modulus = std::sqrt(modulus);
     double result = modulus;
 
     // normalize the vector
-    if (modulus <= 0.0f) {
-        modulus = 1.0f;
+    if (modulus <= 0.0) {
+        modulus = 1.0;
     }
     for (int i = 0; i < 3; i++) {
         uv[i] = v[i] / modulus;

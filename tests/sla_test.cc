@@ -258,8 +258,6 @@ void t_vecmat(bool& status) {
     vvd(dv5[1], -1.577473205461961, dp_tolerance, "sla::dm2av", "Y", status);
     vvd(dv5[2], 0.5201843672856759, dp_tolerance, "sla::dm2av", "Z", status);
 
-    return;
-
     for (int j = 0; j < 3; j++) {
         dv5[j] *= 1000.0;
     }
@@ -269,6 +267,8 @@ void t_vecmat(bool& status) {
     vvd(dv6[1], -0.9496888606842218, dp_tolerance, "sla::dvn", "Y", status);
     vvd(dv6[2], 0.3131674740355448, dp_tolerance, "sla::dvn", "Z", status);
     vvd(dvm, 1661.042127339937, 1.0e-9, "sla::DVN", "m", status);
+
+    return;
 
     vvd(dvdv(dv6, dv1), -0.3318384698006295, dp_tolerance, "sla::DVN", " ", status);
 
