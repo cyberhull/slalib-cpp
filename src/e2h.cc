@@ -37,8 +37,9 @@ namespace sla {
  *
  * @param ha Hour angle, in radians; not range-checked.
  * @param dec Declination, in radians; not range-checked.
- * @param phi Observatory latitude, in radians; not range-checked; must be geodetic; in critical applications,
- *   corrections for polar motion should be applied.
+ * @param phi Observatory latitude, in radians; not range-checked; must be geodetic (i.e. be the angle between the
+ *   equator and the normal to the ellipsoid approximating the true Earth as defined by the Geodetic Reference System
+ *   1980 (GRS-80))); in critical applications, corrections for polar motion should be applied.
  * @param azimuth Output: azimuth; returned in the range 0-2Pi; north is zero, and east is +Pi/2.
  * @param elevation Output: elevation; returned in the range +/-Pi/2.
  */
