@@ -78,6 +78,56 @@ static void t_airmas(bool& status) {
     vvd(airmas(1.2354), 3.015698990074724, 1e-12, "sla::airmas", "", status);
 }
 
+// tests sla::bear(), sla::dbear(), sla::pav(), and sla::dpav() functions
+static void t_bear(bool& status) {
+    vector<float> fv1, fv2;
+    vector<double> dv1, dv2;
+    constexpr double a1 = 1.234;
+    constexpr double b1 = -0.123;
+    constexpr double a2 = 2.345;
+    constexpr double b2 = 0.789;
+
+    vvd(bear(float(a1), float(b1), float(a2), float(b2)), 0.7045970341781791, 1.0e-6, "sla::bear", " ", status);
+    vvd(dbear(a1, b1, a2, b2), 0.7045970341781791, 1.0e-12, "sla::dbear", " ", status);
+    dcs2c({a1, b1}, dv1);
+    dcs2c({a2, b2}, dv2);
+
+    for (int i = 0; i < 3; i++) {
+        fv1[i] = float(dv1[i]);
+        fv2[i] = float(dv2[i]);
+    }
+    vvd(pav(fv1, fv2 ), 0.7045970341781791, 1.0e-6, "sla::pav", " ", status);
+    vvd(dpav(dv1, dv2), 0.7045970341781791, 1.0e-12, "sla::dpav", " ", status);
+}
+
+// tests sla::e2h(), sla::de2h(), sla::h2e(), and sla::dh2e() procedures
+static void t_e2h(bool& status) {
+    double d_ha = -0.3;
+    double d_dec = -1.1;
+    double d_phi = -0.7;
+    auto ha = float(d_ha);
+    auto dec = float(d_dec);
+    auto phi = float(d_phi);
+
+    double d_azimuth, d_elevation;
+    de2h(d_ha, d_dec, d_phi, d_azimuth, d_elevation);
+    vvd(d_azimuth, 2.820087515852369, 1.0e-12, "sla::de2h", "Az", status);
+    vvd(d_elevation, 1.132711866443304, 1.0e-12, "sla::de2h", "El", status);
+
+    float azimuth, elevation;
+    e2h(ha, dec, phi, azimuth, elevation );
+    vvd(azimuth, 2.820087515852369, 1.0e-6, "sla::e2h", "Az", status);
+    vvd(elevation, 1.132711866443304, 1.0e-6, "sla::e2h", "El", status);
+
+    dh2e(d_azimuth, d_elevation, d_phi, d_ha, d_dec);
+    vvd(d_ha, -0.3, 1.0e-12, "sla::dh2e", "HA", status);
+    vvd(d_dec, -1.1, 1.0e-12, "sla::dh2e", "Dec", status);
+
+    h2e(azimuth, elevation, phi, ha, dec);
+    vvd(ha, -0.3, 1.0e-6, "sla::h2e", "HA", status);
+    vvd(dec, -1.1, 1.0e-6, "sla::h2e", "Dec", status);
+}
+
 /*
  * tests all the 3-component vector and 3x3 matrix procedures:
  *
@@ -276,28 +326,6 @@ static void t_vecmat(bool& status) {
     vvd(dv7[2], -0.5093390925544726, dp_tolerance, "sla::dvxv", "Z", status);
 }
 
-// tests sla::bear(), sla::dbear(), sla::pav(), and sla::dpav() functions
-static void t_bear(bool& status) {
-    vector<float> fv1, fv2;
-    vector<double> dv1, dv2;
-    constexpr double a1 = 1.234;
-    constexpr double b1 = -0.123;
-    constexpr double a2 = 2.345;
-    constexpr double b2 = 0.789;
-
-    vvd(bear(float(a1), float(b1), float(a2), float(b2)), 0.7045970341781791, 1.0e-6, "sla::bear", " ", status);
-    vvd(dbear(a1, b1, a2, b2), 0.7045970341781791, 1.0e-12, "sla::dbear", " ", status);
-    dcs2c({a1, b1}, dv1);
-    dcs2c({a2, b2}, dv2);
-
-    for (int i = 0; i < 3; i++) {
-        fv1[i] = float(dv1[i]);
-        fv2[i] = float(dv2[i]);
-    }
-    vvd(pav(fv1, fv2 ), 0.7045970341781791, 1.0e-6, "sla::pav", " ", status);
-    vvd(dpav(dv1, dv2), 0.7045970341781791, 1.0e-12, "sla::dpav", " ", status);
-}
-
 // tests sla::zd() function
 static void t_zd(bool& status) {
     vvd(zd(-1.023, -0.876, -0.432), 0.8963914139430839, 1.0e-12, "sla::zd", " ", status);
@@ -312,6 +340,7 @@ bool sla_test() {
     bool status = true;
     t_airmas(status);
     t_bear(status);
+    t_e2h(status);
     t_vecmat(status);
     t_zd(status);
     return status;
