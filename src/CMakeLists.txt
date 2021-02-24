@@ -34,4 +34,5 @@ add_library(slalib
   vn.cc dvn.cc
   vxv.cc dvxv.cc
   zd.cc
+  bear.cc
   slalib.cc slalib.h)

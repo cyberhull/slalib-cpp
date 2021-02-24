@@ -33,6 +33,8 @@ namespace sla {
  * efficient to use inline code, having previously computed fixed terms such as sine and cosine of the latitude, and
  * perhaps sine and cosine of the declination.
  *
+ * Original FORTRAN code by P.T. Wallace.
+ *
  * @param ha Hour Angle in radians; not range-checked.
  * @param dec Declination in radians; not range-checked.
  * @param phi Observatory latitude (in radians); not range-checked; must be geodetic (i.e. be the angle between the
