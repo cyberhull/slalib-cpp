@@ -21,7 +21,7 @@
 namespace sla {
 
 /**
- * Converts equatorial coordinates to horizon coordinates: HA,Dec to Az,El (single precision).
+ * Converts equatorial coordinates to horizon coordinates: HA,Dec to Az,El (double precision).
  *
  * In some applications, it will be important to specify the correct type of hour angle and declination in order to
  * produce the required type of azimuth and elevation. In particular, it may be important to distinguish between
@@ -42,29 +42,29 @@ namespace sla {
  * @param azimuth Output: azimuth; returned in the range 0-2Pi; north is zero, and east is +Pi/2.
  * @param elevation Output: elevation; returned in the range +/-Pi/2.
  */
-void e2h(float ha, float dec, float phi, float& azimuth, float& elevation) {
+void de2h(double ha, double dec, double phi, double& azimuth, double& elevation) {
     // useful trig functions
-    const float sin_ha = std::sin(ha);
-    const float cos_ha = std::cos(ha);
-    const float sin_dec = std::sin(dec);
-    const float cos_dec = std::cos(dec);
-    const float sin_phi = std::sin(phi);
-    const float cos_phi = std::cos(phi);
+    const double sin_ha = std::sin(ha);
+    const double cos_ha = std::cos(ha);
+    const double sin_dec = std::sin(dec);
+    const double cos_dec = std::cos(dec);
+    const double sin_phi = std::sin(phi);
+    const double cos_phi = std::cos(phi);
 
     // Az,El as x,y,z
-    const float x = -cos_ha * cos_dec * sin_phi + sin_dec * cos_phi;
-    const float y = -sin_ha * cos_dec;
-    const float z = cos_ha * cos_dec * cos_phi + sin_dec * sin_phi;
+    const double x = -cos_ha * cos_dec * sin_phi + sin_dec * cos_phi;
+    const double y = -sin_ha * cos_dec;
+    const double z = cos_ha * cos_dec * cos_phi + sin_dec * sin_phi;
 
     // to spherical coordinates
-    float a;
-    const float r = std::sqrt(x * x + y * y);
-    if (r == 0.0f) {
-        a = 0.0f;
+    double a;
+    const double r = std::sqrt(x * x + y * y);
+    if (r == 0.0) {
+        a = 0.0;
     } else {
         a = std::atan2(y, x);
         if (a < 0.0f) {
-            constexpr float R2PI = 6.283185307179586476925286766559f;
+            constexpr double R2PI = 6.283185307179586476925286766559;
             a += R2PI;
         }
     }
