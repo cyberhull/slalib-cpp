@@ -73,6 +73,7 @@ float pav(const vector<float> v1, const vector<float> v2);
 double dpav(const vector<double> v1, const vector<double> v2);
 void e2h(float ha, float dec, float phi, float& azimuth, float& elevation);
 void de2h(double ha, double dec, double phi, double& azimuth, double& elevation);
+void h2e(float azimuth, float elevation, float phi, float& ha, float& dec);
 
 } // sla
 
