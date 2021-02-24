@@ -252,13 +252,13 @@ void t_vecmat(bool& status) {
     vvd(dv4[1], 0.06977111097651445, dp_tolerance, "sla::dimxv", "Y", status);
     vvd(dv4[2], -0.8409302618566215, dp_tolerance, "sla::dimxv", "Z", status);
 
-    return;
-
     vector<double> dv5;
     dm2av(drm, dv5);
     vvd(dv5[0], 0.006889040510209034, dp_tolerance, "sla::dm2av", "X", status);
     vvd(dv5[1], -1.577473205461961, dp_tolerance, "sla::dm2av", "Y", status);
     vvd(dv5[2], 0.5201843672856759, dp_tolerance, "sla::dm2av", "Z", status);
+
+    return;
 
     for (int j = 0; j < 3; j++) {
         dv5[j] *= 1000.0;
