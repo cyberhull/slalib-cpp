@@ -80,7 +80,7 @@ that you have to look at the markdown source to see the difference):
 * dvdv.f:          DOUBLE PRECISION FUNCTION sla_DVDV (VA, VB)
 * dvn.f:           SUBROUTINE sla_DVN (V, UV, VM)
 * dvxv.f:          SUBROUTINE sla_DVXV (VA, VB, VC)
-- e2h.f:           SUBROUTINE sla_E2H (HA, DEC, PHI, AZ, EL)
+* e2h.f:           SUBROUTINE sla_E2H (HA, DEC, PHI, AZ, EL)
 - earth.f:         SUBROUTINE sla_EARTH (IY, ID, FD, PV)
 - ecleq.f:         SUBROUTINE sla_ECLEQ (DL, DB, DATE, DR, DD)
 - ecmat.f:         SUBROUTINE sla_ECMAT (DATE, RMAT)

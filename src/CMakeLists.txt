@@ -36,4 +36,5 @@ add_library(slalib
   zd.cc
   bear.cc dbear.cc
   pav.cc dpav.cc
+  e2h.cc
   slalib.cc slalib.h)
