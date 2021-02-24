@@ -69,6 +69,7 @@ void dvxv(const vector<double> va, const vector<double> vb, vector<double> vc);
 double zd(double ha, double dec, double phi);
 double bear(float a1, float b1, float a2, float b2);
 double dbear(double a1, double b1, double a2, double b2);
+double dpav(const vector<double> v1, const vector<double> v2);
 
 } // sla
 
