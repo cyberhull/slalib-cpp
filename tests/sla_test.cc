@@ -221,25 +221,25 @@ void t_vecmat(bool& status) {
     vvd(drm2[2][1], -0.2599853247796050, dp_tolerance, "sla::deuler", "21", status);
     vvd(drm2[2][2], -0.1136384607117296, dp_tolerance, "sla::deuler", "22", status);
 
-    return;
-
     matrix<double> drm;
     dmxm(drm2, drm1, drm);
-    vvd(drm[0][0], -0.09010460088585805, dp_tolerance, "sla::dmxm", "11", status);
-    vvd(drm[1][0], 0.3075993402463796, dp_tolerance, "sla::dmxm", "12", status);
-    vvd(drm[2][0], 0.9472400998581048, dp_tolerance, "sla::dmxm", "13", status);
-    vvd(drm[0][1], -0.3161868071070688, dp_tolerance, "sla::dmxm", "21", status);
-    vvd(drm[1][1], 0.8930686362478707, dp_tolerance, "sla::dmxm", "22", status);
-    vvd(drm[2][1], -0.3200848543149236, dp_tolerance, "sla::dmxm", "23", status);
-    vvd(drm[0][2], -0.9444083141897035, dp_tolerance, "sla::dmxm", "31", status);
-    vvd(drm[1][2], -0.3283459407855694, dp_tolerance, "sla::dmxm", "32", status);
-    vvd(drm[2][2], 0.01678926022795169, dp_tolerance, "sla::dmxm", "33", status);
+    vvd(drm[0][0], -0.09010460088585805, dp_tolerance, "sla::dmxm", "00", status);
+    vvd(drm[0][1], 0.3075993402463796, dp_tolerance, "sla::dmxm", "01", status);
+    vvd(drm[0][2], 0.9472400998581048, dp_tolerance, "sla::dmxm", "02", status);
+    vvd(drm[1][0], -0.3161868071070688, dp_tolerance, "sla::dmxm", "10", status);
+    vvd(drm[1][1], 0.8930686362478707, dp_tolerance, "sla::dmxm", "11", status);
+    vvd(drm[1][2], -0.3200848543149236, dp_tolerance, "sla::dmxm", "12", status);
+    vvd(drm[2][0], -0.9444083141897035, dp_tolerance, "sla::dmxm", "20", status);
+    vvd(drm[2][1], -0.3283459407855694, dp_tolerance, "sla::dmxm", "21", status);
+    vvd(drm[2][2], 0.01678926022795169, dp_tolerance, "sla::dmxm", "22", status);
 
     vector<double> dv1;
     dcs2c({3.0123, -0.999}, dv1);
     vvd(dv1[0], -0.5366267667260525, dp_tolerance, "sla::dcs2c", "X", status);
     vvd(dv1[1], 0.06977111097651444, dp_tolerance, "sla::dcs2c", "Y", status);
     vvd(dv1[2], -0.8409302618566215, dp_tolerance, "sla::dcs2c", "Z", status);
+
+    return;
 
     vector<double> dv2, dv3;
     dmxv(drm1, dv1, dv2);
