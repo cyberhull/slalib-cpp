@@ -27,5 +27,5 @@ add_library(slalib
   zd.cc
   bear.cc dbear.cc pav.cc dpav.cc
   e2h.cc de2h.cc h2e.cc dh2e.cc
-  caf2r.cc
+  caf2r.cc daf2r.cc
   slalib.cc slalib.h)

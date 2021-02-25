@@ -84,6 +84,7 @@ void de2h(double ha, double dec, double phi, double& azimuth, double& elevation)
 void h2e(float azimuth, float elevation, float phi, float& ha, float& dec);
 void dh2e(double azimuth, double elevation, double phi, double& ha, double& dec);
 D2RStatus caf2r(int degrees, int minutes, float seconds, float& radians);
+D2RStatus daf2r(int degrees, int minutes, double seconds, double& radians);
 
 } // sla
 
