@@ -100,6 +100,19 @@ static void t_bear(bool& status) {
     vvd(dpav(dv1, dv2), 0.7045970341781791, 1.0e-12, "sla::dpav", " ", status);
 }
 
+// tests sla::caf2r() and sla::daf2r() procedures
+static void t_caf2r(bool& status) {
+    float sp_radians;
+    D2RStatus result = caf2r(76, 54, 32.1f, sp_radians);
+    vvd(sp_radians, 1.342313819975276, 1.0e-6, "sla::caf2r", "R", status);
+    viv(result, 0, "sla::caf2r", "S", status );
+
+    double dp_radians;
+    result = daf2r(76, 54, 32.1, dp_radians);
+    vvd(dp_radians, 1.342313819975276, 1.0e-12, "sla::daf2r", "R", status);
+    viv(result, 0, "sla::daf2r", "S", status);
+}
+
 // tests sla::e2h(), sla::de2h(), sla::h2e(), and sla::dh2e() procedures
 static void t_e2h(bool& status) {
     double d_ha = -0.3;
@@ -340,6 +353,7 @@ bool sla_test() {
     bool status = true;
     t_airmas(status);
     t_bear(status);
+    t_caf2r(status);
     t_e2h(status);
     t_vecmat(status);
     t_zd(status);

@@ -186,7 +186,7 @@ that you have to look at the markdown source to see the difference):
 - sla_test.f:      SUBROUTINE T_AMP (STATUS)
 - sla_test.f:      SUBROUTINE T_AOP (STATUS)
 * sla_test.f:      SUBROUTINE T_BEAR (STATUS)
-- sla_test.f:      SUBROUTINE T_CAF2R (STATUS)
+* sla_test.f:      SUBROUTINE T_CAF2R (STATUS)
 - sla_test.f:      SUBROUTINE T_CALDJ (STATUS)
 - sla_test.f:      SUBROUTINE T_CALYD (STATUS)
 - sla_test.f:      SUBROUTINE T_CC2S (STATUS)
