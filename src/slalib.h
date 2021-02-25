@@ -20,6 +20,14 @@
 
 namespace sla {
 
+/// Status codes for the caf2r() procedure.
+enum D2RStatus {
+    D2R_OK = 0,         ///< all arguments fit their ranges, conversion successful
+    D2R_BAD_DEGREES,    ///< degrees outside of range [0..359]
+    D2R_BAD_ARCMINUTES, ///< minutes outside of range [0..59]
+    D2R_BAD_ARCSECONDS  ///< seconds outside of range [0..60)
+};
+
 /// Generic 3-component vector of floating-point elements.
 template<typename T>
 using vector = T[3];
@@ -75,6 +83,7 @@ void e2h(float ha, float dec, float phi, float& azimuth, float& elevation);
 void de2h(double ha, double dec, double phi, double& azimuth, double& elevation);
 void h2e(float azimuth, float elevation, float phi, float& ha, float& dec);
 void dh2e(double azimuth, double elevation, double phi, double& ha, double& dec);
+D2RStatus caf2r(int degrees, int minutes, float seconds, float& radians);
 
 } // sla
 

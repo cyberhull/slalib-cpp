@@ -21,7 +21,7 @@ that you have to look at the markdown source to see the difference):
 - atmt.f:          SUBROUTINE sla__ATMT (R0, T0, ALPHA, GAMM2, DELM2, C1, C2, C3, C4, C5, C6, R, T, DN, RDNDR)
 * av2m.f:          SUBROUTINE sla_AV2M (AXVEC, RMAT)
 * bear.f:          REAL FUNCTION sla_BEAR (A1, B1, A2, B2)
-- caf2r.f:         SUBROUTINE sla_CAF2R (IDEG, IAMIN, ASEC, RAD, J)
+* caf2r.f:         SUBROUTINE sla_CAF2R (IDEG, IAMIN, ASEC, RAD, J)
 - caldj.f:         SUBROUTINE sla_CALDJ (IY, IM, ID, DJM, J)
 - calyd.f:         SUBROUTINE sla_CALYD (IY, IM, ID, NY, ND, J)
 * cc2s.f:          SUBROUTINE sla_CC2S (V, A, B)
