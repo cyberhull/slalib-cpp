@@ -20,12 +20,20 @@
 
 namespace sla {
 
-/// Status codes for the caf2r() procedure.
+/// Status codes for the caf2r() procedure (degrees to radians conversion).
 enum D2RStatus {
     D2R_OK = 0,         ///< all arguments fit their ranges, conversion successful
     D2R_BAD_DEGREES,    ///< degrees outside of range [0..359]
     D2R_BAD_ARCMINUTES, ///< minutes outside of range [0..59]
     D2R_BAD_ARCSECONDS  ///< seconds outside of range [0..60)
+};
+
+/// Status codes for the cldj() and caldj() procedures (Gregorian calendar to Modified Julian Date conversion).
+enum G2JStatus {
+    G2J_OK = 0,    ///< all arguments fit their ranges, conversion successful
+    G2J_BAD_YEAR,  ///< year earlier (less) than -4699, MJD not calculated/returned
+    G2J_BAD_MONTH, ///< month outside of range [1..12], MJD not calculated/returned
+    G2J_BAD_DAY    ///< day outside of range [0..<days-in-given-month>], but `mjd` was calculated and returned
 };
 
 /// Generic 3-component vector of floating-point elements.
@@ -85,6 +93,8 @@ void h2e(float azimuth, float elevation, float phi, float& ha, float& dec);
 void dh2e(double azimuth, double elevation, double phi, double& ha, double& dec);
 D2RStatus caf2r(int degrees, int minutes, float seconds, float& radians);
 D2RStatus daf2r(int degrees, int minutes, double seconds, double& radians);
+G2JStatus cldj(int year, int month, int day, double& mjd);
+G2JStatus caldj(int year, int month, int day, double& mjd);
 
 } // sla
 

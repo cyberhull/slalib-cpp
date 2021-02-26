@@ -113,6 +113,22 @@ static void t_caf2r(bool& status) {
     viv(result, 0, "sla::daf2r", "S", status);
 }
 
+// tests sla::caldj() procedure
+static void t_caldj(bool& status) {
+    double mjd;
+    auto result = cldj(1999, 12, 31, mjd);
+    vvd(mjd, 51543.0, 0.0, "sla::caldj", "D", status);
+    viv(result, 0, "sla::caldj", "S", status);
+}
+
+// tests sla::cldj() procedure
+static void t_cldj(bool& status) {
+    double mjd;
+    auto result = cldj(1899, 12, 31, mjd);
+    vvd(mjd, 15019.0, 0.0, "sla::cldj", "D", status);
+    viv(result, 0, "sla::cldj", "S", status);
+}
+
 // tests sla::e2h(), sla::de2h(), sla::h2e(), and sla::dh2e() procedures
 static void t_e2h(bool& status) {
     double d_ha = -0.3;
@@ -354,6 +370,8 @@ bool sla_test() {
     t_airmas(status);
     t_bear(status);
     t_caf2r(status);
+    t_caldj(status);
+    t_cldj(status);
     t_e2h(status);
     t_vecmat(status);
     t_zd(status);
