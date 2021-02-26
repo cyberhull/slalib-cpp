@@ -21,7 +21,7 @@ Karttunen et. al.* [available from
 Springer](https://www.springer.com/gp/book/9783662530443). Highly recommended.
 
 The FORTRAN source code used for the port is `SLABIB` version `2.5-7` bundled
-with the `starlink` software that can be [found on
+with the `starlink` software by P.T. Wallace that can be [found on
 GitHub](https://github.com/Starlink/starlink/tree/master/libraries/sla).
 
 Hope you will find this C++ library useful.
