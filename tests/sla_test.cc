@@ -116,7 +116,7 @@ static void t_caf2r(bool& status) {
 // tests sla::caldj() procedure
 static void t_caldj(bool& status) {
     double mjd;
-    auto result = cldj(1999, 12, 31, mjd);
+    auto result = caldj(1999, 12, 31, mjd);
     vvd(mjd, 51543.0, 0.0, "sla::caldj", "D", status);
     viv(result, 0, "sla::caldj", "S", status);
 }
