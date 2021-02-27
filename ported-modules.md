@@ -23,7 +23,7 @@ that you have to look at the markdown source to see the difference):
 * bear.f:          REAL FUNCTION sla_BEAR (A1, B1, A2, B2)
 * caf2r.f:         SUBROUTINE sla_CAF2R (IDEG, IAMIN, ASEC, RAD, J)
 * caldj.f:         SUBROUTINE sla_CALDJ (IY, IM, ID, DJM, J)
-- calyd.f:         SUBROUTINE sla_CALYD (IY, IM, ID, NY, ND, J)
+* calyd.f:         SUBROUTINE sla_CALYD (IY, IM, ID, NY, ND, J)
 * cc2s.f:          SUBROUTINE sla_CC2S (V, A, B)
 - cc62s.f:         SUBROUTINE sla_CC62S (V, A, B, R, AD, BD, RD)
 - cd2tf.f:         SUBROUTINE sla_CD2TF (NDP, DAYS, SIGN, IHMSF)

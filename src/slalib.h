@@ -28,12 +28,12 @@ enum D2RStatus {
     D2R_BAD_ARCSECONDS  ///< seconds outside of range [0..60)
 };
 
-/// Status codes for the cldj() and caldj() procedures (Gregorian calendar to Modified Julian Date conversions).
+/// Status codes for the cldj(), caldj(), clyd(), and calyd() procedures (Gregorian to Julian calendar conversions).
 enum G2JStatus {
     G2J_OK = 0,    ///< all arguments fit their ranges, conversion successful
-    G2J_BAD_YEAR,  ///< year earlier (less) than -4699, MJD not calculated/returned
-    G2J_BAD_MONTH, ///< month outside of range [1..12], MJD not calculated/returned
-    G2J_BAD_DAY    ///< day outside of range [0..<days-in-given-month>], but `mjd` was calculated and returned
+    G2J_BAD_YEAR,  ///< year earlier (less) than -4699, output value(s) not calculated/returned
+    G2J_BAD_MONTH, ///< month outside of range [1..12], output value(s) not calculated/returned
+    G2J_BAD_DAY    ///< day outside [0..<days-in-given-month>] range, BUT output value(s) were calculated and returned
 };
 
 /// Generic 3-component vector of floating-point elements.
@@ -95,6 +95,8 @@ D2RStatus caf2r(int degrees, int minutes, float seconds, float& radians);
 D2RStatus daf2r(int degrees, int minutes, double seconds, double& radians);
 G2JStatus cldj(int year, int month, int day, double& mjd);
 G2JStatus caldj(int year, int month, int day, double& mjd);
+G2JStatus clyd(int year, int month, int day, int& jyear, int& jday);
+G2JStatus calyd(int year, int month, int day, int& jyear, int& jday);
 
 } // sla
 
