@@ -144,6 +144,21 @@ static void t_calyd(bool& status) {
     viv(result, 0, "sla::clyd", "S", status);
 }
 
+// tests sla::cc2s() and dcc2s() procedures
+static void t_cc2s(bool& status) {
+    const vector<float> V = {100.0f, -50.0f, 25.0f};
+    SphericalDir<float> sp_spherical;
+    cc2s(V, sp_spherical);
+    vvd(sp_spherical.sd_a, -0.4636476090008061, 1.0e-6, "sla::cc2s", "A", status );
+    vvd(sp_spherical.sd_b, 0.2199879773954594, 1.0e-6, "sla::cc2s", "B", status );
+
+    const vector<double> DV = {100.0, -50.0, 25.0};
+    SphericalDir<double> dp_spherical;
+    dcc2s(DV, dp_spherical);
+    vvd(dp_spherical.sd_a, -0.4636476090008061, 1.0e-12, "sla::dcc2s", "A", status );
+    vvd(dp_spherical.sd_b, 0.2199879773954594, 1.0e-12, "sla::dcc2s", "B", status );
+}
+
 // tests sla::cldj() procedure
 static void t_cldj(bool& status) {
     double mjd;
@@ -184,7 +199,6 @@ static void t_e2h(bool& status) {
  * tests all the 3-component vector and 3x3 matrix procedures:
  *
  *   sla::av2m()   sla::dav2m()
- *   sla::cc2s()   sla::dcc2s()      (NOT tested directly in either FORTRAN or C++ implementations)
  *   sla::cs2c()   sla::dcs2c()      (these two take structures in C++ implementation)
  *   sla::euler()  sla::deuler()
  *   sla::imxv()   sla::dimxv()
@@ -194,6 +208,9 @@ static void t_e2h(bool& status) {
  *   sla::vdv()    sla::dvdv()
  *   sla::vn()     sla::dvn()        (these two return values in the C++ implementation)
  *   sla::vxv()    sla::dvxv()
+ *
+ * sla::cc2s() and sla::dcc2s() are tested in separate procedure t_cc2s(), even though FORTRAN implementation lists
+ * them as tested in the T_VECMAT subroutine.
  */
 static void t_vecmat(bool& status) {
     // tolerances for [most] single and double precision functions' tests, respectively
@@ -395,6 +412,7 @@ bool sla_test() {
     t_caf2r(status);
     t_caldj(status);
     t_calyd(status);
+    t_cc2s(status);
     t_cldj(status);
     t_e2h(status);
     t_vecmat(status);
