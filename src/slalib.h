@@ -28,7 +28,7 @@ enum D2RStatus {
     D2R_BAD_ARCSECONDS  ///< seconds outside of range [0..60)
 };
 
-/// Status codes for the cldj() and caldj() procedures (Gregorian calendar to Modified Julian Date conversion).
+/// Status codes for the cldj() and caldj() procedures (Gregorian calendar to Modified Julian Date conversions).
 enum G2JStatus {
     G2J_OK = 0,    ///< all arguments fit their ranges, conversion successful
     G2J_BAD_YEAR,  ///< year earlier (less) than -4699, MJD not calculated/returned
