@@ -47,14 +47,8 @@ namespace sla {
  * @return Conversion status as member of the G2JStatus enum; G2J_OK means conversion was successful.
  */
 G2JStatus calyd(int year, int month, int day, int& jyear, int& jday) {
-    // see if we should apply default centuries for the specified year
-    if (year >= 0 && year <= 49) {
-        year += 2000;
-    } else if (year >= 50 && year <= 99) {
-        year += 1900;
-    }
-    // do actual conversion and return Julian year and day in the year in `jyear` and `jday`, respectively
-    return clyd(year, month, day, jyear, jday);
+    // do the conversion and return Julian year and day in the year in `jyear` and `jday`, respectively
+    return clyd(process_year_defaults(year), month, day, jyear, jday);
 }
 
 }

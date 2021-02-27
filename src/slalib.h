@@ -59,6 +59,11 @@ struct SphericalCoords {
     T sc_dist; ///< distance along long/lat ray
 };
 
+// auxiliary functions
+int process_year_defaults(int year);
+G2JStatus validate_gregorian_day(int year, int month, int day);
+
+// library API
 double airmas(double zenith_dist);
 void av2m(const vector<float> vec, matrix<float> mat);
 void dav2m(const vector<double> vec, matrix<double> mat);

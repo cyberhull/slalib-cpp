@@ -63,18 +63,7 @@ G2JStatus clyd(int year, int month, int day, int& jyear, int& jday) {
             jyear = 4 * k + i - 4716;
 
             // validate day
-            int days_in_given_month;
-            if (month == 2) { // February?
-                // allow for leap year
-                days_in_given_month = (year % 4 == 0 && (year % 100 != 0 || year % 400 == 0))? 29: 28;
-            } else {
-                // months' lengths in days
-                static int days_in_month[12] = {
-                    31, 0 /* February, handled above */, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31
-                };
-                days_in_given_month = days_in_month[month - 1];
-            }
-            return (day < 1 || day > days_in_given_month)? G2J_BAD_DAY: G2J_OK;
+            return validate_gregorian_day(year, month, day);
         } else {
             return G2J_BAD_MONTH;
         }
