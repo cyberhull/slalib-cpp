@@ -121,6 +121,29 @@ static void t_caldj(bool& status) {
     viv(result, 0, "sla::caldj", "S", status);
 }
 
+// tests sla::clyd() and sla::calyd() procedures
+static void t_calyd(bool& status) {
+    int j_year, j_day;
+    G2JStatus result;
+
+    result = calyd(46, 4, 30, j_year, j_day);
+    viv(j_year, 2046, "sla::calyd", "Y", status);
+    viv(j_day, 120, "sla::calyd", "D", status);
+    viv(result, 0, "sla::calyd", "S", status);
+    result = clyd (-5000, 1, 1, j_year, j_day);
+    viv(result, 1, "sla::clyd", "illegal year", status);
+    result = clyd (1900, 0, 1, j_year, j_day);
+    viv(result, 2, "sla::clyd", "illegal month", status);
+    result = clyd (1900, 2, 29, j_year, j_day);
+    viv(j_year, 1900, "sla::clyd", "illegal day (Y)", status);
+    viv(j_day, 61, "sla::clyd", "illegal day (D)", status);
+    viv(result, 3, "sla::clyd", "illegal day (S)", status);
+    result = clyd (2000, 2, 29, j_year, j_day);
+    viv(j_year, 2000, "sla::clyd", "Y", status);
+    viv(j_day, 60, "sla::clyd", "D", status);
+    viv(result, 0, "sla::clyd", "S", status);
+}
+
 // tests sla::cldj() procedure
 static void t_cldj(bool& status) {
     double mjd;
@@ -371,6 +394,7 @@ bool sla_test() {
     t_bear(status);
     t_caf2r(status);
     t_caldj(status);
+    t_calyd(status);
     t_cldj(status);
     t_e2h(status);
     t_vecmat(status);
