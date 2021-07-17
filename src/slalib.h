@@ -15,8 +15,8 @@
  * GNU General Public License for more details.
  *
  */
-#ifndef _SLALIB_H
-#define _SLALIB_H
+#ifndef SLALIB_H_INCLUDED
+#define SLALIB_H_INCLUDED
 
 namespace sla {
 
@@ -105,4 +105,4 @@ G2JStatus calyd(int year, int month, int day, int& jyear, int& jday);
 
 } // sla
 
-#endif // _SLALIB_H
+#endif // SLALIB_H_INCLUDED
