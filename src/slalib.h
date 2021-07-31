@@ -59,6 +59,39 @@ struct SphericalCoords {
     T sc_dist; ///< distance along long/lat ray
 };
 
+/**
+ * Class representing various conversion results: days to hours, minutes, seconds; or radians to degrees, arcminutes,
+ * arcseconds; etc. The same data structure has to be passed between routines interpreting it quite differently, hence
+ * this implementation, having different interfaces to the same underlying data structure.
+ */
+class ConversionResult {
+    int  cr_data[4]; ///< hours/minutes/seconds/fraction or degrees/arcminutes/arcseconds/fraction
+    bool cr_sign;    ///< `false` for '-', `true` for '+'
+
+public:
+    // interface for radians/days to hours, minutes, seconds conversions
+    [[nodiscard]] int get_hours() const { return cr_data[0]; }
+    void set_hours(int hours) { cr_data[0] = hours; }
+    [[nodiscard]] int get_minutes() const { return cr_data[1]; }
+    void set_minutes(int minutes) { cr_data[1] = minutes; }
+    [[nodiscard]] int get_seconds() const { return cr_data[2]; }
+    void set_seconds(int seconds) { cr_data[2] = seconds; }
+
+    // interface for radians to degrees, arcminutes, arcseconds conversion
+    [[nodiscard]] int get_degrees() const { return cr_data[0]; }
+    void set_degrees(int degrees) { cr_data[0] = degrees; }
+    [[nodiscard]] int get_arcminutes() const { return cr_data[1]; }
+    void set_arcminutes(int arcminutes) { cr_data[1] = arcminutes; }
+    [[nodiscard]] int get_arcseconds() const { return cr_data[2]; }
+    void set_arcseconds(int arcseconds) { cr_data[2] = arcseconds; }
+
+    // interface shared by all conversions
+    [[nodiscard]] int get_fraction() const { return cr_data[3]; }
+    void set_fraction(int fraction) { cr_data[3] = fraction; }
+    [[nodiscard]] char get_sign() const { return cr_sign? '+': '-'; }
+    void set_sign(char sign) { cr_sign = sign == '+'; }
+};
+
 // auxiliary functions
 int process_year_defaults(int year);
 G2JStatus validate_gregorian_day(int year, int month, int day);
