@@ -90,6 +90,7 @@ public:
     void set_fraction(int fraction) { cr_data[3] = fraction; }
     [[nodiscard]] char get_sign() const { return cr_sign? '+': '-'; }
     void set_sign(char sign) { cr_sign = sign == '+'; }
+    void set_sign(bool sign) { cr_sign = sign; }
 };
 
 // auxiliary functions
