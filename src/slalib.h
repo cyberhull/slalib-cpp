@@ -138,6 +138,7 @@ G2JStatus clyd(int year, int month, int day, int& jyear, int& jday);
 G2JStatus calyd(int year, int month, int day, int& jyear, int& jday);
 void cd2tf(int ndp, float days, ConversionResult& result);
 void dd2tf(int ndp, double days, ConversionResult& result);
+void cr2af(int ndp, float angle, ConversionResult& result);
 
 } // sla
 
