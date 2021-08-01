@@ -403,19 +403,37 @@ static void t_zd(bool& status) {
 // tests sla::cd2tf() and sla::dd2tf() procedures
 static void t_cd2tf(bool& status) {
     ConversionResult result;
-    cd2tf(4, -0.987654321E0, result);
-    viv((int) result.get_sign(), int('-'), "sla::cd2tf", "S", status);
-    viv(result.get_hours(), 23, "sla::cd2tf", "H", status);
-    viv(result.get_minutes(), 42, "sla::cd2tf", "M", status);
-    viv(result.get_seconds(), 13, "sla::cd2tf", "S", status);
-    vvd(double(result.get_fraction()), 3333.0, 1000.0, "sla::cd2tf", "(4)", status);
+    cd2tf(4, -0.987654321, result);
+    viv((int) result.get_sign(), int('-'), "sla::cd2tf", "sign", status);
+    viv(result.get_hours(), 23, "sla::cd2tf", "hours", status);
+    viv(result.get_minutes(), 42, "sla::cd2tf", "minutes", status);
+    viv(result.get_seconds(), 13, "sla::cd2tf", "seconds", status);
+    vvd(double(result.get_fraction()), 3333.0, 1000.0, "sla::cd2tf", "fraction", status);
 
     dd2tf(4, -0.987654321, result);
-    viv((int) result.get_sign(), int('-'), "sla::dd2tf", "S", status);
-    viv(result.get_hours(), 23, "sla::dd2tf", "H", status);
-    viv(result.get_minutes(), 42, "sla::dd2tf", "M", status);
-    viv(result.get_seconds(), 13, "sla::dd2tf", "S", status);
-    viv(result.get_fraction(), 3333, "sla::dd2tf", "F", status);
+    viv((int) result.get_sign(), int('-'), "sla::dd2tf", "sign", status);
+    viv(result.get_hours(), 23, "sla::dd2tf", "hours", status);
+    viv(result.get_minutes(), 42, "sla::dd2tf", "minutes", status);
+    viv(result.get_seconds(), 13, "sla::dd2tf", "seconds", status);
+    viv(result.get_fraction(), 3333, "sla::dd2tf", "fraction", status);
+}
+
+// tests sla::cr2af() and sla::dr2af() procedures
+static void t_cr2af(bool& status) {
+    ConversionResult result;
+    cr2af(4, 2.345f, result);
+    viv((int) result.get_sign(), int('+'), "sla::cr2af", "sign", status);
+    viv(result.get_degrees(), 134, "sla::cr2af", "degrees", status);
+    viv(result.get_arcminutes(), 21, "sla::cr2af", "arcminutes", status);
+    viv(result.get_arcseconds(), 30, "sla::cr2af", "arcseconds", status);
+    vvd(double(result.get_fraction()), 9706.0, 1000.0, "sla::cr2af", "fraction", status);
+
+    dr2af(4, 2.345, result);
+    viv((int) result.get_sign(), int('+'), "sla::dr2af", "sign", status);
+    viv(result.get_hours(), 134, "sla::dr2af", "degrees", status);
+    viv(result.get_minutes(), 21, "sla::dr2af", "arcminutes", status);
+    viv(result.get_seconds(), 30, "sla::dr2af", "arcseconds", status);
+    viv(result.get_fraction(), 9706, "sla::dr2af", "fraction", status);
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -436,6 +454,7 @@ bool sla_test() {
     t_vecmat(status);
     t_zd(status);
     t_cd2tf(status);
+    t_cr2af(status);
     return status;
 }
 
