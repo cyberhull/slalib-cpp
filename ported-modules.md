@@ -60,7 +60,7 @@ that you have to look at the markdown source to see the difference):
 * dmxm.f:          SUBROUTINE sla_DMXM (A, B, C)
 * dmxv.f:          SUBROUTINE sla_DMXV (DM, VA, VB)
 * dpav.f:          DOUBLE PRECISION FUNCTION sla_DPAV (V1, V2)
-- dr2af.f:         SUBROUTINE sla_DR2AF (NDP, ANGLE, SIGN, IDMSF)
+* dr2af.f:         SUBROUTINE sla_DR2AF (NDP, ANGLE, SIGN, IDMSF)
 - dr2tf.f:         SUBROUTINE sla_DR2TF (NDP, ANGLE, SIGN, IHMSF)
 - drange.f:        DOUBLE PRECISION FUNCTION sla_DRANGE (ANGLE)
 - dranrm.f:        DOUBLE PRECISION FUNCTION sla_DRANRM (ANGLE)
