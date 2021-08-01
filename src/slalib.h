@@ -136,6 +136,7 @@ G2JStatus cldj(int year, int month, int day, double& mjd);
 G2JStatus caldj(int year, int month, int day, double& mjd);
 G2JStatus clyd(int year, int month, int day, int& jyear, int& jday);
 G2JStatus calyd(int year, int month, int day, int& jyear, int& jday);
+void dd2tf(int ndp, double days, ConversionResult& result);
 
 } // sla
 

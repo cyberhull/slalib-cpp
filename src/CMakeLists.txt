@@ -29,5 +29,6 @@ add_library(slalib
   e2h.cc de2h.cc h2e.cc dh2e.cc
   caf2r.cc daf2r.cc
   cldj.cc caldj.cc clyd.cc calyd.cc
+  dd2tf.cc
   f77_utils.h
   slalib.cc slalib.h)
