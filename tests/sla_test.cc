@@ -400,6 +400,24 @@ static void t_zd(bool& status) {
     vvd(zd(-1.023, -0.876, -0.432), 0.8963914139430839, 1.0e-12, "sla::zd", " ", status);
 }
 
+// tests sla::cd2tf() and sla::dd2tf() procedures
+static void t_cd2tf(bool& status) {
+    ConversionResult result;
+    cd2tf(4, -0.987654321E0, result);
+    viv((int) result.get_sign(), int('-'), "sla::cd2tf", "S", status);
+    viv(result.get_hours(), 23, "sla::cd2tf", "H", status);
+    viv(result.get_minutes(), 42, "sla::cd2tf", "M", status);
+    viv(result.get_seconds(), 13, "sla::cd2tf", "S", status);
+    vvd(double(result.get_fraction()), 3333.0, 1000.0, "sla::cd2tf", "(4)", status);
+
+    dd2tf(4, -0.987654321, result);
+    viv((int) result.get_sign(), int('-'), "sla::dd2tf", "S", status);
+    viv(result.get_hours(), 23, "sla::dd2tf", "H", status);
+    viv(result.get_minutes(), 42, "sla::dd2tf", "M", status);
+    viv(result.get_seconds(), 13, "sla::dd2tf", "S", status);
+    viv(result.get_fraction(), 3333, "sla::dd2tf", "F", status);
+}
+
 ///////////////////////////////////////////////////////////////////////////////
 // MODULE ENTRY POINT
 ///////////////////////////////////////////////////////////////////////////////
@@ -417,6 +435,7 @@ bool sla_test() {
     t_e2h(status);
     t_vecmat(status);
     t_zd(status);
+    t_cd2tf(status);
     return status;
 }
 
