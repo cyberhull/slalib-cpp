@@ -109,6 +109,7 @@ G2JStatus validate_gregorian_day(int year, int month, int day);
 double airmas(double zenith_dist);
 float range(float angle);
 double drange(double angle);
+float ranorm(float angle);
 void av2m(const vector<float> vec, matrix<float> mat);
 void dav2m(const vector<double> vec, matrix<double> mat);
 void cc2s(const vector<float> cartesian, SphericalDir<float>& spherical);

@@ -162,7 +162,7 @@ that you have to look at the markdown source to see the difference):
 - pxy.f:           SUBROUTINE sla_PXY (NP, XYE, XYM, COEFFS, XYP, XRMS, YRMS, RRMS)
 - random.Fdefault: REAL FUNCTION sla_RANDOM (SEED)
 * range.f:         REAL FUNCTION sla_RANGE (ANGLE)
-- ranorm.f:        REAL FUNCTION sla_RANORM (ANGLE)
+* ranorm.f:        REAL FUNCTION sla_RANORM (ANGLE)
 - rcc.f:           DOUBLE PRECISION FUNCTION sla_RCC (TDB, UT1, WL, U, V)
 - rdplan.f:        SUBROUTINE sla_RDPLAN (DATE, NP, ELONG, PHI, RA, DEC, DIAM)
 - refco.f:         SUBROUTINE sla_REFCO (HM, TDK, PMB, RH, WL, PHI, TLR, EPS, REFA, REFB)
