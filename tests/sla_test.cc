@@ -486,6 +486,12 @@ static void t_range(bool& status) {
     vvd(drange(-4.0), 2.283185307179586, 1.0e-12, "sla::drange", "double", status);
 }
 
+// tests sla::ranorm() and sla::dranrm() functions
+static void t_ranorm(bool& status) {
+    vvd(ranorm(-0.1), 6.183185307179587, 1.0e-5, "sla::ranorm", "float", status);
+    vvd(dranrm(-0.1), 6.183185307179587, 1.0e-12, "sla::dranrm", "double", status);
+}
+
 ///////////////////////////////////////////////////////////////////////////////
 // MODULE ENTRY POINT
 ///////////////////////////////////////////////////////////////////////////////
@@ -509,6 +515,7 @@ bool sla_test() {
     t_ctf2d(status);
     t_ctf2r(status);
     t_range(status);
+    t_ranorm(status);
     return status;
 }
 
