@@ -458,13 +458,26 @@ static void t_cr2tf(bool& status) {
 static void t_ctf2d(bool& status) {
     float sp_days;
     T2DStatus result = ctf2d (23, 56, 59.1, sp_days);
-    vvd(double(sp_days), 0.99790625, 1.0e-6, "sla::ctf2d", "sp_days", status);
+    vvd(double(sp_days), 0.99790625, 1.0e-6, "sla::ctf2d", "days", status);
     viv(result, T2D_OK, "sla::ctf2d", "result", status);
 
     double dp_days;
     result = dtf2d (23, 56, 59.1, dp_days);
-    vvd(dp_days, 0.99790625, 1.0e-12, "sla::dtf2d", "dp_days", status);
+    vvd(dp_days, 0.99790625, 1.0e-12, "sla::dtf2d", "days", status);
     viv(result, T2D_OK, "sla::dtf2d", "result", status);
+}
+
+// tests sla::ctf2r() and sla::dtf2r() procedures
+static void t_ctf2r(bool& status) {
+    float sp_radians;
+    T2DStatus result = ctf2r(23, 56, 59.1, sp_radians);
+    vvd (double(sp_radians), 6.270029887942679, 1.0e-6, "sla::ctf2r", "radians", status);
+    viv (result, T2D_OK, "sla::ctf2r", "result", status);
+
+    double dp_radians;
+    result = dtf2r(23, 56, 59.1, dp_radians);
+    vvd (dp_radians, 6.270029887942679, 1.0e-12, "sla::dtf2r", "radians", status);
+    viv (result, T2D_OK, "sla::dtf2r", "result", status);
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -488,6 +501,7 @@ bool sla_test() {
     t_cr2af(status);
     t_cr2tf(status);
     t_ctf2d(status);
+    t_ctf2r(status);
     return status;
 }
 
