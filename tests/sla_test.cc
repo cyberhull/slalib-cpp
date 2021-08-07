@@ -480,6 +480,12 @@ static void t_ctf2r(bool& status) {
     viv (result, T2D_OK, "sla::dtf2r", "result", status);
 }
 
+// tests sla::range() and sla::drange() functions
+static void t_range(bool& status) {
+    vvd(range(-4.0f), 2.283185307179586, 1.0e-6, "sla::range", "float", status);
+    vvd(drange(-4.0), 2.283185307179586, 1.0e-12, "sla::drange", "double", status);
+}
+
 ///////////////////////////////////////////////////////////////////////////////
 // MODULE ENTRY POINT
 ///////////////////////////////////////////////////////////////////////////////
@@ -502,6 +508,7 @@ bool sla_test() {
     t_cr2tf(status);
     t_ctf2d(status);
     t_ctf2r(status);
+    t_range(status);
     return status;
 }
 
