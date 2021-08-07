@@ -30,7 +30,7 @@ namespace sla {
  */
 double drange(double angle) {
     constexpr double PI = 3.141592653589793238462643;
-    constexpr double PI2 = 6.283185307179586476925287f;
+    constexpr double PI2 = 6.283185307179586476925287;
     double result = std::fmod(angle, PI2);
     if (std::fabs(result) >= PI) {
         result -= f_sign(PI2, angle);
