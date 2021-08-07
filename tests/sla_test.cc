@@ -436,6 +436,19 @@ static void t_cr2af(bool& status) {
     viv(result.get_fraction(), 9706, "sla::dr2af", "fraction", status);
 }
 
+// tests sla::ctf2d() and sla::dtf2d() procedures
+static void t_ctf2d(bool& status) {
+    float sp_days;
+    T2DStatus result = ctf2d (23, 56, 59.1, sp_days);
+    vvd(double(sp_days), 0.99790625, 1.0e-6, "sla::ctf2d", "sp_days", status);
+    viv(result, T2D_OK, "sla::ctf2d", "result", status);
+
+    double dp_days;
+    result = dtf2d (23, 56, 59.1, dp_days);
+    vvd(dp_days, 0.99790625, 1.0e-12, "sla::dtf2d", "dp_days", status);
+    viv(result, T2D_OK, "sla::dtf2d", "result", status);
+}
+
 ///////////////////////////////////////////////////////////////////////////////
 // MODULE ENTRY POINT
 ///////////////////////////////////////////////////////////////////////////////
@@ -455,6 +468,7 @@ bool sla_test() {
     t_zd(status);
     t_cd2tf(status);
     t_cr2af(status);
+    t_ctf2d(status);
     return status;
 }
 
