@@ -152,7 +152,7 @@ void cr2tf(int ndp, float angle, ConversionResult& result);
 void dr2tf(int ndp, double angle, ConversionResult& result);
 T2DStatus ctf2d(int hours, int minutes, float seconds, float& days);
 T2DStatus dtf2d(int hours, int minutes, double seconds, double& radians);
-T2DStatus dtf2r(int hours, int minutes, float seconds, float & radians);
+T2DStatus ctf2r(int hours, int minutes, float seconds, float & radians);
 T2DStatus dtf2r(int hours, int minutes, double seconds, double& radians);
 
 } // sla

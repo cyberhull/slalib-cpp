@@ -33,7 +33,7 @@ namespace sla {
  * @param radians Return value: angle in radians.
  * @return Conversion status: a T2D_xxx constant.
  */
-T2DStatus dtf2r(int hours, int minutes, float seconds, float & radians) {
+T2DStatus ctf2r(int hours, int minutes, float seconds, float & radians) {
     T2DStatus result = ctf2d(hours, minutes, seconds, radians);
     constexpr float TURNS2RADIANS = 6.283185307179586476925287f;
     radians *= TURNS2RADIANS;
