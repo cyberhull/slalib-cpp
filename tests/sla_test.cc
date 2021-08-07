@@ -436,6 +436,24 @@ static void t_cr2af(bool& status) {
     viv(result.get_fraction(), 9706, "sla::dr2af", "fraction", status);
 }
 
+// tests sla::cr2tf() and sla::dr2tf() procedures
+static void t_cr2tf(bool& status) {
+    ConversionResult result;
+    cr2tf(4, -3.01234, result);
+    viv((int) result.get_sign(), int('-'), "sla::cr2tf", "sign", status);
+    viv(result.get_hours(), 11, "sla::cr2tf", "hours", status);
+    viv(result.get_minutes(), 30, "sla::cr2tf", "minutes", status);
+    viv(result.get_seconds(), 22, "sla::cr2tf", "seconds", status);
+    vvd(double(result.get_fraction()), 6484.0, 1000.0, "sla::cr2tf", "fraction", status);
+
+    dr2tf( 4, -3.01234, result);
+    viv((int) result.get_sign(), int('-'), "sla::DR2TF", "S", status);
+    viv(result.get_hours(), 11, "sla::dr2tf", "hours", status);
+    viv(result.get_minutes(), 30, "sla::dr2tf", "minutes", status);
+    viv(result.get_seconds(), 22, "sla::dr2tf", "seconds", status);
+    viv(result.get_fraction(), 6484, "sla::dr2tf", "fraction", status);
+}
+
 // tests sla::ctf2d() and sla::dtf2d() procedures
 static void t_ctf2d(bool& status) {
     float sp_days;
@@ -468,6 +486,7 @@ bool sla_test() {
     t_zd(status);
     t_cd2tf(status);
     t_cr2af(status);
+    t_cr2tf(status);
     t_ctf2d(status);
     return status;
 }
