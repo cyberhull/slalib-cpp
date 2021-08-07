@@ -22,6 +22,8 @@ namespace sla {
 /**
  * Converts an angle in radians into degrees, arcminutes, arcseconds (single precision).
  *
+ * Original FORTRAN code by P.T. Wallace.
+ *
  * @param ndp Number of decimal places of arcseconds; negative value interpreted as zero; for `angle` up to 2*Pi, the
  *   available floating-point precision corresponds roughly to `ndp`==3.
  * @param angle Angle in radians; the absolute value of `angle` may exceed 2*Pi; in cases where it does not, it is up

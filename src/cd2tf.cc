@@ -22,6 +22,8 @@ namespace sla {
 /**
  * Converts an interval in days into hours, minutes, seconds (single precision).
  *
+ * Original FORTRAN code by P.T. Wallace.
+ *
  * @param ndp Number of decimal places of seconds; negative value interpreted as zero; for `days` up to 1.0, the
  *   available floating-point precision corresponds roughly to `ndp`=3.
  * @param days Interval in days; the absolute value of `days` may exceed 1.0; in cases where it does not, it is up to
