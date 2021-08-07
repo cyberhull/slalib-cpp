@@ -18,7 +18,7 @@
 #ifndef SLALIB_F77_UTILS_H_INCLUDED
 #define SLALIB_F77_UTILS_H_INCLUDED
 
-#include "cmath"
+#include <cmath>
 
 namespace sla {
 

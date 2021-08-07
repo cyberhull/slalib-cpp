@@ -16,7 +16,6 @@
  *
  */
 #include "slalib.h"
-#include <cmath>
 
 namespace sla {
 

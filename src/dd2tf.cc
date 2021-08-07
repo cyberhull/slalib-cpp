@@ -17,7 +17,6 @@
  */
 #include "slalib.h"
 #include "f77_utils.h"
-#include <cmath>
 
 namespace sla {
 
