@@ -28,7 +28,7 @@ namespace sla {
  *   available floating-point precision corresponds roughly to `ndp`==12.
  * @param angle Angle in radians; the absolute value of `angle` may exceed 2*Pi; in cases where it does not, it is up
  *   to the caller to test for and handle the case where `angle` is very nearly 2*Pi and rounds up to 360 degrees, by
- *   testing for result.degrees()==360 and setting degrees, arcminutes, arcseconds, and fraction to zero.
+ *   testing for result.get_degrees()==360 and setting degrees, arcminutes, arcseconds, and fraction to zero.
  * @param result Conversion result: degrees, arcminutes, arcseconds, fraction, and sign.
  */
 void dr2af(int ndp, double angle, ConversionResult& result) {

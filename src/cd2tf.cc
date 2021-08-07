@@ -28,7 +28,7 @@ namespace sla {
  *   available floating-point precision corresponds roughly to `ndp`=3.
  * @param days Interval in days; the absolute value of `days` may exceed 1.0; in cases where it does not, it is up to
  *   the caller to test for and handle the case where `days` is very nearly 1.0 and rounds up to 24 hours, by testing
- *   for result.get_hours()=24 and setting hours, minutes, seconds, and fraction to zero.
+ *   for result.get_hours()==24 and setting hours, minutes, seconds, and fraction to zero.
  * @param result Conversion result: hours, minutes, seconds, fraction, and sign
  */
 void cd2tf(int ndp, float days, ConversionResult& result) {
