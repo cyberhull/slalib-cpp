@@ -148,6 +148,7 @@ void cd2tf(int ndp, float days, ConversionResult& result);
 void dd2tf(int ndp, double days, ConversionResult& result);
 void cr2af(int ndp, float angle, ConversionResult& result);
 void dr2af(int ndp, double angle, ConversionResult& result);
+void dr2tf(int ndp, double angle, ConversionResult& result);
 T2DStatus ctf2d(int hours, int minutes, float seconds, float& days);
 T2DStatus dtf2d(int hours, int minutes, double seconds, double& days);
 
