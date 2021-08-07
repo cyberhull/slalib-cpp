@@ -24,7 +24,7 @@ namespace sla {
  *
  * The result is computed even if any of the range checks fail. The sign must be dealt with outside this routine.
  *
- * Original FORTRAN code by P.T. Wallace.
+ * Original FORTRAN code by Rutherford Appleton Laboratory / P.T. Wallace.
  *
  * @param hours Hours; must be in range [0..23].
  * @param minutes Minutes; must be in range [0..60].

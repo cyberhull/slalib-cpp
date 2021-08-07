@@ -22,7 +22,7 @@ namespace sla {
 /**
  * Computes scalar product of two 3-element vectors (double precision).
  *
- * Original FORTRAN code by P.T. Wallace.
+ * Original FORTRAN code by Rutherford Appleton Laboratory / P.T. Wallace.
  *
  * @param va First vector.
  * @param vb Second vector.

@@ -23,8 +23,9 @@ namespace sla {
 /**
  * Normalizes a 3-component vector, calculates vector's modulus (single precision).
  *
- * Original FORTRAN code by P.T. Wallace. FORTRAN implementation was a procedure that returned input vector modulus
- * in one of its arguments; C++ implementation is a function returning the modulus directly.
+ * Original FORTRAN code by Rutherford Appleton Laboratory / P.T. Wallace. FORTRAN implementation was a procedure
+ * that returned input vector modulus in one of its arguments; C++ implementation is a function returning the modulus
+ * directly.
  *
  * @param v A 3-component vector.
  * @param uv Output: unit vector having the same direction as `v`.

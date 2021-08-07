@@ -24,7 +24,7 @@ namespace sla {
  *
  *   vector vb = (inverse of matrix rm) * vector va
  *
- * Original FORTRAN code by P.T. Wallace.
+ * Original FORTRAN code by Rutherford Appleton Laboratory / P.T. Wallace.
  *
  * @param rm Input matrix; must be unitary, as this routine assumes that the inverse and transpose are identical.
  * @param va Input vector; may be the same as output.

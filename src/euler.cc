@@ -42,7 +42,7 @@ namespace sla {
  * Uses `sla::deuler()` to do actual calculations, so there's no performance benefit in using single-precision
  * version of this procedure.
  *
- * Original FORTRAN code by P.T. Wallace.
+ * Original FORTRAN code by Rutherford Appleton Laboratory / P.T. Wallace.
  *
  * @param order Specifies about which axes the rotations occur.
  * @param phi First rotation (radians).

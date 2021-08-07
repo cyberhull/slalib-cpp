@@ -24,7 +24,7 @@ namespace sla {
  * description for details. Calls `sla::cldj()` to do the conversion. If the support for the default century is not
  * needed, or if one is converting a year before 100AD, `sla::cldj()` should be called directly.
  *
- * Original FORTRAN code by P.T. Wallace.
+ * Original FORTRAN code by Rutherford Appleton Laboratory / P.T. Wallace.
  *
  * @param year Gregorian calendar year, must be -4699 (i.e. 4700BC) or later; some ranges get special treatment: if
  *   the year is in [0..49] then it is interpreted as 2000..2049; and if the year is in [50..99], it is interpreted

@@ -22,7 +22,7 @@ namespace sla {
 /**
  * Converts degrees, arc minutes, arc seconds to radians (single precision).
  *
- * Original FORTRAN code by P.T. Wallace.
+ * Original FORTRAN code by Rutherford Appleton Laboratory / P.T. Wallace.
  *
  * @param degrees Degrees in range [0..359]
  * @param minutes Arc minutes in range [0..59]

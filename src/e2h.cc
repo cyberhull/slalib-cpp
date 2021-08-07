@@ -33,7 +33,7 @@ namespace sla {
  * to use inline code, having previously computed fixed terms such as sine and cosine of latitude, and (for tracking
  * a star) sine and cosine of declination.
  *
- * Original FORTRAN code by P.T. Wallace.
+ * Original FORTRAN code by Rutherford Appleton Laboratory / P.T. Wallace.
  *
  * @param ha Hour angle, in radians; not range-checked.
  * @param dec Declination, in radians; not range-checked.
