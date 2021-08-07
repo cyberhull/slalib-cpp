@@ -20,22 +20,22 @@
 namespace sla {
 
 /**
- * Convert an angle in radians to hours, minutes, seconds (double precision).
+ * Convert an angle in radians to hours, minutes, seconds (single precision).
  *
  * Original FORTRAN code by P.T. Wallace.
  *
  * @param ndp Number of decimal places of seconds; negative value interpreted as zero; for `angle` up to 2*Pi, the
- *   available floating-point precision corresponds roughly to `ndp`==12.
+ *   available floating-point precision corresponds roughly to `ndp`==3.
  * @param angle Angle in radians; the absolute value of `angle` may exceed 2*Pi; in cases where it does not, it is up
  *   to the caller to test for and handle the case where `angle` is very nearly 2*Pi and rounds up to 24 hours, by
  *   testing for result.get_hours()==24 and setting hours, minutes, seconds, and fraction to zero.
  * @param result Conversion result: hours, minutes, seconds, fraction, and sign.
  */
-void dr2tf(int ndp, double angle, ConversionResult& result) {
+void cr2tf(int ndp, float angle, ConversionResult& result) {
     // turns to radians
-    constexpr double TURNS2RADIANS = 6.283185307179586476925287;
+    constexpr float TURNS2RADIANS = 6.283185307179586476925287f;
     // scale, then use days to hours, minutes, seconds function
-    dd2tf(ndp, angle * TURNS2RADIANS, result);
+    cd2tf(ndp, angle * TURNS2RADIANS, result);
 }
 
 }

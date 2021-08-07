@@ -31,7 +31,7 @@ that you have to look at the markdown source to see the difference):
 * clyd.f:          SUBROUTINE sla_CLYD (IY, IM, ID, NY, ND, JSTAT)
 - combn.f:         SUBROUTINE sla_COMBN (NSEL, NCAND, LIST, J)
 * cr2af.f:         SUBROUTINE sla_CR2AF (NDP, ANGLE, SIGN, IDMSF)
-- cr2tf.f:         SUBROUTINE sla_CR2TF (NDP, ANGLE, SIGN, IHMSF)
+* cr2tf.f:         SUBROUTINE sla_CR2TF (NDP, ANGLE, SIGN, IHMSF)
 - cs2c6.f:         SUBROUTINE sla_CS2C6 (A, B, R, AD, BD, RD, V)
 * cs2c.f:          SUBROUTINE sla_CS2C (A, B, V)
 * ctf2d.f:         SUBROUTINE sla_CTF2D (IHOUR, IMIN, SEC, DAYS, J)
