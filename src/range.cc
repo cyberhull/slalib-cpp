@@ -15,23 +15,27 @@
  * GNU General Public License for more details.
  *
  */
-#ifndef SLALIB_F77_UTILS_H_INCLUDED
-#define SLALIB_F77_UTILS_H_INCLUDED
-
-#include <cmath>
+#include "slalib.h"
+#include "f77_utils.h"
 
 namespace sla {
 
-// C++ counterparts of the F77 math functions; to be inlined at a later stage
-template <typename T>
-inline T f_sign(T a, T b) {
-    const T aa = std::abs(a);
-    return b >= 0.0? aa: -aa;
+/**
+ * Normalizes angle into range +/- pi  (single precision).
+ *
+ * Original FORTRAN code by Rutherford Appleton Laboratory / P.T. Wallace.
+ *
+ * @param angle The angle in radians.
+ * @return The `angle` expressed in the +/- pi.
+ */
+float range(float angle) {
+    constexpr float PI = 3.141592653589793238462643f;
+    constexpr float PI2 = 6.283185307179586476925287f;
+    float result = std::fmod(angle, PI2);
+    if (std::fabs(result) >= PI) {
+        result -= f_sign(PI2, angle);
+    }
+    return result;
 }
-inline int f_nint(double n) { return (int) std::round(n); }
-inline double f_aint(double n) { return std::trunc(n); }
-inline double f_anint(double n) { return std::round(n); }
 
-} // sla
-
-#endif // SLALIB_F77_UTILS_H_INCLUDED
+}
