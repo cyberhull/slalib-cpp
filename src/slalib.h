@@ -36,6 +36,14 @@ enum G2JStatus {
     G2J_BAD_DAY    ///< day outside [0..<days-in-given-month>] range, BUT output value(s) were calculated and returned
 };
 
+// Status codes for the dtf2d() and ctf2d() procedures
+enum T2DStatus {
+    T2D_OK,          ///< all arguments fit their ranges, conversion successful
+    T2D_BAD_HOURS,   ///< hours outside of range [0..23]
+    T2D_BAD_MINUTES, ///< minutes outside of range [0..59]
+    T2D_BAD_SECONDS  ///< seconds outside of range [0..60)
+};
+
 /// Generic 3-component vector of floating-point elements.
 template<typename T>
 using vector = T[3];

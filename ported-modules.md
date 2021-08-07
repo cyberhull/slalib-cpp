@@ -68,7 +68,7 @@ that you have to look at the markdown source to see the difference):
 - ds2tp.f:         SUBROUTINE sla_DS2TP (RA, DEC, RAZ, DECZ, XI, ETA, J)
 - dsep.f:          DOUBLE PRECISION FUNCTION sla_DSEP (A1, B1, A2, B2)
 - dsepv.f:         DOUBLE PRECISION FUNCTION sla_DSEPV (V1, V2)
-- dtf2d.f:         SUBROUTINE sla_DTF2D (IHOUR, IMIN, SEC, DAYS, J)
+* dtf2d.f:         SUBROUTINE sla_DTF2D (IHOUR, IMIN, SEC, DAYS, J)
 - dtf2r.f:         SUBROUTINE sla_DTF2R (IHOUR, IMIN, SEC, RAD, J)
 - dt.f:            DOUBLE PRECISION FUNCTION sla_DT (EPOCH)
 - dtp2s.f:         SUBROUTINE sla_DTP2S (XI, ETA, RAZ, DECZ, RA, DEC)
