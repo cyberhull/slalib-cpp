@@ -35,7 +35,7 @@ void dr2tf(int ndp, double angle, ConversionResult& result) {
     // turns to radians
     constexpr double TURNS2RADIANS = 6.283185307179586476925287;
     // scale, then use days to hours, minutes, seconds function
-    dd2tf(ndp, angle * TURNS2RADIANS, result);
+    dd2tf(ndp, angle / TURNS2RADIANS, result);
 }
 
 }

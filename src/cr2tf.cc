@@ -35,7 +35,7 @@ void cr2tf(int ndp, float angle, ConversionResult& result) {
     // turns to radians
     constexpr float TURNS2RADIANS = 6.283185307179586476925287f;
     // scale, then use days to hours, minutes, seconds function
-    cd2tf(ndp, angle * TURNS2RADIANS, result);
+    cd2tf(ndp, angle / TURNS2RADIANS, result);
 }
 
 }
