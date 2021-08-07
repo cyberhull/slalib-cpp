@@ -30,6 +30,6 @@ add_library(slalib
   caf2r.cc daf2r.cc
   cldj.cc caldj.cc clyd.cc calyd.cc
   cd2tf.cc dd2tf.cc cr2af.cc dr2af.cc cr2tf.cc dr2tf.cc
-  ctf2d.cc dtf2d.cc
+  ctf2d.cc dtf2d.cc dtf2r.cc
   f77_utils.h
   slalib.cc slalib.h)
