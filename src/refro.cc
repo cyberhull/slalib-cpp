@@ -34,7 +34,7 @@ namespace sla {
  * @param dn Return value: refractive index at `r`.
  * @param rdndr Return value: `r` * rate the refractive index is changing at `r`.
  */
-static void atms(double rt, double tt, double dnt, double gamal, double r, double& dn, double rdndr) {
+static void atms(double rt, double tt, double dnt, double gamal, double r, double& dn, double& rdndr) {
     const double b = gamal / tt;
     const double w = (dnt - 1.0) * std::exp(-b * (r - rt));
     dn = 1.0 + w;
@@ -56,8 +56,8 @@ static void atms(double rt, double tt, double dnt, double gamal, double r, doubl
  * @param c2 Useful term (see source code of the sla::refro() function).
  * @param c3 Useful term (see source code of the sla::refro() function).
  * @param c4 Useful term (see source code of the sla::refro() function).
- * @param c5 Useful term (see source code of the sla::refro() function).
- * @param c6 Useful term (see source code of the sla::refro() function).
+ * @param c5 Useful term; zero in the optical case (see source code of the sla::refro() function).
+ * @param c6 Useful term; zero in the optical case (see source code of the sla::refro() function).
  * @param r Current distance from the centre of the Earth (meters).
  * @param t Return value: temperature at `r` (degrees K).
  * @param dn Return value: refractive index at `r`.
@@ -65,7 +65,7 @@ static void atms(double rt, double tt, double dnt, double gamal, double r, doubl
  */
 static void atmt(double r0, double t0, double alpha, double gamm2, double delm2,
     double c1, double c2, double c3, double c4, double c5, double c6, double r,
-    double& t, double& dn, double rdndr) {
+    double& t, double& dn, double& rdndr) {
     t = std::max(std::min(t0 - alpha * (r - r0), 320.0), 100.0);
     const double tt0 = t / t0;
     const double tt0gm2 = std::pow(tt0, gamm2);
