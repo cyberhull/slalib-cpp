@@ -18,7 +18,7 @@ that you have to look at the markdown source to see the difference):
 - aopqk.f:         SUBROUTINE sla_AOPQK (RAP, DAP, AOPRMS, AOB, ZOB, HOB, DOB, ROB)
 * atmdsp.f:        SUBROUTINE sla_ATMDSP (TDK, PMB, RH, WL1, A1, B1, WL2, A2, B2)
 * atms.f:          SUBROUTINE sla__ATMS (RT, TT, DNT, GAMAL, R, DN, RDNDR)
-- atmt.f:          SUBROUTINE sla__ATMT (R0, T0, ALPHA, GAMM2, DELM2, C1, C2, C3, C4, C5, C6, R, T, DN, RDNDR)
+* atmt.f:          SUBROUTINE sla__ATMT (R0, T0, ALPHA, GAMM2, DELM2, C1, C2, C3, C4, C5, C6, R, T, DN, RDNDR)
 * av2m.f:          SUBROUTINE sla_AV2M (AXVEC, RMAT)
 * bear.f:          REAL FUNCTION sla_BEAR (A1, B1, A2, B2)
 * caf2r.f:         SUBROUTINE sla_CAF2R (IDEG, IAMIN, ASEC, RAD, J)
