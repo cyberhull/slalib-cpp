@@ -163,6 +163,7 @@ void refcoq(double tdk, double pmb, double rh, double wl, double& refa, double& 
 double refro(double dn, double rdndr, double tdk, double pmb, double rh, double wl, double phi, double tlr, double eps);
 void refco(double hm, double tdk, double pmb, double rh, double wl, double phi, double tlr, double eps,
     double& refa, double& refb);
+void refv(const vector<double> vu, double refa, double refb, vector<double> vr);
 } // sla
 
 #endif // SLALIB_H_INCLUDED
