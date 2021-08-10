@@ -167,7 +167,7 @@ that you have to look at the markdown source to see the difference):
 - rdplan.f:        SUBROUTINE sla_RDPLAN (DATE, NP, ELONG, PHI, RA, DEC, DIAM)
 - refco.f:         SUBROUTINE sla_REFCO (HM, TDK, PMB, RH, WL, PHI, TLR, EPS, REFA, REFB)
 * refcoq.f:        SUBROUTINE sla_REFCOQ (TDK, PMB, RH, WL, REFA, REFB)
-- refro.f:         SUBROUTINE sla_REFRO (ZOBS, HM, TDK, PMB, RH, WL, PHI, TLR, EPS, REF)
+* refro.f:         SUBROUTINE sla_REFRO (ZOBS, HM, TDK, PMB, RH, WL, PHI, TLR, EPS, REF)
 - refv.f:          SUBROUTINE sla_REFV (VU, REFA, REFB, VR)
 - refz.f:          SUBROUTINE sla_REFZ (ZU, REFA, REFB, ZR)
 - rverot.f:        REAL FUNCTION sla_RVEROT (PHI, RA, DA, ST)

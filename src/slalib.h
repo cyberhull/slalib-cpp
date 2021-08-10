@@ -160,6 +160,7 @@ T2DStatus ctf2r(int hours, int minutes, float seconds, float & radians);
 T2DStatus dtf2r(int hours, int minutes, double seconds, double& radians);
 void atmdsp(double tdk, double pmb, double rh, double wl1, double a1, double b1, double wl2, double& a2, double& b2);
 void refcoq(double tdk, double pmb, double rh, double wl, double& refa, double& refb);
+double refro(double dn, double rdndr, double tdk, double pmb, double rh, double wl, double phi, double tlr, double eps);
 
 } // sla
 
