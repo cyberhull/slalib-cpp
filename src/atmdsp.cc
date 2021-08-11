@@ -83,18 +83,18 @@ void atmdsp(double tdk, double pmb, double rh, double wl1, double a1, double b1,
         // atmosphere parameters at the observer
         const double psat = std::pow(10.0, (-8.7115 + 0.03477 * tdkok));
         const double pwo = rhok * psat;
-        const double w1 = 11.2684 - 6 * pwo;
+        const double w1 = 11.2684e-6 * pwo;
 
         // refractivity at the observer for first wavelength
         double wlok = std::max(wl1, 0.1);
         double wlsq = wlok * wlok;
-        double w2 = 77.5317 - 6.0 + (0.43909 - 6.0 + 0.00367 - 6.0 / wlsq) / wlsq;
+        double w2 = 77.5317e-6 + (0.43909e-6 + 0.00367e-6 / wlsq) / wlsq;
         const double dn1 = (w2 * pmbok - w1) / tdkok;
 
         // refractivity at the observer for second wavelength
         wlok = std::max(wl2, 0.1);
         wlsq = wlok * wlok;
-        w2 = 77.5317 - 6 + (0.43909 - 6 + 0.00367 - 6 / wlsq) / wlsq;
+        w2 = 77.5317e-6 + (0.43909e-6 + 0.00367e-6 / wlsq) / wlsq;
         const double dn2 = (w2 * pmbok - w1) / tdkok;
 
         // scale the refraction coefficients (see Green 4.31, p93)
