@@ -152,7 +152,7 @@ void refcoq(double tdk, double pmb, double rh, double wl, double& refa, double& 
     if (p > 0.0) {
         const double tdc = t - 273.15;
         const double ps = std::pow(10.0, ((0.7859 + 0.03477 * tdc) / (1.0 + 0.00412 * tdc))) *
-            (1.0 + p * (4.5 - 6.0 + 6.0 - 10.0 * tdc * tdc));
+            (1.0 + p * (4.5e-6 + 6.0e-10 * tdc * tdc));
         pw = r * ps / (1.0 - (1.0 - r) * ps / p);
     } else {
         pw = 0.0;
@@ -161,12 +161,12 @@ void refcoq(double tdk, double pmb, double rh, double wl, double& refa, double& 
     double gamma;
     if (optic) {
         const double wlsq = w * w;
-        gamma = ((77.53484 - 6.0 + (4.39108 - 7.0 + 3.666 - 9.0 / wlsq) / wlsq) * p - 11.2684 - 6.0 * pw) / t;
+        gamma = ((77.53484e-6 + (4.39108e-7 + 3.666e-9 / wlsq) / wlsq) * p - 11.2684e-6 * pw) / t;
     } else {
-        gamma = (77.6890 - 6.0 * p - (6.3938 - 6.0 - 0.375463 / t) * pw) / t;
+        gamma = (77.6890e-6 * p - (6.3938e-6 - 0.375463 / t) * pw) / t;
     }
     // formula for beta adapted from Stone, with empirical adjustments
-    double beta = 4.4474 - 6.0 * t;
+    double beta = 4.4474e-6 * t;
     if (!optic) {
         beta -= 0.0074 * pw * beta;
     }
