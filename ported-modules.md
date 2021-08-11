@@ -251,7 +251,7 @@ that you have to look at the markdown source to see the difference):
 * sla_test.f:      SUBROUTINE T_RANGE (STATUS)
 * sla_test.f:      SUBROUTINE T_RANORM (STATUS)
 - sla_test.f:      SUBROUTINE T_RCC (STATUS)
-- sla_test.f:      SUBROUTINE T_REF (STATUS)
+* sla_test.f:      SUBROUTINE T_REF (STATUS)
 - sla_test.f:      SUBROUTINE T_RV (STATUS)
 - sla_test.f:      SUBROUTINE T_SEP (STATUS)
 - sla_test.f:      SUBROUTINE T_SMAT (STATUS)

@@ -492,6 +492,58 @@ static void t_ranorm(bool& status) {
     vvd(dranrm(-0.1), 6.183185307179587, 1.0e-12, "sla::dranrm", "double", status);
 }
 
+// tests sla::refro(), sla::refcoq(), sla::refco(), sla::atmdsp(), sla::dcs2c(), sla::refv(), and sla::refz() functions
+static void t_ref(bool& status) {
+    double ref = refro(1.4, 3456.7, 280.0, 678.9, 0.9, 0.55, -0.3, 0.006, 1.0e-9);
+    vvd(ref, 0.00106715763018568, 1.0e-12, "sla::refro", "optical", status);
+
+    ref = refro(1.4, 3456.7, 280.0, 678.9, 0.9, 1000.0, -0.3, 0.006, 1.0e-9);
+    vvd(ref, 0.001296416185295403, 1.0e-12, "sla::refro", "radio", status);
+
+    double refa, refb;
+    refcoq(275.9, 709.3, 0.9, 101.0, refa, refb);
+    vvd(refa, 2.324736903790639e-4, 1.0e-12, "sla::refcoq", "a/r", status);
+    vvd(refb, -2.442884551059e-7, 1.0e-15, "sla::refcoq", "b/r", status);
+
+    refco(2111.1, 275.9, 709.3, 0.9, 101.0, -1.03, 0.0067, 1.0e-12, refa, refb);
+    vvd(refa, 2.324673985217244e-4, 1.0e-12, "sla::refco", "a/r", status);
+    vvd(refb, -2.265040682496e-7, 1.0e-15, "sla::refco", "b/r", status);
+
+    refcoq(275.9, 709.3, 0.9, 0.77, refa, refb);
+    vvd(refa, 2.007406521596588e-4, 1.0e-12, "sla::refcoq", "a", status);
+    vvd(refb, -2.264210092590e-7, 1.0e-15, "sla::refcoq", "b", status);
+
+    refco(2111.1, 275.9, 709.3, 0.9, 0.77, -1.03, 0.0067, 1.0e-12, refa, refb);
+    vvd(refa, 2.007202720084551e-4, 1.0e-12, "sla::refco", "a", status);
+    vvd(refb, -2.223037748876e-7, 1.0e-15, "sla::refco", "b", status);
+
+    double REFA2, REFB2;
+    atmdsp(275.9, 709.3, 0.9, 0.77, refa, refb, 0.5, REFA2, REFB2);
+    vvd(REFA2, 2.034523658888048e-4, 1.0e-12, "sla::atmdsp", "a", status);
+    vvd(REFB2, -2.250855362179e-7, 1.0e-15, "sla::atmdsp", "b", status);
+
+    const SphericalDir<double> spherical1 = {0.345, 0.456};
+    vector<double> cartesian1, cartesian2;
+    dcs2c(spherical1, cartesian1);
+    refv(cartesian1, refa, refb, cartesian2);
+    vvd(cartesian2[0], 0.8447487047790478, 1.0e-12, "sla::refv", "x1", status);
+    vvd(cartesian2[1], 0.3035794890562339, 1.0e-12, "sla::refv", "y1", status);
+    vvd(cartesian2[2], 0.4407256738589851, 1.0e-12, "sla::refv", "z1", status);
+
+    const SphericalDir<double> spherical2 = {3.7, 0.03};
+    dcs2c(spherical2, cartesian1);
+    refv(cartesian1, refa, refb, cartesian2);
+    vvd(cartesian2[0], -0.8476187691681673, 1.0e-12, "sla::refv", "x2", status);
+    vvd(cartesian2[1], -0.5295354802804889, 1.0e-12, "sla::refv", "y2", status);
+    vvd(cartesian2[2], 0.0322914582168426, 1.0e-12, "sla::refv", "z2", status);
+
+    double zr = refz(0.567, refa, refb);
+    vvd(zr, 0.566872285910534, 1.0e-12, "sla::refz", "hi el", status);
+
+    zr = refz(1.55, refa, refb);
+    vvd(zr, 1.545697350690958, 1.0e-12, "sla::refz", "lo el", status);
+}
+
 ///////////////////////////////////////////////////////////////////////////////
 // MODULE ENTRY POINT
 ///////////////////////////////////////////////////////////////////////////////
@@ -516,6 +568,7 @@ bool sla_test() {
     t_ctf2r(status);
     t_range(status);
     t_ranorm(status);
+    t_ref(status);
     return status;
 }
 
