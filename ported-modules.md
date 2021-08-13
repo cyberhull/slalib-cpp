@@ -205,7 +205,7 @@ that you have to look at the markdown source to see the difference):
 * sla_test.f:      SUBROUTINE T_E2H (STATUS)
 - sla_test.f:      SUBROUTINE T_EARTH (STATUS)
 - sla_test.f:      SUBROUTINE T_ECLEQ (STATUS)
-- sla_test.f:      SUBROUTINE T_ECMAT (STATUS)
+* sla_test.f:      SUBROUTINE T_ECMAT (STATUS)
 - sla_test.f:      SUBROUTINE T_ECOR (STATUS)
 - sla_test.f:      SUBROUTINE T_EG50 (STATUS)
 - sla_test.f:      SUBROUTINE T_EPB2D (STATUS)

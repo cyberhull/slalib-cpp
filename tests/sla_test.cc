@@ -544,6 +544,21 @@ static void t_ref(bool& status) {
     vvd(zr, 1.545697350690958, 1.0e-12, "sla::refz", "lo el", status);
 }
 
+// tests sla::ecmat() function
+static void t_ecmat(bool& status) {
+    matrix<double> rm;
+    ecmat(41234.0, rm);
+    vvd(rm[0][0], 1.0, 1.0e-12, "sla::ecmat", "00", status);
+    vvd(rm[0][1], 0.0, 1.0e-12, "sla::ecmat", "01", status);
+    vvd(rm[0][2], 0.0, 1.0e-12, "sla::ecmat", "02", status);
+    vvd(rm[1][0], 0.0, 1.0e-12, "sla::ecmat", "10", status);
+    vvd(rm[1][1], 0.917456575085716, 1.0e-12, "sla::ecmat", "11", status);
+    vvd(rm[1][2], 0.397835937079581, 1.0e-12, "sla::ecmat", "12", status);
+    vvd(rm[2][0], 0.0, 1.0e-12, "sla::ecmat", "20", status);
+    vvd(rm[2][1], -0.397835937079581, 1.0e-12, "sla::ecmat", "21", status);
+    vvd(rm[2][2], 0.917456575085716, 1.0e-12, "sla::ecmat", "22", status);
+}
+
 ///////////////////////////////////////////////////////////////////////////////
 // MODULE ENTRY POINT
 ///////////////////////////////////////////////////////////////////////////////
@@ -569,6 +584,7 @@ bool sla_test() {
     t_range(status);
     t_ranorm(status);
     t_ref(status);
+    t_ecmat(status);
     return status;
 }
 
