@@ -33,5 +33,6 @@ add_library(slalib
   ctf2d.cc dtf2d.cc ctf2r.cc dtf2r.cc
   range.cc drange.cc ranorm.cc dranrm.cc
   atmdsp.cc refcoq.cc refro.cc refco.cc refv.cc refz.cc
+  ecmat.cc
   f77_utils.h
   slalib.cc slalib.h)
