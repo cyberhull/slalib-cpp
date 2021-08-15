@@ -55,7 +55,7 @@ that you have to look at the markdown source to see the difference):
 - djcal.f:         SUBROUTINE sla_DJCAL (NDP, DJM, IYMDF, J)
 - djcl.f:          SUBROUTINE sla_DJCL (DJM, IY, IM, ID, FD, J)
 * dm2av.f:         SUBROUTINE sla_DM2AV (RMAT, AXVEC)
-- dmat.f:          SUBROUTINE sla_DMAT (N, A, Y, D, JF, IW)
+* dmat.f:          SUBROUTINE sla_DMAT (N, A, Y, D, JF, IW)
 - dmoon.f:         SUBROUTINE sla_DMOON (DATE, PV)
 * dmxm.f:          SUBROUTINE sla_DMXM (A, B, C)
 * dmxv.f:          SUBROUTINE sla_DMXV (DM, VA, VB)

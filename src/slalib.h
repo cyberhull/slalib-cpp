@@ -166,6 +166,7 @@ void refco(double hm, double tdk, double pmb, double rh, double wl, double phi, 
 void refv(const vector<double> vu, double refa, double refb, vector<double> vr);
 double refz(double zu, double refa, double refb);
 void ecmat(double date, matrix<double> rmat);
+void dmat(int n, matrix<double> mat, vector<double> vec, double& det, bool& singular, int ws[3]);
 
 } // sla
 
