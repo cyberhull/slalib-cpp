@@ -5,7 +5,8 @@
  * Written by Vadim Sytnikov.
  * Copyright (C) 2021 CyberHULL, Ltd.
  *
- * Reads *first* FORTRAN array initializer found in the specified file, and prints C/C++ initializer to the standard
+ * Finds specified FORTRAN array definition in the given file, extracts its dimensions, then finds and reads DATA
+ * initializer for that array, converts FORTRAN numbers to C/C++ format, and prints C/C++ initializer to the standard
  * output, taking into account the fact that in FORTRAN 2D arrays leftmost index (column number) changes first, while
  * in C/C++ 2D arrays it's the other way round.
  *
@@ -23,8 +24,8 @@ function fail($message) {
 
 // 1) Check arguments.
 
-if ($argc != 4) {
-    echo 'Use: f2cai <fortran-file-name> <first-dimension> <second-dimension>', PHP_EOL;
+if ($argc != 3) {
+    echo 'Use: f2cai <fortran-file-name> <array-name>', PHP_EOL;
     exit(1);
 }
 
@@ -34,30 +35,35 @@ if ($text === false) {
     fail("could not load FORTRAN file '$path'");
 }
 
-$d1 = (int) $argv[2];
-if ($d1 < 1) {
-    fail("invalid first dimension ('$argv[2]')");
+$name = $argv[2];
+if (preg_match('/\b' . $name . '\s*\(\s*(\d)\s*,\s*(\d)\s*\)/s', $text, $matches) != 1) {
+  fail("could not find definition of the FORTRAN array '$name' in '$path'");
 }
 
-$d2 = (int) $argv[3];
+$d1 = (int) $matches[1];
+if ($d1 < 1) {
+    fail("invalid first dimension ('$matches[1]') in the definition of array '$name'");
+}
+
+$d2 = (int) $matches[2];
 if ($d2 < 1) {
-    fail("invalid second dimension ('$argv[3]')");
+    fail("invalid second dimension ('$matches[2]') in the definition of array '$name'");
 }
 
 // 2) Fetch very first FORTRAN array initializer (the others, if any, are ignored), and break it down into elements
 
-if (preg_match('|/(.+)/|sU', $text, $matches) != 1) {
-    fail("could not find FORTRAN array initializer in '$path'");
+if (preg_match('|\bDATA\s+' . $name . '\s*/(.+)/|sU', $text, $matches) != 1) {
+    fail("could not find initializer for the array '$name' in '$path'");
 }
 
 $data = trim($matches[1]);
 $numbers = preg_split('/[\s:,]+/', $data);
 if ($numbers === false) {
-    fail("could not extract array elements from '$path'");
+    fail("could not extract array elements for array '$name' from '$path'");
 }
 $nelements = count($numbers);
 if (count($numbers) != $d1 * $d2) {
-    fail("number of extracted array elements ($nelements) does not make [$d1][$d2] array in '$path'");
+    fail("number of array elements ($nelements) extracted from '$name' does not make [$d1][$d2] array in '$path'");
 }
 
 // 3) Go through FORTRAN array elements, and fill in output array
