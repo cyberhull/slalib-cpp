@@ -1,0 +1,105 @@
+#! /usr/bin/env php
+<?php
+/*
+ * Converts FORTRAN's two-dimensional array initializers into C/C++ ones.
+ * Written by Vadim Sytnikov.
+ * Copyright (C) 2021 CyberHULL, Ltd.
+ *
+ * Reads *first* FORTRAN array initializer found in the specified file, and prints C/C++ initializer to the standard
+ * output, taking into account the fact that in FORTRAN 2D arrays leftmost index (column number) changes first, while
+ * in C/C++ 2D arrays it's the other way round.
+ *
+ * Can process integer, single-precision, and double-precision FORTRAN numbers. Does not (currently) handle
+ * initializers that are using (FORTRAN) initialization loops.
+ *
+ * See http://www.mathcs.emory.edu/~cheung/Courses/561/Syllabus/6-Fortran/array1.html for info on initializing FORTRAN
+ * arrays using `DATA` blocks ("Initializing Arrays: the DATA Block" section).
+ */
+
+function fail($message) {
+    echo "ERROR: $message\n";
+    exit(3);
+}
+
+// 1) Check arguments.
+
+if ($argc != 4) {
+    echo 'Use: f2cai <fortran-file-name> <first-dimension> <second-dimension>', PHP_EOL;
+    exit(1);
+}
+
+$path = $argv[1];
+$text = file_get_contents($path);
+if ($text === false) {
+    fail("could not load FORTRAN file '$path'");
+}
+
+$d1 = (int) $argv[2];
+if ($d1 < 1) {
+    fail("invalid first dimension ('$argv[2]')");
+}
+
+$d2 = (int) $argv[3];
+if ($d2 < 1) {
+    fail("invalid second dimension ('$argv[3]')");
+}
+
+// 2) Fetch very first FORTRAN array initializer (the others, if any, are ignored), and break it down into elements
+
+if (preg_match('|/(.+)/|sU', $text, $matches) != 1) {
+    fail("could not find FORTRAN array initializer in '$path'");
+}
+
+$data = trim($matches[1]);
+$numbers = preg_split('/[\s:,]+/', $data);
+if ($numbers === false) {
+    fail("could not extract array elements from '$path'");
+}
+$nelements = count($numbers);
+if (count($numbers) != $d1 * $d2) {
+    fail("number of extracted array elements ($nelements) does not make [$d1][$d2] array in '$path'");
+}
+
+// 3) Go through FORTRAN array elements, and fill in output array
+
+$arr = [];
+for ($j = 0; $j < $d1; $j++) {
+    $arr[$j] = [];
+}
+$n = 0;
+for ($i = 0; $i < $d2; $i++) {
+    for ($j = 0; $j < $d1; $j++) {
+        $num = $numbers[$n++];
+        if (preg_match('/^(.+)([eEdD])(.+)$/', $num, $matches) == 1) {
+            $mantissa = $matches[1];
+            if (strpos($mantissa, '.') === false) {
+                $mantissa .= '.0'; // not necessary if there is a non-zero exponent...
+            }
+            $precision = $matches[2];
+            $exponent = $matches[3];
+
+            $num = $mantissa;
+            if ($exponent != '0') {
+                $num .= 'e' . $exponent;
+            }
+            if ($precision == 'e' || $precision == 'E') {
+                $num .= 'f'; // a single-precision number
+            }
+        }
+        $arr[$j][$i] = $num;
+    }
+}
+
+// 4) Print result (C/C++ array initializer) to the standard output
+
+echo '{', PHP_EOL;
+for ($j = 0; $j < $d1; $j++) {
+    echo '  {';
+    $delimiter = '';
+    for ($i = 0; $i < $d2; $i++) {
+        echo $delimiter, $arr[$j][$i];
+        $delimiter = ', ';
+    }
+    echo '},', PHP_EOL;
+}
+echo '}', PHP_EOL;

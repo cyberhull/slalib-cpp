@@ -3,3 +3,4 @@
 /fortran
 *.f
 *.bak
+/util/.idea
