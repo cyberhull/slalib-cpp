@@ -10,6 +10,11 @@
  * output, taking into account the fact that in FORTRAN 2D arrays leftmost index (column number) changes first, while
  * in C/C++ 2D arrays it's the other way round.
  *
+ * If the `<from-line>` argument is given, the script only searches for *both* array definitions and initializers
+ * starting from the specified line; this feature allows to search files containing multiple functions re-using same
+ * array names. Only the first found array definition and the first found array initializer are used; subsequent
+ * definitions and initializers for arrays with the same name (if any) are ignored.
+ *
  * Can process integer, single-precision, and double-precision FORTRAN numbers. Does not (currently) handle
  * initializers that are using (FORTRAN) initialization loops.
  *
@@ -24,20 +29,32 @@ function fail($message) {
 
 // 1) Check arguments.
 
-if ($argc != 3) {
-    echo 'Use: f2cai <fortran-file-name> <array-name>', PHP_EOL;
+if ($argc != 3 && $argc != 4) {
+    echo 'Use: f2cai <fortran-file-name> <array-name> [<from-line>]', PHP_EOL;
     exit(1);
 }
 
 $path = $argv[1];
-$text = file_get_contents($path);
-if ($text === false) {
+$lines = file($path);
+if ($lines === false) {
     fail("could not load FORTRAN file '$path'");
+}
+$first = 1; // use conventional line numbering
+$last = count($lines);
+if ($argc == 4) {
+    $first = (int) $argv[3];
+    if ($first < 1 || $first > $last) {
+        fail("line $first does not exist in file '$path' (note: line numbers are 1-based)");
+    }
+}
+$text = '';
+for ($i = $first; $i <= $last; $i++) {
+    $text .= $lines[$i - 1];
 }
 
 $name = $argv[2];
 if (preg_match('/\b' . $name . '\s*\(\s*(\d)\s*,\s*(\d)\s*\)/s', $text, $matches) != 1) {
-  fail("could not find definition of the FORTRAN array '$name' in '$path'");
+    fail("could not find definition of the 2D FORTRAN array '$name' in '$path' at line $first and below");
 }
 
 $d1 = (int) $matches[1];
