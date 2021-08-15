@@ -588,6 +588,23 @@ static void t_dmat(bool& status) {
     viv((int) singular, 0, "std::dmat", "singular", status);
 }
 
+// tests sla::altaz() function
+static void t_altaz(bool& status) {
+    double azimuth, az_vel, az_acc, elevation, el_vel, el_acc, p_angle, pa_vel, pa_acc;
+    altaz(0.7, -0.7, -0.65,
+        azimuth, az_vel, az_acc, elevation, el_vel, el_acc, p_angle, pa_vel, pa_acc);
+
+    vvd(azimuth, 4.400560746660174, 1.0e-12, "sla::altaz", "azimuth", status);
+    vvd(az_vel, -0.2015438937145421, 1.0e-13, "sla::altaz", "az_vel", status);
+    vvd(az_acc, -0.4381266949668748, 1.0e-13, "sla::altaz", "az_acc", status);
+    vvd(elevation, 1.026646506651396, 1.0e-12, "sla::altaz", "elevation", status);
+    vvd(el_vel, -0.7576920683826450, 1.0e-13, "sla::altaz", "el_vel", status);
+    vvd(el_acc, 0.04922465406857453, 1.0e-14, "sla::altaz", "el_acc", status);
+    vvd(p_angle, 1.707639969653937, 1.0e-12, "sla::altaz", "p_angle", status);
+    vvd(pa_vel, 0.4717832355365627, 1.0e-13, "sla::altaz", "pa_vel", status);
+    vvd(pa_acc, -0.2957914128185515, 1.0e-13, "sla::altaz", "pa_acc", status);
+}
+
 ///////////////////////////////////////////////////////////////////////////////
 // MODULE ENTRY POINT
 ///////////////////////////////////////////////////////////////////////////////
@@ -615,6 +632,7 @@ bool sla_test() {
     t_ref(status);
     t_ecmat(status);
     t_dmat(status);
+    t_altaz(status);
     return status;
 }
 

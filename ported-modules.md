@@ -182,7 +182,7 @@ that you have to look at the markdown source to see the difference):
 - sla_test.f:      SUBROUTINE T_ADDET (STATUS)
 - sla_test.f:      SUBROUTINE T_AFIN (STATUS)
 * sla_test.f:      SUBROUTINE T_AIRMAS (STATUS)
-- sla_test.f:      SUBROUTINE T_ALTAZ (STATUS)
+* sla_test.f:      SUBROUTINE T_ALTAZ (STATUS)
 - sla_test.f:      SUBROUTINE T_AMP (STATUS)
 - sla_test.f:      SUBROUTINE T_AOP (STATUS)
 * sla_test.f:      SUBROUTINE T_BEAR (STATUS)
