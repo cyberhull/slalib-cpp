@@ -9,7 +9,7 @@ that you have to look at the markdown source to see the difference):
 - addet.f:         SUBROUTINE sla_ADDET (RM, DM, EQ, RC, DC)
 - afin.f:          SUBROUTINE sla_AFIN (STRING, IPTR, A, J)
 * airmas.f:        DOUBLE PRECISION FUNCTION sla_AIRMAS (ZD)
-- altaz.f:         SUBROUTINE sla_ALTAZ (HA, DEC, PHI, AZ, AZD, AZDD, EL, ELD, ELDD, PA, PAD, PADD)
+* altaz.f:         SUBROUTINE sla_ALTAZ (HA, DEC, PHI, AZ, AZD, AZDD, EL, ELD, ELDD, PA, PAD, PADD)
 - amp.f:           SUBROUTINE sla_AMP (RA, DA, DATE, EQ, RM, DM)
 - ampqk.f:         SUBROUTINE sla_AMPQK (RA, DA, AMPRMS, RM, DM)
 - aop.f:           SUBROUTINE sla_AOP (RAP, DAP, DATE, DUT, ELONGM, PHIM, HM, XP, YP, TDK, PMB, RH, WL, TLR, AOB, ZOB, HOB, DOB, ROB)

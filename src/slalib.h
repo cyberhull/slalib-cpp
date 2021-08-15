@@ -167,6 +167,8 @@ void refv(const vector<double> vu, double refa, double refb, vector<double> vr);
 double refz(double zu, double refa, double refb);
 void ecmat(double date, matrix<double> rmat);
 void dmat(int n, matrix<double> mat, vector<double> vec, double& det, bool& singular, int ws[3]);
+void altaz(double ha, double dec, double phi, double& az, double& az_vel, double& az_acc,
+    double& el, double& el_vel, double& el_acc, double& pa, double& pa_vel, double& pa_acc);
 
 } // sla
 
