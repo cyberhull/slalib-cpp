@@ -38,7 +38,7 @@ that you have to look at the markdown source to see the difference):
 * ctf2r.f:         SUBROUTINE sla_CTF2R (IHOUR, IMIN, SEC, RAD, J)
 * daf2r.f:         SUBROUTINE sla_DAF2R (IDEG, IAMIN, ASEC, RAD, J)
 - dafin.f:         SUBROUTINE sla_DAFIN (STRING, IPTR, A, J)
-- dat.f:           DOUBLE PRECISION FUNCTION sla_DAT (UTC)
+* dat.f:           DOUBLE PRECISION FUNCTION sla_DAT (UTC)
 * dav2m.f:         SUBROUTINE sla_DAV2M (AXVEC, RMAT)
 * dbear.f:         DOUBLE PRECISION FUNCTION sla_DBEAR (A1, B1, A2, B2)
 - dbjin.f:         SUBROUTINE sla_DBJIN (STRING, NSTRT, DRESLT, J1, J2)
