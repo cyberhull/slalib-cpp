@@ -559,6 +559,35 @@ static void t_ecmat(bool& status) {
     vvd(rm[2][2], 0.917456575085716, 1.0e-12, "sla::ecmat", "22", status);
 }
 
+// tests sla::dmat() function
+static void t_dmat(bool& status) {
+    matrix<double> mat = {
+        {2.22,     1.6578,     1.380522    },
+        {1.6578,   1.380522,   1.22548578  },
+        {1.380522, 1.22548578, 1.1356276122}
+    };
+    vector<double> vec = {2.28625, 1.7128825, 1.429432225};
+    double det;
+    bool singular;
+    int ws[3];
+    dmat(3, mat, vec, det, singular, ws);
+
+    vvd(mat[0][0], 18.02550629769198, 1.0e-10, "std::dmat", "M00", status);
+    vvd(mat[0][1], -52.16386644917280607, 1.0e-10, "std::dmat", "M01", status);
+    vvd(mat[0][2], 34.37875949717850495, 1.0e-10, "std::dmat", "M02", status);
+    vvd(mat[1][0], -52.16386644917280607, 1.0e-10, "std::dmat", "M10", status);
+    vvd(mat[1][1], 168.1778099099805627, 1.0e-10, "std::dmat", "M11", status);
+    vvd(mat[1][2], -118.0722869694232670, 1.0e-10, "std::dmat", "M12", status);
+    vvd(mat[2][0], 34.37875949717850495, 1.0e-10, "std::dmat", "M20", status);
+    vvd(mat[2][1], -118.0722869694232670, 1.0e-10, "std::dmat", "M21", status);
+    vvd(mat[2][2], 86.50307003740151262, 1.0e-10, "std::dmat", "M22", status);
+    vvd(vec[0], 1.002346480763383, 1.0e-12, "std::dmat", "V0", status);
+    vvd(vec[1], 0.03285594016974583489, 1.0e-12, "std::dmat", "V1", status);
+    vvd(vec[2], 0.004760688414885247309, 1.0e-12, "std::dmat", "V2", status);
+    vvd(det, 0.003658344147359863, 1.0e-12, "std::dmat", "D", status);
+    viv((int) singular, 0, "std::dmat", "singular", status);
+}
+
 ///////////////////////////////////////////////////////////////////////////////
 // MODULE ENTRY POINT
 ///////////////////////////////////////////////////////////////////////////////
@@ -585,6 +614,7 @@ bool sla_test() {
     t_ranorm(status);
     t_ref(status);
     t_ecmat(status);
+    t_dmat(status);
     return status;
 }
 
