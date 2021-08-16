@@ -480,6 +480,16 @@ static void t_ctf2r(bool& status) {
     viv (result, T2D_OK, "sla::dtf2r", "result", status);
 }
 
+// tests sla::altaz() function
+static void t_dat(bool& status) {
+    vvd(dat(43900.0), 18.0, 0.0, "sla::dat", "43900", status);
+    vvd(dtt(40404.0), 39.709746, 1.0e-12, "sla::dtt", "40404", status);
+    vvd(dt(500.0), 4686.7, 1.0e-10, "sla::dt", "500", status);
+    vvd(dt(1400.0), 408.0, 1.0e-11, "sla::dt", "1400", status);
+    vvd(dt(1950.0), 27.99145626, 1.0e-12, "sla::dt", "1950", status);
+}
+
+
 // tests sla::range() and sla::drange() functions
 static void t_range(bool& status) {
     vvd(range(-4.0f), 2.283185307179586, 1.0e-6, "sla::range", "float", status);
@@ -627,6 +637,7 @@ bool sla_test() {
     t_cr2tf(status);
     t_ctf2d(status);
     t_ctf2r(status);
+    t_dat(status);
     t_range(status);
     t_ranorm(status);
     t_ref(status);
