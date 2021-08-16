@@ -70,7 +70,7 @@ that you have to look at the markdown source to see the difference):
 - dsepv.f:         DOUBLE PRECISION FUNCTION sla_DSEPV (V1, V2)
 * dtf2d.f:         SUBROUTINE sla_DTF2D (IHOUR, IMIN, SEC, DAYS, J)
 * dtf2r.f:         SUBROUTINE sla_DTF2R (IHOUR, IMIN, SEC, RAD, J)
-- dt.f:            DOUBLE PRECISION FUNCTION sla_DT (EPOCH)
+* dt.f:            DOUBLE PRECISION FUNCTION sla_DT (EPOCH)
 - dtp2s.f:         SUBROUTINE sla_DTP2S (XI, ETA, RAZ, DECZ, RA, DEC)
 - dtp2v.f:         SUBROUTINE sla_DTP2V (XI, ETA, V0, V)
 - dtps2c.f:        SUBROUTINE sla_DTPS2C (XI, ETA, RA, DEC, RAZ1, DECZ1, RAZ2, DECZ2, N)
