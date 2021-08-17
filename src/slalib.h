@@ -175,6 +175,7 @@ void altaz(double ha, double dec, double phi, double& az, double& az_vel, double
 void nutc(double date, double& psi, double& eps, double& eps0);
 void nut(double date, matrix<double> mat);
 void nutc80(double date, double& psi, double& eps, double& eps0);
+double epj2d(double je);
 
 } // sla
 
