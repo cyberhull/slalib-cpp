@@ -177,6 +177,7 @@ void nut(double date, matrix<double> mat);
 void nutc80(double date, double& psi, double& eps, double& eps0);
 double epj2d(double je);
 double epj(double date);
+double epb2d(double be);
 double epb(double date);
 
 } // sla
