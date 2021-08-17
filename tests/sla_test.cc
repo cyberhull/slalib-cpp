@@ -615,6 +615,32 @@ static void t_altaz(bool& status) {
     vvd(pa_acc, -0.2957914128185515, 1.0e-13, "sla::altaz", "pa_acc", status);
 }
 
+// tests sla::nut(), sla::nutc(), and sla::nutc80() functions
+static void t_nut(bool& status) {
+    matrix<double> mat;
+    nut(46012.34, mat);
+    vvd(mat[0][0],  9.999999969492166e-1, 1.0e-12, "sla::nut", "00", status);
+    vvd(mat[0][1],  7.166577986249302e-5, 1.0e-12, "sla::nut", "01", status);
+    vvd(mat[0][2],  3.107382973077677e-5, 1.0e-12, "sla::nut", "02", status);
+    vvd(mat[1][0], -7.166503970900504e-5, 1.0e-12, "sla::nut", "10", status);
+    vvd(mat[1][1],  9.999999971483732e-1, 1.0e-12, "sla::nut", "11", status);
+    vvd(mat[1][2], -2.381965032461830e-5, 1.0e-12, "sla::nut", "12", status);
+    vvd(mat[2][0], -3.107553669598237e-5, 1.0e-12, "sla::nut", "20", status);
+    vvd(mat[2][1],  2.381742334472628e-5, 1.0e-12, "sla::nut", "21", status);
+    vvd(mat[2][2],  9.999999992335206818e-1, 1.0e-12, "sla::nut", "22", status);
+
+    double psi, eps, eps0;
+    nutc(50123.4, psi, eps, eps0);
+    vvd(psi, 3.523550954747999709e-5, 1.0e-17, "sla::nutc", "psi", status);
+    vvd(eps, -4.143371566683342e-5, 1.0e-17, "sla::nutc", "eps", status);
+    vvd(eps0, 0.4091014592901651, 1.0e-12, "sla::nutc", "eps0", status);
+
+    nutc80(50123.4, psi, eps, eps0);
+    vvd(psi, 3.537714281665945321e-5, 1.0e-17, "sla::nutc80", "psi", status);
+    vvd(eps, -4.140590085987148317e-5, 1.0e-17, "sla::nutc80", "deps", status);
+    vvd(eps0, 0.4091016349007751, 1.0e-12, "sla::nutc80", "eps0", status);
+}
+
 ///////////////////////////////////////////////////////////////////////////////
 // MODULE ENTRY POINT
 ///////////////////////////////////////////////////////////////////////////////
@@ -644,6 +670,7 @@ bool sla_test() {
     t_ecmat(status);
     t_dmat(status);
     t_altaz(status);
+    t_nut(status);
     return status;
 }
 

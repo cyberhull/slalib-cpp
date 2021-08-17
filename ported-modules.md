@@ -233,7 +233,7 @@ that you have to look at the markdown source to see the difference):
 - sla_test.f:      SUBROUTINE T_KBJ (STATUS)
 - sla_test.f:      SUBROUTINE T_MAP (STATUS)
 - sla_test.f:      SUBROUTINE T_MOON (STATUS)
-- sla_test.f:      SUBROUTINE T_NUT (STATUS)
+* sla_test.f:      SUBROUTINE T_NUT (STATUS)
 - sla_test.f:      SUBROUTINE T_OBS (STATUS)
 - sla_test.f:      SUBROUTINE T_PA (STATUS)
 - sla_test.f:      SUBROUTINE T_PCD (STATUS)
