@@ -36,6 +36,6 @@ add_library(slalib
   atmdsp.cc refcoq.cc refro.cc refco.cc refv.cc refz.cc
   ecmat.cc dmat.cc altaz.cc
   nutc.cc nut.cc nutc80.cc
-  epj2d.cc epj.cc
+  epj2d.cc epj.cc epb.cc
   f77_utils.h
   slalib.cc slalib.h)
