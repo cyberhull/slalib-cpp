@@ -651,6 +651,11 @@ static void t_epj(bool& status) {
     vvd(epj(42999.0 ), 1976.603696098563, 1.0e-7, "sla::epj", "", status);
 }
 
+// tests sla::epb() function
+static void t_epb(bool& status) {
+    vvd(epb(45123.0), 1982.419793168669, 1.0e-8, "sla::epb", "", status);
+}
+
 ///////////////////////////////////////////////////////////////////////////////
 // MODULE ENTRY POINT
 ///////////////////////////////////////////////////////////////////////////////
@@ -683,6 +688,7 @@ bool sla_test() {
     t_nut(status);
     t_epj2d(status);
     t_epj(status);
+    t_epb(status);
     return status;
 }
 
