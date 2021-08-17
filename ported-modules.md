@@ -133,7 +133,7 @@ that you have to look at the markdown source to see the difference):
 * mxv.f:           SUBROUTINE sla_MXV (RM, VA, VB)
 - nutc80.f:        SUBROUTINE sla_NUTC80 (DATE, DPSI, DEPS, EPS0)
 * nutc.f:          SUBROUTINE sla_NUTC (DATE, DPSI, DEPS, EPS0)
-- nut.f:           SUBROUTINE sla_NUT (DATE, RMATN)
+* nut.f:           SUBROUTINE sla_NUT (DATE, RMATN)
 - oap.f:           SUBROUTINE sla_OAP (TYPE, OB1, OB2, DATE, DUT, ELONGM, PHIM, XP, YP, TDK, PMB, RH, WL, TLR, AOB, ZOB, HOB, DOB, ROB)
 - oapqk.f:         SUBROUTINE sla_OAPQK (TYPE, OB1, OB2, AOPRMS, RAP, DAP)
 - obs.f:           SUBROUTINE sla_OBS (N, C, NAME, W, P, H)

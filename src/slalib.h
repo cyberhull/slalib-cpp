@@ -173,6 +173,7 @@ void dmat(int n, matrix<double> mat, vector<double> vec, double& det, bool& sing
 void altaz(double ha, double dec, double phi, double& az, double& az_vel, double& az_acc,
     double& el, double& el_vel, double& el_acc, double& pa, double& pa_vel, double& pa_acc);
 void nutc(double date, double& psi, double& eps, double& eps0);
+void nut(double date, matrix<double> mat);
 
 } // sla
 
