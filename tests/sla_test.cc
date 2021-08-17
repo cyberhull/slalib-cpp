@@ -651,6 +651,11 @@ static void t_epj(bool& status) {
     vvd(epj(42999.0 ), 1976.603696098563, 1.0e-7, "sla::epj", "", status);
 }
 
+// tests sla::epb2d() function
+static void t_epb2d(bool& status) {
+    vvd(epb2d(1975.5), 42595.5995279655, 1.0e-7, "sla_EPB2D", "", status);
+}
+
 // tests sla::epb() function
 static void t_epb(bool& status) {
     vvd(epb(45123.0), 1982.419793168669, 1.0e-8, "sla::epb", "", status);
@@ -688,6 +693,7 @@ bool sla_test() {
     t_nut(status);
     t_epj2d(status);
     t_epj(status);
+    t_epb2d(status);
     t_epb(status);
     return status;
 }
