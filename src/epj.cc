@@ -31,7 +31,7 @@ namespace sla {
  * @return Julian Epoch.
  */
 double epj(double date) {
-    return 2000.0 + (date - 51544.5)/365.25;
+    return 2000.0 + (date - 51544.5) / 365.25;
 }
 
 }

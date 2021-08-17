@@ -643,7 +643,12 @@ static void t_nut(bool& status) {
 
 // tests sla::epj2d() function
 static void t_epj2d(bool& status) {
-    vvd(epj2d(2010.077), 55225.124250, 1.0e-6, "sla_EPJ2D", "", status);
+    vvd(epj2d(2010.077), 55225.124250, 1.0e-6, "sla::epj2d", "", status);
+}
+
+// tests sla::epj() function
+static void t_epj(bool& status) {
+    vvd(epj(42999.0 ), 1976.603696098563, 1.0e-7, "sla::epj", "", status);
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -677,6 +682,7 @@ bool sla_test() {
     t_altaz(status);
     t_nut(status);
     t_epj2d(status);
+    t_epj(status);
     return status;
 }
 

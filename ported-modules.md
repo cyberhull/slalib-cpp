@@ -212,7 +212,7 @@ that you have to look at the markdown source to see the difference):
 - sla_test.f:      SUBROUTINE T_EPB (STATUS)
 - sla_test.f:      SUBROUTINE T_EPCO (STATUS)
 * sla_test.f:      SUBROUTINE T_EPJ2D (STATUS)
-- sla_test.f:      SUBROUTINE T_EPJ (STATUS)
+* sla_test.f:      SUBROUTINE T_EPJ (STATUS)
 - sla_test.f:      SUBROUTINE T_EQECL (STATUS)
 - sla_test.f:      SUBROUTINE T_EQEQX (STATUS)
 - sla_test.f:      SUBROUTINE T_EQGAL (STATUS)
