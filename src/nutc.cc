@@ -32,20 +32,17 @@ namespace sla {
  * mainly because of the error in the IAU 1976 precession.
  *
  * References:
- *
  *   Shirai, T. & Fukushima, T., Astron.J. 121, 3270-3283 (2001).
- *
  *   Fukushima, T., Astron.Astrophys. 244, L11 (1991).
- *
- *   Simon, J. L., Bretagnon, P., Chapront, J., Chapront-Touze, M.,
- *   Francou, G. & Laskar, J., Astron.Astrophys. 282, 663 (1994).
+ *   Simon, J. L., Bretagnon, P., Chapront, J., Chapront-Touze, M., Francou, G. & Laskar, J.,
+ *     Astron.Astrophys. 282, 663 (1994).
  *
  * Original FORTRAN code by P.T. Wallace.
  *
  * @param date TDB (Barycentric Dynamical Time; loosely ET, Ephemeris Time) as Modified Julian Date (JD-2400000.5).
  * @param psi Return value: nutation in longitude.
  * @param eps Return value: nutation in obliquity.
- * @param eps0 Return value: mean obliquity
+ * @param eps0 Return value: mean obliquity.
  */
 void nutc(double date, double& psi, double& eps, double& eps0) {
     // degrees to radians
