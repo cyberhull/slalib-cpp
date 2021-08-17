@@ -641,6 +641,11 @@ static void t_nut(bool& status) {
     vvd(eps0, 0.4091016349007751, 1.0e-12, "sla::nutc80", "eps0", status);
 }
 
+// tests sla::epj2d() function
+static void t_epj2d(bool& status) {
+    vvd(epj2d(2010.077), 55225.124250, 1.0e-6, "sla_EPJ2D", "", status);
+}
+
 ///////////////////////////////////////////////////////////////////////////////
 // MODULE ENTRY POINT
 ///////////////////////////////////////////////////////////////////////////////
@@ -671,6 +676,7 @@ bool sla_test() {
     t_dmat(status);
     t_altaz(status);
     t_nut(status);
+    t_epj2d(status);
     return status;
 }
 
