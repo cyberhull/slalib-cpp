@@ -35,6 +35,6 @@ add_library(slalib
   range.cc drange.cc ranorm.cc dranrm.cc
   atmdsp.cc refcoq.cc refro.cc refco.cc refv.cc refz.cc
   ecmat.cc dmat.cc altaz.cc
-  nutc.cc nut.cc
+  nutc.cc nut.cc nutc80.cc
   f77_utils.h
   slalib.cc slalib.h)

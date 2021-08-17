@@ -174,6 +174,7 @@ void altaz(double ha, double dec, double phi, double& az, double& az_vel, double
     double& el, double& el_vel, double& el_acc, double& pa, double& pa_vel, double& pa_acc);
 void nutc(double date, double& psi, double& eps, double& eps0);
 void nut(double date, matrix<double> mat);
+void nutc80(double date, double& psi, double& eps, double& eps0);
 
 } // sla
 
