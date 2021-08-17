@@ -153,7 +153,7 @@ that you have to look at the markdown source to see the difference):
 - polmo.f:         SUBROUTINE sla_POLMO (ELONGM, PHIM, XP, YP, ELONG, PHI, DAZ)
 - prebn.f:         SUBROUTINE sla_PREBN (BEP0, BEP1, RMATP)
 - preces.f:        SUBROUTINE sla_PRECES (SYSTEM, EP0, EP1, RA, DC)
-- prec.f:          SUBROUTINE sla_PREC (EP0, EP1, RMATP)
+* prec.f:          SUBROUTINE sla_PREC (EP0, EP1, RMATP)
 - precl.f:         SUBROUTINE sla_PRECL (EP0, EP1, RMATP)
 - prenut.f:        SUBROUTINE sla_PRENUT (EPOCH, DATE, RMATPN)
 - pv2el.f:         SUBROUTINE sla_PV2EL (PV, DATE, PMASS, JFORMR, JFORM, EPOCH, ORBINC, ANODE, PERIH, AORQ, E, AORL, DM, JSTAT)

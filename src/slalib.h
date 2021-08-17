@@ -179,6 +179,7 @@ double epj2d(double je);
 double epj(double date);
 double epb2d(double be);
 double epb(double date);
+void prec(double ep0, double ep1, matrix<double> mat);
 
 } // sla
 
