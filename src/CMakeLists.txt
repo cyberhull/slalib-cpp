@@ -24,7 +24,7 @@ add_library(slalib
   airmas.cc
   av2m.cc dav2m.cc cc2s.cc dcc2s.cc cs2c.cc dcs2c.cc euler.cc deuler.cc imxv.cc dimxv.cc
   m2av.cc dm2av.cc mxm.cc dmxm.cc mxv.cc dmxv.cc vdv.cc dvdv.cc vn.cc dvn.cc vxv.cc dvxv.cc
-  zd.cc
+  zd.cc pa.cc
   bear.cc dbear.cc pav.cc dpav.cc
   e2h.cc de2h.cc h2e.cc dh2e.cc
   caf2r.cc daf2r.cc

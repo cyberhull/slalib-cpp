@@ -134,6 +134,7 @@ double dvn(const vector<double> v, vector<double> uv);
 void vxv(const vector<float> va, const vector<float> vb, vector<float> vc);
 void dvxv(const vector<double> va, const vector<double> vb, vector<double> vc);
 double zd(double ha, double dec, double phi);
+double pa(double ha, double dec, double phi);
 double bear(float a1, float b1, float a2, float b2);
 double dbear(double a1, double b1, double a2, double b2);
 float pav(const vector<float> v1, const vector<float> v2);
