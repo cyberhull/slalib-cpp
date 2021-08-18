@@ -177,7 +177,7 @@ that you have to look at the markdown source to see the difference):
 - rvlsrk.f:        REAL FUNCTION sla_RVLSRK (R2000, D2000)
 - s2tp.f:          SUBROUTINE sla_S2TP (RA, DEC, RAZ, DECZ, XI, ETA, J)
 - sep.f:           REAL FUNCTION sla_SEP (A1, B1, A2, B2)
-- sepv.f:          REAL FUNCTION sla_SEPV (V1, V2)
+* sepv.f:          REAL FUNCTION sla_SEPV (V1, V2)
 * sla_test.f:      SUBROUTINE ERR (FUNC, TEST, STATUS)
 - sla_test.f:      SUBROUTINE T_ADDET (STATUS)
 - sla_test.f:      SUBROUTINE T_AFIN (STATUS)

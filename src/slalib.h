@@ -183,6 +183,7 @@ void prec(double ep0, double ep1, matrix<double> mat);
 void precl(double ep0, double ep1, matrix<double> mat);
 void prenut(double epoch, double date, matrix<double> mat);
 double dsepv(const vector<double> v1, const vector<double> v2);
+float sepv(const vector<float> v1, const vector<float> v2);
 
 } // sla
 
