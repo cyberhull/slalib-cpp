@@ -181,6 +181,7 @@ double epb2d(double be);
 double epb(double date);
 void prec(double ep0, double ep1, matrix<double> mat);
 void precl(double ep0, double ep1, matrix<double> mat);
+void prenut(double epoch, double date, matrix<double> mat);
 
 } // sla
 

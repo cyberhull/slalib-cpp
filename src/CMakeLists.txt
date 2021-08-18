@@ -37,6 +37,6 @@ add_library(slalib
   ecmat.cc dmat.cc altaz.cc
   nutc.cc nut.cc nutc80.cc
   epj2d.cc epj.cc epb2d.cc epb.cc
-  prec.cc precl.cc
+  prec.cc precl.cc prenut.cc
   f77_utils.h
   slalib.cc slalib.h)
