@@ -722,6 +722,12 @@ static void t_sep(bool& status) {
     vvd(sepv(vf1, vf2), 2.8603919190246608, 1.0e-4, "sla::sepv", "", status);
 }
 
+// tests sla::pa() function
+static void t_pa(bool& status) {
+    vvd(pa(-1.567, 1.5123, 0.987), -1.486288540423851, 1.0e-12, "sla::pa", "", status);
+    vvd(pa(0.0, 0.789, 0.789), 0.0, 0.0, "sla::pa", "zenith", status);
+}
+
 ///////////////////////////////////////////////////////////////////////////////
 // MODULE ENTRY POINT
 ///////////////////////////////////////////////////////////////////////////////
@@ -739,6 +745,7 @@ bool sla_test() {
     t_e2h(status);
     t_vecmat(status);
     t_zd(status);
+    t_pa(status);
     t_cd2tf(status);
     t_cr2af(status);
     t_cr2tf(status);
