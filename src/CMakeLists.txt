@@ -38,6 +38,6 @@ add_library(slalib
   nutc.cc nut.cc nutc80.cc
   epj2d.cc epj.cc epb2d.cc epb.cc
   prec.cc precl.cc prenut.cc
-  dsepv.cc sepv.cc
+  dsepv.cc sepv.cc dsep.cc
   f77_utils.h
   slalib.cc slalib.h)
