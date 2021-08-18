@@ -39,5 +39,6 @@ add_library(slalib
   epj2d.cc epj.cc epb2d.cc epb.cc
   prec.cc precl.cc prenut.cc
   dsepv.cc sepv.cc dsep.cc sep.cc
+  wait.cc
   f77_utils.h
   slalib.cc slalib.h)
