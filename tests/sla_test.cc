@@ -701,7 +701,25 @@ static void t_prenut(bool& status) {
     vvd(mat[2][0],  1.093465510215479e-3, 1.0e-12, "sla::prenut", "20", status);
     vvd(mat[2][1], -4.281337229063151e-5, 1.0e-12, "sla::prenut", "21", status);
     vvd(mat[2][2],  9.999994012499173e-1, 1.0e-12, "sla::prenut", "22", status);
+}
 
+// tests sla::dsep(), sla::dsepv(), sla::sep(), and sla::sepv() functions
+static void t_sep(bool& status) {
+    const vector<float> vf1 = {1.0f, 0.1f, 0.2f};
+    const vector<float> vf2 = {-3.0f, 1.0e-3f, 0.2f};
+    const vector<double> vd1 = {1.0, 0.1, 0.2};
+    const vector<double> vd2 = {-3.0, 1.0e-3, 0.2};
+
+    SphericalDir<double> sd1, sd2;
+    dcc2s (vd1, sd1);
+    dcc2s (vd2, sd2);
+    const SphericalDir<float> sf1 = {(float) sd1.sd_a, (float) sd1.sd_b};
+    const SphericalDir<float> sf2 = {(float) sd2.sd_a, (float) sd2.sd_b};
+
+    vvd(dsep(sd1, sd2), 2.8603919190246608, 1.0e-7, "sla::dsep", "", status);
+    vvd(sep(sf1, sf2), 2.8603919190246608, 1.0e-4, "sla::sep", "", status);
+    vvd(dsepv(vd1, vd2), 2.8603919190246608, 1.0e-7, "sla::dsepv", "", status);
+    vvd(sepv(vf1, vf2), 2.8603919190246608, 1.0e-4, "sla::sepv", "", status);
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -740,6 +758,7 @@ bool sla_test() {
     t_epb(status);
     t_prec(status);
     t_prenut(status);
+    t_sep(status);
     return status;
 }
 
