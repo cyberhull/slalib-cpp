@@ -661,6 +661,33 @@ static void t_epb(bool& status) {
     vvd(epb(45123.0), 1982.419793168669, 1.0e-8, "sla::epb", "", status);
 }
 
+// tests sla::prec() and sla::precl() functions
+static void t_prec(bool& status) {
+    matrix<double> mat;
+
+    prec(1925.0, 1975.0, mat);
+    vvd(mat[0][0],  9.999257249850045e-1, 1.0e-12, "sla::prec", "00", status);
+    vvd(mat[0][1], -1.117719859160180e-2, 1.0e-12, "sla::prec", "01", status);
+    vvd(mat[0][2], -4.859500474027002e-3, 1.0e-12, "sla::prec", "02", status);
+    vvd(mat[1][0],  1.117719858025860e-2, 1.0e-12, "sla::prec", "10", status);
+    vvd(mat[1][1],  9.999375327960091e-1, 1.0e-12, "sla::prec", "11", status);
+    vvd(mat[1][2], -2.716114374174549e-5, 1.0e-12, "sla::prec", "12", status);
+    vvd(mat[2][0],  4.859500500117173e-3, 1.0e-12, "sla::prec", "20", status);
+    vvd(mat[2][1], -2.715647545167383e-5, 1.0e-12, "sla::prec", "21", status);
+    vvd(mat[2][2],  9.999881921889954e-1, 1.0e-12, "sla::prec", "22", status);
+
+    precl(1925.0, 1975.0, mat);
+    vvd(mat[0][0],  9.999257331781050e-1, 1.0e-12, "sla::precl", "00", status);
+    vvd(mat[0][1], -1.117658038434041e-2, 1.0e-12, "sla::precl", "01", status);
+    vvd(mat[0][2], -4.859236477249598e-3, 1.0e-12, "sla::precl", "02", status);
+    vvd(mat[1][0],  1.117658037299592e-2, 1.0e-12, "sla::precl", "10", status);
+    vvd(mat[1][1],  9.999375397061558e-1, 1.0e-12, "sla::precl", "11", status);
+    vvd(mat[1][2], -2.715816653174189e-5, 1.0e-12, "sla::precl", "12", status);
+    vvd(mat[2][0],  4.859236503342703e-3, 1.0e-12, "sla::precl", "20", status);
+    vvd(mat[2][1], -2.715349745834860e-5, 1.0e-12, "sla::precl", "21", status);
+    vvd(mat[2][2],  9.999881934719490e-1, 1.0e-12, "sla::precl", "22", status);
+}
+
 ///////////////////////////////////////////////////////////////////////////////
 // MODULE ENTRY POINT
 ///////////////////////////////////////////////////////////////////////////////
@@ -695,6 +722,7 @@ bool sla_test() {
     t_epj(status);
     t_epb2d(status);
     t_epb(status);
+    t_prec(status);
     return status;
 }
 
