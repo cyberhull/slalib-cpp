@@ -688,6 +688,22 @@ static void t_prec(bool& status) {
     vvd(mat[2][2],  9.999881934719490e-1, 1.0e-12, "sla::precl", "22", status);
 }
 
+// tests sla::prenut() function
+static void t_prenut(bool& status) {
+    matrix<double> mat;
+    prenut(1985.0, 50123.4567, mat);
+    vvd(mat[0][0],  9.999962358680738e-1, 1.0e-12, "sla::prenut", "00", status);
+    vvd(mat[0][1], -2.516417057665452e-3, 1.0e-12, "sla::prenut", "01", status);
+    vvd(mat[0][2], -1.093569785342370e-3, 1.0e-12, "sla::prenut", "02", status);
+    vvd(mat[1][0],  2.516462370370876e-3, 1.0e-12, "sla::prenut", "10", status);
+    vvd(mat[1][1],  9.999968329010883e-1, 1.0e-12, "sla::prenut", "11", status);
+    vvd(mat[1][2],  4.006159587358310e-5, 1.0e-12, "sla::prenut", "12", status);
+    vvd(mat[2][0],  1.093465510215479e-3, 1.0e-12, "sla::prenut", "20", status);
+    vvd(mat[2][1], -4.281337229063151e-5, 1.0e-12, "sla::prenut", "21", status);
+    vvd(mat[2][2],  9.999994012499173e-1, 1.0e-12, "sla::prenut", "22", status);
+
+}
+
 ///////////////////////////////////////////////////////////////////////////////
 // MODULE ENTRY POINT
 ///////////////////////////////////////////////////////////////////////////////
@@ -723,6 +739,7 @@ bool sla_test() {
     t_epb2d(status);
     t_epb(status);
     t_prec(status);
+    t_prenut(status);
     return status;
 }
 
