@@ -162,6 +162,7 @@ T2DStatus dtf2r(int hours, int minutes, double seconds, double& radians);
 double dat(double utc);
 double dt(double epoch);
 double dtt(double utc);
+double rcc(double tdb, double ut1, double wl, double u, double v);
 void atmdsp(double tdk, double pmb, double rh, double wl1, double a1, double b1, double wl2, double& a2, double& b2);
 void refcoq(double tdk, double pmb, double rh, double wl, double& refa, double& refb);
 double refro(double dn, double rdndr, double tdk, double pmb, double rh, double wl, double phi, double tlr, double eps);
