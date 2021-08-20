@@ -63,7 +63,7 @@ namespace sla {
  * for all practical purposes. However, beyond about ZD==84 degrees sla::refz() should be used, and for the utmost
  * accuracy iterative use of sla::refro() should be considered.
  *
- * Original FORTRAN code by Rutherford Appleton Laboratory / P.T. Wallace.
+ * Original FORTRAN code by P.T. Wallace / Rutherford Appleton Laboratory.
  *
  * @param vu Unrefracted position of the source (Az/El 3-component vector).
  * @param refa Tan Z coefficient (radians).

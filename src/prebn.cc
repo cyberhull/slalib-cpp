@@ -28,7 +28,7 @@ namespace sla {
  *   Kinoshita, H. (1975) 'Formulas for precession', SAO Special Report No. 364, Smithsonian Institution Astrophysical
  *   Observatory, Cambridge, Massachusetts.
  *
- * Original FORTRAN code by Rutherford Appleton Laboratory / P.T. Wallace.
+ * Original FORTRAN code by P.T. Wallace / Rutherford Appleton Laboratory.
  *
  * @param be0 Beginning Besselian epoch.
  * @param be1 Ending Besselian epoch.

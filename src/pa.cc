@@ -27,7 +27,7 @@ namespace sla {
  * direction to the pole and to the zenith. In precise applications care must be taken only to use geocentric apparent
  * HA,Dec and to consider separately the effects of atmospheric refraction and telescope mount errors.
  *
- * Original FORTRAN code by Rutherford Appleton Laboratory / P.T. Wallace.
+ * Original FORTRAN code by P.T. Wallace / Rutherford Appleton Laboratory.
  *
  * @param ha Hour angle (radians; geocentric apparent).
  * @param dec Declination (radians; geocentric apparent).

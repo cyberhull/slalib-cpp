@@ -30,7 +30,7 @@ namespace sla {
  * This function will NOT correctly convert between the old and the new systems - for example conversion from B1950
  * to J2000. For these purposes see sla::fk425(), sla::fk524(), sla::fk45z(), and sla::fk54z().
  *
- * Original FORTRAN code by Rutherford Appleton Laboratory / P.T. Wallace.
+ * Original FORTRAN code by P.T. Wallace / Rutherford Appleton Laboratory.
  *
  * @param system Precession to be applied, a `CAT_xxx` constant (only `CAT_FK4` or `CAT_FK5` are accepted).
  * @param ep0 Starting epoch.

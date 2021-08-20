@@ -39,7 +39,7 @@ namespace sla {
  * Algorithm: Gaussian elimination with partial pivoting. Speed: very fast. Accuracy: fairly accurate - errors 1 to 4
  * times those of routines optimised for accuracy.
  *
- * Original FORTRAN code by Rutherford Appleton Laboratory / P.T. Wallace.
+ * Original FORTRAN code by P.T. Wallace / Rutherford Appleton Laboratory.
  *
  * @param n Number of unknowns and size of each matrix dimension.
  * @param a The `n` x `n` matrix; after the call, contains inverse matrix (if input matrix is singular, contents

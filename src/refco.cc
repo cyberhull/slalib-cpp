@@ -30,7 +30,7 @@ namespace sla {
  * degrees). It achieves 0.5 arcsecond accuracy for ZD < 80 degrees, 0.01 arcsecond accuracy for ZD < 60 deg, and
  * 0.001 arcsecond accuracy for ZD < 45 degrees.
  *
- * Original FORTRAN code by Rutherford Appleton Laboratory / P.T. Wallace.
+ * Original FORTRAN code by P.T. Wallace / Rutherford Appleton Laboratory.
  *
  * @param hm Height of the observer above sea level (meters).
  * @param tdk Ambient temperature at the observer (degrees K).

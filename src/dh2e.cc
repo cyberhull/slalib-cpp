@@ -32,7 +32,7 @@ namespace sla {
  * In applications which involve many such calculations, rather than calling the present routine it will be more
  * efficient to use inline code, having previously computed fixed terms such as sine and cosine of the latitude.
  *
- * Original FORTRAN code by Rutherford Appleton Laboratory / P.T. Wallace.
+ * Original FORTRAN code by P.T. Wallace / Rutherford Appleton Laboratory.
  *
  * @param azimuth Azimuth, in radians; not range-checked; the sign convention for azimuth is north zero, east +Pi/2.
  * @param elevation Elevation, in radians; not range-checked.

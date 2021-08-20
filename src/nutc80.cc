@@ -35,7 +35,7 @@ namespace sla {
  *   Final report of the IAU Working Group on Nutation, chairman P.K.Seidelmann, 1980.
  *   Kaplan,G.H., 1981, USNO circular no. 163, pA3-6.
  *
- * Original FORTRAN code by Rutherford Appleton Laboratory / P.T. Wallace.
+ * Original FORTRAN code by P.T. Wallace / Rutherford Appleton Laboratory.
  *
  * @param date TDB (Barycentric Dynamical Time; loosely ET, Ephemeris Time) as Modified Julian Date (JD-2400000.5).
  * @param psi Return value: nutation in longitude.

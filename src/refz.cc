@@ -65,7 +65,7 @@ namespace sla {
  * See also the sla::refv() function, which performs the adjustment in Cartesian Az/El coordinates, and with the
  * emphasis on speed rather than numerical accuracy.
  *
- * Original FORTRAN code by Rutherford Appleton Laboratory / P.T. Wallace.
+ * Original FORTRAN code by P.T. Wallace / Rutherford Appleton Laboratory.
  *
  * @param zu Unrefracted zenith distance of the source (radians).
  * @param refa Tan Z coefficient (radians).

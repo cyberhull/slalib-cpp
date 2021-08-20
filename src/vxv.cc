@@ -22,7 +22,7 @@ namespace sla {
 /**
  * Calculates vector product of two 3-component vectors (single precision).
  *
- * Original FORTRAN code by Rutherford Appleton Laboratory / P.T. Wallace.
+ * Original FORTRAN code by P.T. Wallace / Rutherford Appleton Laboratory.
  *
  * @param va First vector.
  * @param vb Second vector.

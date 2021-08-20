@@ -25,7 +25,7 @@ namespace sla {
  *
  * See also the sla::dt() function, which roughly estimates ET-UT for historical epochs.
  *
- * Original FORTRAN code by Rutherford Appleton Laboratory / P.T. Wallace.
+ * Original FORTRAN code by P.T. Wallace / Rutherford Appleton Laboratory.
  *
  * @param utc UTC date as a modified JD (JD-2400000.5); The UTC is specified to be a date rather than a time to
  *   indicate that care needs to be taken not to specify an instant which lies within a leap second. Though in most

@@ -24,7 +24,7 @@ namespace sla {
  * Calculates bearing (position angle) of one point on a sphere relative to another given spherical coordinates of
  * the point (single precision).
  *
- * Original FORTRAN code by Rutherford Appleton Laboratory / P.T. Wallace.
+ * Original FORTRAN code by P.T. Wallace / Rutherford Appleton Laboratory.
  *
  * @param a1 RA/longitude/etc. of the first point, radians.
  * @param b1 Dec/latitude/etc. of the first point, radians.

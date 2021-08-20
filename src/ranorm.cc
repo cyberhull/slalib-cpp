@@ -23,7 +23,7 @@ namespace sla {
 /**
  * Normalize angle into range 0-2*pi (single precision).
  *
- * Original FORTRAN code by Rutherford Appleton Laboratory / P.T. Wallace.
+ * Original FORTRAN code by P.T. Wallace / Rutherford Appleton Laboratory.
  *
  * @param angle The angle in radians.
  * @return The `angle` expressed in the range 0-2*pi .

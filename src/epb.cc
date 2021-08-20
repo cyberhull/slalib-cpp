@@ -25,7 +25,7 @@ namespace sla {
  * Reference:
  *   Lieske,J.H., 1979. Astron.Astrophys., 73, 282.
  *
- * Original FORTRAN code by Rutherford Appleton Laboratory / P.T. Wallace.
+ * Original FORTRAN code by P.T. Wallace / Rutherford Appleton Laboratory.
  *
  * @param date Modified Julian Date (JD - 2400000.5).
  * @return Besselian Epoch.

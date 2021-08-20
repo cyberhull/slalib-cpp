@@ -23,7 +23,7 @@ namespace sla {
 /**
  * Normalizes angle into range +/- pi  (double precision).
  *
- * Original FORTRAN code by Rutherford Appleton Laboratory / P.T. Wallace.
+ * Original FORTRAN code by P.T. Wallace / Rutherford Appleton Laboratory.
  *
  * @param angle The angle in radians.
  * @return The `angle` expressed in the +/- pi.

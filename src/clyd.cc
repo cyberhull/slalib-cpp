@@ -31,7 +31,7 @@ namespace sla {
  * this back to a Julian calendar date, with day-in-year instead of month and day. See 12.92-1 and 12.95-1 in the
  * reference.
  *
- * Original FORTRAN code by Rutherford Appleton Laboratory / P.T. Wallace.
+ * Original FORTRAN code by P.T. Wallace / Rutherford Appleton Laboratory.
  *
  * Reference: Explanatory Supplement to the Astronomical Almanac, ed P.K.Seidelmann,
  * University Science Books (1992), p604-606.

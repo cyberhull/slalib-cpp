@@ -24,7 +24,7 @@ namespace sla {
  *
  * Reference: Murray,C.A., Vectorial Astrometry, section 4.3.
  *
- * Original FORTRAN code by Rutherford Appleton Laboratory / P.T. Wallace.
+ * Original FORTRAN code by P.T. Wallace / Rutherford Appleton Laboratory.
  *
  * @param date (Loosely ET) as Modified Julian Date (JD-2400000.5).
  * @param rmat Return value: rotation matrix; the matrix is in the sense  V(ecl) == RMAT * V(equ); the equator,

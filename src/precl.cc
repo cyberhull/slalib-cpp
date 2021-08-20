@@ -30,7 +30,7 @@ namespace sla {
  * Reference:
  *   Simon, J.L. et al., 1994. Astron.Astrophys., 282, 663-683.
  *
- * Original FORTRAN code by Rutherford Appleton Laboratory / P.T. Wallace.
+ * Original FORTRAN code by P.T. Wallace / Rutherford Appleton Laboratory.
  *
  * @param ep0 Beginning epoch: TDB (Barycentric Dynamical Time) Julian epoch.
  * @param ep1 Ending epoch: TDB (Barycentric Dynamical Time) Julian epoch.

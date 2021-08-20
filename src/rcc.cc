@@ -71,7 +71,7 @@ namespace sla {
  *   Simon J.L., Bretagnon P., Chapront J., Chapront-Touze M., Francou G. & Laskar J., Astron.Astrophys.,
  *   282, 663-683 (1994).
  *
- * Original FORTRAN code by Rutherford Appleton Laboratory / P.T. Wallace.
+ * Original FORTRAN code by P.T. Wallace / Rutherford Appleton Laboratory.
  *
  * @param tdb TDB, barycentric dynamical time (MJD: JD-2400000.5); this argument is, strictly, the barycentric
  *   coordinate time; however, the terrestrial time TT can in practice be used without any significant loss of accuracy.

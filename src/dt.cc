@@ -41,7 +41,7 @@ namespace sla {
  * Reference: Explanatory Supplement to the Astronomical Almanac, ed P.K.Seidelmann, University Science Books (1992),
  *            section 2.553, p83. This contains references to the Stephenson & Morrison and McCarthy & Babcock papers.
  *
- * Original FORTRAN code by Rutherford Appleton Laboratory / P.T. Wallace.
+ * Original FORTRAN code by P.T. Wallace / Rutherford Appleton Laboratory.
  *
  * @param epoch (Julian) epoch (e.g. 1850.0).
  * @return Rough estimate of ET-UT (after 1984, TT-UT) at the given epoch (seconds).
