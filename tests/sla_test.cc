@@ -728,6 +728,11 @@ static void t_pa(bool& status) {
     vvd(pa(0.0, 0.789, 0.789), 0.0, 0.0, "sla::pa", "zenith", status);
 }
 
+// tests sla::rcc() function
+static void t_rcc(bool& status) {
+    vvd(rcc(48939.123, 0.76543, 5.0123, 5525.242, 3190.0), -1.280131613589158e-3, 1.0e-15, "sla::rcc", "", status);
+}
+
 ///////////////////////////////////////////////////////////////////////////////
 // MODULE ENTRY POINT
 ///////////////////////////////////////////////////////////////////////////////
@@ -766,6 +771,7 @@ bool sla_test() {
     t_prec(status);
     t_prenut(status);
     t_sep(status);
+    t_rcc(status);
     return status;
 }
 
