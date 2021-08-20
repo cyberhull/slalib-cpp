@@ -761,6 +761,21 @@ static void t_rcc(bool& status) {
     vvd(rcc(48939.123, 0.76543, 5.0123, 5525.242, 3190.0), -1.280131613589158e-3, 1.0e-15, "sla::rcc", "", status);
 }
 
+// tests sla::rcc() function
+static void t_prebn(bool& status) {
+    matrix<double> mat;
+    prebn(1925.0, 1975.0, mat);
+    vvd(mat[0][0],  9.999257613786738e-1, 1.0e-12, "sla::prebn", "00", status);
+    vvd(mat[0][1], -1.117444640880939e-2, 1.0e-12, "sla::prebn", "01", status);
+    vvd(mat[0][2], -4.858341150654265e-3, 1.0e-12, "sla::prebn", "02", status);
+    vvd(mat[1][0],  1.117444639746558e-2, 1.0e-12, "sla::prebn", "10", status);
+    vvd(mat[1][1],  9.999375635561940e-1, 1.0e-12, "sla::prebn", "11", status);
+    vvd(mat[1][2], -2.714797892626396e-5, 1.0e-12, "sla::prebn", "12", status);
+    vvd(mat[2][0],  4.858341176745641e-3, 1.0e-12, "sla::prebn", "20", status);
+    vvd(mat[2][1], -2.714330927085065e-5, 1.0e-12, "sla::prebn", "21", status);
+    vvd(mat[2][2],  9.999881978224798e-1, 1.0e-12, "sla::prebn", "22", status);
+}
+
 ///////////////////////////////////////////////////////////////////////////////
 // MODULE ENTRY POINT
 ///////////////////////////////////////////////////////////////////////////////
@@ -801,6 +816,7 @@ bool sla_test() {
     t_prenut(status);
     t_sep(status);
     t_rcc(status);
+    t_prebn(status);
     return status;
 }
 
