@@ -598,6 +598,34 @@ static void t_dmat(bool& status) {
     viv((int) singular, 0, "std::dmat", "singular", status);
 }
 
+// tests sla::smat() function
+static void t_smat(bool& status) {
+    matrix<float> a = {
+        {2.22f, 1.6578f, 1.380522f},
+        {1.6578f, 1.380522f, 1.22548578f},
+        {1.380522f, 1.22548578f, 1.1356276122f}
+    };
+    vector<float> v = {2.28625,  1.7128825,  1.429432225};
+    float d;
+    int w[3];
+    bool singular = smat(3, (float*) a, v, d, w);
+
+    vvd(a[0][0], 18.02550629769198, 1.0e-2, "sla::smat", "a00", status);
+    vvd(a[0][1], -52.16386644917481, 1.0e-2, "sla::smat", "a01", status);
+    vvd(a[0][2], 34.37875949717994, 1.0e-2, "sla::smat", "a02", status);
+    vvd(a[1][0], -52.16386644917477, 1.0e-2, "sla::smat", "a10", status);
+    vvd(a[1][1], 168.1778099099869, 1.0e-1, "sla::smat", "a11", status);
+    vvd(a[1][2], -118.0722869694278, 1.0e-2, "sla::smat", "a12", status);
+    vvd(a[2][0], 34.37875949717988, 1.0e-2, "sla::smat", "a20", status);
+    vvd(a[2][1], -118.07228696942770, 1.0e-2, "sla::smat", "a21", status);
+    vvd(a[2][2], 86.50307003740468, 1.0e-2, "sla::smat", "a22", status);
+    vvd(v[0], 1.002346480763383, 1.0e-4, "sla::smat", "v0", status);
+    vvd(v[1], 0.0328559401697292, 1.0e-4, "sla::smat", "v1", status);
+    vvd(v[2], 0.004760688414898454, 1.0e-4, "sla::smat", "v2", status);
+    vvd(d, 0.003658344147359863, 1.0e-4, "sla::smat", "d", status);
+    viv((int) singular, 0, "sla::smat", "singular", status);
+}
+
 // tests sla::altaz() function
 static void t_altaz(bool& status) {
     double azimuth, az_vel, az_acc, elevation, el_vel, el_acc, p_angle, pa_vel, pa_acc;
@@ -762,6 +790,7 @@ bool sla_test() {
     t_ref(status);
     t_ecmat(status);
     t_dmat(status);
+    t_smat(status);
     t_altaz(status);
     t_nut(status);
     t_epj2d(status);
