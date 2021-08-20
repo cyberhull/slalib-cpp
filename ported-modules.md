@@ -244,7 +244,7 @@ that you have to look at the markdown source to see the difference):
 - sla_test.f:      SUBROUTINE T_PM (STATUS)
 - sla_test.f:      SUBROUTINE T_POLMO (STATUS)
 * sla_test.f:      SUBROUTINE T_PREBN (STATUS)
-- sla_test.f:      SUBROUTINE T_PRECES (STATUS)
+* sla_test.f:      SUBROUTINE T_PRECES (STATUS)
 * sla_test.f:      SUBROUTINE T_PREC (STATUS)
 * sla_test.f:      SUBROUTINE T_PRENUT (STATUS)
 - sla_test.f:      SUBROUTINE T_PVOBS (STATUS)

@@ -776,6 +776,20 @@ static void t_prebn(bool& status) {
     vvd(mat[2][2],  9.999881978224798e-1, 1.0e-12, "sla::prebn", "22", status);
 }
 
+// tests sla::rcc() function
+static void t_preces(bool& status) {
+    SphericalDir<double> pos = {6.28, -1.123};
+    preces(CAT_FK4, 1925.0, 1950.0, pos);
+    vvd(pos.sd_a,  0.002403604864728447, 1.0e-12, "sla::preces", "RA", status);
+    vvd(pos.sd_b, -1.120570643322045, 1.0e-12, "sla::preces", "Dec", status);
+
+    pos.sd_a = 0.0123;
+    pos.sd_b = 1.0987;
+    preces(CAT_FK5, 2050.0, 1990.0, pos);
+    vvd(pos.sd_a, 6.282003602708382, 1.0e-12, "sla::preces", "RA", status);
+    vvd(pos.sd_b, 1.092870326188383, 1.0e-12, "sla::preces", "Dec", status);
+}
+
 ///////////////////////////////////////////////////////////////////////////////
 // MODULE ENTRY POINT
 ///////////////////////////////////////////////////////////////////////////////
@@ -817,6 +831,7 @@ bool sla_test() {
     t_sep(status);
     t_rcc(status);
     t_prebn(status);
+    t_preces(status);
     return status;
 }
 
