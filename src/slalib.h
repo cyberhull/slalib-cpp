@@ -20,6 +20,17 @@
 
 namespace sla {
 
+/// Catalogues of fundamental stars: celestial reference frames.
+enum Catalogue {
+    CAT_NONE, ///< Unspecified
+    CAT_FC,   ///< Fundamental-Catalog by Auwers [1879], 539 stars
+    CAT_NFK,  ///< Neuer Fundamentalkatalog by J. Peters, 925 stars
+    CAT_FK3,  ///< Third Fundamental Catalogue by Kopff [1937]
+    CAT_FK4,  ///< Fourth Fundamental Catalogue [1963], 1,535 stars
+    CAT_FK5,  ///< Fifth Fundamental Catalogue [1988], 1,535 stars
+    CAT_FK6   ///< Sixth Fundamental Catalogue [2000], 4,150 stars
+};
+
 /// Status codes for the caf2r() procedure (degrees to radians conversion).
 enum D2RStatus {
     D2R_OK = 0,         ///< all arguments fit their ranges, conversion successful
@@ -190,6 +201,7 @@ float sepv(const vector<float> v1, const vector<float> v2);
 double dsep(const SphericalDir<double>& a, const SphericalDir<double>& b);
 float sep(const SphericalDir<float>& a, const SphericalDir<float>& b);
 void prebn(double be0, double be1, matrix<double> mat);
+void preces(Catalogue system, double ep0, double ep1, SphericalDir<double>& pos);
 void wait(float delay);
 
 } // sla
