@@ -40,6 +40,7 @@ add_library(slalib
   prec.cc precl.cc prenut.cc
   dsepv.cc sepv.cc dsep.cc sep.cc
   prebn.cc preces.cc supgal.cc
+  rverot.cc
   wait.cc
   f77_utils.h
   slalib.cc slalib.h)
