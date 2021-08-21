@@ -800,6 +800,15 @@ static void t_supgal(bool& status) {
     vvd(gal.sd_b, -0.1397070490669407, 1.0e-12, "sla::supgal", "lat", status);
 }
 
+// tests sla::rverot(), sla::rvgalc(), sla::rvlg(), sla::rvlsrd(), and sla::rvlsrk() functions
+static void t_rv(bool& status) {
+    vvd(rverot(-0.777, {5.67, -0.3}, 3.19), -0.1948098355075913, 1.0e-6, "sla::rverot", "", status);
+    vvd(rvgalc({1.11, -0.99}), 158.9630759840254, 1.0e-3, "sla::rvgalc", "", status);
+    vvd(rvlg({3.97, 1.09}), -197.818762175363, 1.0e-3, "sla::rvlg", "", status);
+    vvd(rvlsrd({6.01, 0.1}), -4.082811335150567, 1.0e-4, "sla::rvlsrd", "", status);
+    vvd(rvlsrk({6.01, 0.1}), -5.925180579830265, 1.0e-4, "sla::rvlsrk", "", status);
+}
+
 ///////////////////////////////////////////////////////////////////////////////
 // MODULE ENTRY POINT
 ///////////////////////////////////////////////////////////////////////////////
@@ -843,6 +852,7 @@ bool sla_test() {
     t_prebn(status);
     t_preces(status);
     t_supgal(status);
+    t_rv(status);
     return status;
 }
 
