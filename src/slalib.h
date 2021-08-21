@@ -202,6 +202,7 @@ double dsep(const SphericalDir<double>& a, const SphericalDir<double>& b);
 float sep(const SphericalDir<float>& a, const SphericalDir<float>& b);
 void prebn(double be0, double be1, matrix<double> mat);
 void preces(Catalogue system, double ep0, double ep1, SphericalDir<double>& pos);
+void supgal(const SphericalDir<double>& sgal, SphericalDir<double>& gal);
 void wait(float delay);
 
 } // sla

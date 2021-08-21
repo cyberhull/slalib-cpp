@@ -267,7 +267,7 @@ that you have to look at the markdown source to see the difference):
 * sla_test.f:      SUBROUTINE VVD (VAL, VALOK, DVAL, FUNC, TEST, STATUS)
 * smat.f:          SUBROUTINE sla_SMAT (N, A, Y, D, JF, IW)
 - subet.f:         SUBROUTINE sla_SUBET (RC, DC, EQ, RM, DM)
-- supgal.f:        SUBROUTINE sla_SUPGAL (DSL, DSB, DL, DB)
+* supgal.f:        SUBROUTINE sla_SUPGAL (DSL, DSB, DL, DB)
 - svdcov.f:        SUBROUTINE sla_SVDCOV (N, NP, NC, W, V, WORK, CVM)
 - svd.f:           SUBROUTINE sla_SVD (M, N, MP, NP, A, W, V, WORK, JSTAT)
 - svdsol.f:        SUBROUTINE sla_SVDSOL (M, N, MP, NP, B, U, W, V, WORK, X)
