@@ -790,6 +790,16 @@ static void t_preces(bool& status) {
     vvd(pos.sd_b, 1.092870326188383, 1.0e-12, "sla::preces", "Dec", status);
 }
 
+// tests sla::rcc() function
+static void t_supgal(bool& status) {
+    const SphericalDir<double> sgal = {6.1, -1.4};
+    SphericalDir<double> gal;
+
+    supgal(sgal, gal);
+    vvd(gal.sd_a, 3.798775860769474, 1.0e-12, "sla::supgal", "long", status);
+    vvd(gal.sd_b, -0.1397070490669407, 1.0e-12, "sla::supgal", "lat", status);
+}
+
 ///////////////////////////////////////////////////////////////////////////////
 // MODULE ENTRY POINT
 ///////////////////////////////////////////////////////////////////////////////
@@ -832,6 +842,7 @@ bool sla_test() {
     t_rcc(status);
     t_prebn(status);
     t_preces(status);
+    t_supgal(status);
     return status;
 }
 
