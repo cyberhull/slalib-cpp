@@ -173,7 +173,7 @@ that you have to look at the markdown source to see the difference):
 * rverot.f:        REAL FUNCTION sla_RVEROT (PHI, RA, DA, ST)
 * rvgalc.f:        REAL FUNCTION sla_RVGALC (R2000, D2000)
 * rvlg.f:          REAL FUNCTION sla_RVLG (R2000, D2000)
-- rvlsrd.f:        REAL FUNCTION sla_RVLSRD (R2000, D2000)
+* rvlsrd.f:        REAL FUNCTION sla_RVLSRD (R2000, D2000)
 - rvlsrk.f:        REAL FUNCTION sla_RVLSRK (R2000, D2000)
 - s2tp.f:          SUBROUTINE sla_S2TP (RA, DEC, RAZ, DECZ, XI, ETA, J)
 * sep.f:           REAL FUNCTION sla_SEP (A1, B1, A2, B2)
