@@ -171,7 +171,7 @@ that you have to look at the markdown source to see the difference):
 * refv.f:          SUBROUTINE sla_REFV (VU, REFA, REFB, VR)
 * refz.f:          SUBROUTINE sla_REFZ (ZU, REFA, REFB, ZR)
 * rverot.f:        REAL FUNCTION sla_RVEROT (PHI, RA, DA, ST)
-- rvgalc.f:        REAL FUNCTION sla_RVGALC (R2000, D2000)
+* rvgalc.f:        REAL FUNCTION sla_RVGALC (R2000, D2000)
 - rvlg.f:          REAL FUNCTION sla_RVLG (R2000, D2000)
 - rvlsrd.f:        REAL FUNCTION sla_RVLSRD (R2000, D2000)
 - rvlsrk.f:        REAL FUNCTION sla_RVLSRK (R2000, D2000)
