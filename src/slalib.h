@@ -205,6 +205,7 @@ void preces(Catalogue system, double ep0, double ep1, SphericalDir<double>& pos)
 void supgal(const SphericalDir<double>& sgal, SphericalDir<double>& gal);
 float rverot(float phi, const SphericalDir<float>& pos, float st);
 float rvgalc(const SphericalDir<float>& ra_dec);
+float rvlg(const SphericalDir<float>& ra_dec);
 void wait(float delay);
 
 } // sla
