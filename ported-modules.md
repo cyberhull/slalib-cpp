@@ -52,7 +52,7 @@ that you have to look at the markdown source to see the difference):
 - dfltin.f:        SUBROUTINE sla_DFLTIN (STRING, NSTRT, DRESLT, JFLAG)
 * dh2e.f:          SUBROUTINE sla_DH2E (AZ, EL, PHI, HA, DEC)
 * dimxv.f:         SUBROUTINE sla_DIMXV (DM, VA, VB)
-- djcal.f:         SUBROUTINE sla_DJCAL (NDP, DJM, IYMDF, J)
+* djcal.f:         SUBROUTINE sla_DJCAL (NDP, DJM, IYMDF, J)
 - djcl.f:          SUBROUTINE sla_DJCL (DJM, IY, IM, ID, FD, J)
 * dm2av.f:         SUBROUTINE sla_DM2AV (RMAT, AXVEC)
 * dmat.f:          SUBROUTINE sla_DMAT (N, A, Y, D, JF, IW)

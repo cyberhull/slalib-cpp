@@ -80,8 +80,8 @@ struct SphericalCoords {
 
 /**
  * Class representing various conversion results: days to hours, minutes, seconds; or radians to degrees, arcminutes,
- * arcseconds; etc. The same data structure has to be passed between routines interpreting it quite differently, hence
- * this implementation, having different interfaces to the same underlying data structure.
+ * arcseconds; or MJD to year, month, day, etc. The same data structure has to be passed between routines interpreting
+ * it quite differently, hence this implementation, having different interfaces to the same underlying data structure.
  */
 class ConversionResult {
     int  cr_data[4]; ///< hours/minutes/seconds/fraction or degrees/arcminutes/arcseconds/fraction
@@ -103,6 +103,14 @@ public:
     void set_arcminutes(int arcminutes) { cr_data[1] = arcminutes; }
     [[nodiscard]] int get_arcseconds() const { return cr_data[2]; }
     void set_arcseconds(int arcseconds) { cr_data[2] = arcseconds; }
+
+    // interface for Modified Julian Date to years, months, days conversion
+    [[nodiscard]] int get_years() const { return cr_data[0]; }
+    void set_years(int years) { cr_data[0] = years; }
+    [[nodiscard]] int get_months() const { return cr_data[1]; }
+    void set_months(int months) { cr_data[1] = months; }
+    [[nodiscard]] int get_days() const { return cr_data[2]; }
+    void set_days(int days) { cr_data[2] = days; }
 
     // interface shared by all conversions
     [[nodiscard]] int get_fraction() const { return cr_data[3]; }
@@ -160,6 +168,7 @@ G2JStatus cldj(int year, int month, int day, double& mjd);
 G2JStatus caldj(int year, int month, int day, double& mjd);
 G2JStatus clyd(int year, int month, int day, int& jyear, int& jday);
 G2JStatus calyd(int year, int month, int day, int& jyear, int& jday);
+bool djcal(int ndp, double mjd, ConversionResult& ymdf);
 void cd2tf(int ndp, float days, ConversionResult& result);
 void dd2tf(int ndp, double days, ConversionResult& result);
 void cr2af(int ndp, float angle, ConversionResult& result);
