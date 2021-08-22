@@ -80,10 +80,11 @@ struct SphericalCoords {
 
 /// Structure representing date of Gregorian calendar
 struct Date {
-    int   d_year;     ///< Year
-    int   d_month;    ///< Month, [1..12]
-    int   d_day;      ///< Day, [1..365]
-    float d_fraction; ///< Fraction of the day, [0..1.0f)
+    int    d_year;      ///< Year
+    int    d_month;     ///< Month, [1..12]
+    int    d_day;       ///< Day, [1..365]
+    int    d_ifraction; ///< Fraction of the day, digits to the right of the decimal point
+    double d_fraction;  ///< Fraction of the day, [0..1.0f)
 };
 
 /**
@@ -111,14 +112,6 @@ public:
     void set_arcminutes(int arcminutes) { cr_data[1] = arcminutes; }
     [[nodiscard]] int get_arcseconds() const { return cr_data[2]; }
     void set_arcseconds(int arcseconds) { cr_data[2] = arcseconds; }
-
-    // interface for Modified Julian Date to years, months, days conversion
-    [[nodiscard]] int get_years() const { return cr_data[0]; }
-    void set_years(int years) { cr_data[0] = years; }
-    [[nodiscard]] int get_months() const { return cr_data[1]; }
-    void set_months(int months) { cr_data[1] = months; }
-    [[nodiscard]] int get_days() const { return cr_data[2]; }
-    void set_days(int days) { cr_data[2] = days; }
 
     // interface shared by all conversions
     [[nodiscard]] int get_fraction() const { return cr_data[3]; }
@@ -176,7 +169,7 @@ G2JStatus cldj(int year, int month, int day, double& mjd);
 G2JStatus caldj(int year, int month, int day, double& mjd);
 G2JStatus clyd(int year, int month, int day, int& jyear, int& jday);
 G2JStatus calyd(int year, int month, int day, int& jyear, int& jday);
-bool djcal(int ndp, double mjd, ConversionResult& ymdf);
+bool djcal(int ndp, double mjd, Date& date);
 bool djcl(double mjd, Date& date);
 void cd2tf(int ndp, float days, ConversionResult& result);
 void dd2tf(int ndp, double days, ConversionResult& result);

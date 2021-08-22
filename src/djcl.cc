@@ -29,8 +29,8 @@ namespace sla {
  * Original FORTRAN code by P.T. Wallace.
  *
  * @param mjd Modified Julian Date (JD-2400000.5).
- * @param date Return value: `Date` structure holding year, month [1..12], day [1..365], and fraction of the
- *   day [0..1.0f]
+ * @param date Return value: `Date` structure holding year, month [1..12], day [1..365], and fraction (in the
+ * `d_fraction` field) of the day [0..1.0f].
  * @return `false` if there was no error, `true` if `mjd` was out of range (before 4701BC March 1).
  */
 bool djcl(double mjd, Date& date) {
@@ -54,7 +54,7 @@ bool djcl(double mjd, Date& date) {
         date.d_year = n4 / 1461 - 4712;
         date.d_month = ((nd10 / 306 + 2) % 12) + 1;
         date.d_day = (nd10 % 306) / 10 + 1;
-        date.d_fraction = (float) f;
+        date.d_fraction = f;
         return false;
     }
 }

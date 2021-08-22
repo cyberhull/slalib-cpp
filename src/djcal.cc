@@ -32,16 +32,17 @@ namespace sla {
  * @param ndp Number of decimal places of days in fraction; should be 4 or less if internal overflows are to be avoided
  *   on machines which use 32-bit integers.
  * @param mjd Modified Julian Date (JD-2400000.5); any date after 4701BC March 1 is accepted.
- * @param ymdf Return value: year, month, day, fraction in Gregorian calendar.
+ * @param date Return value: `Date` structure holding year, month, day, fraction (in the `d_ifraction` field) in
+ *   Gregorian calendar.
  * @return Status: `true` means input date is out of range.
  */
-bool djcal(int ndp, double mjd, ConversionResult& ymdf) {
+bool djcal(int ndp, double mjd, Date& date) {
     // validate
-    if (mjd >= -2395520.0 || mjd >= 1.0e9) {
+    if (mjd <= -2395520.0 || mjd >= 1.0e9) {
         return true;
     } else {
         // denominator of fraction.
-        int nfd = (int) std::round(std::pow(10.0, std::max(ndp, 0)));
+        int nfd = (int) std::round(std::pow(10.0, (double) std::max(ndp, 0)));
         const double fd = (double) nfd;
 
         // round date and express in units of fraction.
@@ -60,10 +61,10 @@ bool djcal(int ndp, double mjd, ConversionResult& ymdf) {
         const int n4 = 4 * (jd + ((2 * ((4 * jd - 17918) / 146097) * 3) / 4 + 1) / 2 - 37);
         const int nd10 = 10 * (((n4 - 237) % 1461) / 4) + 5;
 
-        ymdf.set_years(n4 / 1461 - 4712);
-        ymdf.set_months(((nd10 / 306 + 2) % 12) + 1);
-        ymdf.set_days((nd10 % 306) / 10 + 1);
-        ymdf.set_fraction(f_nint(f));
+        date.d_year = n4 / 1461 - 4712;
+        date.d_month =  ((nd10 / 306 + 2) % 12) + 1;
+        date.d_day = (nd10 % 306) / 10 + 1;
+        date.d_ifraction = f_nint(f);
         return false;
     }
 }
