@@ -78,6 +78,14 @@ struct SphericalCoords {
     T sc_dist; ///< distance along long/lat ray
 };
 
+/// Structure representing date of Gregorian calendar
+struct Date {
+    int   d_year;     ///< Year
+    int   d_month;    ///< Month, [1..12]
+    int   d_day;      ///< Day, [1..365]
+    float d_fraction; ///< Fraction of the day, [0..1.0f)
+};
+
 /**
  * Class representing various conversion results: days to hours, minutes, seconds; or radians to degrees, arcminutes,
  * arcseconds; or MJD to year, month, day, etc. The same data structure has to be passed between routines interpreting
@@ -169,6 +177,7 @@ G2JStatus caldj(int year, int month, int day, double& mjd);
 G2JStatus clyd(int year, int month, int day, int& jyear, int& jday);
 G2JStatus calyd(int year, int month, int day, int& jyear, int& jday);
 bool djcal(int ndp, double mjd, ConversionResult& ymdf);
+bool djcl(double mjd, Date& date);
 void cd2tf(int ndp, float days, ConversionResult& result);
 void dd2tf(int ndp, double days, ConversionResult& result);
 void cr2af(int ndp, float angle, ConversionResult& result);
