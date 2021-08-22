@@ -200,7 +200,7 @@ that you have to look at the markdown source to see the difference):
 * sla_test.f:      SUBROUTINE T_CTF2R (STATUS)
 * sla_test.f:      SUBROUTINE T_DAT (STATUS)
 - sla_test.f:      SUBROUTINE T_DBJIN (STATUS)
-- sla_test.f:      SUBROUTINE T_DJCAL (STATUS)
+* sla_test.f:      SUBROUTINE T_DJCAL (STATUS)
 * sla_test.f:      SUBROUTINE T_DMAT (STATUS)
 * sla_test.f:      SUBROUTINE T_E2H (STATUS)
 - sla_test.f:      SUBROUTINE T_EARTH (STATUS)

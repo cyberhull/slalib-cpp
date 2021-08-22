@@ -144,6 +144,25 @@ static void t_calyd(bool& status) {
     viv(result, 0, "sla::clyd", "S", status);
 }
 
+// tests sla::clyd() and sla::calyd() procedures
+static void t_djcal(bool& status) {
+    constexpr double DJM = 50123.9999;
+    Date date;
+    bool result = djcal( 4, DJM, date);
+    viv(date.d_year, 1996, "sla::djcal", "year", status);
+    viv(date.d_month, 2, "sla::djcal", "month", status);
+    viv(date.d_day, 10, "sla::djcal", "day", status);
+    viv(date.d_ifraction, 9999, "sla::djcal", "fraction", status);
+    viv((int) result, 0, "sla::djcal", "status", status);
+
+    result = djcl(DJM, date);
+    viv(date.d_year, 1996, "sla::djcl", "year", status);
+    viv(date.d_month, 2, "sla::djcl", "month", status);
+    viv(date.d_day, 10, "sla::djcl", "day", status);
+    vvd(date.d_fraction, 0.9999, 1.0e-7, "sla::djcl", "fraction", status);
+    viv((int) result, 0, "sla::djcl", "status", status);
+}
+
 // tests sla::cc2s() and dcc2s() procedures
 static void t_cc2s(bool& status) {
     const vector<float> V = {100.0f, -50.0f, 25.0f};
@@ -821,6 +840,7 @@ bool sla_test() {
     t_caf2r(status);
     t_caldj(status);
     t_calyd(status);
+    t_djcal(status);
     t_cc2s(status);
     t_cldj(status);
     t_e2h(status);
