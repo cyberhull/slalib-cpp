@@ -86,10 +86,11 @@ struct Spherical {
 
 /// Representation of full spherical coordinates: longitude, latitude, and distance.
 template <typename T, std::enable_if_t<std::is_floating_point<T>::value, bool> = true>
-struct SphericalPos {
-    T sp_long; ///< longitude (radians)
-    T sp_lat;  ///< latitude (radians)
+struct SphericalPos: public Spherical<T> {
     T sp_dist; ///< distance along long/lat ray
+
+    [[nodiscard]] T get_dist() const { return sp_dist; }
+    void set_dist(T dist) { sp_dist = dist; }
 };
 
 /// Representation of a date of Gregorian calendar.
