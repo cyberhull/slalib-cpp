@@ -49,7 +49,7 @@ enum G2JStatus {
     G2J_BAD_DAY    ///< day outside [0..<days-in-given-month>] range, BUT output value(s) were calculated and returned
 };
 
-// Status codes for the dtf2d() and ctf2d() procedures
+/// Status codes for the dtf2d() and ctf2d() procedures.
 enum T2DStatus {
     T2D_OK,          ///< all arguments fit their ranges, conversion successful
     T2D_BAD_HOURS,   ///< hours outside of range [0..23]
@@ -65,14 +65,14 @@ using vector = T[3];
 template<typename T, std::enable_if_t<std::is_floating_point<T>::value, bool> = true>
 using matrix = T[3][3];
 
-/// Structure representing partial spherical coordinates: longitude/latitude, or right ascension/declination
+/// Representation of partial spherical coordinates: longitude/latitude, or right ascension/declination.
 template <typename T, std::enable_if_t<std::is_floating_point<T>::value, bool> = true>
 struct SphericalDir {
     T sd_a; ///< longitude or RA (radians)
     T sd_b; ///< latitude or Dec (radians)
 };
 
-/// Structure representing full spherical coordinates: longitude, latitude, and distance
+/// Representation of full spherical coordinates: longitude, latitude, and distance.
 template <typename T, std::enable_if_t<std::is_floating_point<T>::value, bool> = true>
 struct SphericalCoords {
     T sc_long; ///< longitude (radians)
@@ -80,7 +80,7 @@ struct SphericalCoords {
     T sc_dist; ///< distance along long/lat ray
 };
 
-/// Structure representing date of Gregorian calendar
+/// Representation of a date of Gregorian calendar.
 struct Date {
     int    d_year;      ///< Year
     int    d_month;     ///< Month, [1..12]
@@ -90,7 +90,7 @@ struct Date {
 };
 
 /**
- * Class representing various conversion results: days to hours, minutes, seconds; or radians to degrees, arcminutes,
+ * Representation os various conversion results: days to hours, minutes, seconds; or radians to degrees, arcminutes,
  * arcseconds; or MJD to year, month, day, etc. The same data structure has to be passed between routines interpreting
  * it quite differently, hence this implementation, having different interfaces to the same underlying data structure.
  */
@@ -123,11 +123,11 @@ public:
     void set_sign(bool sign) { cr_sign = sign; }
 };
 
-// auxiliary functions
+// auxiliary functions (used internally by API functions)
 int process_year_defaults(int year);
 G2JStatus validate_gregorian_day(int year, int month, int day);
 
-// library API
+// library API (documentation can be found in the implementation files)
 double airmas(double zenith_dist);
 float range(float angle);
 double drange(double angle);
@@ -223,6 +223,6 @@ float rvlsrd(const SphericalDir<float>& ra_dec);
 float rvlsrk(const SphericalDir<float>& ra_dec);
 void wait(float delay);
 
-} // sla
+} // sla namespace
 
 #endif // SLALIB_H_INCLUDED

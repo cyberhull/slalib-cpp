@@ -54,7 +54,7 @@ namespace sla {
  * @param el Return value: elevation (radians, range: [-pi..pi]).
  * @param el_vel Return value: elevation velocity (radians per radian of `ha`).
  * @param el_acc Return value: elevation acceleration (radians per radian of `ha` squared).
- * @param pa Return value: parallactic angle (radians, range: [-pi..pi]); +ve for a star west of the meridian and
+ * @param pa Return value: parallactic angle (radians, range: [-pi..pi]); positive for a star west of the meridian and
  *   is the angle NP-star-zenith.
  * @param pa_vel Return value: parallactic angle velocity (radians per radian of `ha`).
  * @param pa_acc Return value: parallactic angle acceleration (radians per radian of `ha` squared).

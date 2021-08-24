@@ -32,8 +32,8 @@ namespace sla {
  * @param phi Latitude of observing station (geodetic; radians).
  * @param pos Apparent RA,Dec (radians).
  * @param st Local apparent sidereal time (radians).
- * @return Component of Earth rotation in direction RA,DA (km/s); the result is +ve when the observatory is receding
- *   from the given point on the sky.
+ * @return Component of Earth rotation in direction RA,DA (km/s); the result is positive when the observatory is
+ *   receding from the given point on the sky.
  */
 float rverot(float phi, const SphericalDir<float>& pos, float st) {
     // nominal mean sidereal speed of Earth equator in km/s (the actual value is about 0.4651).

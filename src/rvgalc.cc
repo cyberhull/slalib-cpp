@@ -31,8 +31,8 @@ namespace sla {
  * Original FORTRAN code by P.T. Wallace / Rutherford Appleton Laboratory.
  *
  * @param ra_dec J2000.0 mean RA,Dec (radians).
- * @return Component of dynamical LSR motion in direction R2000,D2000 (km/s); the result is +ve when the dynamical
- *   LSR is receding from the given point on the sky.
+ * @return Component of dynamical LSR motion in direction R2000,D2000 (km/s); the result is positive when the
+ *   dynamical LSR is receding from the given point on the sky.
  */
 float rvgalc(const SphericalDir<float>& ra_dec) {
     /*

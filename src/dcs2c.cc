@@ -25,10 +25,10 @@ namespace sla {
  *
  * Original FORTRAN code by P.T. Wallace.
  *
- * @param spherical Spherical coordinates in radians: RA/Dec, longitude (+ve anticlockwise looking
- *  from the +ve latitude pole)/latitude, etc.
+ * @param spherical Spherical coordinates in radians: RA/Dec, longitude (positive anticlockwise looking from the
+ * positive latitude pole)/latitude, etc.
  * @param cartesian Output: 3-component unit vector; these coordinates are right handed, with the x axis at zero
- *  longitude and latitude, and the z axis at the +ve latitude pole.
+ *  longitude and latitude, and the z axis at the positive latitude pole.
  */
 void dcs2c(const SphericalDir<double>& spherical, vector<double> cartesian) {
     const double cos_b = std::cos(spherical.sd_b);

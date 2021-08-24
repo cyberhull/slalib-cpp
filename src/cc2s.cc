@@ -29,9 +29,9 @@ namespace sla {
  * Original FORTRAN code by P.T. Wallace.
  *
  * @param cartesian Vector representing Cartesian coordinates of a point in space; these coordinates are right handed,
- *  with the x axis at zero longitude and latitude, and the z axis at the +ve latitude pole.
+ *  with the x axis at zero longitude and latitude, and the z axis at the positive latitude pole.
  * @param spherical Output: structure containing spherical coordinates (in radians) of the given point; these
- *  coordinates are longitude (+ve anticlockwise looking from the +ve latitude pole) and latitude.
+ *  coordinates are longitude (positive anticlockwise looking from the positive latitude pole) and latitude.
  */
 void cc2s(const vector<float> cartesian, SphericalDir<float>& spherical) {
     const float x = cartesian[0];
