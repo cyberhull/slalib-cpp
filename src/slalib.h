@@ -175,7 +175,7 @@ void vxv(const Vector<float> va, const Vector<float> vb, Vector<float> vc);
 void dvxv(const Vector<double> va, const Vector<double> vb, Vector<double> vc);
 double zd(const Spherical<double>& dir, double phi);
 double pa(const Spherical<double>& dir, double phi);
-double bear(float a1, float b1, float a2, float b2);
+float bear(const Spherical<float>& da, const Spherical<float>& db);
 double dbear(double a1, double b1, double a2, double b2);
 float pav(const Vector<float> va, const Vector<float> vb);
 double dpav(const Vector<double> va, const Vector<double> vb);

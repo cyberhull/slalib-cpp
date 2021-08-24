@@ -87,7 +87,8 @@ static void t_bear(bool& status) {
     constexpr double a2 = 2.345;
     constexpr double b2 = 0.789;
 
-    vvd(bear(float(a1), float(b1), float(a2), float(b2)), 0.7045970341781791, 1.0e-6, "sla::bear", "", status);
+    vvd(bear({float(a1), float(b1)}, {float(a2), float(b2)}),
+        0.7045970341781791, 1.0e-6, "sla::bear", "", status);
     vvd(dbear(a1, b1, a2, b2), 0.7045970341781791, 1.0e-12, "sla::dbear", "", status);
     dcs2c({a1, b1}, dv1);
     dcs2c({a2, b2}, dv2);
