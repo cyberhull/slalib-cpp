@@ -35,18 +35,18 @@ namespace sla {
  *
  * Original FORTRAN code by P.T. Wallace / Rutherford Appleton Laboratory.
  *
- * @param ha Hour Angle in radians; not range-checked.
- * @param dec Declination in radians; not range-checked.
- * @param phi Observatory latitude (in radians); not range-checked; must be geodetic (i.e. be the angle between the
+ * @param dir Hour Angle and Declination (radians); not range-checked.
+ * @param phi Observatory latitude (radians); not range-checked; must be geodetic (i.e. be the angle between the
  *   equator and the normal to the ellipsoid approximating the true Earth as defined by the Geodetic Reference System
  *   1980 (GRS-80)); in critical applications, corrections for polar motion should be applied.
  * @return Zenith distance, 0 to Pi.
  */
-double zd(double ha, double dec, double phi) {
-    const double sin_ha = std::sin(ha);
-    const double cos_ha = std::cos(ha);
-    const double sin_dec = std::sin(dec);
-    const double cos_dec = std::cos(dec);
+ // double ha, double dec
+double zd(const Spherical<double>& dir, double phi) {
+    const double sin_ha = std::sin(dir.get_ha());
+    const double cos_ha = std::cos(dir.get_ha());
+    const double sin_dec = std::sin(dir.get_dec());
+    const double cos_dec = std::cos(dir.get_dec());
     const double sin_phi = std::sin(phi);
     const double cos_phi = std::cos(phi);
     const double x = cos_ha * cos_dec * sin_phi - sin_dec * cos_phi;

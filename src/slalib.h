@@ -65,7 +65,10 @@ using Vector = T[3];
 template<typename T, std::enable_if_t<std::is_floating_point<T>::value, bool> = true>
 using Matrix = T[3][3];
 
-/// Representation of partial spherical coordinates: longitude/latitude, or right ascension/declination.
+/**
+ * Representation of partial spherical coordinates (direction-only): longitude/latitude, or right ascension/
+ * declination, or hour angle/declination.
+ */
 template <typename T, std::enable_if_t<std::is_floating_point<T>::value, bool> = true>
 struct Spherical {
     T s_a; ///< longitude or RA (radians)
@@ -76,6 +79,8 @@ struct Spherical {
     void set_longitude(T radians) { s_a = radians; }
     [[nodiscard]] T get_ra() const { return s_a; }
     void set_ra(T radians) { s_a = radians; }
+    [[nodiscard]] T get_ha() const { return s_a; }
+    void set_ha(T radians) { s_a = radians; }
 
     // accessors for the second field
     [[nodiscard]] T get_latitude() const { return s_b; }
@@ -168,7 +173,7 @@ float vn(const Vector<float> vec, Vector<float> nvec);
 double dvn(const Vector<double> vec, Vector<double> nvec);
 void vxv(const Vector<float> va, const Vector<float> vb, Vector<float> vc);
 void dvxv(const Vector<double> va, const Vector<double> vb, Vector<double> vc);
-double zd(double ha, double dec, double phi);
+double zd(const Spherical<double>& dir, double phi);
 double pa(double ha, double dec, double phi);
 double bear(float a1, float b1, float a2, float b2);
 double dbear(double a1, double b1, double a2, double b2);

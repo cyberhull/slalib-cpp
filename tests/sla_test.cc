@@ -416,7 +416,7 @@ static void t_vecmat(bool& status) {
 
 // tests sla::zd() function
 static void t_zd(bool& status) {
-    vvd(zd(-1.023, -0.876, -0.432), 0.8963914139430839, 1.0e-12, "sla::zd", "", status);
+    vvd(zd({-1.023, -0.876}, -0.432), 0.8963914139430839, 1.0e-12, "sla::zd", "", status);
 }
 
 // tests sla::cd2tf() and sla::dd2tf() procedures
