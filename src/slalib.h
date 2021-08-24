@@ -18,6 +18,8 @@
 #ifndef SLALIB_H_INCLUDED
 #define SLALIB_H_INCLUDED
 
+#include <type_traits>
+
 namespace sla {
 
 /// Catalogues of fundamental stars: celestial reference frames.
@@ -56,22 +58,22 @@ enum T2DStatus {
 };
 
 /// Generic 3-component vector of floating-point elements.
-template<typename T>
+template<typename T, std::enable_if_t<std::is_floating_point<T>::value, bool> = true>
 using vector = T[3];
 
 /// Generic 3x3 matrix of floating-point elements.
-template<typename T>
+template<typename T, std::enable_if_t<std::is_floating_point<T>::value, bool> = true>
 using matrix = T[3][3];
 
 /// Structure representing partial spherical coordinates: longitude/latitude, or right ascension/declination
-template <typename T>
+template <typename T, std::enable_if_t<std::is_floating_point<T>::value, bool> = true>
 struct SphericalDir {
     T sd_a; ///< longitude or RA (radians)
     T sd_b; ///< latitude or Dec (radians)
 };
 
 /// Structure representing full spherical coordinates: longitude, latitude, and distance
-template <typename T>
+template <typename T, std::enable_if_t<std::is_floating_point<T>::value, bool> = true>
 struct SphericalCoords {
     T sc_long; ///< longitude (radians)
     T sc_lat;  ///< latitude (radians)
