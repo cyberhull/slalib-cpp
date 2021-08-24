@@ -42,17 +42,17 @@ namespace sla {
  * Original FORTRAN code by P.T. Wallace / Rutherford Appleton Laboratory.
  *
  * @param n Number of unknowns (range: [1..3]).
- * @param mat Source matrix; after the call, contains inverse matrix.
+ * @param mat Source matrix; after the call, contains inverse matrix (if source matrix is singular, contents after
+ *   the call is undefined).
  * @param vec Known vector; after the call, contains solution vector.
- * @param det Matrix determinant.
- * @param singular Matrix singularity flag ('true' if the matrix is singular, in which case determinant of 0.0 is
- *   returned, and the contents of `mat` is undefined).
+ * @param det Return value: determinant; if input matrix is singular, 0.0f is returned.
  * @param ws Workspace.
+ * @return `true` if input matrix is singular, `false` otherwise.
  */
-void dmat(int n, Matrix<double> mat, Vector<double> vec, double& det, bool& singular, int ws[3]) {
+bool dmat(int n, Matrix<double> mat, Vector<double> vec, double& det, int ws[3]) {
     constexpr double EPSILON = 1.0e-20;
 
-    singular = false;
+    bool singular = false;
     det = 1.0;
 
     int i, j, k;
@@ -132,6 +132,7 @@ void dmat(int n, Matrix<double> mat, Vector<double> vec, double& det, bool& sing
             }
         }
     }
+    return singular;
 }
 
 }

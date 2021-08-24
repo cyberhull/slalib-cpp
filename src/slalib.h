@@ -195,7 +195,7 @@ void refco(double oh, double atk, double apm, double arh, double wl, double phi,
 void refv(const Vector<double> vec, double refa, double refb, Vector<double> rvec);
 double refz(double zu, double refa, double refb);
 void ecmat(double date, Matrix<double> mat);
-void dmat(int n, Matrix<double> mat, Vector<double> vec, double& det, bool& singular, int ws[3]);
+bool dmat(int n, Matrix<double> mat, Vector<double> vec, double& det, int ws[3]);
 bool smat(int n, float* mat, float* vec, float& det, int* ws);
 void altaz(double ha, double dec, double phi, double& az, double& az_vel, double& az_acc,
     double& el, double& el_vel, double& el_acc, double& pa, double& pa_vel, double& pa_acc);

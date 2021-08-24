@@ -597,9 +597,8 @@ static void t_dmat(bool& status) {
     };
     Vector<double> vec = {2.28625, 1.7128825, 1.429432225};
     double det;
-    bool singular;
     int ws[3];
-    dmat(3, mat, vec, det, singular, ws);
+    bool singular = dmat(3, mat, vec, det, ws);
 
     vvd(mat[0][0], 18.02550629769198, 1.0e-10, "std::dmat", "M00", status);
     vvd(mat[0][1], -52.16386644917280607, 1.0e-10, "std::dmat", "M01", status);
