@@ -33,7 +33,7 @@ namespace sla {
  * @param spherical Output: structure containing spherical coordinates (in radians) of the given point; these
  *  coordinates are longitude (positive anticlockwise looking from the positive latitude pole) and latitude.
  */
-void cc2s(const vector<float> cartesian, SphericalDir<float>& spherical) {
+void cc2s(const Vector<float> cartesian, SphericalDir<float>& spherical) {
     const float x = cartesian[0];
     const float y = cartesian[1];
     const float z = cartesian[2];

@@ -32,7 +32,7 @@ namespace sla {
  *
  * @return Modulus of `v`; if the modulus is zero, `uv` is set to zero as well.
  */
-float vn(const vector<float> v, vector<float> uv) {
+float vn(const Vector<float> v, Vector<float> uv) {
     // calculate input vector's modulus
     float modulus = 0.0f;
     for (int i = 0; i < 3; i++) {

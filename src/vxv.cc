@@ -29,10 +29,10 @@ namespace sla {
  * @param vc Output: vector product of the two first argument vectors; it is safe to specify either first of second
  *  vector as a result holder.
  */
-void vxv(const vector<float> va, const vector<float> vb, vector<float> vc) {
+void vxv(const Vector<float> va, const Vector<float> vb, Vector<float> vc) {
     // form the vector product in a scratch vector
     // TODO: store first two expressions into scalars, store third into vc[2], copy scalars in vc[0] and vc[1]
-    vector<float> tmp;
+    Vector<float> tmp;
     tmp[0]= va[1] * vb[2] - va[2] * vb[1];
     tmp[1]= va[2] * vb[0] - va[0] * vb[2];
     tmp[2]= va[0] * vb[1] - va[1] * vb[0];

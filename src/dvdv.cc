@@ -29,7 +29,7 @@ namespace sla {
  *
  * @return Scalar product va.vb
  */
-double dvdv(const vector<double> va, const vector<double> vb) {
+double dvdv(const Vector<double> va, const Vector<double> vb) {
     return va[0] * vb[0] + va[1] * vb[1] + va[2] * vb[2];
 }
 

@@ -33,9 +33,9 @@ namespace sla {
  *   point v1; if v2 is a small distance east of v1, returned bearing is about +pi/2; if the two points are
  *   coincident, zero is returned.
  */
-float pav(const vector<float> v1, const vector<float> v2) {
+float pav(const Vector<float> v1, const Vector<float> v2) {
     // call the double precision version
-    vector<double> dv1, dv2;
+    Vector<double> dv1, dv2;
     for (int i = 0; i < 3; i++) {
         dv1[i] = v1[i];
         dv2[i] = v2[i];

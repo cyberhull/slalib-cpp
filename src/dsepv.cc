@@ -32,9 +32,9 @@ namespace sla {
  * @param v2 Second vector; does not have to be unit length; if null, zero is returned.
  * @return The angle, in radians, between the two vectors; it is always positive.
  */
-double dsepv(const vector<double> v1, const vector<double> v2) {
+double dsepv(const Vector<double> v1, const Vector<double> v2) {
     // modulus of cross product = sine multiplied by the two moduli
-    vector<double> v1_x_v2, wv;
+    Vector<double> v1_x_v2, wv;
     dvxv(v1, v2, v1_x_v2);
     const double s = dvn(v1_x_v2, wv);
 

@@ -70,7 +70,7 @@ namespace sla {
  * @param refb Tan**3 Z coefficient (radians).
  * @param vr Return value: refracted position of the source (Az/El 3-component vector).
  */
-void refv(const vector<double> vu, double refa, double refb, vector<double> vr) {
+void refv(const Vector<double> vu, double refa, double refb, Vector<double> vr) {
     // initial estimate = unrefracted vector
     const double x = vu[0];
     const double y = vu[1];

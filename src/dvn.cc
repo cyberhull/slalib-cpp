@@ -31,7 +31,7 @@ namespace sla {
  *
  * @return Modulus of `v`; if the modulus is zero, `uv` is set to zero as well.
  */
-double dvn(const vector<double> v, vector<double> uv) {
+double dvn(const Vector<double> v, Vector<double> uv) {
     // calculate input vector's modulus
     double modulus = 0.0;
     for (int i = 0; i < 3; i++) {

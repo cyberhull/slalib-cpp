@@ -29,7 +29,7 @@ namespace sla {
  *
  * @return Scalar product va.vb
  */
-float vdv(const vector<float> va, const vector<float> vb) {
+float vdv(const Vector<float> va, const Vector<float> vb) {
     return va[0] * vb[0] + va[1] * vb[1] + va[2] * vb[2];
 }
 

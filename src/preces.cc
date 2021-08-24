@@ -51,11 +51,11 @@ void preces(Catalogue system, double ep0, double ep1, SphericalDir<double>& pos)
                 prec(ep0, ep1, m_precession);
             }
             // convert ra,Dec to x,y,z
-            vector<double> v1;
+            Vector<double> v1;
             dcs2c(pos, v1);
 
             // precess
-            vector<double> v2;
+            Vector<double> v2;
             dmxv(m_precession, v1, v2);
 
             // convert back to ra,Dec

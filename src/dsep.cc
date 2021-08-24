@@ -30,7 +30,7 @@ namespace sla {
  */
 double dsep(const SphericalDir<double>& a, const SphericalDir<double>& b) {
     // convert coordinates from spherical to Cartesian
-    vector<double> va, vb;
+    Vector<double> va, vb;
     dcs2c(a, va);
     dcs2c(b, vb);
 

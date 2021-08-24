@@ -34,7 +34,7 @@ namespace sla {
  *   point v1; if v2 is a small distance east of v1, returned bearing is about +pi/2; if the two points are
  *   coincident, zero is returned.
  */
-double dpav(const vector<double> v1, const vector<double> v2) {
+double dpav(const Vector<double> v1, const Vector<double> v2) {
     // unit vector to point 1
     double x1 = v1[0];
     double y1 = v1[1];

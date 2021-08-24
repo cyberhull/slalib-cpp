@@ -41,19 +41,19 @@ float rvlg(const SphericalDir<float>& ra_dec) {
      * Apex = L2,B2  90deg, 0deg
      *      = RA,Dec  21 12 01.1  +48 19 47  J2000.0
      *
-     * This is expressed in the form of a J2000.0 x,y,z vector:
+     * This is expressed in the form of a J2000.0 x,y,z Vector:
      *
      *   va[0] = X = -speed * cos(RA) * cos(Dec)
      *   va[1] = Y = -speed * sin(RA) * cos(Dec)
      *   va[2] = Z = -speed * sin(Dec)
      */
-    static const vector<float> va = {-148.23284, +133.44888, -224.09467};
+    static const Vector<float> va = {-148.23284, +133.44888, -224.09467};
 
     // convert given J2000 RA,Dec to x,y,z
-    vector<float> vb;
+    Vector<float> vb;
     cs2c(ra_dec, vb);
 
-    // compute dot product with Solar motion vector
+    // compute dot product with Solar motion Vector
     return vdv(va, vb);
 }
 

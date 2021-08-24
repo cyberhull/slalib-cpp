@@ -47,10 +47,10 @@ float rvgalc(const SphericalDir<float>& ra_dec) {
      *   va[1] = Y = -speed * sin(RA) * cos(Dec)
      *   va[2] = Z = -speed * sin(Dec)
      */
-    static const vector<float> va = {-108.70408, +97.86251, -164.33610};
+    static const Vector<float> va = {-108.70408, +97.86251, -164.33610};
 
     // convert given J2000 RA,Dec to x,y,z
-    vector<float> vb;
+    Vector<float> vb;
     cs2c(ra_dec, vb);
 
     // compute dot product with LSR motion vector

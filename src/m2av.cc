@@ -32,7 +32,7 @@ namespace sla {
  * @param axis Output: axial vector; has the same direction as the Euler axis, and its magnitude is the amount of
  *  rotation in radians. The magnitude and direction can be separated by means of the routine sla::vn().
  */
-void m2av(const matrix<float> rmat, vector<float> axis) {
+void m2av(const matrix<float> rmat, Vector<float> axis) {
     float x = rmat[1][2] - rmat[2][1];
     float y = rmat[2][0] - rmat[0][2];
     float z = rmat[0][1] - rmat[1][0];

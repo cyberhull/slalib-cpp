@@ -51,11 +51,11 @@ void supgal(const SphericalDir<double>& sgal, SphericalDir<double>& gal) {
         {+0.673145302109, +0.731271165817, +0.110081262225}
     };
     // spherical to Cartesian
-    vector<double> v1;
+    Vector<double> v1;
     dcs2c(sgal, v1);
 
     // supergalactic to galactic
-    vector<double> v2;
+    Vector<double> v2;
     dimxv(mat, v1, v2);
 
     // Cartesian to spherical

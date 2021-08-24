@@ -31,10 +31,10 @@ namespace sla {
  * @param v2 Second vector; does not have to be unit length; if null, zero is returned.
  * @return The angle, in radians, between the two vectors; it is always positive.
  */
-float sepv(const vector<float> v1, const vector<float> v2) {
+float sepv(const Vector<float> v1, const Vector<float> v2) {
     // use double precision version.
-    const vector<double> dv1 = {v1[0], v1[1], v1[2]};
-    const vector<double> dv2 = {v2[0], v2[1], v2[2]};
+    const Vector<double> dv1 = {v1[0], v1[1], v1[2]};
+    const Vector<double> dv2 = {v2[0], v2[1], v2[2]};
     return (float) dsepv(dv1, dv2);
 }
 

@@ -53,10 +53,10 @@ float rvlsrk(const SphericalDir<float>& ra_dec) {
      *   va[1] = Y = -speed * sin(RA) * cos(Dec)
      *   va[2] = Z = -speed * sin(Dec)
      */
-    static const vector<float> va = {-0.29000, +17.31726, -10.00141};
+    static const Vector<float> va = {-0.29000, +17.31726, -10.00141};
 
     // convert given J2000 RA,Dec to x,y,z
-    vector<float> vb;
+    Vector<float> vb;
     cs2c(ra_dec, vb);
 
     // compute dot product with solar motion vector

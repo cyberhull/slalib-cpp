@@ -80,8 +80,8 @@ static void t_airmas(bool& status) {
 
 // tests sla::bear(), sla::dbear(), sla::pav(), and sla::dpav() functions
 static void t_bear(bool& status) {
-    vector<float> fv1, fv2;
-    vector<double> dv1, dv2;
+    Vector<float> fv1, fv2;
+    Vector<double> dv1, dv2;
     constexpr double a1 = 1.234;
     constexpr double b1 = -0.123;
     constexpr double a2 = 2.345;
@@ -165,13 +165,13 @@ static void t_djcal(bool& status) {
 
 // tests sla::cc2s() and dcc2s() procedures
 static void t_cc2s(bool& status) {
-    const vector<float> V = {100.0f, -50.0f, 25.0f};
+    const Vector<float> V = {100.0f, -50.0f, 25.0f};
     SphericalDir<float> sp_spherical;
     cc2s(V, sp_spherical);
     vvd(sp_spherical.sd_a, -0.4636476090008061, 1.0e-6, "sla::cc2s", "A", status );
     vvd(sp_spherical.sd_b, 0.2199879773954594, 1.0e-6, "sla::cc2s", "B", status );
 
-    const vector<double> DV = {100.0, -50.0, 25.0};
+    const Vector<double> DV = {100.0, -50.0, 25.0};
     SphericalDir<double> dp_spherical;
     dcc2s(DV, dp_spherical);
     vvd(dp_spherical.sd_a, -0.4636476090008061, 1.0e-12, "sla::dcc2s", "A", status );
@@ -237,7 +237,7 @@ static void t_vecmat(bool& status) {
     constexpr double dp_tolerance = 1.0e-12;
 
     // make a rotation matrix
-    vector<float> av;
+    Vector<float> av;
     matrix<float> rm1;
     av[0] = -0.123f;
     av[1] = 0.0987f;
@@ -280,14 +280,14 @@ static void t_vecmat(bool& status) {
     vvd(rm[2][2], 0.01678926022795169, sp_tolerance, "sla::mxm", "22", status);
 
     // create a vector
-    vector<float> v1;
+    Vector<float> v1;
     cs2c({3.0123f, -0.999f}, v1 );
     vvd(v1[0], -0.5366267667260525, sp_tolerance, "sla::cs2c", "X", status);
     vvd(v1[1], 0.06977111097651444, sp_tolerance, "sla::cs2c", "Y", status);
     vvd(v1[2], -0.8409302618566215, sp_tolerance, "sla::cs2c", "Z", status);
 
     // rotate the vector using the two matrices sequentially
-    vector<float> v2, v3;
+    Vector<float> v2, v3;
     mxv(rm1, v1, v2);
     mxv(rm2, v2, v3);
     vvd(v3[0], -0.7267487768696160, sp_tolerance, "sla::mxv", "X", status);
@@ -295,14 +295,14 @@ static void t_vecmat(bool& status) {
     vvd(v3[2], 0.4697671220397141, sp_tolerance, "sla::mxv", "Z", status);
 
     // de-rotate the vector using the combined matrix
-    vector<float> v4;
+    Vector<float> v4;
     imxv(rm, v3, v4);
     vvd(v4[0], -0.5366267667260526, sp_tolerance, "sla::imxv", "X", status);
     vvd(v4[1], 0.06977111097651445, sp_tolerance, "sla::imxv", "Y", status);
     vvd(v4[2], -0.8409302618566215, sp_tolerance, "sla::imxv", "Z", status);
 
     // convert the combined matrix into an axial vector
-    vector<float> v5;
+    Vector<float> v5;
     m2av(rm, v5);
     vvd(v5[0], 0.006889040510209034, sp_tolerance, "sla::m2av", "X", status);
     vvd(v5[1], -1.577473205461961, sp_tolerance, "sla::m2av", "Y", status);
@@ -312,7 +312,7 @@ static void t_vecmat(bool& status) {
     for (int i = 0; i < 3; i++) {
         v5[i] *= 1000.0f;
     }
-    vector<float> v6;
+    Vector<float> v6;
     float vm = vn(v5, v6);
     vvd(v6[0], 0.004147420704640065, sp_tolerance, "sla::vn", "X", status);
     vvd(v6[1], -0.9496888606842218, sp_tolerance, "sla::vn", "Y", status);
@@ -323,14 +323,14 @@ static void t_vecmat(bool& status) {
     vvd(vdv(v6, v1), -0.3318384698006295, sp_tolerance, "sla::vn", " ", status);
 
     // calculate cross product with the original vector
-    vector<float> v7;
+    Vector<float> v7;
     vxv(v6, v1, v7);
     vvd(v7[0], 0.7767720597123304, sp_tolerance, "sla::vxv", "X", status);
     vvd(v7[1], -0.1645663574562769, sp_tolerance, "sla::vxv", "Y", status);
     vvd(v7[2], -0.5093390925544726, sp_tolerance, "sla::vxv", "Z", status);
 
     // do same tests in double precision
-    vector<double> dav;
+    Vector<double> dav;
     matrix<double> drm1;
     dav[0] = -0.123;
     dav[1] = 0.0987;
@@ -370,26 +370,26 @@ static void t_vecmat(bool& status) {
     vvd(drm[2][1], -0.3283459407855694, dp_tolerance, "sla::dmxm", "21", status);
     vvd(drm[2][2], 0.01678926022795169, dp_tolerance, "sla::dmxm", "22", status);
 
-    vector<double> dv1;
+    Vector<double> dv1;
     dcs2c({3.0123, -0.999}, dv1);
     vvd(dv1[0], -0.5366267667260525, dp_tolerance, "sla::dcs2c", "X", status);
     vvd(dv1[1], 0.06977111097651444, dp_tolerance, "sla::dcs2c", "Y", status);
     vvd(dv1[2], -0.8409302618566215, dp_tolerance, "sla::dcs2c", "Z", status);
 
-    vector<double> dv2, dv3;
+    Vector<double> dv2, dv3;
     dmxv(drm1, dv1, dv2);
     dmxv(drm2, dv2, dv3);
     vvd(dv3[0], -0.7267487768696160, dp_tolerance, "sla::dmxv", "X", status);
     vvd(dv3[1], 0.5011537352639822, dp_tolerance, "sla::dmxv", "Y", status);
     vvd(dv3[2], 0.4697671220397141, dp_tolerance, "sla::dmxv", "Z", status);
 
-    vector<double> dv4;
+    Vector<double> dv4;
     dimxv(drm, dv3, dv4);
     vvd(dv4[0], -0.5366267667260526, dp_tolerance, "sla::dimxv", "X", status);
     vvd(dv4[1], 0.06977111097651445, dp_tolerance, "sla::dimxv", "Y", status);
     vvd(dv4[2], -0.8409302618566215, dp_tolerance, "sla::dimxv", "Z", status);
 
-    vector<double> dv5;
+    Vector<double> dv5;
     dm2av(drm, dv5);
     vvd(dv5[0], 0.006889040510209034, dp_tolerance, "sla::dm2av", "X", status);
     vvd(dv5[1], -1.577473205461961, dp_tolerance, "sla::dm2av", "Y", status);
@@ -398,7 +398,7 @@ static void t_vecmat(bool& status) {
     for (int j = 0; j < 3; j++) {
         dv5[j] *= 1000.0;
     }
-    vector<double> dv6;
+    Vector<double> dv6;
     double dvm = dvn(dv5, dv6);
     vvd(dv6[0], 0.004147420704640065, dp_tolerance, "sla::dvn", "X", status);
     vvd(dv6[1], -0.9496888606842218, dp_tolerance, "sla::dvn", "Y", status);
@@ -407,7 +407,7 @@ static void t_vecmat(bool& status) {
 
     vvd(dvdv(dv6, dv1), -0.3318384698006295, dp_tolerance, "sla::dvn", " ", status);
 
-    vector<double> dv7;
+    Vector<double> dv7;
     dvxv(dv6, dv1, dv7);
     vvd(dv7[0], 0.7767720597123304, dp_tolerance, "sla::dvxv", "X", status);
     vvd(dv7[1], -0.1645663574562769, dp_tolerance, "sla::dvxv", "Y", status);
@@ -552,7 +552,7 @@ static void t_ref(bool& status) {
     vvd(REFB2, -2.250855362179e-7, 1.0e-15, "sla::atmdsp", "b", status);
 
     const SphericalDir<double> spherical1 = {0.345, 0.456};
-    vector<double> cartesian1, cartesian2;
+    Vector<double> cartesian1, cartesian2;
     dcs2c(spherical1, cartesian1);
     refv(cartesian1, refa, refb, cartesian2);
     vvd(cartesian2[0], 0.8447487047790478, 1.0e-12, "sla::refv", "x1", status);
@@ -595,7 +595,7 @@ static void t_dmat(bool& status) {
         {1.6578,   1.380522,   1.22548578  },
         {1.380522, 1.22548578, 1.1356276122}
     };
-    vector<double> vec = {2.28625, 1.7128825, 1.429432225};
+    Vector<double> vec = {2.28625, 1.7128825, 1.429432225};
     double det;
     bool singular;
     int ws[3];
@@ -624,7 +624,7 @@ static void t_smat(bool& status) {
         {1.6578f, 1.380522f, 1.22548578f},
         {1.380522f, 1.22548578f, 1.1356276122f}
     };
-    vector<float> v = {2.28625,  1.7128825,  1.429432225};
+    Vector<float> v = {2.28625,  1.7128825,  1.429432225};
     float d;
     int w[3];
     bool singular = smat(3, (float*) a, v, d, w);
@@ -752,10 +752,10 @@ static void t_prenut(bool& status) {
 
 // tests sla::dsep(), sla::dsepv(), sla::sep(), and sla::sepv() functions
 static void t_sep(bool& status) {
-    const vector<float> vf1 = {1.0f, 0.1f, 0.2f};
-    const vector<float> vf2 = {-3.0f, 1.0e-3f, 0.2f};
-    const vector<double> vd1 = {1.0, 0.1, 0.2};
-    const vector<double> vd2 = {-3.0, 1.0e-3, 0.2};
+    const Vector<float> vf1 = {1.0f, 0.1f, 0.2f};
+    const Vector<float> vf2 = {-3.0f, 1.0e-3f, 0.2f};
+    const Vector<double> vd1 = {1.0, 0.1, 0.2};
+    const Vector<double> vd2 = {-3.0, 1.0e-3, 0.2};
 
     SphericalDir<double> sd1, sd2;
     dcc2s (vd1, sd1);
