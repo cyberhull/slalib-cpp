@@ -91,8 +91,8 @@ struct Date {
 
 /**
  * Representation os various conversion results: days to hours, minutes, seconds; or radians to degrees, arcminutes,
- * arcseconds; or MJD to year, month, day, etc. The same data structure has to be passed between routines interpreting
- * it quite differently, hence this implementation, having different interfaces to the same underlying data structure.
+ * arcseconds; etc. The same data structure has to be passed between routines interpreting it quite differently,
+ * hence this implementation, having different interfaces to the same underlying data structure.
  */
 class ConversionResult {
     int  cr_data[4]; ///< hours/minutes/seconds/fraction or degrees/arcminutes/arcseconds/fraction
