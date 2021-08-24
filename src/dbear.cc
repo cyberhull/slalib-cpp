@@ -26,19 +26,17 @@ namespace sla {
  *
  * Original FORTRAN code by P.T. Wallace / Rutherford Appleton Laboratory.
  *
- * @param a1 RA/longitude/etc. of the first point, radians.
- * @param b1 Dec/latitude/etc. of the first point, radians.
- * @param a2 RA/longitude/etc. of the second point, radians.
- * @param b2 Dec/latitude/etc. of the second point, radians.
- * @return Bearing (position angle), in radians (range range +/- pi), of point a2,b2 as seen from point a1,b1; if
- *  a2,b2 is due east of a1,b1 the bearing is +pi/2; if the two points are coincident, zero is returned.
+ * @param da RA/longitude/etc. and Dec/latitude/etc. of the first point (radians).
+ * @param db RA/longitude/etc. and Dec/latitude/etc. of the second point (radians).
+ * @return Bearing (position angle), in radians (range +/- pi), of point `db` as seen from point `da`; if
+ *  `db` is due east of `da` the bearing is +pi/2; if the two points are coincident, zero is returned.
  */
-double dbear(double a1, double b1, double a2, double b2) {
-    const double cos_b2 = std::cos(b2);
-    const double da = a2 - a1;
-    const double x = std::sin(b2) * std::cos(b1) - cos_b2 * std::sin(b1) * std::cos(da);
-    const double y = std::sin(da) * cos_b2;
-    return (x != 0.0f || y != 0.0f) ? std::atan2(y, x) : 0.0f;
+double dbear(const Spherical<double>& da, const Spherical<double>& db) {
+    const double cos_b_dec = std::cos(db.get_dec());
+    const double d_ra = db.get_ra() - da.get_ra();
+    const double x = std::sin(db.get_dec()) * std::cos(da.get_dec()) - cos_b_dec * std::sin(da.get_dec()) * std::cos(d_ra);
+    const double y = std::sin(d_ra) * cos_b_dec;
+    return (x != 0.0 || y != 0.0)? std::atan2(y, x): 0.0;
 }
 
 }
