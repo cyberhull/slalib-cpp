@@ -87,8 +87,8 @@ static void t_bear(bool& status) {
     constexpr double a2 = 2.345;
     constexpr double b2 = 0.789;
 
-    vvd(bear(float(a1), float(b1), float(a2), float(b2)), 0.7045970341781791, 1.0e-6, "sla::bear", " ", status);
-    vvd(dbear(a1, b1, a2, b2), 0.7045970341781791, 1.0e-12, "sla::dbear", " ", status);
+    vvd(bear(float(a1), float(b1), float(a2), float(b2)), 0.7045970341781791, 1.0e-6, "sla::bear", "", status);
+    vvd(dbear(a1, b1, a2, b2), 0.7045970341781791, 1.0e-12, "sla::dbear", "", status);
     dcs2c({a1, b1}, dv1);
     dcs2c({a2, b2}, dv2);
 
@@ -96,29 +96,29 @@ static void t_bear(bool& status) {
         fv1[i] = float(dv1[i]);
         fv2[i] = float(dv2[i]);
     }
-    vvd(pav(fv1, fv2 ), 0.7045970341781791, 1.0e-6, "sla::pav", " ", status);
-    vvd(dpav(dv1, dv2), 0.7045970341781791, 1.0e-12, "sla::dpav", " ", status);
+    vvd(pav(fv1, fv2 ), 0.7045970341781791, 1.0e-6, "sla::pav", "", status);
+    vvd(dpav(dv1, dv2), 0.7045970341781791, 1.0e-12, "sla::dpav", "", status);
 }
 
 // tests sla::caf2r() and sla::daf2r() procedures
 static void t_caf2r(bool& status) {
     float sp_radians;
     D2RStatus result = caf2r(76, 54, 32.1f, sp_radians);
-    vvd(sp_radians, 1.342313819975276, 1.0e-6, "sla::caf2r", "R", status);
-    viv(result, 0, "sla::caf2r", "S", status );
+    vvd(sp_radians, 1.342313819975276, 1.0e-6, "sla::caf2r", "r", status);
+    viv(result, 0, "sla::caf2r", "s", status );
 
     double dp_radians;
     result = daf2r(76, 54, 32.1, dp_radians);
-    vvd(dp_radians, 1.342313819975276, 1.0e-12, "sla::daf2r", "R", status);
-    viv(result, 0, "sla::daf2r", "S", status);
+    vvd(dp_radians, 1.342313819975276, 1.0e-12, "sla::daf2r", "r", status);
+    viv(result, 0, "sla::daf2r", "s", status);
 }
 
 // tests sla::caldj() procedure
 static void t_caldj(bool& status) {
     double mjd;
     auto result = caldj(1999, 12, 31, mjd);
-    vvd(mjd, 51543.0, 0.0, "sla::caldj", "D", status);
-    viv(result, 0, "sla::caldj", "S", status);
+    vvd(mjd, 51543.0, 0.0, "sla::caldj", "d", status);
+    viv(result, 0, "sla::caldj", "s", status);
 }
 
 // tests sla::clyd() and sla::calyd() procedures
@@ -127,21 +127,21 @@ static void t_calyd(bool& status) {
     G2JStatus result;
 
     result = calyd(46, 4, 30, j_year, j_day);
-    viv(j_year, 2046, "sla::calyd", "Y", status);
-    viv(j_day, 120, "sla::calyd", "D", status);
-    viv(result, 0, "sla::calyd", "S", status);
+    viv(j_year, 2046, "sla::calyd", "year", status);
+    viv(j_day, 120, "sla::calyd", "day", status);
+    viv(result, 0, "sla::calyd", "status", status);
     result = clyd (-5000, 1, 1, j_year, j_day);
     viv(result, 1, "sla::clyd", "illegal year", status);
     result = clyd (1900, 0, 1, j_year, j_day);
     viv(result, 2, "sla::clyd", "illegal month", status);
     result = clyd (1900, 2, 29, j_year, j_day);
-    viv(j_year, 1900, "sla::clyd", "illegal day (Y)", status);
-    viv(j_day, 61, "sla::clyd", "illegal day (D)", status);
-    viv(result, 3, "sla::clyd", "illegal day (S)", status);
+    viv(j_year, 1900, "sla::clyd", "illegal day (y)", status);
+    viv(j_day, 61, "sla::clyd", "illegal day (d)", status);
+    viv(result, 3, "sla::clyd", "illegal day (s)", status);
     result = clyd (2000, 2, 29, j_year, j_day);
-    viv(j_year, 2000, "sla::clyd", "Y", status);
-    viv(j_day, 60, "sla::clyd", "D", status);
-    viv(result, 0, "sla::clyd", "S", status);
+    viv(j_year, 2000, "sla::clyd", "year", status);
+    viv(j_day, 60, "sla::clyd", "day", status);
+    viv(result, 0, "sla::clyd", "status", status);
 }
 
 // tests sla::clyd() and sla::calyd() procedures
@@ -168,22 +168,22 @@ static void t_cc2s(bool& status) {
     const Vector<float> V = {100.0f, -50.0f, 25.0f};
     Spherical<float> sp_spherical;
     cc2s(V, sp_spherical);
-    vvd(sp_spherical.s_a, -0.4636476090008061, 1.0e-6, "sla::cc2s", "A", status );
-    vvd(sp_spherical.s_b, 0.2199879773954594, 1.0e-6, "sla::cc2s", "B", status );
+    vvd(sp_spherical.s_a, -0.4636476090008061, 1.0e-6, "sla::cc2s", "a", status );
+    vvd(sp_spherical.s_b, 0.2199879773954594, 1.0e-6, "sla::cc2s", "b", status );
 
     const Vector<double> DV = {100.0, -50.0, 25.0};
     Spherical<double> dp_spherical;
     dcc2s(DV, dp_spherical);
-    vvd(dp_spherical.s_a, -0.4636476090008061, 1.0e-12, "sla::dcc2s", "A", status );
-    vvd(dp_spherical.s_b, 0.2199879773954594, 1.0e-12, "sla::dcc2s", "B", status );
+    vvd(dp_spherical.s_a, -0.4636476090008061, 1.0e-12, "sla::dcc2s", "a", status );
+    vvd(dp_spherical.s_b, 0.2199879773954594, 1.0e-12, "sla::dcc2s", "b", status );
 }
 
 // tests sla::cldj() procedure
 static void t_cldj(bool& status) {
     double mjd;
     auto result = cldj(1899, 12, 31, mjd);
-    vvd(mjd, 15019.0, 0.0, "sla::cldj", "D", status);
-    viv(result, 0, "sla::cldj", "S", status);
+    vvd(mjd, 15019.0, 0.0, "sla::cldj", "d", status);
+    viv(result, 0, "sla::cldj", "s", status);
 }
 
 // tests sla::e2h(), sla::de2h(), sla::h2e(), and sla::dh2e() procedures
@@ -197,21 +197,21 @@ static void t_e2h(bool& status) {
 
     double d_azimuth, d_elevation;
     de2h(d_ha, d_dec, d_phi, d_azimuth, d_elevation);
-    vvd(d_azimuth, 2.820087515852369, 1.0e-12, "sla::de2h", "Az", status);
-    vvd(d_elevation, 1.132711866443304, 1.0e-12, "sla::de2h", "El", status);
+    vvd(d_azimuth, 2.820087515852369, 1.0e-12, "sla::de2h", "azimuth", status);
+    vvd(d_elevation, 1.132711866443304, 1.0e-12, "sla::de2h", "elevation", status);
 
     float azimuth, elevation;
     e2h(ha, dec, phi, azimuth, elevation );
-    vvd(azimuth, 2.820087515852369, 1.0e-6, "sla::e2h", "Az", status);
-    vvd(elevation, 1.132711866443304, 1.0e-6, "sla::e2h", "El", status);
+    vvd(azimuth, 2.820087515852369, 1.0e-6, "sla::e2h", "azimuth", status);
+    vvd(elevation, 1.132711866443304, 1.0e-6, "sla::e2h", "elevation", status);
 
     dh2e(d_azimuth, d_elevation, d_phi, d_ha, d_dec);
-    vvd(d_ha, -0.3, 1.0e-12, "sla::dh2e", "HA", status);
-    vvd(d_dec, -1.1, 1.0e-12, "sla::dh2e", "Dec", status);
+    vvd(d_ha, -0.3, 1.0e-12, "sla::dh2e", "ha", status);
+    vvd(d_dec, -1.1, 1.0e-12, "sla::dh2e", "dec", status);
 
     h2e(azimuth, elevation, phi, ha, dec);
-    vvd(ha, -0.3, 1.0e-6, "sla::h2e", "HA", status);
-    vvd(dec, -1.1, 1.0e-6, "sla::h2e", "Dec", status);
+    vvd(ha, -0.3, 1.0e-6, "sla::h2e", "ha", status);
+    vvd(dec, -1.1, 1.0e-6, "sla::h2e", "dec", status);
 }
 
 /*
@@ -282,31 +282,31 @@ static void t_vecmat(bool& status) {
     // create a vector
     Vector<float> v1;
     cs2c({3.0123f, -0.999f}, v1 );
-    vvd(v1[0], -0.5366267667260525, sp_tolerance, "sla::cs2c", "X", status);
-    vvd(v1[1], 0.06977111097651444, sp_tolerance, "sla::cs2c", "Y", status);
-    vvd(v1[2], -0.8409302618566215, sp_tolerance, "sla::cs2c", "Z", status);
+    vvd(v1[0], -0.5366267667260525, sp_tolerance, "sla::cs2c", "x", status);
+    vvd(v1[1], 0.06977111097651444, sp_tolerance, "sla::cs2c", "y", status);
+    vvd(v1[2], -0.8409302618566215, sp_tolerance, "sla::cs2c", "z", status);
 
     // rotate the vector using the two matrices sequentially
     Vector<float> v2, v3;
     mxv(rm1, v1, v2);
     mxv(rm2, v2, v3);
-    vvd(v3[0], -0.7267487768696160, sp_tolerance, "sla::mxv", "X", status);
-    vvd(v3[1], 0.5011537352639822, sp_tolerance, "sla::mxv", "Y", status);
-    vvd(v3[2], 0.4697671220397141, sp_tolerance, "sla::mxv", "Z", status);
+    vvd(v3[0], -0.7267487768696160, sp_tolerance, "sla::mxv", "x", status);
+    vvd(v3[1], 0.5011537352639822, sp_tolerance, "sla::mxv", "y", status);
+    vvd(v3[2], 0.4697671220397141, sp_tolerance, "sla::mxv", "z", status);
 
     // de-rotate the vector using the combined matrix
     Vector<float> v4;
     imxv(rm, v3, v4);
-    vvd(v4[0], -0.5366267667260526, sp_tolerance, "sla::imxv", "X", status);
-    vvd(v4[1], 0.06977111097651445, sp_tolerance, "sla::imxv", "Y", status);
-    vvd(v4[2], -0.8409302618566215, sp_tolerance, "sla::imxv", "Z", status);
+    vvd(v4[0], -0.5366267667260526, sp_tolerance, "sla::imxv", "x", status);
+    vvd(v4[1], 0.06977111097651445, sp_tolerance, "sla::imxv", "y", status);
+    vvd(v4[2], -0.8409302618566215, sp_tolerance, "sla::imxv", "z", status);
 
     // convert the combined matrix into an axial vector
     Vector<float> v5;
     m2av(rm, v5);
-    vvd(v5[0], 0.006889040510209034, sp_tolerance, "sla::m2av", "X", status);
-    vvd(v5[1], -1.577473205461961, sp_tolerance, "sla::m2av", "Y", status);
-    vvd(v5[2], 0.5201843672856759, sp_tolerance, "sla::m2av", "Z", status);
+    vvd(v5[0], 0.006889040510209034, sp_tolerance, "sla::m2av", "x", status);
+    vvd(v5[1], -1.577473205461961, sp_tolerance, "sla::m2av", "y", status);
+    vvd(v5[2], 0.5201843672856759, sp_tolerance, "sla::m2av", "z", status);
 
     // multiply the axial vector by a scalar and then normalize
     for (int i = 0; i < 3; i++) {
@@ -314,20 +314,20 @@ static void t_vecmat(bool& status) {
     }
     Vector<float> v6;
     float vm = vn(v5, v6);
-    vvd(v6[0], 0.004147420704640065, sp_tolerance, "sla::vn", "X", status);
-    vvd(v6[1], -0.9496888606842218, sp_tolerance, "sla::vn", "Y", status);
-    vvd(v6[2], 0.3131674740355448, sp_tolerance, "sla::vn", "Z", status);
-    vvd(vm, 1661.042127339937, 1.0e-3, "sla::vn", "M", status);
+    vvd(v6[0], 0.004147420704640065, sp_tolerance, "sla::vn", "x", status);
+    vvd(v6[1], -0.9496888606842218, sp_tolerance, "sla::vn", "y", status);
+    vvd(v6[2], 0.3131674740355448, sp_tolerance, "sla::vn", "z", status);
+    vvd(vm, 1661.042127339937, 1.0e-3, "sla::vn", "m", status);
 
     // calculate dot product with the original vector
-    vvd(vdv(v6, v1), -0.3318384698006295, sp_tolerance, "sla::vn", " ", status);
+    vvd(vdv(v6, v1), -0.3318384698006295, sp_tolerance, "sla::vn", "", status);
 
     // calculate cross product with the original vector
     Vector<float> v7;
     vxv(v6, v1, v7);
-    vvd(v7[0], 0.7767720597123304, sp_tolerance, "sla::vxv", "X", status);
-    vvd(v7[1], -0.1645663574562769, sp_tolerance, "sla::vxv", "Y", status);
-    vvd(v7[2], -0.5093390925544726, sp_tolerance, "sla::vxv", "Z", status);
+    vvd(v7[0], 0.7767720597123304, sp_tolerance, "sla::vxv", "x", status);
+    vvd(v7[1], -0.1645663574562769, sp_tolerance, "sla::vxv", "y", status);
+    vvd(v7[2], -0.5093390925544726, sp_tolerance, "sla::vxv", "z", status);
 
     // do same tests in double precision
     Vector<double> dav;
@@ -372,51 +372,51 @@ static void t_vecmat(bool& status) {
 
     Vector<double> dv1;
     dcs2c({3.0123, -0.999}, dv1);
-    vvd(dv1[0], -0.5366267667260525, dp_tolerance, "sla::dcs2c", "X", status);
-    vvd(dv1[1], 0.06977111097651444, dp_tolerance, "sla::dcs2c", "Y", status);
-    vvd(dv1[2], -0.8409302618566215, dp_tolerance, "sla::dcs2c", "Z", status);
+    vvd(dv1[0], -0.5366267667260525, dp_tolerance, "sla::dcs2c", "x", status);
+    vvd(dv1[1], 0.06977111097651444, dp_tolerance, "sla::dcs2c", "y", status);
+    vvd(dv1[2], -0.8409302618566215, dp_tolerance, "sla::dcs2c", "z", status);
 
     Vector<double> dv2, dv3;
     dmxv(drm1, dv1, dv2);
     dmxv(drm2, dv2, dv3);
-    vvd(dv3[0], -0.7267487768696160, dp_tolerance, "sla::dmxv", "X", status);
-    vvd(dv3[1], 0.5011537352639822, dp_tolerance, "sla::dmxv", "Y", status);
-    vvd(dv3[2], 0.4697671220397141, dp_tolerance, "sla::dmxv", "Z", status);
+    vvd(dv3[0], -0.7267487768696160, dp_tolerance, "sla::dmxv", "x", status);
+    vvd(dv3[1], 0.5011537352639822, dp_tolerance, "sla::dmxv", "y", status);
+    vvd(dv3[2], 0.4697671220397141, dp_tolerance, "sla::dmxv", "z", status);
 
     Vector<double> dv4;
     dimxv(drm, dv3, dv4);
-    vvd(dv4[0], -0.5366267667260526, dp_tolerance, "sla::dimxv", "X", status);
-    vvd(dv4[1], 0.06977111097651445, dp_tolerance, "sla::dimxv", "Y", status);
-    vvd(dv4[2], -0.8409302618566215, dp_tolerance, "sla::dimxv", "Z", status);
+    vvd(dv4[0], -0.5366267667260526, dp_tolerance, "sla::dimxv", "x", status);
+    vvd(dv4[1], 0.06977111097651445, dp_tolerance, "sla::dimxv", "y", status);
+    vvd(dv4[2], -0.8409302618566215, dp_tolerance, "sla::dimxv", "z", status);
 
     Vector<double> dv5;
     dm2av(drm, dv5);
-    vvd(dv5[0], 0.006889040510209034, dp_tolerance, "sla::dm2av", "X", status);
-    vvd(dv5[1], -1.577473205461961, dp_tolerance, "sla::dm2av", "Y", status);
-    vvd(dv5[2], 0.5201843672856759, dp_tolerance, "sla::dm2av", "Z", status);
+    vvd(dv5[0], 0.006889040510209034, dp_tolerance, "sla::dm2av", "x", status);
+    vvd(dv5[1], -1.577473205461961, dp_tolerance, "sla::dm2av", "y", status);
+    vvd(dv5[2], 0.5201843672856759, dp_tolerance, "sla::dm2av", "z", status);
 
     for (int j = 0; j < 3; j++) {
         dv5[j] *= 1000.0;
     }
     Vector<double> dv6;
     double dvm = dvn(dv5, dv6);
-    vvd(dv6[0], 0.004147420704640065, dp_tolerance, "sla::dvn", "X", status);
-    vvd(dv6[1], -0.9496888606842218, dp_tolerance, "sla::dvn", "Y", status);
-    vvd(dv6[2], 0.3131674740355448, dp_tolerance, "sla::dvn", "Z", status);
+    vvd(dv6[0], 0.004147420704640065, dp_tolerance, "sla::dvn", "x", status);
+    vvd(dv6[1], -0.9496888606842218, dp_tolerance, "sla::dvn", "y", status);
+    vvd(dv6[2], 0.3131674740355448, dp_tolerance, "sla::dvn", "z", status);
     vvd(dvm, 1661.042127339937, 1.0e-9, "sla::dvn", "M", status);
 
-    vvd(dvdv(dv6, dv1), -0.3318384698006295, dp_tolerance, "sla::dvn", " ", status);
+    vvd(dvdv(dv6, dv1), -0.3318384698006295, dp_tolerance, "sla::dvn", "", status);
 
     Vector<double> dv7;
     dvxv(dv6, dv1, dv7);
-    vvd(dv7[0], 0.7767720597123304, dp_tolerance, "sla::dvxv", "X", status);
-    vvd(dv7[1], -0.1645663574562769, dp_tolerance, "sla::dvxv", "Y", status);
-    vvd(dv7[2], -0.5093390925544726, dp_tolerance, "sla::dvxv", "Z", status);
+    vvd(dv7[0], 0.7767720597123304, dp_tolerance, "sla::dvxv", "x", status);
+    vvd(dv7[1], -0.1645663574562769, dp_tolerance, "sla::dvxv", "y", status);
+    vvd(dv7[2], -0.5093390925544726, dp_tolerance, "sla::dvxv", "z", status);
 }
 
 // tests sla::zd() function
 static void t_zd(bool& status) {
-    vvd(zd(-1.023, -0.876, -0.432), 0.8963914139430839, 1.0e-12, "sla::zd", " ", status);
+    vvd(zd(-1.023, -0.876, -0.432), 0.8963914139430839, 1.0e-12, "sla::zd", "", status);
 }
 
 // tests sla::cd2tf() and sla::dd2tf() procedures
@@ -466,7 +466,7 @@ static void t_cr2tf(bool& status) {
     vvd(double(result.get_fraction()), 6484.0, 1000.0, "sla::cr2tf", "fraction", status);
 
     dr2tf( 4, -3.01234, result);
-    viv((int) result.get_sign(), int('-'), "sla::DR2TF", "S", status);
+    viv((int) result.get_sign(), int('-'), "sla::dr2tf", "sign", status);
     viv(result.get_hours(), 11, "sla::dr2tf", "hours", status);
     viv(result.get_minutes(), 30, "sla::dr2tf", "minutes", status);
     viv(result.get_seconds(), 22, "sla::dr2tf", "seconds", status);
@@ -598,19 +598,19 @@ static void t_dmat(bool& status) {
     int ws[3];
     bool singular = dmat(3, mat, vec, det, ws);
 
-    vvd(mat[0][0], 18.02550629769198, 1.0e-10, "std::dmat", "M00", status);
-    vvd(mat[0][1], -52.16386644917280607, 1.0e-10, "std::dmat", "M01", status);
-    vvd(mat[0][2], 34.37875949717850495, 1.0e-10, "std::dmat", "M02", status);
-    vvd(mat[1][0], -52.16386644917280607, 1.0e-10, "std::dmat", "M10", status);
-    vvd(mat[1][1], 168.1778099099805627, 1.0e-10, "std::dmat", "M11", status);
-    vvd(mat[1][2], -118.0722869694232670, 1.0e-10, "std::dmat", "M12", status);
-    vvd(mat[2][0], 34.37875949717850495, 1.0e-10, "std::dmat", "M20", status);
-    vvd(mat[2][1], -118.0722869694232670, 1.0e-10, "std::dmat", "M21", status);
-    vvd(mat[2][2], 86.50307003740151262, 1.0e-10, "std::dmat", "M22", status);
-    vvd(vec[0], 1.002346480763383, 1.0e-12, "std::dmat", "V0", status);
-    vvd(vec[1], 0.03285594016974583489, 1.0e-12, "std::dmat", "V1", status);
-    vvd(vec[2], 0.004760688414885247309, 1.0e-12, "std::dmat", "V2", status);
-    vvd(det, 0.003658344147359863, 1.0e-12, "std::dmat", "D", status);
+    vvd(mat[0][0], 18.02550629769198, 1.0e-10, "std::dmat", "00", status);
+    vvd(mat[0][1], -52.16386644917280607, 1.0e-10, "std::dmat", "01", status);
+    vvd(mat[0][2], 34.37875949717850495, 1.0e-10, "std::dmat", "02", status);
+    vvd(mat[1][0], -52.16386644917280607, 1.0e-10, "std::dmat", "10", status);
+    vvd(mat[1][1], 168.1778099099805627, 1.0e-10, "std::dmat", "11", status);
+    vvd(mat[1][2], -118.0722869694232670, 1.0e-10, "std::dmat", "12", status);
+    vvd(mat[2][0], 34.37875949717850495, 1.0e-10, "std::dmat", "20", status);
+    vvd(mat[2][1], -118.0722869694232670, 1.0e-10, "std::dmat", "21", status);
+    vvd(mat[2][2], 86.50307003740151262, 1.0e-10, "std::dmat", "22", status);
+    vvd(vec[0], 1.002346480763383, 1.0e-12, "std::dmat", "v0", status);
+    vvd(vec[1], 0.03285594016974583489, 1.0e-12, "std::dmat", "v1", status);
+    vvd(vec[2], 0.004760688414885247309, 1.0e-12, "std::dmat", "v2", status);
+    vvd(det, 0.003658344147359863, 1.0e-12, "std::dmat", "d", status);
     viv((int) singular, 0, "std::dmat", "singular", status);
 }
 
@@ -626,15 +626,15 @@ static void t_smat(bool& status) {
     int w[3];
     bool singular = smat(3, (float*) a, v, d, w);
 
-    vvd(a[0][0], 18.02550629769198, 1.0e-2, "sla::smat", "a00", status);
-    vvd(a[0][1], -52.16386644917481, 1.0e-2, "sla::smat", "a01", status);
-    vvd(a[0][2], 34.37875949717994, 1.0e-2, "sla::smat", "a02", status);
-    vvd(a[1][0], -52.16386644917477, 1.0e-2, "sla::smat", "a10", status);
-    vvd(a[1][1], 168.1778099099869, 1.0e-1, "sla::smat", "a11", status);
-    vvd(a[1][2], -118.0722869694278, 1.0e-2, "sla::smat", "a12", status);
-    vvd(a[2][0], 34.37875949717988, 1.0e-2, "sla::smat", "a20", status);
-    vvd(a[2][1], -118.07228696942770, 1.0e-2, "sla::smat", "a21", status);
-    vvd(a[2][2], 86.50307003740468, 1.0e-2, "sla::smat", "a22", status);
+    vvd(a[0][0], 18.02550629769198, 1.0e-2, "sla::smat", "00", status);
+    vvd(a[0][1], -52.16386644917481, 1.0e-2, "sla::smat", "01", status);
+    vvd(a[0][2], 34.37875949717994, 1.0e-2, "sla::smat", "02", status);
+    vvd(a[1][0], -52.16386644917477, 1.0e-2, "sla::smat", "10", status);
+    vvd(a[1][1], 168.1778099099869, 1.0e-1, "sla::smat", "11", status);
+    vvd(a[1][2], -118.0722869694278, 1.0e-2, "sla::smat", "12", status);
+    vvd(a[2][0], 34.37875949717988, 1.0e-2, "sla::smat", "20", status);
+    vvd(a[2][1], -118.07228696942770, 1.0e-2, "sla::smat", "21", status);
+    vvd(a[2][2], 86.50307003740468, 1.0e-2, "sla::smat", "22", status);
     vvd(v[0], 1.002346480763383, 1.0e-4, "sla::smat", "v0", status);
     vvd(v[1], 0.0328559401697292, 1.0e-4, "sla::smat", "v1", status);
     vvd(v[2], 0.004760688414898454, 1.0e-4, "sla::smat", "v2", status);
@@ -697,7 +697,7 @@ static void t_epj(bool& status) {
 
 // tests sla::epb2d() function
 static void t_epb2d(bool& status) {
-    vvd(epb2d(1975.5), 42595.5995279655, 1.0e-7, "sla_EPB2D", "", status);
+    vvd(epb2d(1975.5), 42595.5995279655, 1.0e-7, "sla::epb2d", "", status);
 }
 
 // tests sla::epb() function
@@ -774,7 +774,8 @@ static void t_pa(bool& status) {
 
 // tests sla::rcc() function
 static void t_rcc(bool& status) {
-    vvd(rcc(48939.123, 0.76543, 5.0123, 5525.242, 3190.0), -1.280131613589158e-3, 1.0e-15, "sla::rcc", "", status);
+    vvd(rcc(48939.123, 0.76543, 5.0123, 5525.242, 3190.0),
+        -1.280131613589158e-3, 1.0e-15, "sla::rcc", "", status);
 }
 
 // tests sla::rcc() function
@@ -796,14 +797,14 @@ static void t_prebn(bool& status) {
 static void t_preces(bool& status) {
     Spherical<double> pos = {6.28, -1.123};
     preces(CAT_FK4, 1925.0, 1950.0, pos);
-    vvd(pos.s_a,  0.002403604864728447, 1.0e-12, "sla::preces", "RA", status);
-    vvd(pos.s_b, -1.120570643322045, 1.0e-12, "sla::preces", "Dec", status);
+    vvd(pos.s_a,  0.002403604864728447, 1.0e-12, "sla::preces", "ra", status);
+    vvd(pos.s_b, -1.120570643322045, 1.0e-12, "sla::preces", "dec", status);
 
     pos.s_a = 0.0123;
     pos.s_b = 1.0987;
     preces(CAT_FK5, 2050.0, 1990.0, pos);
-    vvd(pos.s_a, 6.282003602708382, 1.0e-12, "sla::preces", "RA", status);
-    vvd(pos.s_b, 1.092870326188383, 1.0e-12, "sla::preces", "Dec", status);
+    vvd(pos.s_a, 6.282003602708382, 1.0e-12, "sla::preces", "ra", status);
+    vvd(pos.s_b, 1.092870326188383, 1.0e-12, "sla::preces", "dec", status);
 }
 
 // tests sla::rcc() function
@@ -812,8 +813,8 @@ static void t_supgal(bool& status) {
     Spherical<double> gal;
 
     supgal(sgal, gal);
-    vvd(gal.s_a, 3.798775860769474, 1.0e-12, "sla::supgal", "long", status);
-    vvd(gal.s_b, -0.1397070490669407, 1.0e-12, "sla::supgal", "lat", status);
+    vvd(gal.s_a, 3.798775860769474, 1.0e-12, "sla::supgal", "longitude", status);
+    vvd(gal.s_b, -0.1397070490669407, 1.0e-12, "sla::supgal", "latitude", status);
 }
 
 // tests sla::rverot(), sla::rvgalc(), sla::rvlg(), sla::rvlsrd(), and sla::rvlsrk() functions
