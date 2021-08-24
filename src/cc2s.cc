@@ -33,13 +33,13 @@ namespace sla {
  * @param spherical Output: structure containing spherical coordinates (in radians) of the given point; these
  *  coordinates are longitude (positive anticlockwise looking from the positive latitude pole) and latitude.
  */
-void cc2s(const Vector<float> cartesian, SphericalDir<float>& spherical) {
+void cc2s(const Vector<float> cartesian, Spherical<float>& spherical) {
     const float x = cartesian[0];
     const float y = cartesian[1];
     const float z = cartesian[2];
     const float r = std::sqrt(x * x + y * y);
-    spherical.sd_a = (r == 0.0f) ? 0.0f : std::atan2(y, x);
-    spherical.sd_b = (z == 0.0f) ? 0.0f : std::atan2(z, r);
+    spherical.s_a = (r == 0.0f) ? 0.0f : std::atan2(y, x);
+    spherical.s_b = (z == 0.0f) ? 0.0f : std::atan2(z, r);
 }
 
 }

@@ -67,17 +67,17 @@ using Matrix = T[3][3];
 
 /// Representation of partial spherical coordinates: longitude/latitude, or right ascension/declination.
 template <typename T, std::enable_if_t<std::is_floating_point<T>::value, bool> = true>
-struct SphericalDir {
-    T sd_a; ///< longitude or RA (radians)
-    T sd_b; ///< latitude or Dec (radians)
+struct Spherical {
+    T s_a; ///< longitude or RA (radians)
+    T s_b; ///< latitude or Dec (radians)
 };
 
 /// Representation of full spherical coordinates: longitude, latitude, and distance.
 template <typename T, std::enable_if_t<std::is_floating_point<T>::value, bool> = true>
-struct SphericalCoords {
-    T sc_long; ///< longitude (radians)
-    T sc_lat;  ///< latitude (radians)
-    T sc_dist; ///< distance along long/lat ray
+struct SphericalPos {
+    T sp_long; ///< longitude (radians)
+    T sp_lat;  ///< latitude (radians)
+    T sp_dist; ///< distance along long/lat ray
 };
 
 /// Representation of a date of Gregorian calendar.
@@ -135,10 +135,10 @@ float ranorm(float angle);
 double dranrm(double angle);
 void av2m(const Vector<float> vec, Matrix<float> mat);
 void dav2m(const Vector<double> vec, Matrix<double> mat);
-void cc2s(const Vector<float> cartesian, SphericalDir<float>& spherical);
-void dcc2s(const Vector<double> cartesian, SphericalDir<double>& spherical);
-void cs2c(const SphericalDir<float>& spherical, Vector<float> cartesian);
-void dcs2c(const SphericalDir<double>& spherical, Vector<double> cartesian);
+void cc2s(const Vector<float> cartesian, Spherical<float>& spherical);
+void dcc2s(const Vector<double> cartesian, Spherical<double>& spherical);
+void cs2c(const Spherical<float>& spherical, Vector<float> cartesian);
+void dcs2c(const Spherical<double>& spherical, Vector<double> cartesian);
 void euler(const char* order, float phi, float theta, float psi, Matrix<float> mat);
 void deuler(const char* order, double phi, double theta, double psi, Matrix<double> mat);
 void imxv(const Matrix<float> mat, const Vector<float> va, Vector<float> vb);
@@ -211,16 +211,16 @@ void precl(double ep0, double ep1, Matrix<double> mat);
 void prenut(double je, double mjd, Matrix<double> mat);
 double dsepv(const Vector<double> va, const Vector<double> vb);
 float sepv(const Vector<float> va, const Vector<float> vb);
-double dsep(const SphericalDir<double>& sa, const SphericalDir<double>& sb);
-float sep(const SphericalDir<float>& sa, const SphericalDir<float>& sb);
+double dsep(const Spherical<double>& sa, const Spherical<double>& sb);
+float sep(const Spherical<float>& sa, const Spherical<float>& sb);
 void prebn(double be0, double be1, Matrix<double> mat);
-void preces(Catalogue system, double ep0, double ep1, SphericalDir<double>& pos);
-void supgal(const SphericalDir<double>& sgal, SphericalDir<double>& gal);
-float rverot(float phi, const SphericalDir<float>& pos, float stime);
-float rvgalc(const SphericalDir<float>& pos);
-float rvlg(const SphericalDir<float>& pos);
-float rvlsrd(const SphericalDir<float>& pos);
-float rvlsrk(const SphericalDir<float>& pos);
+void preces(Catalogue system, double ep0, double ep1, Spherical<double>& pos);
+void supgal(const Spherical<double>& sgal, Spherical<double>& gal);
+float rverot(float phi, const Spherical<float>& pos, float stime);
+float rvgalc(const Spherical<float>& pos);
+float rvlg(const Spherical<float>& pos);
+float rvlsrd(const Spherical<float>& pos);
+float rvlsrk(const Spherical<float>& pos);
 void wait(float seconds);
 
 } // sla namespace

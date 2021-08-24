@@ -41,7 +41,7 @@ namespace sla {
  * @return Component of "standard" solar motion in direction R2000,D2000 (km/s); the result is positive when the Sun
  *   is receding from the given point on the sky.
  */
-float rvlsrk(const SphericalDir<float>& pos) {
+float rvlsrk(const Spherical<float>& pos) {
     /*
      * Standard solar motion (from Methods of Experimental Physics, ed Meeks, vol 12, part C, sec 6.1.5.2, p281):
      *

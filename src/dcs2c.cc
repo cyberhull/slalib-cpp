@@ -30,11 +30,11 @@ namespace sla {
  * @param cartesian Output: 3-component unit vector; these coordinates are right handed, with the x axis at zero
  *  longitude and latitude, and the z axis at the positive latitude pole.
  */
-void dcs2c(const SphericalDir<double>& spherical, Vector<double> cartesian) {
-    const double cos_b = std::cos(spherical.sd_b);
-    cartesian[0] = std::cos(spherical.sd_a) * cos_b;
-    cartesian[1] = std::sin(spherical.sd_a) * cos_b;
-    cartesian[2] = std::sin(spherical.sd_b);
+void dcs2c(const Spherical<double>& spherical, Vector<double> cartesian) {
+    const double cos_b = std::cos(spherical.s_b);
+    cartesian[0] = std::cos(spherical.s_a) * cos_b;
+    cartesian[1] = std::sin(spherical.s_a) * cos_b;
+    cartesian[2] = std::sin(spherical.s_b);
 }
 
 }

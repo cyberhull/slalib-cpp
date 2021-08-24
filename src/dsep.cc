@@ -28,7 +28,7 @@ namespace sla {
  * @param sb Spherical coordinates of the other point (DEC, latitude, etc.) (radians).
  * @return The angle, in radians, between the two points; it is always positive.
  */
-double dsep(const SphericalDir<double>& sa, const SphericalDir<double>& sb) {
+double dsep(const Spherical<double>& sa, const Spherical<double>& sb) {
     // convert coordinates from spherical to Cartesian
     Vector<double> va, vb;
     dcs2c(sa, va);

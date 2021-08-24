@@ -41,7 +41,7 @@ namespace sla {
  * @return Component of "peculiar" solar motion in direction R2000,D2000 (km/s); the result is positive when the Sun
  *   is receding from the given point on the sky.
  */
-float rvlsrd(const SphericalDir<float>& pos) {
+float rvlsrd(const Spherical<float>& pos) {
     /*
      * Peculiar solar motion from Delhaye 1965: in Galactic Cartesian coordinates (+9,+12,+7) km/s. This corresponds
      * to about 16.6 km/s towards Galactic coordinates L2 = 53 deg, B2 = +25 deg, or RA,Dec 17 49 58.7 +28 07 04 J2000.

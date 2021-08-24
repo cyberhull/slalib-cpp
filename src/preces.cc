@@ -24,7 +24,7 @@ namespace sla {
  *
  * The epochs are Besselian if `system`==`CAT_FK4` and Julian if it's `CAT_FK5`. For example, to precess coordinates
  * in the old system from equinox 1900.0 to 1950.0 the call would be:
- *   SphericalDir<double> pos = {<RA>, <Dec>};
+ *   Spherical<double> pos = {<RA>, <Dec>};
  *   preces(CAT_FK4, 1900.0, 1950.0, pos);
  *
  * This function will NOT correctly convert between the old and the new systems - for example conversion from B1950
@@ -38,7 +38,7 @@ namespace sla {
  * @param pos RA,Dec: mean equator & equinox of epoch `ep0` (argument) or epoch `ep1` (return value); if an invalid
  *   `system` is specified, values of -99.0,-99.0 will be returned.
  */
-void preces(Catalogue system, double ep0, double ep1, SphericalDir<double>& pos) {
+void preces(Catalogue system, double ep0, double ep1, Spherical<double>& pos) {
     // validate reference system
     switch (system) {
         case CAT_FK4:
@@ -60,11 +60,11 @@ void preces(Catalogue system, double ep0, double ep1, SphericalDir<double>& pos)
 
             // convert back to ra,Dec
             dcc2s(v2, pos);
-            pos.sd_a = dranrm(pos.sd_a);
+            pos.s_a = dranrm(pos.s_a);
             break;
         default:
-            pos.sd_a = -99.0;
-            pos.sd_b = -99.0;
+            pos.s_a = -99.0;
+            pos.s_b = -99.0;
     }
 }
 

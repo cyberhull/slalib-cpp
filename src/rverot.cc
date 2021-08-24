@@ -35,10 +35,10 @@ namespace sla {
  * @return Component of Earth rotation in direction RA,DA (km/s); the result is positive when the observatory is
  *   receding from the given point on the sky.
  */
-float rverot(float phi, const SphericalDir<float>& pos, float stime) {
+float rverot(float phi, const Spherical<float>& pos, float stime) {
     // nominal mean sidereal speed of Earth equator in km/s (the actual value is about 0.4651).
     constexpr float EARTH_SPEED = 0.4655f;
-    return EARTH_SPEED * std::cos(phi) * std::sin(stime - pos.sd_a) * std::cos(pos.sd_b);
+    return EARTH_SPEED * std::cos(phi) * std::sin(stime - pos.s_a) * std::cos(pos.s_b);
 }
 
 }

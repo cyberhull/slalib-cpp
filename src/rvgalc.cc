@@ -34,7 +34,7 @@ namespace sla {
  * @return Component of dynamical LSR motion in direction R2000,D2000 (km/s); the result is positive when the
  *   dynamical LSR is receding from the given point on the sky.
  */
-float rvgalc(const SphericalDir<float>& pos) {
+float rvgalc(const Spherical<float>& pos) {
     /*
      * LSR velocity due to Galactic rotation
      *

@@ -166,16 +166,16 @@ static void t_djcal(bool& status) {
 // tests sla::cc2s() and dcc2s() procedures
 static void t_cc2s(bool& status) {
     const Vector<float> V = {100.0f, -50.0f, 25.0f};
-    SphericalDir<float> sp_spherical;
+    Spherical<float> sp_spherical;
     cc2s(V, sp_spherical);
-    vvd(sp_spherical.sd_a, -0.4636476090008061, 1.0e-6, "sla::cc2s", "A", status );
-    vvd(sp_spherical.sd_b, 0.2199879773954594, 1.0e-6, "sla::cc2s", "B", status );
+    vvd(sp_spherical.s_a, -0.4636476090008061, 1.0e-6, "sla::cc2s", "A", status );
+    vvd(sp_spherical.s_b, 0.2199879773954594, 1.0e-6, "sla::cc2s", "B", status );
 
     const Vector<double> DV = {100.0, -50.0, 25.0};
-    SphericalDir<double> dp_spherical;
+    Spherical<double> dp_spherical;
     dcc2s(DV, dp_spherical);
-    vvd(dp_spherical.sd_a, -0.4636476090008061, 1.0e-12, "sla::dcc2s", "A", status );
-    vvd(dp_spherical.sd_b, 0.2199879773954594, 1.0e-12, "sla::dcc2s", "B", status );
+    vvd(dp_spherical.s_a, -0.4636476090008061, 1.0e-12, "sla::dcc2s", "A", status );
+    vvd(dp_spherical.s_b, 0.2199879773954594, 1.0e-12, "sla::dcc2s", "B", status );
 }
 
 // tests sla::cldj() procedure
@@ -551,7 +551,7 @@ static void t_ref(bool& status) {
     vvd(REFA2, 2.034523658888048e-4, 1.0e-12, "sla::atmdsp", "a", status);
     vvd(REFB2, -2.250855362179e-7, 1.0e-15, "sla::atmdsp", "b", status);
 
-    const SphericalDir<double> spherical1 = {0.345, 0.456};
+    const Spherical<double> spherical1 = {0.345, 0.456};
     Vector<double> cartesian1, cartesian2;
     dcs2c(spherical1, cartesian1);
     refv(cartesian1, refa, refb, cartesian2);
@@ -559,7 +559,7 @@ static void t_ref(bool& status) {
     vvd(cartesian2[1], 0.3035794890562339, 1.0e-12, "sla::refv", "y1", status);
     vvd(cartesian2[2], 0.4407256738589851, 1.0e-12, "sla::refv", "z1", status);
 
-    const SphericalDir<double> spherical2 = {3.7, 0.03};
+    const Spherical<double> spherical2 = {3.7, 0.03};
     dcs2c(spherical2, cartesian1);
     refv(cartesian1, refa, refb, cartesian2);
     vvd(cartesian2[0], -0.8476187691681673, 1.0e-12, "sla::refv", "x2", status);
@@ -756,11 +756,11 @@ static void t_sep(bool& status) {
     const Vector<double> vd1 = {1.0, 0.1, 0.2};
     const Vector<double> vd2 = {-3.0, 1.0e-3, 0.2};
 
-    SphericalDir<double> sd1, sd2;
+    Spherical<double> sd1, sd2;
     dcc2s (vd1, sd1);
     dcc2s (vd2, sd2);
-    const SphericalDir<float> sf1 = {(float) sd1.sd_a, (float) sd1.sd_b};
-    const SphericalDir<float> sf2 = {(float) sd2.sd_a, (float) sd2.sd_b};
+    const Spherical<float> sf1 = {(float) sd1.s_a, (float) sd1.s_b};
+    const Spherical<float> sf2 = {(float) sd2.s_a, (float) sd2.s_b};
 
     vvd(dsep(sd1, sd2), 2.8603919190246608, 1.0e-7, "sla::dsep", "", status);
     vvd(sep(sf1, sf2), 2.8603919190246608, 1.0e-4, "sla::sep", "", status);
@@ -796,26 +796,26 @@ static void t_prebn(bool& status) {
 
 // tests sla::rcc() function
 static void t_preces(bool& status) {
-    SphericalDir<double> pos = {6.28, -1.123};
+    Spherical<double> pos = {6.28, -1.123};
     preces(CAT_FK4, 1925.0, 1950.0, pos);
-    vvd(pos.sd_a,  0.002403604864728447, 1.0e-12, "sla::preces", "RA", status);
-    vvd(pos.sd_b, -1.120570643322045, 1.0e-12, "sla::preces", "Dec", status);
+    vvd(pos.s_a,  0.002403604864728447, 1.0e-12, "sla::preces", "RA", status);
+    vvd(pos.s_b, -1.120570643322045, 1.0e-12, "sla::preces", "Dec", status);
 
-    pos.sd_a = 0.0123;
-    pos.sd_b = 1.0987;
+    pos.s_a = 0.0123;
+    pos.s_b = 1.0987;
     preces(CAT_FK5, 2050.0, 1990.0, pos);
-    vvd(pos.sd_a, 6.282003602708382, 1.0e-12, "sla::preces", "RA", status);
-    vvd(pos.sd_b, 1.092870326188383, 1.0e-12, "sla::preces", "Dec", status);
+    vvd(pos.s_a, 6.282003602708382, 1.0e-12, "sla::preces", "RA", status);
+    vvd(pos.s_b, 1.092870326188383, 1.0e-12, "sla::preces", "Dec", status);
 }
 
 // tests sla::rcc() function
 static void t_supgal(bool& status) {
-    const SphericalDir<double> sgal = {6.1, -1.4};
-    SphericalDir<double> gal;
+    const Spherical<double> sgal = {6.1, -1.4};
+    Spherical<double> gal;
 
     supgal(sgal, gal);
-    vvd(gal.sd_a, 3.798775860769474, 1.0e-12, "sla::supgal", "long", status);
-    vvd(gal.sd_b, -0.1397070490669407, 1.0e-12, "sla::supgal", "lat", status);
+    vvd(gal.s_a, 3.798775860769474, 1.0e-12, "sla::supgal", "long", status);
+    vvd(gal.s_b, -0.1397070490669407, 1.0e-12, "sla::supgal", "lat", status);
 }
 
 // tests sla::rverot(), sla::rvgalc(), sla::rvlg(), sla::rvlsrd(), and sla::rvlsrk() functions

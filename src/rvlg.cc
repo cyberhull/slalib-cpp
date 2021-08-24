@@ -32,7 +32,7 @@ namespace sla {
  * @return Component of SOLAR motion in direction `pos` (km/s); the result is positive when the Sun is receding
  *   from the given point on the sky.
  */
-float rvlg(const SphericalDir<float>& pos) {
+float rvlg(const Spherical<float>& pos) {
     /*
      * Solar velocity due to Galactic rotation and translation
      *

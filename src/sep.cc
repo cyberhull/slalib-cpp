@@ -28,10 +28,10 @@ namespace sla {
  * @param sb Spherical coordinates of the other point (DEC, latitude, etc.) (radians).
  * @return The angle, in radians, between the two points; it is always positive.
  */
-float sep(const SphericalDir<float>& sa, const SphericalDir<float>& sb) {
+float sep(const Spherical<float>& sa, const Spherical<float>& sb) {
     // use double precision version
-    const SphericalDir<double> da = {sa.sd_a, sa.sd_b};
-    const SphericalDir<double> db = {sb.sd_a, sb.sd_b};
+    const Spherical<double> da = {sa.s_a, sa.s_b};
+    const Spherical<double> db = {sb.s_a, sb.s_b};
     return (float) dsep(da, db);
 }
 

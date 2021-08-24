@@ -35,7 +35,7 @@ namespace sla {
  * @param sgal Supergalactic longitude and latitude (radians).
  * @param gal Return value: galactic longitude and latitude L2,B2 (radians).
  */
-void supgal(const SphericalDir<double>& sgal, SphericalDir<double>& gal) {
+void supgal(const Spherical<double>& sgal, Spherical<double>& gal) {
     /*
      *  System of supergalactic coordinates:
      *
@@ -62,8 +62,8 @@ void supgal(const SphericalDir<double>& sgal, SphericalDir<double>& gal) {
     dcc2s(v2, gal);
 
     // express in conventional ranges
-    gal.sd_a = dranrm(gal.sd_a);
-    gal.sd_b = drange(gal.sd_b);
+    gal.s_a = dranrm(gal.s_a);
+    gal.s_b = drange(gal.s_b);
 }
 
 }
