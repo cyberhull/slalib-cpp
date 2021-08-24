@@ -45,7 +45,7 @@ void supgal(const SphericalDir<double>& sgal, SphericalDir<double>& gal) {
      *
      * Galactic to supergalactic rotation matrix:
      */
-    static const matrix<double> mat = {
+    static const Matrix<double> mat = {
         {-0.735742574804, +0.677261296414, +0.000000000000},
         {-0.074553778365, -0.080991471307, +0.993922590400},
         {+0.673145302109, +0.731271165817, +0.110081262225}

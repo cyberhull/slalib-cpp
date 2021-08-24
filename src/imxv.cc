@@ -30,7 +30,7 @@ namespace sla {
  * @param va Input vector; may be the same as output.
  * @param vb Output: vector; may be the same as input.
  */
-void imxv(const matrix<float> rm, const Vector<float> va, Vector<float> vb) {
+void imxv(const Matrix<float> rm, const Vector<float> va, Vector<float> vb) {
     // inverse of matrix rm * vector va -> vector result
     Vector<float> result;
     for (int j = 0; j < 3; j++) {

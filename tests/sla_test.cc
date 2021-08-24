@@ -238,7 +238,7 @@ static void t_vecmat(bool& status) {
 
     // make a rotation matrix
     Vector<float> av;
-    matrix<float> rm1;
+    Matrix<float> rm1;
     av[0] = -0.123f;
     av[1] = 0.0987f;
     av[2] = 0.0654f;
@@ -254,7 +254,7 @@ static void t_vecmat(bool& status) {
     vvd(rm1[2][2], 0.9875948309655174, sp_tolerance, "sla::av2m", "22", status);
 
     // make another
-    matrix<float> rm2;
+    Matrix<float> rm2;
     euler("YZY", 2.345E0, -0.333E0, 2.222E0, rm2);
     vvd(rm2[0][0], -0.1681574770810878, sp_tolerance, "sla::euler", "00", status);
     vvd(rm2[0][1], 0.1981362273264315, sp_tolerance, "sla::euler", "01", status);
@@ -267,7 +267,7 @@ static void t_vecmat(bool& status) {
     vvd(rm2[2][2], -0.1136384607117296, sp_tolerance, "sla::euler", "22", status);
 
     // combine them
-    matrix<float> rm;
+    Matrix<float> rm;
     mxm(rm2, rm1, rm);
     vvd(rm[0][0], -0.09010460088585805, sp_tolerance, "sla::mxm", "00", status);
     vvd(rm[0][1], 0.3075993402463796, sp_tolerance, "sla::mxm", "01", status);
@@ -331,7 +331,7 @@ static void t_vecmat(bool& status) {
 
     // do same tests in double precision
     Vector<double> dav;
-    matrix<double> drm1;
+    Matrix<double> drm1;
     dav[0] = -0.123;
     dav[1] = 0.0987;
     dav[2] = 0.0654;
@@ -346,7 +346,7 @@ static void t_vecmat(bool& status) {
     vvd(drm1[2][1], 0.1256229973879967, dp_tolerance, "sla::dav2m", "21", status);
     vvd(drm1[2][2], 0.9875948309655174, dp_tolerance, "sla::dav2m", "22", status);
 
-    matrix<double> drm2;
+    Matrix<double> drm2;
     deuler("YZY", 2.345, -0.333, 2.222, drm2);
     vvd(drm2[0][0], -0.1681574770810878, dp_tolerance, "sla::deuler", "00", status);
     vvd(drm2[0][1], 0.1981362273264315, dp_tolerance, "sla::deuler", "01", status);
@@ -358,7 +358,7 @@ static void t_vecmat(bool& status) {
     vvd(drm2[2][1], -0.2599853247796050, dp_tolerance, "sla::deuler", "21", status);
     vvd(drm2[2][2], -0.1136384607117296, dp_tolerance, "sla::deuler", "22", status);
 
-    matrix<double> drm;
+    Matrix<double> drm;
     dmxm(drm2, drm1, drm);
     vvd(drm[0][0], -0.09010460088585805, dp_tolerance, "sla::dmxm", "00", status);
     vvd(drm[0][1], 0.3075993402463796, dp_tolerance, "sla::dmxm", "01", status);
@@ -575,7 +575,7 @@ static void t_ref(bool& status) {
 
 // tests sla::ecmat() function
 static void t_ecmat(bool& status) {
-    matrix<double> rm;
+    Matrix<double> rm;
     ecmat(41234.0, rm);
     vvd(rm[0][0], 1.0, 1.0e-12, "sla::ecmat", "00", status);
     vvd(rm[0][1], 0.0, 1.0e-12, "sla::ecmat", "01", status);
@@ -590,7 +590,7 @@ static void t_ecmat(bool& status) {
 
 // tests sla::dmat() function
 static void t_dmat(bool& status) {
-    matrix<double> mat = {
+    Matrix<double> mat = {
         {2.22,     1.6578,     1.380522    },
         {1.6578,   1.380522,   1.22548578  },
         {1.380522, 1.22548578, 1.1356276122}
@@ -619,7 +619,7 @@ static void t_dmat(bool& status) {
 
 // tests sla::smat() function
 static void t_smat(bool& status) {
-    matrix<float> a = {
+    Matrix<float> a = {
         {2.22f, 1.6578f, 1.380522f},
         {1.6578f, 1.380522f, 1.22548578f},
         {1.380522f, 1.22548578f, 1.1356276122f}
@@ -664,7 +664,7 @@ static void t_altaz(bool& status) {
 
 // tests sla::nut(), sla::nutc(), and sla::nutc80() functions
 static void t_nut(bool& status) {
-    matrix<double> mat;
+    Matrix<double> mat;
     nut(46012.34, mat);
     vvd(mat[0][0],  9.999999969492166e-1, 1.0e-12, "sla::nut", "00", status);
     vvd(mat[0][1],  7.166577986249302e-5, 1.0e-12, "sla::nut", "01", status);
@@ -710,7 +710,7 @@ static void t_epb(bool& status) {
 
 // tests sla::prec() and sla::precl() functions
 static void t_prec(bool& status) {
-    matrix<double> mat;
+    Matrix<double> mat;
 
     prec(1925.0, 1975.0, mat);
     vvd(mat[0][0],  9.999257249850045e-1, 1.0e-12, "sla::prec", "00", status);
@@ -737,7 +737,7 @@ static void t_prec(bool& status) {
 
 // tests sla::prenut() function
 static void t_prenut(bool& status) {
-    matrix<double> mat;
+    Matrix<double> mat;
     prenut(1985.0, 50123.4567, mat);
     vvd(mat[0][0],  9.999962358680738e-1, 1.0e-12, "sla::prenut", "00", status);
     vvd(mat[0][1], -2.516417057665452e-3, 1.0e-12, "sla::prenut", "01", status);
@@ -782,7 +782,7 @@ static void t_rcc(bool& status) {
 
 // tests sla::rcc() function
 static void t_prebn(bool& status) {
-    matrix<double> mat;
+    Matrix<double> mat;
     prebn(1925.0, 1975.0, mat);
     vvd(mat[0][0],  9.999257613786738e-1, 1.0e-12, "sla::prebn", "00", status);
     vvd(mat[0][1], -1.117444640880939e-2, 1.0e-12, "sla::prebn", "01", status);

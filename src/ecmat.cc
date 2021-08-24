@@ -30,7 +30,7 @@ namespace sla {
  * @param rmat Return value: rotation matrix; the matrix is in the sense  V(ecl) == RMAT * V(equ); the equator,
  *   equinox and ecliptic are mean of date.
  */
-void ecmat(double date, matrix<double> rmat) {
+void ecmat(double date, Matrix<double> rmat) {
     // conversion constant: arc seconds to radians
     constexpr double ARCSECONDS2RADIANS = 0.484813681109535994e-5;
 

@@ -30,7 +30,7 @@ namespace sla {
  * @param va Vector to transform.
  * @param vb Output: vector `va` multiplied by matrix `rm`; can be the same as `va`.
  */
-void mxv(const matrix<float> rm, const Vector<float> va, Vector<float> vb) {
+void mxv(const Matrix<float> rm, const Vector<float> va, Vector<float> vb) {
     // matrix `rm` * vector `va` -> vector `result`
     Vector<float> result;
     for (int j = 0; j < 3; j++) {

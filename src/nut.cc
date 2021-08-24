@@ -40,7 +40,7 @@ namespace sla {
  *   and equinox of date; the matrix represents forced nutation (but not free core nutation) plus corrections to the
  *   IAU~1976 precession model.
  */
-void nut(double date, matrix<double> mat) {
+void nut(double date, Matrix<double> mat) {
     double psi, eps, eps0;
 
     // nutation components and mean obliquity

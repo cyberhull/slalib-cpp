@@ -30,9 +30,9 @@ namespace sla {
  * @param b Second matrix (second multiplicand).
  * @param c Output: product of the two matrices; may be the same matrix as either `a` or `b`.
  */
-void dmxm(const matrix<double> a, const matrix<double> b, matrix<double> c) {
+void dmxm(const Matrix<double> a, const Matrix<double> b, Matrix<double> c) {
     // multiply into scratch matrix
-    matrix <double> result;
+    Matrix <double> result;
     for (int i = 0; i < 3; i++) {
         for (int j = 0; j < 3; j++) {
             double element = 0.0;

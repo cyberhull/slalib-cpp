@@ -34,7 +34,7 @@ namespace sla {
  * @param be1 Ending Besselian epoch.
  * @param mat Return value: precession matrix; the matrix is in the sense v(be1) = mat * v(ep0).
  */
-void prebn(double be0, double be1, matrix<double> mat) {
+void prebn(double be0, double be1, Matrix<double> mat) {
     // arc seconds to radians
     constexpr double ARCSECS_2_RADIANS = 0.484813681109535994e-5;
 

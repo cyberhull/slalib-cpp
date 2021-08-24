@@ -39,7 +39,7 @@ namespace sla {
  * @param ep1 Ending epoch: TDB (Barycentric Dynamical Time; loosely ET, Ephemeris Time) Julian epoch.
  * @param mat Return value: precession matrix; the matrix is in the sense v(ep1) = mat * v(ep0).
  */
-void prec(double ep0, double ep1, matrix<double> mat) {
+void prec(double ep0, double ep1, Matrix<double> mat) {
     // arc seconds to radians
     constexpr double ARCSECS_2_RADIANS = 0.484813681109535994e-5;
 

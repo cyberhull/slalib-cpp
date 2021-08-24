@@ -30,9 +30,9 @@ namespace sla {
  * @param b Second matrix (second multiplicand).
  * @param c Output: product of the two matrices; may be the same matrix as either `a` or `b`.
  */
-void mxm(const matrix<float> a, const matrix<float> b, matrix<float> c) {
+void mxm(const Matrix<float> a, const Matrix<float> b, Matrix<float> c) {
     // multiply into scratch matrix
-    matrix <float> result;
+    Matrix <float> result;
     for (int i = 0; i < 3; i++) {
         for (int j = 0; j < 3; j++) {
             float element = 0.0f;

@@ -30,8 +30,8 @@ namespace sla {
  *   Ephemeris Time); TT (Terrestrial Time) will also do, or even UTC.
  * @param mat Return value: combined precession/nutation matrix; The matrix is in the sense v(true) = mat * v(mean).
  */
-void prenut(double epoch, double date, matrix<double> mat) {
-    matrix<double> pmat, nmat;
+void prenut(double epoch, double date, Matrix<double> mat) {
+    Matrix<double> pmat, nmat;
 
     // precession
     prec(epoch, epj(date), pmat);

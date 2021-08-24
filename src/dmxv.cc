@@ -30,7 +30,7 @@ namespace sla {
  * @param va Vector to transform.
  * @param vb Output: vector `va` multiplied by matrix `rm`; can be the same as `va`.
  */
-void dmxv(const matrix<double> rm, const Vector<double> va, Vector<double> vb) {
+void dmxv(const Matrix<double> rm, const Vector<double> va, Vector<double> vb) {
     // matrix `rm` * vector `va` -> vector `result`
     Vector<double> result;
     for (int j = 0; j < 3; j++) {

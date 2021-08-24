@@ -50,8 +50,8 @@ namespace sla {
  * @param psi Third rotation (radians).
  * @param rmat Output: rotation matrix.
  */
-void euler(const char* order, const float phi, const float theta, const float psi, matrix<float> rmat) {
-    matrix<double> result;
+void euler(const char* order, const float phi, const float theta, const float psi, Matrix<float> rmat) {
+    Matrix<double> result;
     deuler(order, double(phi), double(theta), double(psi), result);
 
     // copy the result

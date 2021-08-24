@@ -44,7 +44,7 @@ void preces(Catalogue system, double ep0, double ep1, SphericalDir<double>& pos)
         case CAT_FK4:
         case CAT_FK5:
             // generate appropriate precession matrix
-            matrix<double> m_precession;
+            Matrix<double> m_precession;
             if (system == CAT_FK4) {
                 prebn(ep0, ep1, m_precession);
             } else {

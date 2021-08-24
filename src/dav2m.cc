@@ -31,7 +31,7 @@ namespace sla {
  * @param mat Output: rotation matrix that describes a rotation about some arbitrary axis, called the Euler axis. If
  *  `vec` is zero-length, the unit matrix is returned.
  */
-void dav2m(const Vector<double> vec, matrix<double> mat) {
+void dav2m(const Vector<double> vec, Matrix<double> mat) {
     // rotation angle and magnitude of axial vector
     double x = vec[0];
     double y = vec[1];

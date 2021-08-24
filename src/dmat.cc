@@ -49,7 +49,7 @@ namespace sla {
  *   returned, and the contents of `mat` is undefined).
  * @param ws Workspace.
  */
-void dmat(int n, matrix<double> mat, Vector<double> vec, double& det, bool& singular, int ws[3]) {
+void dmat(int n, Matrix<double> mat, Vector<double> vec, double& det, bool& singular, int ws[3]) {
     constexpr double EPSILON = 1.0e-20;
 
     singular = false;

@@ -63,7 +63,7 @@ using Vector = T[3];
 
 /// Generic 3x3 matrix of floating-point elements.
 template<typename T, std::enable_if_t<std::is_floating_point<T>::value, bool> = true>
-using matrix = T[3][3];
+using Matrix = T[3][3];
 
 /// Representation of partial spherical coordinates: longitude/latitude, or right ascension/declination.
 template <typename T, std::enable_if_t<std::is_floating_point<T>::value, bool> = true>
@@ -133,22 +133,22 @@ float range(float angle);
 double drange(double angle);
 float ranorm(float angle);
 double dranrm(double angle);
-void av2m(const Vector<float> vec, matrix<float> mat);
-void dav2m(const Vector<double> vec, matrix<double> mat);
+void av2m(const Vector<float> vec, Matrix<float> mat);
+void dav2m(const Vector<double> vec, Matrix<double> mat);
 void cc2s(const Vector<float> cartesian, SphericalDir<float>& spherical);
 void dcc2s(const Vector<double> cartesian, SphericalDir<double>& spherical);
 void cs2c(const SphericalDir<float>& spherical, Vector<float> cartesian);
 void dcs2c(const SphericalDir<double>& spherical, Vector<double> cartesian);
-void euler(const char* order, float phi, float theta, float psi, matrix<float> rmat);
-void deuler(const char* order, double phi, double theta, double psi, matrix<double> rmat);
-void imxv(const matrix<float> rm, const Vector<float> va, Vector<float> vb);
-void dimxv(const matrix<double> rm, const Vector<double> va, Vector<double> vb);
-void m2av(const matrix<float> rmat, Vector<float> axis);
-void dm2av(const matrix<double> rmat, Vector<double> axis);
-void mxm(const matrix<float> a, const matrix<float> b, matrix<float> c);
-void dmxm(const matrix<double> a, const matrix<double> b, matrix<double> c);
-void mxv(const matrix<float> rm, const Vector<float> va, Vector<float> vb);
-void dmxv(const matrix<double> rm, const Vector<double> va, Vector<double> vb);
+void euler(const char* order, float phi, float theta, float psi, Matrix<float> rmat);
+void deuler(const char* order, double phi, double theta, double psi, Matrix<double> rmat);
+void imxv(const Matrix<float> rm, const Vector<float> va, Vector<float> vb);
+void dimxv(const Matrix<double> rm, const Vector<double> va, Vector<double> vb);
+void m2av(const Matrix<float> rmat, Vector<float> axis);
+void dm2av(const Matrix<double> rmat, Vector<double> axis);
+void mxm(const Matrix<float> a, const Matrix<float> b, Matrix<float> c);
+void dmxm(const Matrix<double> a, const Matrix<double> b, Matrix<double> c);
+void mxv(const Matrix<float> rm, const Vector<float> va, Vector<float> vb);
+void dmxv(const Matrix<double> rm, const Vector<double> va, Vector<double> vb);
 float vdv(const Vector<float> va, const Vector<float> vb);
 double dvdv(const Vector<double> va, const Vector<double> vb);
 float vn(const Vector<float> v, Vector<float> uv);
@@ -194,26 +194,26 @@ void refco(double hm, double tdk, double pmb, double rh, double wl, double phi, 
     double& refa, double& refb);
 void refv(const Vector<double> vu, double refa, double refb, Vector<double> vr);
 double refz(double zu, double refa, double refb);
-void ecmat(double date, matrix<double> rmat);
-void dmat(int n, matrix<double> mat, Vector<double> vec, double& det, bool& singular, int ws[3]);
+void ecmat(double date, Matrix<double> rmat);
+void dmat(int n, Matrix<double> mat, Vector<double> vec, double& det, bool& singular, int ws[3]);
 bool smat(int i1, float* i2, float* y, float& d, int* w);
 void altaz(double ha, double dec, double phi, double& az, double& az_vel, double& az_acc,
     double& el, double& el_vel, double& el_acc, double& pa, double& pa_vel, double& pa_acc);
 void nutc(double date, double& psi, double& eps, double& eps0);
-void nut(double date, matrix<double> mat);
+void nut(double date, Matrix<double> mat);
 void nutc80(double date, double& psi, double& eps, double& eps0);
 double epj2d(double je);
 double epj(double date);
 double epb2d(double be);
 double epb(double date);
-void prec(double ep0, double ep1, matrix<double> mat);
-void precl(double ep0, double ep1, matrix<double> mat);
-void prenut(double epoch, double date, matrix<double> mat);
+void prec(double ep0, double ep1, Matrix<double> mat);
+void precl(double ep0, double ep1, Matrix<double> mat);
+void prenut(double epoch, double date, Matrix<double> mat);
 double dsepv(const Vector<double> v1, const Vector<double> v2);
 float sepv(const Vector<float> v1, const Vector<float> v2);
 double dsep(const SphericalDir<double>& a, const SphericalDir<double>& b);
 float sep(const SphericalDir<float>& a, const SphericalDir<float>& b);
-void prebn(double be0, double be1, matrix<double> mat);
+void prebn(double be0, double be1, Matrix<double> mat);
 void preces(Catalogue system, double ep0, double ep1, SphericalDir<double>& pos);
 void supgal(const SphericalDir<double>& sgal, SphericalDir<double>& gal);
 float rverot(float phi, const SphericalDir<float>& pos, float st);
