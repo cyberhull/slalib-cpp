@@ -60,11 +60,11 @@ void preces(Catalogue system, double ep0, double ep1, Spherical<double>& pos) {
 
             // convert back to ra,Dec
             dcc2s(v2, pos);
-            pos.s_a = dranrm(pos.s_a);
+            pos.set_ra(dranrm(pos.get_ra()));
             break;
         default:
-            pos.s_a = -99.0;
-            pos.s_b = -99.0;
+            pos.set_ra(-99.0);
+            pos.set_dec(-99.0);
     }
 }
 

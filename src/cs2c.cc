@@ -31,10 +31,10 @@ namespace sla {
  *  longitude and latitude, and the z axis at the positive latitude pole.
  */
 void cs2c(const Spherical<float>& spherical, Vector<float> cartesian) {
-    const float cos_b = std::cos(spherical.s_b);
-    cartesian[0] = std::cos(spherical.s_a) * cos_b;
-    cartesian[1] = std::sin(spherical.s_a) * cos_b;
-    cartesian[2] = std::sin(spherical.s_b);
+    const float cos_b = std::cos(spherical.get_latitude());
+    cartesian[0] = std::cos(spherical.get_longitude()) * cos_b;
+    cartesian[1] = std::sin(spherical.get_longitude()) * cos_b;
+    cartesian[2] = std::sin(spherical.get_latitude());
 }
 
 }

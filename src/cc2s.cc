@@ -38,8 +38,8 @@ void cc2s(const Vector<float> cartesian, Spherical<float>& spherical) {
     const float y = cartesian[1];
     const float z = cartesian[2];
     const float r = std::sqrt(x * x + y * y);
-    spherical.s_a = (r == 0.0f) ? 0.0f : std::atan2(y, x);
-    spherical.s_b = (z == 0.0f) ? 0.0f : std::atan2(z, r);
+    spherical.set_longitude((r == 0.0f) ? 0.0f : std::atan2(y, x));
+    spherical.set_latitude((z == 0.0f) ? 0.0f : std::atan2(z, r));
 }
 
 }

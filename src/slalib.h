@@ -70,6 +70,18 @@ template <typename T, std::enable_if_t<std::is_floating_point<T>::value, bool> =
 struct Spherical {
     T s_a; ///< longitude or RA (radians)
     T s_b; ///< latitude or Dec (radians)
+
+    // accessors for the first field
+    [[nodiscard]] T get_longitude() const { return s_a; }
+    void set_longitude(T radians) { s_a = radians; }
+    [[nodiscard]] T get_ra() const { return s_a; }
+    void set_ra(T radians) { s_a = radians; }
+
+    // accessors for the second field
+    [[nodiscard]] T get_latitude() const { return s_b; }
+    void set_latitude(T radians) { s_b = radians; }
+    [[nodiscard]] T get_dec() const { return s_b; }
+    void set_dec(T radians) { s_b = radians; }
 };
 
 /// Representation of full spherical coordinates: longitude, latitude, and distance.

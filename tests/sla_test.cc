@@ -165,17 +165,17 @@ static void t_djcal(bool& status) {
 
 // tests sla::cc2s() and dcc2s() procedures
 static void t_cc2s(bool& status) {
-    const Vector<float> V = {100.0f, -50.0f, 25.0f};
+    const Vector<float> v = {100.0f, -50.0f, 25.0f};
     Spherical<float> sp_spherical;
-    cc2s(V, sp_spherical);
-    vvd(sp_spherical.s_a, -0.4636476090008061, 1.0e-6, "sla::cc2s", "a", status );
-    vvd(sp_spherical.s_b, 0.2199879773954594, 1.0e-6, "sla::cc2s", "b", status );
+    cc2s(v, sp_spherical);
+    vvd(sp_spherical.get_ra(), -0.4636476090008061, 1.0e-6, "sla::cc2s", "ra", status );
+    vvd(sp_spherical.get_dec(), 0.2199879773954594, 1.0e-6, "sla::cc2s", "dec", status );
 
-    const Vector<double> DV = {100.0, -50.0, 25.0};
+    const Vector<double> dv = {100.0, -50.0, 25.0};
     Spherical<double> dp_spherical;
-    dcc2s(DV, dp_spherical);
-    vvd(dp_spherical.s_a, -0.4636476090008061, 1.0e-12, "sla::dcc2s", "a", status );
-    vvd(dp_spherical.s_b, 0.2199879773954594, 1.0e-12, "sla::dcc2s", "b", status );
+    dcc2s(dv, dp_spherical);
+    vvd(dp_spherical.get_ra(), -0.4636476090008061, 1.0e-12, "sla::dcc2s", "ra", status );
+    vvd(dp_spherical.get_dec(), 0.2199879773954594, 1.0e-12, "sla::dcc2s", "dec", status );
 }
 
 // tests sla::cldj() procedure
@@ -757,8 +757,8 @@ static void t_sep(bool& status) {
     Spherical<double> sd1, sd2;
     dcc2s (vd1, sd1);
     dcc2s (vd2, sd2);
-    const Spherical<float> sf1 = {(float) sd1.s_a, (float) sd1.s_b};
-    const Spherical<float> sf2 = {(float) sd2.s_a, (float) sd2.s_b};
+    const Spherical<float> sf1 = {(float) sd1.get_ra(), (float) sd1.get_dec()};
+    const Spherical<float> sf2 = {(float) sd2.get_ra(), (float) sd2.get_dec()};
 
     vvd(dsep(sd1, sd2), 2.8603919190246608, 1.0e-7, "sla::dsep", "", status);
     vvd(sep(sf1, sf2), 2.8603919190246608, 1.0e-4, "sla::sep", "", status);
@@ -797,14 +797,14 @@ static void t_prebn(bool& status) {
 static void t_preces(bool& status) {
     Spherical<double> pos = {6.28, -1.123};
     preces(CAT_FK4, 1925.0, 1950.0, pos);
-    vvd(pos.s_a,  0.002403604864728447, 1.0e-12, "sla::preces", "ra", status);
-    vvd(pos.s_b, -1.120570643322045, 1.0e-12, "sla::preces", "dec", status);
+    vvd(pos.get_ra(),  0.002403604864728447, 1.0e-12, "sla::preces", "ra", status);
+    vvd(pos.get_dec(), -1.120570643322045, 1.0e-12, "sla::preces", "dec", status);
 
-    pos.s_a = 0.0123;
-    pos.s_b = 1.0987;
+    pos.set_ra(0.0123);
+    pos.set_dec(1.0987);
     preces(CAT_FK5, 2050.0, 1990.0, pos);
-    vvd(pos.s_a, 6.282003602708382, 1.0e-12, "sla::preces", "ra", status);
-    vvd(pos.s_b, 1.092870326188383, 1.0e-12, "sla::preces", "dec", status);
+    vvd(pos.get_ra(), 6.282003602708382, 1.0e-12, "sla::preces", "ra", status);
+    vvd(pos.get_dec(), 1.092870326188383, 1.0e-12, "sla::preces", "dec", status);
 }
 
 // tests sla::rcc() function
@@ -813,8 +813,8 @@ static void t_supgal(bool& status) {
     Spherical<double> gal;
 
     supgal(sgal, gal);
-    vvd(gal.s_a, 3.798775860769474, 1.0e-12, "sla::supgal", "longitude", status);
-    vvd(gal.s_b, -0.1397070490669407, 1.0e-12, "sla::supgal", "latitude", status);
+    vvd(gal.get_longitude(), 3.798775860769474, 1.0e-12, "sla::supgal", "longitude", status);
+    vvd(gal.get_latitude(), -0.1397070490669407, 1.0e-12, "sla::supgal", "latitude", status);
 }
 
 // tests sla::rverot(), sla::rvgalc(), sla::rvlg(), sla::rvlsrd(), and sla::rvlsrk() functions

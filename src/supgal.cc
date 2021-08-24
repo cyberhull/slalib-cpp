@@ -62,8 +62,8 @@ void supgal(const Spherical<double>& sgal, Spherical<double>& gal) {
     dcc2s(v2, gal);
 
     // express in conventional ranges
-    gal.s_a = dranrm(gal.s_a);
-    gal.s_b = drange(gal.s_b);
+    gal.set_longitude(dranrm(gal.get_longitude()));
+    gal.set_latitude(drange(gal.get_latitude()));
 }
 
 }

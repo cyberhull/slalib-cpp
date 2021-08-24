@@ -30,8 +30,8 @@ namespace sla {
  */
 float sep(const Spherical<float>& sa, const Spherical<float>& sb) {
     // use double precision version
-    const Spherical<double> da = {sa.s_a, sa.s_b};
-    const Spherical<double> db = {sb.s_a, sb.s_b};
+    const Spherical<double> da = {sa.get_ra(), sa.get_dec()};
+    const Spherical<double> db = {sb.get_ra(), sb.get_dec()};
     return (float) dsep(da, db);
 }
 
