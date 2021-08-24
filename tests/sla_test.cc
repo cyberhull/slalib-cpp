@@ -546,21 +546,19 @@ static void t_ref(bool& status) {
     vvd(refa, 2.007202720084551e-4, 1.0e-12, "sla::refco", "a", status);
     vvd(refb, -2.223037748876e-7, 1.0e-15, "sla::refco", "b", status);
 
-    double REFA2, REFB2;
-    atmdsp(275.9, 709.3, 0.9, 0.77, refa, refb, 0.5, REFA2, REFB2);
-    vvd(REFA2, 2.034523658888048e-4, 1.0e-12, "sla::atmdsp", "a", status);
-    vvd(REFB2, -2.250855362179e-7, 1.0e-15, "sla::atmdsp", "b", status);
+    double refa2, refb2;
+    atmdsp(275.9, 709.3, 0.9, 0.77, refa, refb, 0.5, refa2, refb2);
+    vvd(refa2, 2.034523658888048e-4, 1.0e-12, "sla::atmdsp", "a", status);
+    vvd(refb2, -2.250855362179e-7, 1.0e-15, "sla::atmdsp", "b", status);
 
-    const Spherical<double> spherical1 = {0.345, 0.456};
     Vector<double> cartesian1, cartesian2;
-    dcs2c(spherical1, cartesian1);
+    dcs2c({0.345, 0.456}, cartesian1);
     refv(cartesian1, refa, refb, cartesian2);
     vvd(cartesian2[0], 0.8447487047790478, 1.0e-12, "sla::refv", "x1", status);
     vvd(cartesian2[1], 0.3035794890562339, 1.0e-12, "sla::refv", "y1", status);
     vvd(cartesian2[2], 0.4407256738589851, 1.0e-12, "sla::refv", "z1", status);
 
-    const Spherical<double> spherical2 = {3.7, 0.03};
-    dcs2c(spherical2, cartesian1);
+    dcs2c({3.7, 0.03}, cartesian1);
     refv(cartesian1, refa, refb, cartesian2);
     vvd(cartesian2[0], -0.8476187691681673, 1.0e-12, "sla::refv", "x2", status);
     vvd(cartesian2[1], -0.5295354802804889, 1.0e-12, "sla::refv", "y2", status);
