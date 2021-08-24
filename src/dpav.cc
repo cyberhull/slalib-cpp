@@ -28,17 +28,17 @@ namespace sla {
  *
  * Original FORTRAN code by P.T. Wallace.
  *
- * @param v1 Direction cosines of the first point; does *not* have to be a unit vector.
- * @param v2 Direction cosines of the second point; does *not* have to be a unit vector.
- * @return Bearing (position angle), in radians (in the range +/- Pi), of the point v2 with respect to the
- *   point v1; if v2 is a small distance east of v1, returned bearing is about +pi/2; if the two points are
+ * @param va Direction cosines of the first point; does *not* have to be a unit vector.
+ * @param vb Direction cosines of the second point; does *not* have to be a unit vector.
+ * @return Bearing (position angle), in radians (in the range +/- Pi), of the point vb with respect to the
+ *   point va; if vb is a small distance east of va, returned bearing is about +pi/2; if the two points are
  *   coincident, zero is returned.
  */
-double dpav(const Vector<double> v1, const Vector<double> v2) {
+double dpav(const Vector<double> va, const Vector<double> vb) {
     // unit vector to point 1
-    double x1 = v1[0];
-    double y1 = v1[1];
-    double z1 = v1[2];
+    double x1 = va[0];
+    double y1 = va[1];
+    double z1 = va[2];
     const double length = std::sqrt(x1 * x1 + y1 * y1 + z1 * z1);
     if (length != 0.0) {
         x1 = x1 / length;
@@ -46,9 +46,9 @@ double dpav(const Vector<double> v1, const Vector<double> v2) {
         z1 = z1 / length;
     }
     // vector to point 2
-    const double x2 = v2[0];
-    const double y2 = v2[1];
-    const double z2 = v2[2];
+    const double x2 = vb[0];
+    const double y2 = vb[1];
+    const double z2 = vb[2];
 
     // position angle
     const double sq = y2 * x1 - x2 * y1;

@@ -22,21 +22,21 @@ namespace sla {
 /**
  * Procedure that performs the 3D forward unitary transformation (double precision):
  *
- *   vector `vb` = matrix `rm` * vector `va`
+ *   vector `vb` = matrix `mat` * vector `va`
  *
  * Original FORTRAN code by P.T. Wallace.
  *
- * @param rm Transformation matrix.
+ * @param mat Transformation matrix.
  * @param va Vector to transform.
- * @param vb Output: vector `va` multiplied by matrix `rm`; can be the same as `va`.
+ * @param vb Output: vector `va` multiplied by matrix `mat`; can be the same as `va`.
  */
-void dmxv(const Matrix<double> rm, const Vector<double> va, Vector<double> vb) {
-    // matrix `rm` * vector `va` -> vector `result`
+void dmxv(const Matrix<double> mat, const Vector<double> va, Vector<double> vb) {
+    // matrix `mat` * vector `va` -> vector `result`
     Vector<double> result;
     for (int j = 0; j < 3; j++) {
         double element = 0.0;
         for (int i = 0; i < 3; i++) {
-            element += rm[j][i] * va[i];
+            element += mat[j][i] * va[i];
         }
         result[j] = element;
     }

@@ -27,14 +27,14 @@ namespace sla {
  *
  * Original FORTRAN code by P.T. Wallace.
  *
- * @param v1 First vector; does not have to be unit length; if null, zero is returned.
- * @param v2 Second vector; does not have to be unit length; if null, zero is returned.
+ * @param va First vector; does not have to be unit length; if null, zero is returned.
+ * @param vb Second vector; does not have to be unit length; if null, zero is returned.
  * @return The angle, in radians, between the two vectors; it is always positive.
  */
-float sepv(const Vector<float> v1, const Vector<float> v2) {
+float sepv(const Vector<float> va, const Vector<float> vb) {
     // use double precision version.
-    const Vector<double> dv1 = {v1[0], v1[1], v1[2]};
-    const Vector<double> dv2 = {v2[0], v2[1], v2[2]};
+    const Vector<double> dv1 = {va[0], va[1], va[2]};
+    const Vector<double> dv2 = {vb[0], vb[1], vb[2]};
     return (float) dsepv(dv1, dv2);
 }
 

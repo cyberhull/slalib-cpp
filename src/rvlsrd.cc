@@ -37,11 +37,11 @@ namespace sla {
  *
  * Original FORTRAN code by P.T. Wallace / Rutherford Appleton Laboratory.
  *
- * @param ra_dec J2000.0 mean RA,Dec (radians).
+ * @param pos J2000.0 mean RA,Dec (radians).
  * @return Component of "peculiar" solar motion in direction R2000,D2000 (km/s); the result is positive when the Sun
  *   is receding from the given point on the sky.
  */
-float rvlsrd(const SphericalDir<float>& ra_dec) {
+float rvlsrd(const SphericalDir<float>& pos) {
     /*
      * Peculiar solar motion from Delhaye 1965: in Galactic Cartesian coordinates (+9,+12,+7) km/s. This corresponds
      * to about 16.6 km/s towards Galactic coordinates L2 = 53 deg, B2 = +25 deg, or RA,Dec 17 49 58.7 +28 07 04 J2000.
@@ -56,7 +56,7 @@ float rvlsrd(const SphericalDir<float>& ra_dec) {
 
     // convert given J2000 RA,Dec to x,y,z
     Vector<float> vb;
-    cs2c(ra_dec, vb);
+    cs2c(pos, vb);
 
     // compute dot product with solar motion vector
     return vdv(va, vb);

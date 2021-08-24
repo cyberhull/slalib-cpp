@@ -27,7 +27,7 @@ namespace sla {
  *   A . Y = X
  *
  * where:
- *   A is a non-singular N x N matrix
+ *   A is mat non-singular N x N matrix
  *   Y is the vector of N unknowns
  *   X is the known vector
  *
@@ -42,30 +42,30 @@ namespace sla {
  * Original FORTRAN code by P.T. Wallace / Rutherford Appleton Laboratory.
  *
  * @param n Number of unknowns and size of each matrix dimension.
- * @param a The `n` x `n` matrix; after the call, contains inverse matrix (if input matrix is singular, contents
+ * @param mat The `n` x `n` matrix; after the call, contains inverse matrix (if input matrix is singular, contents
  *   after the call is undefined).
- * @param y The `n`-long vector; after the call, contains solution vector.
- * @param d Return value: determinant; if input matrix is singular, 0.0f is returned.
- * @param w Workspace.
+ * @param vec The `n`-long vector; after the call, contains solution vector.
+ * @param det Return value: determinant; if input matrix is singular, 0.0f is returned.
+ * @param ws Workspace.
  * @return `true` if input matrix is singular, `false` otherwise.
  */
-bool smat(int n, float* a, float* y, float& d, int* w) {
+bool smat(int n, float* mat, float* vec, float& det, int* ws) {
     constexpr float EPSILON = 1.0e-20f;
 
     // variable-size matrix accessor
-    auto mat = [a, n](int i1, int i2) -> float& {
-        return a[i2 * n + i1];
+    auto element = [mat, n](int i1, int i2) -> float& {
+        return mat[i2 * n + i1];
     };
 
     bool singular = false;
-    d = 1.0f;
+    det = 1.0f;
     int i, k;
     for (k = 0; k < n; k++) {
-        float v_max = std::abs(mat(k, k));
+        float v_max = std::abs(element(k, k));
         int i_max = k;
         if (k != n) {
             for (i = k + 1; i < n; i++) {
-                const float t0 = std::abs(mat(i, k));
+                const float t0 = std::abs(element(i, k));
                 if (t0 > v_max) {
                     v_max = t0;
                     i_max = i;
@@ -78,60 +78,60 @@ bool smat(int n, float* a, float* y, float& d, int* w) {
             int j;
             if (i_max != k) {
                 for (j = 0; j < n; j++) {
-                    const float t1 = mat(k, j);
-                    mat(k, j) = mat(i_max, j);
-                    mat(i_max, j) = t1;
+                    const float t1 = element(k, j);
+                    element(k, j) = element(i_max, j);
+                    element(i_max, j) = t1;
                 }
-                const float t2 = y[k];
-                y[k] = y[i_max];
-                y[i_max] = t2;
-                d = -d;
+                const float t2 = vec[k];
+                vec[k] = vec[i_max];
+                vec[i_max] = t2;
+                det = -det;
             }
-            w[k] = i_max;
-            float a_kk = mat(k, k);
-            d = d * a_kk;
-            if (std::abs(d) < EPSILON) {
+            ws[k] = i_max;
+            float a_kk = element(k, k);
+            det = det * a_kk;
+            if (std::abs(det) < EPSILON) {
                 singular = -1;
             } else {
                 a_kk = 1.0f / a_kk;
-                mat(k, k) = a_kk;
+                element(k, k) = a_kk;
                 for (j = 0; j < n; j++) {
                     if (j != k) {
-                        mat(k, j) = mat(k, j) * a_kk;
+                        element(k, j) = element(k, j) * a_kk;
                     }
                 }
-                const float y_k = y[k] * a_kk;
-                y[k] = y_k;
+                const float y_k = vec[k] * a_kk;
+                vec[k] = y_k;
                 for (i = 0; i < n; i++) {
-                    const float a_ik = mat(i, k);
+                    const float a_ik = element(i, k);
                     if (i != k) {
                         for (j = 0; j < n; j++) {
                             if (j != k) {
-                                mat(i, j) = mat(i, j) - a_ik * mat(k, j);
+                                element(i, j) = element(i, j) - a_ik * element(k, j);
                             }
                         }
-                        y[i] = y[i] - a_ik * y_k;
+                        vec[i] = vec[i] - a_ik * y_k;
                     }
                 }
                 for (i = 0; i < n; i++) {
                     if (i != k) {
-                        mat(i, k) = -mat(i, k) * a_kk;
+                        element(i, k) = -element(i, k) * a_kk;
                     }
                 }
             }
         }
     }
     if (singular) {
-        d = 0.0;
+        det = 0.0;
     } else {
         for (k = 0; k < n; k++) {
             const int np1mk = n - 1 - k;
-            const int ki = w[np1mk];
+            const int ki = ws[np1mk];
             if (np1mk != ki) {
                 for (i = 0; i < n; i++) {
-                    const float t3 = mat(i, np1mk);
-                    mat(i, np1mk) = mat(i, ki);
-                    mat(i, ki) = t3;
+                    const float t3 = element(i, np1mk);
+                    element(i, np1mk) = element(i, ki);
+                    element(i, ki) = t3;
                 }
             }
         }

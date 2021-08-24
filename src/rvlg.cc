@@ -28,11 +28,11 @@ namespace sla {
  *
  * Original FORTRAN code by P.T. Wallace / Rutherford Appleton Laboratory.
  *
- * @param ra_dec J2000.0 mean RA,Dec (radians).
- * @return Component of SOLAR motion in direction `ra_dec` (km/s); the result is positive when the Sun is receding
+ * @param pos J2000.0 mean RA,Dec (radians).
+ * @return Component of SOLAR motion in direction `pos` (km/s); the result is positive when the Sun is receding
  *   from the given point on the sky.
  */
-float rvlg(const SphericalDir<float>& ra_dec) {
+float rvlg(const SphericalDir<float>& pos) {
     /*
      * Solar velocity due to Galactic rotation and translation
      *
@@ -51,7 +51,7 @@ float rvlg(const SphericalDir<float>& ra_dec) {
 
     // convert given J2000 RA,Dec to x,y,z
     Vector<float> vb;
-    cs2c(ra_dec, vb);
+    cs2c(pos, vb);
 
     // compute dot product with Solar motion Vector
     return vdv(va, vb);

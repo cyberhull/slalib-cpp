@@ -20,18 +20,18 @@
 namespace sla {
 
 /**
- * Calculates angle between two points on a sphere (single precision).
+ * Calculates angle between two points on sa sphere (single precision).
  *
  * Original FORTRAN code by P.T. Wallace.
  *
- * @param a Spherical coordinates of one point (RA, longitude, etc.) (radians).
- * @param b Spherical coordinates of the other point (DEC, latitude, etc.) (radians).
+ * @param sa Spherical coordinates of one point (RA, longitude, etc.) (radians).
+ * @param sb Spherical coordinates of the other point (DEC, latitude, etc.) (radians).
  * @return The angle, in radians, between the two points; it is always positive.
  */
-float sep(const SphericalDir<float>& a, const SphericalDir<float>& b) {
+float sep(const SphericalDir<float>& sa, const SphericalDir<float>& sb) {
     // use double precision version
-    const SphericalDir<double> da = {a.sd_a, a.sd_b};
-    const SphericalDir<double> db = {b.sd_a, b.sd_b};
+    const SphericalDir<double> da = {sa.sd_a, sa.sd_b};
+    const SphericalDir<double> db = {sb.sd_a, sb.sd_b};
     return (float) dsep(da, db);
 }
 

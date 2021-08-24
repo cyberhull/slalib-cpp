@@ -26,10 +26,10 @@ namespace sla {
 /**
  * Waits for a specified number of seconds.
  *
- * @param delay Delay (seconds).
+ * @param seconds Delay (seconds).
  */
-void wait(float delay) {
-    std::this_thread::sleep_for(std::chrono::seconds(f_nint(delay)));
+void wait(float seconds) {
+    std::this_thread::sleep_for(std::chrono::seconds(f_nint(seconds)));
 }
 
 }

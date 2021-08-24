@@ -32,10 +32,10 @@ namespace sla {
  *
  * Original FORTRAN code by P.T. Wallace / Rutherford Appleton Laboratory.
  *
- * @param hm Height of the observer above sea level (meters).
- * @param tdk Ambient temperature at the observer (degrees K).
- * @param pmb Pressure at the observer (millibars).
- * @param rh Relative humidity at the observer (range: [0..1])
+ * @param oh Height of the observer above sea level (meters).
+ * @param atk Ambient temperature at the observer (degrees K).
+ * @param apm Pressure at the observer (millibars).
+ * @param arh Relative humidity at the observer (range: [0..1])
  * @param wl Effective wavelength of the source (micrometers).
  * @param phi Latitude of the observer (radians, astronomical).
  * @param tlr Temperature lapse rate in the troposphere (degrees K/meter).
@@ -43,7 +43,7 @@ namespace sla {
  * @param refa Return value: tan Z coefficient (radians).
  * @param refb Return value: tan**3 Z coefficient (radians).
  */
-void refco(double hm, double tdk, double pmb, double rh, double wl, double phi, double tlr, double eps,
+void refco(double oh, double atk, double apm, double arh, double wl, double phi, double tlr, double eps,
     double& refa, double& refb) {
 
     // sample zenith distances: atan(1.0) and atan(4.0)
@@ -51,8 +51,8 @@ void refco(double hm, double tdk, double pmb, double rh, double wl, double phi, 
     constexpr double ATAN_4 = 1.325817663668033;
 
     // determine refraction for the two sample zenith distances
-    const double r1 = refro(ATAN_1, hm, tdk, pmb, rh, wl, phi, tlr, eps);
-    const double r2 = refro(ATAN_4, hm, tdk, pmb, rh, wl, phi, tlr, eps);
+    const double r1 = refro(ATAN_1, oh, atk, apm, arh, wl, phi, tlr, eps);
+    const double r2 = refro(ATAN_4, oh, atk, apm, arh, wl, phi, tlr, eps);
 
     // solve for refraction constants
     refa = (64.0 * r1 - r2) / 60.0;

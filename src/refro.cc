@@ -127,14 +127,14 @@ static void atmt(double r0, double t0, double alpha, double gamm2, double delm2,
  *
  * - Various small changes have been made to gain speed.
  *
- * @param zobs Observed zenith distance of the source (radians); before use, the value of `zobs` is expressed in the
- *   range +/- pi; if this ranged `zobs` is -ve, the return value is computed from its absolute value before being
+ * @param ozd Observed zenith distance of the source (radians); before use, the value of `ozd` is expressed in the
+ *   range +/- pi; if this ranged `ozd` is -ve, the return value is computed from its absolute value before being
  *   made -ve to match; in addition, if it has an absolute value greater than 93 degrees, a fixed refraction value
- *   equal to the result for `zobs` = 93 degrees is returned, appropriately signed.
- * @param hm Height of the observer above sea level (meters).
- * @param tdk Ambient temperature at the observer (degrees K).
- * @param pmb Pressure at the observer (millibars).
- * @param rh Relative humidity at the observer (range: [0-1]); relative humidity `rh` is formally defined in terms of
+ *   equal to the result for `ozd` = 93 degrees is returned, appropriately signed.
+ * @param oh Height of the observer above sea level (meters).
+ * @param atk Ambient temperature at the observer (degrees K).
+ * @param apm Pressure at the observer (millibars).
+ * @param arh Relative humidity at the observer (range: [0-1]); relative humidity `arh` is formally defined in terms of
  *   "mixing ratio" rather than pressures or densities as is often stated. It is the mass of water per unit mass of
  *   dry air divided by that for saturated air at the same temperature and pressure (see Gill 1982).
  * @param wl Effective wavelength of the source (micrometers); the radio refraction is chosen by specifying WL > 100
@@ -148,7 +148,7 @@ static void atmt(double r0, double t0, double alpha, double gamm2, double delm2,
  *   the result is usually at least two orders of magnitude more computationally precise than the supplied `eps` value.
  * @return Refraction: in vacuo ZD minus observed ZD (radians).
  */
-double refro(double zobs, double hm, double tdk, double pmb, double rh, double wl, double phi, double tlr, double eps) {
+double refro(double ozd, double oh, double atk, double apm, double arh, double wl, double phi, double tlr, double eps) {
     // 93 degrees in radians
     constexpr double DEG93_IN_RADIANS = 1.623156204;
     // universal (molar) gas constant
@@ -173,15 +173,15 @@ double refro(double zobs, double hm, double tdk, double pmb, double rh, double w
         return rdndr / (dn + rdndr);
     };
 
-    // transform zobs into the normal range
-    const double zobs1 = drange(zobs);
+    // transform ozd into the normal range
+    const double zobs1 = drange(ozd);
     const double zobs2 = std::min(std::abs(zobs1), DEG93_IN_RADIANS);
 
     // keep other arguments within safe bounds
-    const double hm_ok = std::min(std::max(hm, -1.0e3), RE_HEIGHT_LIMIT);
-    const double tdk_ok = std::min(std::max(tdk, 100.0), 500.0);
-    const double pmb_ok = std::min(std::max(pmb, 0.0), 10000.0);
-    const double rh_ok = std::min(std::max(rh, 0.0), 1.0);
+    const double hm_ok = std::min(std::max(oh, -1.0e3), RE_HEIGHT_LIMIT);
+    const double tdk_ok = std::min(std::max(atk, 100.0), 500.0);
+    const double pmb_ok = std::min(std::max(apm, 0.0), 10000.0);
+    const double rh_ok = std::min(std::max(arh, 0.0), 1.0);
     const double wl_ok = std::max(wl, 0.1);
     const double alpha = std::min(std::max(std::abs(tlr), 0.001), 0.01);
 

@@ -29,7 +29,7 @@ namespace sla {
  * positive region of the specified axis.
  *
  * The characters of `order` define which axes the three successive rotations are about. A typical value is 'ZXZ',
- * indicating that `rmat` is to become the direction cosine matrix corresponding to rotations of the reference frame
+ * indicating that `mat` is to become the direction cosine matrix corresponding to rotations of the reference frame
  * through `phi` radians about the old Z-axis, followed by `theta` radians about the resulting X-axis, then `psi`
  * radians about the resulting Z-axis.
  *
@@ -47,9 +47,9 @@ namespace sla {
  * @param phi First rotation (radians).
  * @param theta Second rotation (radians).
  * @param psi Third rotation (radians).
- * @param rmat Output: rotation matrix.
+ * @param mat Output: rotation matrix.
  */
-void deuler(const char* order, const double phi, const double theta, const double psi, Matrix<double> rmat) {
+void deuler(const char* order, const double phi, const double theta, const double psi, Matrix<double> mat) {
     // set result matrix to identity matrix
     Matrix<double> result;
     int i, j;
@@ -147,7 +147,7 @@ void deuler(const char* order, const double phi, const double theta, const doubl
     // copy the result
     for (i = 0; i < 3; i++) {
         for (j = 0; j < 3; j++) {
-            rmat[i][j] = result[i][j];
+            mat[i][j] = result[i][j];
         }
     }
 }

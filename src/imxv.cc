@@ -22,21 +22,21 @@ namespace sla {
 /**
  * Procedure that performs 3D backward unitary transformation (single precision):
  *
- *   vector vb = (inverse of matrix rm) * vector va
+ *   vector vb = (inverse of matrix mat) * vector va
  *
  * Original FORTRAN code by P.T. Wallace / Rutherford Appleton Laboratory.
  *
- * @param rm Input matrix; must be unitary, as this routine assumes that the inverse and transpose are identical.
+ * @param mat Input matrix; must be unitary, as this routine assumes that the inverse and transpose are identical.
  * @param va Input vector; may be the same as output.
  * @param vb Output: vector; may be the same as input.
  */
-void imxv(const Matrix<float> rm, const Vector<float> va, Vector<float> vb) {
-    // inverse of matrix rm * vector va -> vector result
+void imxv(const Matrix<float> mat, const Vector<float> va, Vector<float> vb) {
+    // inverse of matrix mat * vector va -> vector result
     Vector<float> result;
     for (int j = 0; j < 3; j++) {
         float element = 0.0f;
         for (int i = 0; i < 3; i++) {
-            element += rm[i][j] * va[i];
+            element += mat[i][j] * va[i];
         }
         result[j] = element;
     }

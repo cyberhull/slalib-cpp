@@ -58,9 +58,9 @@ namespace sla {
  *
  * Original FORTRAN code by P.T. Wallace.
  *
- * @param tdk Ambient temperature (degrees K).
- * @param pmb Ambient pressure (millibars).
- * @param rh Ambient relative humidity (0.0..1.0).
+ * @param atk Ambient temperature (degrees K).
+ * @param apm Ambient pressure (millibars).
+ * @param arh Ambient relative humidity (0.0..1.0).
  * @param wl1 Reference wavelength (micrometres); 0.4D0 recommended.
  * @param a1 Refraction coefficient A for wavelength `wl1` (radians).
  * @param b1 Refraction coefficient B for wavelength `wl1` (radians).
@@ -68,7 +68,7 @@ namespace sla {
  * @param a2 Return value: refraction coefficient A for wavelength `wl2` (radians).
  * @param b2 Return value: refraction coefficient B for wavelength `wl2` (radians).
  */
-void atmdsp(double tdk, double pmb, double rh, double wl1, double a1, double b1, double wl2, double& a2, double& b2) {
+void atmdsp(double atk, double apm, double arh, double wl1, double a1, double b1, double wl2, double& a2, double& b2) {
     // check for radio wavelengths
     if (wl1 > 100.0 || wl2 > 100.0) {
         // radio: no dispersion
@@ -76,9 +76,9 @@ void atmdsp(double tdk, double pmb, double rh, double wl1, double a1, double b1,
         b2 = b1;
     } else {
         // optical: keep arguments within safe bounds
-        const double tdkok = std::min(std::max(tdk, 100.0), 500.0);
-        const double pmbok = std::min(std::max(pmb, 0.0), 10000.0);
-        const double rhok = std::min(std::max(rh, 0.0), 1.0);
+        const double tdkok = std::min(std::max(atk, 100.0), 500.0);
+        const double pmbok = std::min(std::max(apm, 0.0), 10000.0);
+        const double rhok = std::min(std::max(arh, 0.0), 1.0);
 
         // atmosphere parameters at the observer
         const double psat = std::pow(10.0, (-8.7115 + 0.03477 * tdkok));

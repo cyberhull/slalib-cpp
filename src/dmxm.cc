@@ -22,22 +22,22 @@ namespace sla {
 /**
  * Calculates product of two 3x3 matrices (double precision):
  *
- *   matrix `c`  =  matrix `a`  x  matrix `b`
+ *   matrix `mc`  =  matrix `ma`  x  matrix `mb`
  *
  * Original FORTRAN code by P.T. Wallace.
  *
- * @param a First matrix (first multiplicand).
- * @param b Second matrix (second multiplicand).
- * @param c Output: product of the two matrices; may be the same matrix as either `a` or `b`.
+ * @param ma First matrix (first multiplicand).
+ * @param mb Second matrix (second multiplicand).
+ * @param mc Output: product of the two matrices; may be the same matrix as either `ma` or `mb`.
  */
-void dmxm(const Matrix<double> a, const Matrix<double> b, Matrix<double> c) {
+void dmxm(const Matrix<double> ma, const Matrix<double> mb, Matrix<double> mc) {
     // multiply into scratch matrix
     Matrix <double> result;
     for (int i = 0; i < 3; i++) {
         for (int j = 0; j < 3; j++) {
             double element = 0.0;
             for (int k = 0; k < 3; k++) {
-                element += a[i][k] * b[k][j];
+                element += ma[i][k] * mb[k][j];
             }
             result[i][j] = element;
         }
@@ -46,7 +46,7 @@ void dmxm(const Matrix<double> a, const Matrix<double> b, Matrix<double> c) {
     // return the result
     for (int i = 0; i < 3; i++) {
         for (int j = 0; j < 3; j++) {
-            c[i][j] = result[i][j];
+            mc[i][j] = result[i][j];
         }
     }
 }

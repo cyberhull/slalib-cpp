@@ -65,16 +65,16 @@ namespace sla {
  *
  * Original FORTRAN code by P.T. Wallace / Rutherford Appleton Laboratory.
  *
- * @param vu Unrefracted position of the source (Az/El 3-component vector).
+ * @param vec Unrefracted position of the source (Az/El 3-component vector).
  * @param refa Tan Z coefficient (radians).
  * @param refb Tan**3 Z coefficient (radians).
- * @param vr Return value: refracted position of the source (Az/El 3-component vector).
+ * @param rvec Return value: refracted position of the source (Az/El 3-component vector).
  */
-void refv(const Vector<double> vu, double refa, double refb, Vector<double> vr) {
+void refv(const Vector<double> vec, double refa, double refb, Vector<double> rvec) {
     // initial estimate = unrefracted vector
-    const double x = vu[0];
-    const double y = vu[1];
-    const double z1 = vu[2];
+    const double x = vec[0];
+    const double y = vec[1];
+    const double z1 = vec[2];
 
     // keep correction approximately constant below about 3 deg elevation
     const double z = std::max(z1, 0.05);
@@ -90,9 +90,9 @@ void refv(const Vector<double> vu, double refa, double refb, Vector<double> vr) 
     const double f = cd * (1.0 - wt);
 
     // return post-refraction x, y, z
-    vr[0] = x * f;
-    vr[1] = y * f;
-    vr[2] = cd * (z + d * r) + (z1 - z);
+    rvec[0] = x * f;
+    rvec[1] = y * f;
+    rvec[2] = cd * (z + d * r) + (z1 - z);
 }
 
 }

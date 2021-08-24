@@ -27,11 +27,11 @@ namespace sla {
  *
  * Original FORTRAN code by P.T. Wallace / Rutherford Appleton Laboratory.
  *
- * @param date Modified Julian Date (JD - 2400000.5).
+ * @param mjd Modified Julian Date (JD - 2400000.5).
  * @return Besselian Epoch.
  */
-double epb(double date) {
-    return 1900.0 + (date - 15019.81352) / 365.242198781;
+double epb(double mjd) {
+    return 1900.0 + (mjd - 15019.81352) / 365.242198781;
 }
 
 }

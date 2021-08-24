@@ -42,7 +42,7 @@ namespace sla {
  * changes, the differences being at the 10^-20 sec level.
  *
  * The topocentric part of the model is from Moyer (1981) and Murray (1983). It is an approximation to the expression
- * (v / c) . (r / c), where v is the barycentric velocity of the Earth, r is the geocentric position of the observer
+ * (cdp / c) . (r / c), where cdp is the barycentric velocity of the Earth, r is the geocentric position of the observer
  * and c is the speed of light.
  *
  * During the interval 1950-2050, the absolute accuracy of is better than +/- 3 nanoseconds relative to direct
@@ -76,14 +76,14 @@ namespace sla {
  * @param tdb TDB, barycentric dynamical time (MJD: JD-2400000.5); this argument is, strictly, the barycentric
  *   coordinate time; however, the terrestrial time TT can in practice be used without any significant loss of accuracy.
  * @param ut1 Universal time (fraction of one day).
- * @param wl Clock longitude (radians west).
- * @param u Clock distance from Earth spin axis (km).
- * @param v Clock distance north of Earth equatorial plane (km).
+ * @param cl Clock longitude (radians west).
+ * @param cda Clock distance from Earth spin axis (km).
+ * @param cdp Clock distance north of Earth equatorial plane (km).
  * @return The clock correction, TDB-TT (seconds), where TDB is coordinate time in the solar system barycentre frame
  *   of reference, in units chosen to eliminate the scale difference with respect to terrestrial time; TT is the proper
  *   time for clocks at mean sea level on the Earth.
  */
-double rcc(double tdb, double ut1, double wl, double u, double v) {
+double rcc(double tdb, double ut1, double cl, double cda, double cdp) {
     // conversion constants
     constexpr double PI2 = 6.283185307179586476925287;
     constexpr double DEGREES_2_RADIANS = 0.0174532925199432957692369;
@@ -898,7 +898,7 @@ double rcc(double tdb, double ut1, double wl, double u, double v) {
     // ------------------------------------------------------------------------
 
     // convert ut1 to local solar time in radians
-    const double t_sol = std::fmod(ut1, 1.0) * PI2 - wl;
+    const double t_sol = std::fmod(ut1, 1.0) * PI2 - cl;
 
     // FUNDAMENTAL ARGUMENTS: Simon et. al. 1994
 
@@ -921,16 +921,16 @@ double rcc(double tdb, double ut1, double wl, double u, double v) {
     const double saturn_ml = std::fmod(50.0774443 + 44046398.47038 * w, 360.0) * DEGREES_2_RADIANS;
 
     // TOPOCENTRIC TERMS: Moyer 1981 and Murray 1983
-    const double wt = + 0.00029e-10 * u * std::sin(t_sol + sun_ml - saturn_ml)
-       + 0.00100e-10 * u * std::sin(t_sol - 2.0 * sun_ma)
-       + 0.00133e-10 * u * std::sin(t_sol - moon_me)
-       + 0.00133e-10 * u * std::sin(t_sol + sun_ml - jupiter_ml)
-       - 0.00229e-10 * u * std::sin(t_sol + 2.0 * sun_ml + sun_ma)
-       - 0.02200e-10 * v * std::cos(sun_ml + sun_ma)
-       + 0.05312e-10 * u * std::sin(t_sol - sun_ma)
-       - 0.13677e-10 * u * std::sin(t_sol + 2.0 * sun_ml)
-       - 1.31840e-10 * v * std::cos(sun_ml)
-       + 3.17679e-10 * u * std::sin(t_sol);
+    const double wt = + 0.00029e-10 * cda * std::sin(t_sol + sun_ml - saturn_ml)
+       + 0.00100e-10 * cda * std::sin(t_sol - 2.0 * sun_ma)
+       + 0.00133e-10 * cda * std::sin(t_sol - moon_me)
+       + 0.00133e-10 * cda * std::sin(t_sol + sun_ml - jupiter_ml)
+       - 0.00229e-10 * cda * std::sin(t_sol + 2.0 * sun_ml + sun_ma)
+       - 0.02200e-10 * cdp * std::cos(sun_ml + sun_ma)
+       + 0.05312e-10 * cda * std::sin(t_sol - sun_ma)
+       - 0.13677e-10 * cda * std::sin(t_sol + 2.0 * sun_ml)
+       - 1.31840e-10 * cdp * std::cos(sun_ml)
+       + 3.17679e-10 * cda * std::sin(t_sol);
 
     // Fairhead model
     // ------------------------------------------------------------------------

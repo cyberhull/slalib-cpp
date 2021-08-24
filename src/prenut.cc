@@ -24,20 +24,20 @@ namespace sla {
  *
  * Original FORTRAN code by P.T. Wallace.
  *
- * @param epoch Julian Epoch for mean coordinates; TDB (Barycentric Dynamical Time; loosely ET, Ephemeris Time); TT
+ * @param je Julian Epoch for mean coordinates; TDB (Barycentric Dynamical Time; loosely ET, Ephemeris Time); TT
  *   (Terrestrial Time) will also do, or even UTC.
- * @param date Modified Julian Date (JD-2400000.5) for true coordinates; TDB (Barycentric Dynamical Time; loosely ET,
+ * @param mjd Modified Julian Date (JD-2400000.5) for true coordinates; TDB (Barycentric Dynamical Time; loosely ET,
  *   Ephemeris Time); TT (Terrestrial Time) will also do, or even UTC.
  * @param mat Return value: combined precession/nutation matrix; The matrix is in the sense v(true) = mat * v(mean).
  */
-void prenut(double epoch, double date, Matrix<double> mat) {
+void prenut(double je, double mjd, Matrix<double> mat) {
     Matrix<double> pmat, nmat;
 
     // precession
-    prec(epoch, epj(date), pmat);
+    prec(je, epj(mjd), pmat);
 
     // nutation
-    nut(date, nmat);
+    nut(mjd, nmat);
 
     // combine the matrices: PN = N x P
     dmxm(nmat, pmat, mat);

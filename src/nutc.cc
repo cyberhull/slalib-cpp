@@ -39,12 +39,12 @@ namespace sla {
  *
  * Original FORTRAN code by P.T. Wallace.
  *
- * @param date TDB (Barycentric Dynamical Time; loosely ET, Ephemeris Time) as Modified Julian Date (JD-2400000.5).
+ * @param tdb TDB (Barycentric Dynamical Time; loosely ET, Ephemeris Time) as Modified Julian Date (JD-2400000.5).
  * @param psi Return value: nutation in longitude.
  * @param eps Return value: nutation in obliquity.
  * @param eps0 Return value: mean obliquity.
  */
-void nutc(double date, double& psi, double& eps, double& eps0) {
+void nutc(double tdb, double& psi, double& eps, double& eps0) {
     // degrees to radians
     constexpr double DEGREES_2_RADIANS = 1.745329251994329576923691e-2;
     // arc seconds to radians
@@ -656,7 +656,7 @@ void nutc(double date, double& psi, double& eps, double& eps0) {
     };
 
     // interval between fundamental epoch J2000.0 and given epoch (JC)
-    const double centuries = (date - J2000_EPOCH) / DAYS_PER_JCENTURY;
+    const double centuries = (tdb - J2000_EPOCH) / DAYS_PER_JCENTURY;
 
     // mean anomaly of the Moon
     const double ma_moon = 134.96340251 * DEGREES_2_RADIANS +

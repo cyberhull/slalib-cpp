@@ -27,18 +27,18 @@ namespace sla {
  *
  * Original FORTRAN code by P.T. Wallace.
  *
- * @param v1 Direction cosines of the first point; does *not* have to be a unit vector.
- * @param v2 Direction cosines of the second point; does *not* have to be a unit vector.
- * @return Bearing (position angle), in radians (in the range +/- Pi), of the point v2 with respect to the
- *   point v1; if v2 is a small distance east of v1, returned bearing is about +pi/2; if the two points are
+ * @param va Direction cosines of the first point; does *not* have to be a unit vector.
+ * @param vb Direction cosines of the second point; does *not* have to be a unit vector.
+ * @return Bearing (position angle), in radians (in the range +/- Pi), of the point vb with respect to the
+ *   point va; if vb is a small distance east of va, returned bearing is about +pi/2; if the two points are
  *   coincident, zero is returned.
  */
-float pav(const Vector<float> v1, const Vector<float> v2) {
+float pav(const Vector<float> va, const Vector<float> vb) {
     // call the double precision version
     Vector<double> dv1, dv2;
     for (int i = 0; i < 3; i++) {
-        dv1[i] = v1[i];
-        dv2[i] = v2[i];
+        dv1[i] = va[i];
+        dv2[i] = vb[i];
     }
     return float(dpav(dv1, dv2));
 }

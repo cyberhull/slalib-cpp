@@ -21,7 +21,7 @@
 namespace sla {
 
 /**
- * Forms the matrix of nutation for a given date - Shirai & Fukushima 2001 theory (double precision).
+ * Forms the matrix of nutation for a given tdb - Shirai & Fukushima 2001 theory (double precision).
  *
  * Earth attitude predictions made by combining the present nutation matrix with IAU~1976 precession are accurate
  * to 1~milliarcsecond (with respect to the ICRS) for a few decades around 2000.
@@ -34,17 +34,17 @@ namespace sla {
  *
  * Original FORTRAN code by P.T. Wallace.
  *
- * @param date TDB (Barycentric Dynamical Time; loosely ET, Ephemeris Time) as Modified Julian Date (JD-2400000.5).
+ * @param tdb TDB (Barycentric Dynamical Time; loosely ET, Ephemeris Time) as Modified Julian Date (JD-2400000.5).
  * @param mat Nutation matrix; the matrix is in the sense  v(true) = mat * v(mean), where v(true) is the star vector
- *   relative to the true equator and equinox of date and v(mean) is the star vector relative to the mean equator
- *   and equinox of date; the matrix represents forced nutation (but not free core nutation) plus corrections to the
+ *   relative to the true equator and equinox of tdb and v(mean) is the star vector relative to the mean equator
+ *   and equinox of tdb; the matrix represents forced nutation (but not free core nutation) plus corrections to the
  *   IAU~1976 precession model.
  */
-void nut(double date, Matrix<double> mat) {
+void nut(double tdb, Matrix<double> mat) {
     double psi, eps, eps0;
 
     // nutation components and mean obliquity
-    nutc(date,psi,eps,eps0);
+    nutc(tdb,psi,eps,eps0);
 
     // rotation matrix
     deuler("XZX", eps0, -psi,-(eps0 + eps), mat);

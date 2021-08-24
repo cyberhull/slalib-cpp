@@ -37,12 +37,12 @@ namespace sla {
  *
  * Original FORTRAN code by P.T. Wallace / Rutherford Appleton Laboratory.
  *
- * @param date TDB (Barycentric Dynamical Time; loosely ET, Ephemeris Time) as Modified Julian Date (JD-2400000.5).
+ * @param tdb TDB (Barycentric Dynamical Time; loosely ET, Ephemeris Time) as Modified Julian Date (JD-2400000.5).
  * @param psi Return value: nutation in longitude.
  * @param eps Return value: nutation in obliquity.
  * @param eps0 Return value: mean obliquity.
  */
-void nutc80(double date, double& psi, double& eps, double& eps0) {
+void nutc80(double tdb, double& psi, double& eps, double& eps0) {
     // turns to arc seconds
     constexpr double TURNS_2_ARCSECS = 1296000.0;
     // arc seconds to radians
@@ -51,7 +51,7 @@ void nutc80(double date, double& psi, double& eps, double& eps0) {
     constexpr double UNITS_2_RADIANS = ARCSECS_2_RADIANS / 1.0e4;
 
     // interval between basic epoch J2000.0 and current epoch (JC)
-    const double centuries = (date - 51544.5) / 36525.0;
+    const double centuries = (tdb - 51544.5) / 36525.0;
 
     //
     // FUNDAMENTAL ARGUMENTS in the FK5 reference system
@@ -73,7 +73,7 @@ void nutc80(double date, double& psi, double& eps, double& eps0) {
     const double d = drange(ARCSECS_2_RADIANS * (1072261.307 + (1236.0 * TURNS_2_ARCSECS + 1105601.328 +
         (-6.891 + 0.019 * centuries) * centuries) * centuries));
 
-    // longitude of the mean ascending node of the lunar orbit on the ecliptic, measured from the mean equinox of date
+    // longitude of the mean ascending node of the lunar orbit on the ecliptic, measured from the mean equinox of tdb
     const double om = drange(ARCSECS_2_RADIANS * (450160.280 + (-5.0 * TURNS_2_ARCSECS - 482890.539 +
         (7.455 + 0.008 * centuries) * centuries) * centuries));
 

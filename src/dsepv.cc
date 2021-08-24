@@ -28,18 +28,18 @@ namespace sla {
  *
  * Original FORTRAN code by P.T. Wallace.
  *
- * @param v1 First vector; does not have to be unit length; if null, zero is returned.
- * @param v2 Second vector; does not have to be unit length; if null, zero is returned.
+ * @param va First vector; does not have to be unit length; if null, zero is returned.
+ * @param vb Second vector; does not have to be unit length; if null, zero is returned.
  * @return The angle, in radians, between the two vectors; it is always positive.
  */
-double dsepv(const Vector<double> v1, const Vector<double> v2) {
+double dsepv(const Vector<double> va, const Vector<double> vb) {
     // modulus of cross product = sine multiplied by the two moduli
     Vector<double> v1_x_v2, wv;
-    dvxv(v1, v2, v1_x_v2);
+    dvxv(va, vb, v1_x_v2);
     const double s = dvn(v1_x_v2, wv);
 
     // dot product = cosine multiplied by the two moduli.
-    const double c = dvdv(v1, v2);
+    const double c = dvdv(va, vb);
 
     // angle between the vectors
     return s != 0.0 || c != 0.0? std::atan2(s,c): 0.0;

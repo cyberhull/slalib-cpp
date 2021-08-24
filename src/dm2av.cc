@@ -23,22 +23,22 @@ namespace sla {
 /**
  * Given a rotation matrix, determines corresponding axial vector (double precision).
  *
- * The reference frame rotates clockwise as seen looking along the axial vector from the origin. If rmat is null,
+ * The reference frame rotates clockwise as seen looking along the axial vector from the origin. If mat is null,
  * so is the result.
  *
  * Original FORTRAN code by P.T. Wallace.
  *
- * @param rmat Rotation matrix; describes a rotation about some arbitrary axis, called the Euler axis.
+ * @param mat Rotation matrix; describes a rotation about some arbitrary axis, called the Euler axis.
  * @param axis Output: axial vector; has the same direction as the Euler axis, and its magnitude is the amount of
  *  rotation in radians. The magnitude and direction can be separated by means of the routine sla::vn().
  */
-void dm2av(const Matrix<double> rmat, Vector<double> axis) {
-    double x = rmat[1][2] - rmat[2][1];
-    double y = rmat[2][0] - rmat[0][2];
-    double z = rmat[0][1] - rmat[1][0];
+void dm2av(const Matrix<double> mat, Vector<double> axis) {
+    double x = mat[1][2] - mat[2][1];
+    double y = mat[2][0] - mat[0][2];
+    double z = mat[0][1] - mat[1][0];
     double s2 = std::sqrt(x * x + y * y + z * z);
     if (s2 != 0.0) {
-        double c2 = rmat[0][0] + rmat[1][1] + rmat[2][2] - 1.0;
+        double c2 = mat[0][0] + mat[1][1] + mat[2][2] - 1.0;
         double phi = std::atan2(s2 / 2.0, c2 / 2.0);
         double f = phi / s2;
         axis[0] = x * f;

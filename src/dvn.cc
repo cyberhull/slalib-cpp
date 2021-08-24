@@ -26,16 +26,16 @@ namespace sla {
  * Original FORTRAN code by P.T. Wallace. FORTRAN implementation was a procedure that returned input vector modulus
  * in one of its arguments; C++ implementation is a function returning the modulus directly.
  *
- * @param v A 3-component vector.
- * @param uv Output: unit vector having the same direction as `v`.
+ * @param vec A 3-component vector.
+ * @param nvec Output: unit vector having the same direction as `vec`.
  *
- * @return Modulus of `v`; if the modulus is zero, `uv` is set to zero as well.
+ * @return Modulus of `vec`; if the modulus is zero, `nvec` is set to zero as well.
  */
-double dvn(const Vector<double> v, Vector<double> uv) {
+double dvn(const Vector<double> vec, Vector<double> nvec) {
     // calculate input vector's modulus
     double modulus = 0.0;
     for (int i = 0; i < 3; i++) {
-        double tmp = v[i];
+        double tmp = vec[i];
         modulus += tmp * tmp;
     }
     modulus = std::sqrt(modulus);
@@ -46,7 +46,7 @@ double dvn(const Vector<double> v, Vector<double> uv) {
         modulus = 1.0;
     }
     for (int i = 0; i < 3; i++) {
-        uv[i] = v[i] / modulus;
+        nvec[i] = vec[i] / modulus;
     }
     return result;
 }

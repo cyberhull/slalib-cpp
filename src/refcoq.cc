@@ -130,21 +130,21 @@ namespace sla {
  *
  * Original FORTRAN code by P.T. Wallace.
  *
- * @param tdk Ambient temperature at the observer (degrees K); clamped to the [100K..500K] range.
- * @param pmb Pressure at the observer (millibars); clamped to the [0..10000] range; zero pressure yields zero results.
- * @param rh Relative humidity at the observer (range 0..1); clamped to the [0..1] range.
+ * @param atk Ambient temperature at the observer (degrees K); clamped to the [100K..500K] range.
+ * @param apm Pressure at the observer (millibars); clamped to the [0..10000] range; zero pressure yields zero results.
+ * @param arh Relative humidity at the observer (range 0..1); clamped to the [0..1] range.
  * @param wl Effective wavelength of the source (micrometres); clamped internally to the [0.1..1E6] range.
  * @param refa Return value: tan Z coefficient (radians).
  * @param refb Return value: tan**3 Z coefficient (radians).
  */
-void refcoq(double tdk, double pmb, double rh, double wl, double& refa, double& refb) {
+void refcoq(double atk, double apm, double arh, double wl, double& refa, double& refb) {
     // decide whether optical/IR or radio case: switch at 100 microns
     const bool optic = wl <= 100.0;
 
     // restrict parameters to safe values
-    const double t = std::min(std::max(tdk, 100.0), 500.0);
-    const double p = std::min(std::max(pmb, 0.0), 10000.0);
-    const double r = std::min(std::max(rh, 0.0), 1.0);
+    const double t = std::min(std::max(atk, 100.0), 500.0);
+    const double p = std::min(std::max(apm, 0.0), 10000.0);
+    const double r = std::min(std::max(arh, 0.0), 1.0);
     const double w = std::min(std::max(wl, 0.1), 1.0e6);
 
     // water vapour pressure at the observer
