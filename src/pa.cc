@@ -29,15 +29,14 @@ namespace sla {
  *
  * Original FORTRAN code by P.T. Wallace / Rutherford Appleton Laboratory.
  *
- * @param ha Hour angle (radians; geocentric apparent).
- * @param dec Declination (radians; geocentric apparent).
+ * @param dir Hour angle and declination (radians; geocentric apparent).
  * @param phi Observatory latitude (radians;  geodetic).
  * @return Parallactic angle; at the pole, zero is returned.
  */
-double pa(double ha, double dec, double phi) {
+double pa(const Spherical<double>& dir, double phi) {
     const double cp = std::cos(phi);
-    const double sqsz = cp * std::sin(ha);
-    double cqsz = std::sin(phi) * std::cos(dec) - cp * std::sin(dec) * std::cos(ha);
+    const double sqsz = cp * std::sin(dir.get_ha());
+    double cqsz = std::sin(phi) * std::cos(dir.get_dec()) - cp * std::sin(dir.get_dec()) * std::cos(dir.get_ha());
     if (sqsz == 0.0 && cqsz == 0.0) {
         cqsz = 1.0;
     }

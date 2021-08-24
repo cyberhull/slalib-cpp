@@ -768,8 +768,8 @@ static void t_sep(bool& status) {
 
 // tests sla::pa() function
 static void t_pa(bool& status) {
-    vvd(pa(-1.567, 1.5123, 0.987), -1.486288540423851, 1.0e-12, "sla::pa", "", status);
-    vvd(pa(0.0, 0.789, 0.789), 0.0, 0.0, "sla::pa", "zenith", status);
+    vvd(pa({-1.567, 1.5123}, 0.987), -1.486288540423851, 1.0e-12, "sla::pa", "", status);
+    vvd(pa({0.0, 0.789}, 0.789), 0.0, 0.0, "sla::pa", "zenith", status);
 }
 
 // tests sla::rcc() function
