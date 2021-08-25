@@ -203,7 +203,7 @@ static void t_e2h(bool& status) {
     vvd(d_elevation, 1.132711866443304, 1.0e-12, "sla::de2h", "elevation", status);
 
     float azimuth, elevation;
-    e2h(ha, dec, phi, azimuth, elevation );
+    e2h({ha, dec}, phi, azimuth, elevation);
     vvd(azimuth, 2.820087515852369, 1.0e-6, "sla::e2h", "azimuth", status);
     vvd(elevation, 1.132711866443304, 1.0e-6, "sla::e2h", "elevation", status);
 
