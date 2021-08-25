@@ -59,20 +59,16 @@ namespace sla {
  * @param pa_vel Return value: parallactic angle velocity (radians per radian of `ha`).
  * @param pa_acc Return value: parallactic angle acceleration (radians per radian of `ha` squared).
  */
-void altaz(double ha, double dec, double phi,
-    double& az, double& az_vel, double& az_acc,
-    double& el, double& el_vel, double& el_acc,
-    double& pa, double& pa_vel, double& pa_acc) {
-
+void altaz(const Spherical<double>& dir, double phi, AltazMount& am) {
     constexpr double PI = 3.1415926535897932384626433832795;
     constexpr double PI2 = 6.283185307179586476925286766559;
     constexpr double EPSILON = 1.0e-30;
 
     // useful functions
-    const double sin_ha = std::sin(ha);
-    const double cos_ha = std::cos(ha);
-    const double sin_dec = std::sin(dec);
-    const double cos_dec = std::cos(dec);
+    const double sin_ha = std::sin(dir.get_ha());
+    const double cos_ha = std::cos(dir.get_ha());
+    const double sin_dec = std::sin(dir.get_dec());
+    const double cos_dec = std::cos(dir.get_dec());
     const double sin_phi = std::sin(phi);
     const double cos_phi = std::cos(phi);
     const double ch_cd = cos_ha * cos_dec;
@@ -93,7 +89,7 @@ void altaz(double ha, double dec, double phi,
     // parallactic angle
     const double c = cos_dec * sin_phi - cos_ha * sd_cp;
     const double s = sin_ha * cos_phi;
-    const double p_angle = c * c + s * s > 0.0? std::atan2(s, c): PI - ha;
+    const double p_angle = c * c + s * s > 0.0? std::atan2(s, c): PI - dir.get_ha();
 
     // velocities and accelerations (clamped at zenith/nadir)
     if (r_squared < EPSILON) {
@@ -109,15 +105,15 @@ void altaz(double ha, double dec, double phi,
     const double p_acc = edr * (sin_phi + 2.0 * z * p_vel);
 
     // return results
-    az = azimuth;
-    az_vel = a_vel;
-    az_acc = a_acc;
-    el = elevation;
-    el_vel = e_vel;
-    el_acc = e_acc;
-    pa = p_angle;
-    pa_vel = p_vel;
-    pa_acc = p_acc;
+    am.set_azimuth(azimuth);
+    am.set_az_velocity(a_vel);
+    am.set_az_acceleration(a_acc);
+    am.set_elevation(elevation);
+    am.set_el_velocity(e_vel);
+    am.set_el_acceleration(e_acc);
+    am.set_pangle(p_angle);
+    am.set_pa_velocity(p_vel);
+    am.set_pa_acceleration(p_acc);
 }
 
 }

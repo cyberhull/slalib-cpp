@@ -107,6 +107,42 @@ struct Date {
     double d_fraction;  ///< Fraction of the day, [0..1.0f)
 };
 
+/// Representation of the parameters for an AltAz telescope mount.
+class AltazMount {
+    double am_azimuth;   ///< azimuth (radians, range: [0..2pi]); north is zero, and east is +pi/2
+    double am_az_vel;    ///< azimuth velocity (radians per radian of `ha`)
+    double am_az_accel;  ///< azimuth acceleration (radians per radian of `ha` squared)
+    double am_elevation; ///< elevation (radians, range: [-pi..pi])
+    double am_el_vel;    ///< elevation velocity (radians per radian of `ha`)
+    double am_el_accel;  ///< elevation acceleration (radians per radian of `ha` squared)
+    double am_pangle;    ///< @param pa Return value: parallactic angle (radians, range: [-pi..pi]); positive for a
+                         ///< star west of the meridian and is the angle NP-star-zenith
+    double am_pa_vel;    ///< parallactic angle velocity (radians per radian of `ha`)
+    double am_pa_accel;  ///< parallactic angle acceleration (radians per radian of `ha` squared)
+
+public:
+    void set_azimuth(double radians) { am_azimuth = radians; }
+    [[nodiscard]] double get_azimuth() const { return am_azimuth; }
+    void set_az_velocity(double velocity) { am_az_vel = velocity; }
+    [[nodiscard]] double get_az_velocity() const { return am_az_vel; }
+    void set_az_acceleration(double acceleration) { am_az_accel = acceleration; }
+    [[nodiscard]] double get_az_acceleration() const { return am_az_accel; }
+
+    void set_elevation(double radians) { am_elevation = radians; }
+    [[nodiscard]] double get_elevation() const { return am_elevation; }
+    void set_el_velocity(double velocity) { am_el_vel = velocity; }
+    [[nodiscard]] double get_el_velocity() const { return am_el_vel; }
+    void set_el_acceleration(double acceleration) { am_el_accel = acceleration; }
+    [[nodiscard]] double get_el_acceleration() const { return am_el_accel; }
+
+    void set_pangle(double radians) { am_pangle = radians; }
+    [[nodiscard]] double get_pangle() const { return am_pangle; }
+    void set_pa_velocity(double velocity) { am_pa_vel = velocity; }
+    [[nodiscard]] double get_pa_velocity() const { return am_pa_vel; }
+    void set_pa_acceleration(double acceleration) { am_pa_accel = acceleration; }
+    [[nodiscard]] double get_pa_acceleration() const { return am_pa_accel; }
+};
+
 /**
  * Representation os various conversion results: days to hours, minutes, seconds; or radians to degrees, arcminutes,
  * arcseconds; etc. The same data structure has to be passed between routines interpreting it quite differently,
@@ -215,8 +251,7 @@ double refz(double zu, double refa, double refb);
 void ecmat(double date, Matrix<double> mat);
 bool dmat(int n, Matrix<double> mat, Vector<double> vec, double& det, int ws[3]);
 bool smat(int n, float* mat, float* vec, float& det, int* ws);
-void altaz(double ha, double dec, double phi, double& az, double& az_vel, double& az_acc,
-    double& el, double& el_vel, double& el_acc, double& pa, double& pa_vel, double& pa_acc);
+void altaz(const Spherical<double>& dir, double phi, AltazMount& am);
 void nutc(double tdb, double& psi, double& eps, double& eps0);
 void nut(double tdb, Matrix<double> mat);
 void nutc80(double tdb, double& psi, double& eps, double& eps0);
