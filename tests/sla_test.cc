@@ -190,31 +190,28 @@ static void t_cldj(bool& status) {
 
 // tests sla::e2h(), sla::de2h(), sla::h2e(), and sla::dh2e() procedures
 static void t_e2h(bool& status) {
-    double d_ha = -0.3;
-    double d_dec = -1.1;
-    double d_phi = -0.7;
-    auto ha = float(d_ha);
-    auto dec = float(d_dec);
-    auto phi = float(d_phi);
+    Spherical<double> d_dir = {-0.3, -1.1};
+    const double d_phi = -0.7;
+    Spherical<float> f_dir = {(float) d_dir.get_ha(), (float) d_dir.get_dec()};
+    const float f_phi = (float) d_phi;
 
     double d_azimuth, d_elevation;
-    de2h({d_ha, d_dec}, d_phi, d_azimuth, d_elevation);
+    de2h(d_dir, d_phi, d_azimuth, d_elevation);
     vvd(d_azimuth, 2.820087515852369, 1.0e-12, "sla::de2h", "azimuth", status);
     vvd(d_elevation, 1.132711866443304, 1.0e-12, "sla::de2h", "elevation", status);
 
     float azimuth, elevation;
-    e2h({ha, dec}, phi, azimuth, elevation);
+    e2h(f_dir, f_phi, azimuth, elevation);
     vvd(azimuth, 2.820087515852369, 1.0e-6, "sla::e2h", "azimuth", status);
     vvd(elevation, 1.132711866443304, 1.0e-6, "sla::e2h", "elevation", status);
 
-    dh2e(d_azimuth, d_elevation, d_phi, d_ha, d_dec);
-    vvd(d_ha, -0.3, 1.0e-12, "sla::dh2e", "ha", status);
-    vvd(d_dec, -1.1, 1.0e-12, "sla::dh2e", "dec", status);
+    dh2e(d_azimuth, d_elevation, d_phi, d_dir);
+    vvd(d_dir.get_ha(), -0.3, 1.0e-12, "sla::dh2e", "ha", status);
+    vvd(d_dir.get_dec(), -1.1, 1.0e-12, "sla::dh2e", "dec", status);
 
-    Spherical<float> fdir;
-    h2e(azimuth, elevation, phi, fdir);
-    vvd(fdir.get_ha(), -0.3, 1.0e-6, "sla::h2e", "ha", status);
-    vvd(fdir.get_dec(), -1.1, 1.0e-6, "sla::h2e", "dec", status);
+    h2e(azimuth, elevation, f_phi, f_dir);
+    vvd(f_dir.get_ha(), -0.3, 1.0e-6, "sla::h2e", "ha", status);
+    vvd(f_dir.get_dec(), -1.1, 1.0e-6, "sla::h2e", "dec", status);
 }
 
 /*

@@ -182,7 +182,7 @@ double dpav(const Vector<double> va, const Vector<double> vb);
 void e2h(const Spherical<float>& dir, float phi, float& azimuth, float& elevation);
 void de2h(const Spherical<double>& dir, double phi, double& azimuth, double& elevation);
 void h2e(float azimuth, float elevation, float phi, Spherical<float>& dir);
-void dh2e(double azimuth, double elevation, double phi, double& ha, double& dec);
+void dh2e(double azimuth, double elevation, double phi, Spherical<double>& dir);
 D2RStatus caf2r(int degrees, int minutes, float seconds, float& radians);
 D2RStatus daf2r(int degrees, int minutes, double seconds, double& radians);
 G2JStatus cldj(int year, int month, int day, double& mjd);

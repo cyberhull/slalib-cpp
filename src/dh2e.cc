@@ -41,7 +41,7 @@ namespace sla {
  * @param ha Output: hour angle; returned in the range +/-Pi.
  * @param dec Output: declination; returned in the range +/-pi/2.
  */
-void dh2e(double azimuth, double elevation, double phi, double& ha, double& dec) {
+void dh2e(double azimuth, double elevation, double phi, Spherical<double>& dir) {
     // useful trig functions.
     const double sin_az = std::sin(azimuth);
     const double cos_az = std::cos(azimuth);
@@ -57,8 +57,8 @@ void dh2e(double azimuth, double elevation, double phi, double& ha, double& dec)
 
     // to ha,Dec
     const double r = std::sqrt(x * x + y * y);
-    ha = (r == 0.0) ? 0.0 : std::atan2(y, x);
-    dec = std::atan2(z, r);
+    dir.set_ha((r == 0.0) ? 0.0 : std::atan2(y, x));
+    dir.set_dec(std::atan2(z, r));
 }
 
 }
