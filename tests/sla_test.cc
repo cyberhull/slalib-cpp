@@ -211,9 +211,10 @@ static void t_e2h(bool& status) {
     vvd(d_ha, -0.3, 1.0e-12, "sla::dh2e", "ha", status);
     vvd(d_dec, -1.1, 1.0e-12, "sla::dh2e", "dec", status);
 
-    h2e(azimuth, elevation, phi, ha, dec);
-    vvd(ha, -0.3, 1.0e-6, "sla::h2e", "ha", status);
-    vvd(dec, -1.1, 1.0e-6, "sla::h2e", "dec", status);
+    Spherical<float> fdir;
+    h2e(azimuth, elevation, phi, fdir);
+    vvd(fdir.get_ha(), -0.3, 1.0e-6, "sla::h2e", "ha", status);
+    vvd(fdir.get_dec(), -1.1, 1.0e-6, "sla::h2e", "dec", status);
 }
 
 /*

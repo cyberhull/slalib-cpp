@@ -38,10 +38,9 @@ namespace sla {
  * @param elevation Elevation, in radians; not range-checked.
  * @param phi Observatory latitude, in radians; not range-checked; the latitude is (in principle) geodetic; in
  *   critical applications, corrections for polar motion should be applied.
- * @param ha Output: hour angle; returned in the range +/-Pi.
- * @param dec Output: declination; returned in the range +/-pi/2.
+ * @param ha Return value: hour angle (range: +/-pi) and declination (range: +/-pi/2).
  */
-void h2e(float azimuth, float elevation, float phi, float& ha, float& dec) {
+void h2e(float azimuth, float elevation, float phi, Spherical<float>& dir) {
     // useful trig functions.
     const double sin_az = std::sin(azimuth);
     const double cos_az = std::cos(azimuth);
@@ -57,8 +56,8 @@ void h2e(float azimuth, float elevation, float phi, float& ha, float& dec) {
 
     // to ha,Dec
     const double r = std::sqrt(x * x + y * y);
-    ha = (r == 0.0) ? 0.0f : float(std::atan2(y, x));
-    dec = float(std::atan2(z, r));
+    dir.set_ha((r == 0.0)? 0.0f: float(std::atan2(y, x)));
+    dir.set_dec((float) std::atan2(z, r));
 }
 
 }
