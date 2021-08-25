@@ -198,7 +198,7 @@ static void t_e2h(bool& status) {
     auto phi = float(d_phi);
 
     double d_azimuth, d_elevation;
-    de2h(d_ha, d_dec, d_phi, d_azimuth, d_elevation);
+    de2h({d_ha, d_dec}, d_phi, d_azimuth, d_elevation);
     vvd(d_azimuth, 2.820087515852369, 1.0e-12, "sla::de2h", "azimuth", status);
     vvd(d_elevation, 1.132711866443304, 1.0e-12, "sla::de2h", "elevation", status);
 
