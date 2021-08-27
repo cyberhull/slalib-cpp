@@ -825,6 +825,29 @@ static void t_rv(bool& status) {
     vvd(rvlsrk({6.01, 0.1}), -5.925180579830265, 1.0e-4, "sla::rvlsrk", "", status);
 }
 
+// tests sla::cc62s() and sla::dc62s() functions
+static void t_cc62s(bool& status) {
+    const VectorPV<float> v({100.0f, -50.0f, 25.0f}, {-0.1f, 0.2f, 0.7f});
+    SphericalPV<float> s;
+    cc62s(v, s);
+    vvd(s.get_longitude(), -0.4636476090008061, 1.0e-6, "sla::cc62s", "longitude", status);
+    vvd(s.get_latitude(), 0.2199879773954594, 1.0e-6, "sla::cc62s", "latitude", status);
+    vvd(s.get_dist(), 114.564392373896, 1.0e-3, "sla::cc62s", "dist", status);
+    vvd(s.get_dlong(), 0.001200000000000000, 1.0e-9, "sla::cc62s", "dlong", status);
+    vvd(s.get_dlat(), 0.006303582107999407, 1.0e-8, "sla::cc62s", "dlat", status);
+    vvd(s.get_ddist(), -0.02182178902359925, 1.0e-7, "sla::cc62s", "ddist", status);
+
+    const VectorPV<double> dv({100.0, -50.0, 25.0}, {-0.1, 0.2, 0.7});
+    SphericalPV<double> ds;
+    dc62s(dv, ds);
+    vvd(ds.get_longitude(), -0.4636476090008061, 1.0e-6, "sla::dc62s", "longitude", status);
+    vvd(ds.get_latitude(), 0.2199879773954594, 1.0e-6, "sla::dc62s", "latitude", status);
+    vvd(ds.get_dist(), 114.564392373896, 1.0e-9, "sla::dc62s", "dist", status);
+    vvd(ds.get_dlong(), 0.001200000000000000, 1.0e-15, "sla::dc62s", "dlong", status);
+    vvd(ds.get_dlat(), 0.006303582107999407, 1.0e-14, "sla::dc62s", "dlat", status);
+    vvd(ds.get_ddist(), -0.02182178902359925, 1.0e-13, "sla::dc62s", "ddist", status);
+}
+
 ///////////////////////////////////////////////////////////////////////////////
 // MODULE ENTRY POINT
 ///////////////////////////////////////////////////////////////////////////////
@@ -870,6 +893,7 @@ bool sla_test() {
     t_preces(status);
     t_supgal(status);
     t_rv(status);
+    t_cc62s(status);
     return status;
 }
 

@@ -106,6 +106,14 @@ class VectorPV {
     Vector<T> vpv_velo; ///< velocity
 
 public:
+    VectorPV() = default;
+    VectorPV(const Vector<T>& position, const Vector<T>& velocity) {
+        for (int i = 0; i < 3; i++) {
+            vpv_pos[i] = position[i];
+            vpv_velo[i] = velocity[i];
+        }
+    }
+
     void set_x(T x) { vpv_pos[0] = x; }
     [[nodiscard]] T get_x() const { return vpv_pos[0]; }
     void set_y(T y) { vpv_pos[1] = y; }
