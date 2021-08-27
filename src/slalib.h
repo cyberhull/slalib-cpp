@@ -18,6 +18,7 @@
 #ifndef SLALIB_H_INCLUDED
 #define SLALIB_H_INCLUDED
 
+#include <cassert>
 #include <type_traits>
 
 namespace sla {
@@ -96,6 +97,61 @@ struct SphericalPos: public Spherical<T> {
 
     [[nodiscard]] T get_dist() const { return sp_dist; }
     void set_dist(T dist) { sp_dist = dist; }
+};
+
+/// Vectors holding position and velocity in Cartesian coordinates.
+template <typename T, std::enable_if_t<std::is_floating_point<T>::value, bool> = true>
+class VectorPV {
+    Vector<T> vpv_pos;  ///< position
+    Vector<T> vpv_velo; ///< velocity
+
+public:
+    void set_x(T x) { vpv_pos[0] = x; }
+    [[nodiscard]] T get_x() const { return vpv_pos[0]; }
+    void set_y(T y) { vpv_pos[1] = y; }
+    [[nodiscard]] T get_y() const { return vpv_pos[1]; }
+    void set_z(T z) { vpv_pos[2] = z; }
+    [[nodiscard]] T get_z() const { return vpv_pos[2]; }
+
+    void set_dx(T dx) { vpv_velo[0] = dx; }
+    [[nodiscard]] T get_dx() const { return vpv_velo[0]; }
+    void set_dy(T dy) { vpv_velo[1] = dy; }
+    [[nodiscard]] T get_dy() const { return vpv_velo[1]; }
+    void set_dz(T dz) { vpv_velo[2] = dz; }
+    [[nodiscard]] T get_dz() const { return vpv_velo[2]; }
+
+    const Vector<T>& get_position() const { return vpv_pos; }
+    const Vector<T>& get_velocity() const { return vpv_velo; }
+};
+
+/// Structured interface to the underlying vector holding position and velocity in spherical coordinates.
+template <typename T, std::enable_if_t<std::is_floating_point<T>::value, bool> = true>
+class SphericalPV {
+    SphericalPos<T> spv_pos;  ///< position: long/lat/dist or ra/dec/dist (ra,dec: radians)
+    SphericalPos<T> spv_velo; ///< velocity in long/lat/dist or ra/dec/dist directions (ra,dec: radians per unit time)
+
+public:
+    void set_longitude(T radians) { spv_pos.set_longitude(radians); }
+    [[nodiscard]] T get_longitude() const { return spv_pos.get_longitude(); }
+    void set_ra(T radians) { spv_pos.set_longitude(radians); }
+    [[nodiscard]] T get_ra() const { return spv_pos.get_longitude(); }
+    void set_latitude(T radians) { spv_pos.set_latitude(radians); }
+    [[nodiscard]] T get_latitude() const { return spv_pos.get_latitude(); }
+    void set_dec(T radians) { spv_pos.set_latitude(radians); }
+    [[nodiscard]] T get_dec() const { return spv_pos.get_latitude(); }
+    void set_dist(T dist) { spv_pos.set_dist(dist); }
+    [[nodiscard]] T get_dist() const { return spv_pos.get_dist(); }
+
+    void set_dlong(T rput) { spv_velo.set_longitude(rput); }
+    [[nodiscard]] T get_dlong() const { return spv_velo.get_longitude(); }
+    void set_dlat(T rput) { spv_velo.set_latitude(rput); }
+    [[nodiscard]] T get_dlat() const { return spv_velo.get_latitude(); }
+    void set_ddist(T der) { spv_velo.set_dist(der); }
+    [[nodiscard]] T get_ddist() const { return spv_velo.get_dist(); }
+
+    const Spherical<T>& get_direction() const { return spv_pos; }
+    const SphericalPos<T>& get_position() const { return spv_pos; }
+    const SphericalPos<T>& get_velocity() const { return spv_velo; }
 };
 
 /// Representation of a date of Gregorian calendar.
@@ -274,6 +330,7 @@ float rvgalc(const Spherical<float>& pos);
 float rvlg(const Spherical<float>& pos);
 float rvlsrd(const Spherical<float>& pos);
 float rvlsrk(const Spherical<float>& pos);
+void cc62s(const VectorPV<float>& cartesian, SphericalPV<float>& spherical);
 void wait(float seconds);
 
 } // sla namespace

@@ -25,7 +25,7 @@ that you have to look at the markdown source to see the difference):
 * caldj.f:         SUBROUTINE sla_CALDJ (IY, IM, ID, DJM, J)
 * calyd.f:         SUBROUTINE sla_CALYD (IY, IM, ID, NY, ND, J)
 * cc2s.f:          SUBROUTINE sla_CC2S (V, A, B)
-- cc62s.f:         SUBROUTINE sla_CC62S (V, A, B, R, AD, BD, RD)
+* cc62s.f:         SUBROUTINE sla_CC62S (V, A, B, R, AD, BD, RD)
 * cd2tf.f:         SUBROUTINE sla_CD2TF (NDP, DAYS, SIGN, IHMSF)
 * cldj.f:          SUBROUTINE sla_CLDJ (IY, IM, ID, DJM, J)
 * clyd.f:          SUBROUTINE sla_CLYD (IY, IM, ID, NY, ND, JSTAT)
