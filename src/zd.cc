@@ -41,7 +41,6 @@ namespace sla {
  *   1980 (GRS-80)); in critical applications, corrections for polar motion should be applied.
  * @return Zenith distance, 0 to Pi.
  */
- // double ha, double dec
 double zd(const Spherical<double>& dir, double phi) {
     const double sin_ha = std::sin(dir.get_ha());
     const double cos_ha = std::cos(dir.get_ha());
