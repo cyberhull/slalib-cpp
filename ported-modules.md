@@ -42,7 +42,7 @@ that you have to look at the markdown source to see the difference):
 * dav2m.f:         SUBROUTINE sla_DAV2M (AXVEC, RMAT)
 * dbear.f:         DOUBLE PRECISION FUNCTION sla_DBEAR (A1, B1, A2, B2)
 - dbjin.f:         SUBROUTINE sla_DBJIN (STRING, NSTRT, DRESLT, J1, J2)
-- dc62s.f:         SUBROUTINE sla_DC62S (V, A, B, R, AD, BD, RD)
+* dc62s.f:         SUBROUTINE sla_DC62S (V, A, B, R, AD, BD, RD)
 * dcc2s.f:         SUBROUTINE sla_DCC2S (V, A, B)
 - dcmpf.f:         SUBROUTINE sla_DCMPF (COEFFS, XZ, YZ, XS, YS, PERP, ORIENT)
 * dcs2c.f:         SUBROUTINE sla_DCS2C (A, B, V)

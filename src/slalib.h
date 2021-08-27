@@ -331,6 +331,7 @@ float rvlg(const Spherical<float>& pos);
 float rvlsrd(const Spherical<float>& pos);
 float rvlsrk(const Spherical<float>& pos);
 void cc62s(const VectorPV<float>& cartesian, SphericalPV<float>& spherical);
+void dc62s(const VectorPV<double>& cartesian, SphericalPV<double>& spherical);
 void wait(float seconds);
 
 } // sla namespace
