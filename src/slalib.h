@@ -179,8 +179,8 @@ class AltazMount {
     double am_elevation; ///< elevation (radians, range: [-pi..pi])
     double am_el_vel;    ///< elevation velocity (radians per radian of `ha`)
     double am_el_accel;  ///< elevation acceleration (radians per radian of `ha` squared)
-    double am_pangle;    ///< @param pa Return value: parallactic angle (radians, range: [-pi..pi]); positive for a
-                         ///< star west of the meridian and is the angle NP-star-zenith
+    double am_pangle;    ///< parallactic angle (radians, range: [-pi..pi]); positive for a star west of the meridian
+                         ///< and is the angle NP-star-zenith
     double am_pa_vel;    ///< parallactic angle velocity (radians per radian of `ha`)
     double am_pa_accel;  ///< parallactic angle acceleration (radians per radian of `ha` squared)
 
