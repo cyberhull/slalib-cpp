@@ -21,24 +21,24 @@
 namespace sla {
 
 /**
- * Converts position and velocity in spherical coordinates to Cartesian coordinates (single precision).
+ * Converts position and velocity in spherical coordinates to Cartesian coordinates (double precision).
  *
  * Original FORTRAN code by P.T. Wallace.
  *
  * @param spv Position and velocity in spherical coordinates (radians and radians per unit time, respectively).
  * @param pv Cartesian position and velocity vector.
  */
-void cs2c6(const SphericalPV<float>& spv, VectorPV<float> pv) {
+void ds2c6(const SphericalPV<double>& spv, VectorPV<double> pv) {
     // useful functions
-    const float sin_long = std::sin(spv.get_longitude());
-    const float cos_long = std::cos(spv.get_longitude());
-    const float sin_lat = std::sin(spv.get_latitude());
-    const float cos_lat = std::cos(spv.get_latitude());
-    const float dist_cos_lat = spv.get_dist() * cos_lat;
-    const float x = dist_cos_lat * cos_long;
-    const float y = dist_cos_lat * sin_long;
-    const float dist_dlat = spv.get_dist() * spv.get_dlat();
-    const float w = dist_dlat * sin_lat - cos_lat * spv.get_ddist();
+    const double sin_long = std::sin(spv.get_longitude());
+    const double cos_long = std::cos(spv.get_longitude());
+    const double sin_lat = std::sin(spv.get_latitude());
+    const double cos_lat = std::cos(spv.get_latitude());
+    const double dist_cos_lat = spv.get_dist() * cos_lat;
+    const double x = dist_cos_lat * cos_long;
+    const double y = dist_cos_lat * sin_long;
+    const double dist_dlat = spv.get_dist() * spv.get_dlat();
+    const double w = dist_dlat * sin_lat - cos_lat * spv.get_ddist();
 
     // position
     pv.set_x(x);

@@ -41,7 +41,7 @@ add_library(slalib
   dsepv.cc sepv.cc dsep.cc sep.cc
   prebn.cc preces.cc supgal.cc
   rverot.cc rvgalc.cc rvlg.cc rvlsrd.cc rvlsrk.cc
-  cc62s.cc dc62s.cc cs2c6.cc
+  cc62s.cc dc62s.cc cs2c6.cc ds2c6.cc
   wait.cc
   f77_utils.h
   slalib.cc slalib.h)
