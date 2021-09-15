@@ -28,7 +28,7 @@ namespace sla {
  * @param spv Position and velocity in spherical coordinates (radians and radians per unit time, respectively).
  * @param pv Cartesian position and velocity vector.
  */
-void cs2c6(const SphericalPV<float>& spv, VectorPV<float> pv) {
+void cs2c6(const SphericalPV<float>& spv, VectorPV<float>& pv) {
     // useful functions
     const float sin_long = std::sin(spv.get_longitude());
     const float cos_long = std::cos(spv.get_longitude());
