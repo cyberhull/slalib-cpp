@@ -139,6 +139,12 @@ class SphericalPV {
     SphericalPos<T> spv_velo; ///< velocity in long/lat/dist or ra/dec/dist directions (ra,dec: radians per unit time)
 
 public:
+    SphericalPV() = default;
+    SphericalPV(const SphericalPos<T>& position, const SphericalPos<T>& velocity) {
+        spv_pos = position;
+        spv_velo = velocity;
+    }
+
     void set_longitude(T radians) { spv_pos.set_longitude(radians); }
     [[nodiscard]] T get_longitude() const { return spv_pos.get_longitude(); }
     void set_ra(T radians) { spv_pos.set_longitude(radians); }
@@ -340,6 +346,7 @@ float rvlsrd(const Spherical<float>& pos);
 float rvlsrk(const Spherical<float>& pos);
 void cc62s(const VectorPV<float>& cartesian, SphericalPV<float>& spherical);
 void dc62s(const VectorPV<double>& cartesian, SphericalPV<double>& spherical);
+void cs2c6(const SphericalPV<float>& spv, VectorPV<float> pv);
 void wait(float seconds);
 
 } // sla namespace
