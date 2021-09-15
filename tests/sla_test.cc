@@ -848,6 +848,27 @@ static void t_cc62s(bool& status) {
     vvd(ds.get_ddist(), -0.02182178902359925, 1.0e-13, "sla::dc62s", "ddist", status);
 }
 
+// tests sla::cs2c6() and sla::ds2c6() functions
+static void t_cs2c6(bool& status) {
+    VectorPV<float> spv;
+    cs2c6({{{-3.21f, 0.123f}, 0.456f}, {{-7.8e-6f, 9.01e-6f}, -1.23e-5f}}, spv);
+    vvd(spv.get_x(), -0.4514964673880165, 1.0e-6, "sla::cs2c6", "x", status);
+    vvd(spv.get_y(), 0.03093394277342585, 1.0e-6, "sla::cs2c6", "y", status);
+    vvd(spv.get_z(), 0.05594668105108779, 1.0e-6, "sla::cs2c6", "z", status);
+    vvd(spv.get_dx(), 1.292270850663260e-5, 1.0e-6, "sla::cs2c6", "xd", status);
+    vvd(spv.get_dy(), 2.652814182060692e-6, 1.0e-6, "sla::cs2c6", "yd", status);
+    vvd(spv.get_dz(), 2.568431853930293e-6, 1.0e-6, "sla::cs2c6", "zd", status);
+
+    VectorPV<double> dpv;
+    ds2c6({{{-3.21, 0.123}, 0.456}, {{-7.8e-6, 9.01e-6}, -1.23e-5}}, dpv);
+    vvd(dpv.get_x(), -0.4514964673880165, 1.0e-12, "sla::ds2c6", "x", status);
+    vvd(dpv.get_y(), 0.03093394277342585, 1.0e-12, "sla::ds2c6", "y", status);
+    vvd(dpv.get_z(), 0.05594668105108779, 1.0e-12, "sla::ds2c6", "z", status);
+    vvd(dpv.get_dx(), 1.292270850663260e-5, 1.0e-12, "sla::ds2c6", "xd", status);
+    vvd(dpv.get_dy(), 2.652814182060692e-6, 1.0e-12, "sla::ds2c6", "yd", status);
+    vvd(dpv.get_dz(), 2.568431853930293e-6, 1.0e-12, "sla::ds2c6", "zd", status);
+}
+
 ///////////////////////////////////////////////////////////////////////////////
 // MODULE ENTRY POINT
 ///////////////////////////////////////////////////////////////////////////////
@@ -894,6 +915,7 @@ bool sla_test() {
     t_supgal(status);
     t_rv(status);
     t_cc62s(status);
+    t_cs2c6(status);
     return status;
 }
 
