@@ -110,7 +110,7 @@ that you have to look at the markdown source to see the difference):
 - galeq.f:         SUBROUTINE sla_GALEQ (DL, DB, DR, DD)
 - galsup.f:        SUBROUTINE sla_GALSUP (DL, DB, DSL, DSB)
 - ge50.f:          SUBROUTINE sla_GE50 (DL, DB, DR, DD)
-- geoc.f:          SUBROUTINE sla_GEOC (P, H, R, Z)
+* geoc.f:          SUBROUTINE sla_GEOC (P, H, R, Z)
 - gmsta.f:         DOUBLE PRECISION FUNCTION sla_GMSTA (DATE, UT)
 - gmst.f:          DOUBLE PRECISION FUNCTION sla_GMST (UT1)
 - gresid.Fdefault: REAL FUNCTION sla_GRESID (S)
