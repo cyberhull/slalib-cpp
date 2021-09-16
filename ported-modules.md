@@ -96,7 +96,7 @@ that you have to look at the markdown source to see the difference):
 - eqecl.f:         SUBROUTINE sla_EQECL (DR, DD, DATE, DL, DB)
 - eqeqx.f:         DOUBLE PRECISION FUNCTION sla_EQEQX (DATE)
 - eqgal.f:         SUBROUTINE sla_EQGAL (DR, DD, DL, DB)
-- etrms.f:         SUBROUTINE sla_ETRMS (EP, EV)
+* etrms.f:         SUBROUTINE sla_ETRMS (EP, EV)
 * euler.f:         SUBROUTINE sla_EULER (ORDER, PHI, THETA, PSI, RMAT)
 - evp.f:           SUBROUTINE sla_EVP (DATE, DEQX, DVB, DPB, DVH, DPH)
 - fitxy.f:         SUBROUTINE sla_FITXY (ITYPE,NP,XYE,XYM,COEFFS,J)
