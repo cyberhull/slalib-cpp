@@ -216,7 +216,7 @@ that you have to look at the markdown source to see the difference):
 - sla_test.f:      SUBROUTINE T_EQECL (STATUS)
 - sla_test.f:      SUBROUTINE T_EQEQX (STATUS)
 - sla_test.f:      SUBROUTINE T_EQGAL (STATUS)
-- sla_test.f:      SUBROUTINE T_ETRMS (STATUS)
+* sla_test.f:      SUBROUTINE T_ETRMS (STATUS)
 - sla_test.f:      SUBROUTINE T_EVP (STATUS)
 - sla_test.f:      SUBROUTINE T_FITXY (STATUS)
 - sla_test.f:      SUBROUTINE T_FK425 (STATUS)

@@ -869,6 +869,15 @@ static void t_cs2c6(bool& status) {
     vvd(dpv.get_dz(), 2.568431853930293e-6, 1.0e-12, "sla::ds2c6", "zd", status);
 }
 
+// tests sla::etrms() function
+static void t_etrms(bool& status) {
+    Vector<double> et;
+    etrms (1976.9, et);
+    vvd(et[0], -1.621617102537041e-6, 1.0e-18, "sla::etrms", "x", status);
+    vvd(et[1], -3.310070088507914e-7, 1.0e-18, "sla::etrms", "y", status);
+    vvd(et[2], -1.435296627515719e-7, 1.0e-18, "sla::etrms", "z", status);
+}
+
 ///////////////////////////////////////////////////////////////////////////////
 // MODULE ENTRY POINT
 ///////////////////////////////////////////////////////////////////////////////
@@ -916,6 +925,7 @@ bool sla_test() {
     t_rv(status);
     t_cc62s(status);
     t_cs2c6(status);
+    t_etrms(status);
     return status;
 }
 
