@@ -31,6 +31,8 @@ namespace sla {
  *   Smith, C.A. et al., 1989.  Astr.J. 97, 265.
  *   Yallop, B.D. et al., 1989.  Astr.J. 97, 274.
  *
+ * Original FORTRAN code by P.T. Wallace / Rutherford Appleton Laboratory.
+ *
  * @param be Besselian epoch.
  * @param et Return value: E-terms as (dx, dy, dz).
  */
