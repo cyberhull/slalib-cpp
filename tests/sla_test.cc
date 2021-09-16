@@ -878,6 +878,21 @@ static void t_etrms(bool& status) {
     vvd(et[2], -1.435296627515719e-7, 1.0e-18, "sla::etrms", "z", status);
 }
 
+// tests sla::addet() and sla::subet() functions
+static void t_addet(bool& status) {
+    const Spherical<double> dir {2.0, -1.0};
+    Spherical<double> dir1, dir2;
+    constexpr double be = 1975.0;
+
+    addet(dir, be, dir1);
+    vvd(dir1.get_ra() - dir.get_ra(), 2.983864874295250e-6, 1.0e-12, "sla::addet", "ra", status);
+    vvd(dir1.get_dec() - dir.get_dec(), 2.379650804185118e-7, 1.0e-12, "sla::addet", "dec", status);
+
+    subet(dir1, be, dir2);
+    vvd(dir2.get_ra() - dir.get_ra(), 0.0, 1.0e-12, "sla::subet", "ra", status);
+    vvd(dir2.get_dec() - dir.get_dec(), 0.0, 1.0e-12, "sla::subet", "dec", status);
+}
+
 ///////////////////////////////////////////////////////////////////////////////
 // MODULE ENTRY POINT
 ///////////////////////////////////////////////////////////////////////////////
@@ -926,6 +941,7 @@ bool sla_test() {
     t_cc62s(status);
     t_cs2c6(status);
     t_etrms(status);
+    t_addet(status);
     return status;
 }
 

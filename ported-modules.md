@@ -179,7 +179,7 @@ that you have to look at the markdown source to see the difference):
 * sep.f:           REAL FUNCTION sla_SEP (A1, B1, A2, B2)
 * sepv.f:          REAL FUNCTION sla_SEPV (V1, V2)
 * sla_test.f:      SUBROUTINE ERR (FUNC, TEST, STATUS)
-- sla_test.f:      SUBROUTINE T_ADDET (STATUS)
+* sla_test.f:      SUBROUTINE T_ADDET (STATUS)
 - sla_test.f:      SUBROUTINE T_AFIN (STATUS)
 * sla_test.f:      SUBROUTINE T_AIRMAS (STATUS)
 * sla_test.f:      SUBROUTINE T_ALTAZ (STATUS)
