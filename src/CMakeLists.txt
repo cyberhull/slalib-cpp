@@ -43,7 +43,7 @@ add_library(slalib
   rverot.cc rvgalc.cc rvlg.cc rvlsrd.cc rvlsrk.cc
   cc62s.cc dc62s.cc cs2c6.cc ds2c6.cc
   etrms.cc addet.cc subet.cc
-  geoc.cc
+  geoc.cc pvobs.cc
   wait.cc
   f77_utils.h
   slalib.cc slalib.h)
