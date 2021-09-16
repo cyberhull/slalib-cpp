@@ -74,7 +74,7 @@ if (preg_match('|\bDATA\s+' . $name . '\s*/(.+)/|sU', $text, $matches) != 1) {
 }
 
 $data = trim($matches[1]);
-$numbers = preg_split('/[\s:,]+/', $data);
+$numbers = preg_split('/[\s:,]+/', $data, -1, PREG_SPLIT_NO_EMPTY);
 if ($numbers === false) {
     fail("could not extract array elements for array '$name' from '$path'");
 }
