@@ -349,6 +349,7 @@ void dc62s(const VectorPV<double>& cartesian, SphericalPV<double>& spherical);
 void cs2c6(const SphericalPV<float>& spv, VectorPV<float>& pv);
 void ds2c6(const SphericalPV<double>& spv, VectorPV<double>& pv);
 void etrms(double be, Vector<double> et);
+void addet(const Spherical<double>& dir, double be, Spherical<double>& edir);
 void wait(float seconds);
 
 } // sla namespace

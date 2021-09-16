@@ -6,7 +6,7 @@ The following functions and procedures (including tests) are to be ported
 (marked with hyphen, `-`), or had been ported (marked with asterisk, `*`; note
 that you have to look at the markdown source to see the difference):
 
-- addet.f:         SUBROUTINE sla_ADDET (RM, DM, EQ, RC, DC)
+* addet.f:         SUBROUTINE sla_ADDET (RM, DM, EQ, RC, DC)
 - afin.f:          SUBROUTINE sla_AFIN (STRING, IPTR, A, J)
 * airmas.f:        DOUBLE PRECISION FUNCTION sla_AIRMAS (ZD)
 * altaz.f:         SUBROUTINE sla_ALTAZ (HA, DEC, PHI, AZ, AZD, AZDD, EL, ELD, ELDD, PA, PAD, PADD)
