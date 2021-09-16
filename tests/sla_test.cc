@@ -893,6 +893,19 @@ static void t_addet(bool& status) {
     vvd(dir2.get_dec() - dir.get_dec(), 0.0, 1.0e-12, "sla::subet", "dec", status);
 }
 
+// tests sla::pvobs() and (indirectly) sla::geoc() functions
+static void t_pvobs(bool& status) {
+    VectorPV<double> pv;
+
+    pvobs(0.5123, 3001.0, -0.567, pv);
+    vvd(pv.get_x(), 0.3138647803054939e-4, 1.0e-16,  "sla::pvobs", "x", status);
+    vvd(pv.get_y(),-0.1998515596527082e-4, 1.0e-16,  "sla::pvobs", "y", status);
+    vvd(pv.get_z(), 0.2078572043443275e-4, 1.0e-16,  "sla::pvobs", "z", status);
+    vvd(pv.get_dx(), 0.1457340726851264e-8, 1.0e-20, "sla::pvobs", "dx", status);
+    vvd(pv.get_dy(), 0.2288738340888011e-8, 1.0e-20, "sla::pvobs", "dy", status);
+    vvd(pv.get_dz(), 0.0, 0.0, "sla::pvobs", "dz", status);
+}
+
 ///////////////////////////////////////////////////////////////////////////////
 // MODULE ENTRY POINT
 ///////////////////////////////////////////////////////////////////////////////
@@ -942,6 +955,7 @@ bool sla_test() {
     t_cs2c6(status);
     t_etrms(status);
     t_addet(status);
+    t_pvobs(status);
     return status;
 }
 
