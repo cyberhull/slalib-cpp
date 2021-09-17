@@ -927,6 +927,11 @@ static void t_pcd(bool& status) {
     vvd(y, -0.00987, 1.0e-14, "sla::unpcd", "y", status);
 }
 
+// tests sla::eqeqx() function
+static void t_eqeqx(bool& status) {
+    vvd(eqeqx(41234.0), 5.376047445838358596e-5, 1.0e-17, "sla::eqeqx", "", status);
+}
+
 ///////////////////////////////////////////////////////////////////////////////
 // MODULE ENTRY POINT
 ///////////////////////////////////////////////////////////////////////////////
@@ -979,6 +984,7 @@ bool sla_test() {
     t_addet(status);
     t_pvobs(status);
     t_pcd(status);
+    t_eqeqx(status);
     return status;
 }
 
