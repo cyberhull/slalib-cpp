@@ -312,6 +312,7 @@ double dt(double epoch);
 double dtt(double utc);
 double rcc(double tdb, double ut1, double cl, double cda, double cdp);
 double gmst(double ut1);
+double gmsta(double date, double fdate);
 void atmdsp(double atk, double apm, double arh, double wl1, double a1, double b1, double wl2, double& a2, double& b2);
 void refcoq(double atk, double apm, double arh, double wl, double& refa, double& refb);
 double refro(double ozd, double oh, double atk, double apm, double arh, double wl, double phi, double tlr, double eps);

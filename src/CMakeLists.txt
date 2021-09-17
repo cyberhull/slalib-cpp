@@ -31,7 +31,7 @@ add_library(slalib
   cldj.cc caldj.cc clyd.cc calyd.cc djcal.cc djcl.cc
   cd2tf.cc dd2tf.cc cr2af.cc dr2af.cc cr2tf.cc dr2tf.cc
   ctf2d.cc dtf2d.cc ctf2r.cc dtf2r.cc
-  dat.cc dt.cc dtt.cc rcc.cc gmst.cc
+  dat.cc dt.cc dtt.cc rcc.cc gmst.cc gmsta.cc
   range.cc drange.cc ranorm.cc dranrm.cc
   atmdsp.cc refcoq.cc refro.cc refco.cc refv.cc refz.cc
   ecmat.cc dmat.cc smat.cc altaz.cc
