@@ -906,6 +906,21 @@ static void t_pvobs(bool& status) {
     vvd(pv.get_dz(), 0.0, 0.0, "sla::pvobs", "dz", status);
 }
 
+// tests sla::pcd() and sla::unpcd() functions
+static void t_pcd(bool& status) {
+    constexpr double disco = 178.585;
+    double x = 0.0123;
+    double y = -0.00987;
+
+    pcd(disco, x, y);
+    vvd(x, 0.01284630845735895, 1.0e-14, "sla::pcd", "x", status);
+    vvd(y, -0.01030837922553926, 1.0e-14, "sla::pcd", "y", status);
+
+    unpcd(disco, x, y);
+    vvd(x, 0.0123, 1.0e-14, "sla::unpcd", "x", status);
+    vvd(y, -0.00987, 1.0e-14, "sla::unpcd", "y", status);
+}
+
 ///////////////////////////////////////////////////////////////////////////////
 // MODULE ENTRY POINT
 ///////////////////////////////////////////////////////////////////////////////
@@ -956,6 +971,7 @@ bool sla_test() {
     t_etrms(status);
     t_addet(status);
     t_pvobs(status);
+    t_pcd(status);
     return status;
 }
 
