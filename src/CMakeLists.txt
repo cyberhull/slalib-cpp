@@ -44,6 +44,7 @@ add_library(slalib
   cc62s.cc dc62s.cc cs2c6.cc ds2c6.cc
   etrms.cc addet.cc subet.cc
   geoc.cc pvobs.cc pcd.cc unpcd.cc
+  eqeqx.cc
   wait.cc
   f77_utils.h
   slalib.cc slalib.h)

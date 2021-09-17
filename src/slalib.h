@@ -357,6 +357,7 @@ void geoc(double latitude, double height, double& axis_dist, double& equator_dis
 void pvobs(double latitude, double height, double lst, VectorPV<double>& pv);
 void pcd(double disco, double& x, double& y);
 void unpcd(double disco, double& x, double& y);
+double eqeqx(double date);
 void wait(float seconds);
 
 } // sla namespace
