@@ -932,6 +932,15 @@ static void t_eqeqx(bool& status) {
     vvd(eqeqx(41234.0), 5.376047445838358596e-5, 1.0e-17, "sla::eqeqx", "", status);
 }
 
+// tests sla::eqecl() function
+static void t_eqecl(bool& status) {
+    Spherical<double> dir;
+    eqecl({0.789, -0.123}, 46555.0, dir);
+
+    vvd(dir.get_longitude(), 0.7036566430349022, 1.0e-12, "sla::eqecl", "longitude", status);
+    vvd(dir.get_latitude(), -0.4036047164116848, 1.0e-12, "sla::eqecl", "latitude", status);
+}
+
 ///////////////////////////////////////////////////////////////////////////////
 // MODULE ENTRY POINT
 ///////////////////////////////////////////////////////////////////////////////
@@ -985,6 +994,7 @@ bool sla_test() {
     t_pvobs(status);
     t_pcd(status);
     t_eqeqx(status);
+    t_eqecl(status);
     return status;
 }
 
