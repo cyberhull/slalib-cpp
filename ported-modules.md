@@ -228,7 +228,7 @@ that you have to look at the markdown source to see the difference):
 - sla_test.f:      SUBROUTINE T_GALEQ (STATUS)
 - sla_test.f:      SUBROUTINE T_GALSUP (STATUS)
 - sla_test.f:      SUBROUTINE T_GE50 (STATUS)
-- sla_test.f:      SUBROUTINE T_GMST (STATUS)
+* sla_test.f:      SUBROUTINE T_GMST (STATUS)
 - sla_test.f:      SUBROUTINE T_INTIN (STATUS)
 - sla_test.f:      SUBROUTINE T_KBJ (STATUS)
 - sla_test.f:      SUBROUTINE T_MAP (STATUS)

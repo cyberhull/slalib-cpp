@@ -777,6 +777,12 @@ static void t_rcc(bool& status) {
         -1.280131613589158e-3, 1.0e-15, "sla::rcc", "", status);
 }
 
+// tests sla::gmst() and sla::gmsta functions
+static void t_gmst(bool& status) {
+    vvd(gmst(43999.999), 3.9074971356487318, 1.0e-9, "sla::gmst", "", status);
+    vvd(gmsta(43999.0, 0.999), 3.9074971356487318, 1.0e-12, "sla::gmsta", "", status);
+}
+
 // tests sla::rcc() function
 static void t_prebn(bool& status) {
     Matrix<double> mat;
@@ -962,6 +968,7 @@ bool sla_test() {
     t_prenut(status);
     t_sep(status);
     t_rcc(status);
+    t_gmst(status);
     t_prebn(status);
     t_preces(status);
     t_supgal(status);
