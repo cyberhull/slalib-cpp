@@ -139,7 +139,7 @@ that you have to look at the markdown source to see the difference):
 - obs.f:           SUBROUTINE sla_OBS (N, C, NAME, W, P, H)
 * pa.f:            DOUBLE PRECISION FUNCTION sla_PA (HA, DEC, PHI)
 * pav.f:           REAL FUNCTION sla_PAV (V1, V2)
-- pcd.f:           SUBROUTINE sla_PCD (DISCO,X,Y)
+* pcd.f:           SUBROUTINE sla_PCD (DISCO,X,Y)
 - pda2h.f:         SUBROUTINE sla_PDA2H (P, D, A, H1, J1, H2, J2)
 - pdq2h.f:         SUBROUTINE sla_PDQ2H (P, D, Q, H1, J1, H2, J2)
 - permut.f:        SUBROUTINE sla_PERMUT (N, ISTATE, IORDER, J)

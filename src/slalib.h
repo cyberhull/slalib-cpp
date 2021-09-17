@@ -353,6 +353,7 @@ void addet(const Spherical<double>& dir, double be, Spherical<double>& edir);
 void subet(const Spherical<double>& edir, double be, Spherical<double>& dir);
 void geoc(double latitude, double height, double& axis_dist, double& equator_dist);
 void pvobs(double latitude, double height, double lst, VectorPV<double>& pv);
+void pcd(double disco, double& x, double& y);
 void wait(float seconds);
 
 } // sla namespace
