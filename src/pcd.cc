@@ -43,8 +43,8 @@ namespace sla {
  * Original FORTRAN code by P.T. Wallace / Rutherford Appleton Laboratory.
  *
  * @param disco Pincushion/barrel distortion coefficient.
- * @param x Input/return value: tangent-plane X coordinate.
- * @param y Input/return value: tangent-plane Y coordinate.
+ * @param x Input/return value: tangent-plane X coordinate (input) / distorted X coordinate (returned).
+ * @param y Input/return value: tangent-plane Y coordinate (input) / distorted Y coordinate (returned).
  */
 void pcd(double disco, double& x, double& y) {
     const double f = 1.0 + disco * (x * x + y * y);
