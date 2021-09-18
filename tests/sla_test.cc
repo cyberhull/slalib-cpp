@@ -941,6 +941,15 @@ static void t_eqecl(bool& status) {
     vvd(dir.get_latitude(), -0.4036047164116848, 1.0e-12, "sla::eqecl", "latitude", status);
 }
 
+// tests sla::eqgal() function
+static void t_eqgal(bool& status) {
+    Spherical<double> gal;
+    eqgal({5.67, -1.23}, gal);
+
+    vvd(gal.get_longitude(), 5.612270780904526, 1.0e-12, "sla::eqgal", "longitude", status);
+    vvd(gal.get_latitude(), -0.6800521449061520, 1.0e-12, "sla::eqgal", "latitude", status);
+}
+
 ///////////////////////////////////////////////////////////////////////////////
 // MODULE ENTRY POINT
 ///////////////////////////////////////////////////////////////////////////////
@@ -995,6 +1004,7 @@ bool sla_test() {
     t_pcd(status);
     t_eqeqx(status);
     t_eqecl(status);
+    t_eqgal(status);
     return status;
 }
 
