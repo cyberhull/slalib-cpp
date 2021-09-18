@@ -107,7 +107,7 @@ that you have to look at the markdown source to see the difference):
 - fk54z.f:         SUBROUTINE sla_FK54Z (R2000, D2000, BEPOCH, R1950, D1950, DR1950, DD1950)
 - fk5hz.f:         SUBROUTINE sla_FK5HZ (R5, D5, EPOCH, RH, DH)
 - flotin.f:        SUBROUTINE sla_FLOTIN (STRING, NSTRT, RESLT, JFLAG)
-- galeq.f:         SUBROUTINE sla_GALEQ (DL, DB, DR, DD)
+* galeq.f:         SUBROUTINE sla_GALEQ (DL, DB, DR, DD)
 - galsup.f:        SUBROUTINE sla_GALSUP (DL, DB, DSL, DSB)
 - ge50.f:          SUBROUTINE sla_GE50 (DL, DB, DR, DD)
 * geoc.f:          SUBROUTINE sla_GEOC (P, H, R, Z)

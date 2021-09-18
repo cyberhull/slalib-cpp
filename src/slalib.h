@@ -360,6 +360,7 @@ void unpcd(double disco, double& x, double& y);
 double eqeqx(double date);
 void eqecl(const Spherical<double>& dir, double date, Spherical<double>& edir);
 void eqgal(const Spherical<double>& dir, Spherical<double>& gal);
+void galeq(const Spherical<double>& gal, Spherical<double>& dir);
 void wait(float seconds);
 
 } // sla namespace

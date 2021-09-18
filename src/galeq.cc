@@ -1,0 +1,69 @@
+/*
+ * C++ Port of the SLALIB library.
+ * Written by Vadim Sytnikov.
+ * Copyright (C) 2021 CyberHULL, Ltd.
+ * All rights reserved.
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ */
+#include "slalib.h"
+
+namespace sla {
+
+/**
+ * Transforms from IAU 1958 galactic coordinates to J2000.0 equatorial coordinates (double precision).
+ *
+ * The equatorial coordinates are J2000.0. Use the function sla::ge50() if conversion to B1950.0 'FK4' coordinates is
+ * required.
+ *
+ * Reference:
+ *   Blaauw et al, Mon.Not.R.Astron.Soc.,121,123 (1960).
+ *
+ * Original FORTRAN code by P.T. Wallace / Rutherford Appleton Laboratory.
+ *
+ * @param gal Galactic longitude and latitude L2, B2 (radians).
+ * @param dir J2000.0 RA, Dec (radians).
+ */
+void galeq(const Spherical<double>& gal, Spherical<double>& dir) {
+    /*
+     * L2, B2 system of galactic coordinates.
+     *
+     * P = 192.25    RA of galactic north pole (mean B1950.0) (degrees).
+     * Q =  62.6     Inclination of galactic to mean B1950.0 equator (degrees).
+     * R =  33       Longitude of ascending node (degrees).
+     *
+     * Equatorial to galactic rotation matrix (J2000.0), obtained by applying the standard FK4 to FK5 transformation,
+     * for zero proper motion in FK5, to the columns of the B1950 equatorial to galactic rotation matrix:
+     */
+    static const Matrix<double> mat = {
+        {-0.054875539726, -0.873437108010, -0.483834985808},
+        {+0.494109453312, -0.444829589425, +0.746982251810},
+        {-0.867666135858, -0.198076386122, +0.455983795705}
+    };
+
+    // spherical to Cartesian
+    Vector<double> v1;
+    dcs2c(gal, v1);
+
+    // galactic to equatorial
+    Vector<double> v2;
+    dimxv(mat, v1, v2);
+
+    // Cartesian to spherical
+    dcc2s(v2, dir);
+
+    // express in conventional ranges
+    dir.set_longitude(dranrm(dir.get_longitude()));
+    dir.set_latitude(drange(dir.get_latitude()));
+}
+
+}
