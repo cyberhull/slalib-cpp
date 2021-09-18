@@ -359,6 +359,7 @@ void pcd(double disco, double& x, double& y);
 void unpcd(double disco, double& x, double& y);
 double eqeqx(double date);
 void eqecl(const Spherical<double>& dir, double date, Spherical<double>& edir);
+void eqgal(const Spherical<double>& dir, Spherical<double>& gal);
 void wait(float seconds);
 
 } // sla namespace
