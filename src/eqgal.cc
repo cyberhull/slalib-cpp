@@ -34,6 +34,16 @@ namespace sla {
  * @param gal Galactic longitude and latitude L2, B2 (radians).
  */
 void eqgal(const Spherical<double>& dir, Spherical<double>& gal) {
+    /*
+     * L2, B2 system of galactic coordinates.
+     *
+     * P = 192.25    RA of galactic north pole (mean B1950.0) (degrees).
+     * Q =  62.6     Inclination of galactic to mean B1950.0 equator (degrees).
+     * R =  33       Longitude of ascending node (degrees).
+     *
+     * Equatorial to galactic rotation matrix (J2000.0), obtained by applying the standard FK4 to FK5 transformation,
+     * for zero proper motion in FK5, to the columns of the B1950 equatorial to galactic rotation matrix:
+     */
     static const Matrix<double> mat = {
         {-0.054875539726, -0.873437108010, -0.483834985808},
         {+0.494109453312, -0.444829589425, +0.746982251810},
