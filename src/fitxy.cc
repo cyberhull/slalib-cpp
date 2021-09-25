@@ -31,8 +31,8 @@ namespace sla {
  *
  * For the returned `coeffs` (which can be fetched using `coeffs.get_a()` etc.), the model is:
  *
- *   XE = A + B*XM + C*YM
- *   YE = D + E*XM + F*YM
+ *   XE = A + B * XM + C * YM
+ *   YE = D + E * XM + F * YM
  *
  * For the "solid body rotation" option (`sbr`==`true`), the magnitudes of B and F, and of C and E, are equal. The
  * signs of these coefficients depend on whether there is a sign reversal between XE,YE and XM,YM;  fits are performed
@@ -57,10 +57,6 @@ FITStatus fitxy(bool sbr, int nsamples, const XYSamples expected, const XYSample
         sum_x_expected, sum_y_expected, sum_x_measured, sum_y_measured,
         vec[4], mat3[3][3], mat4[4][4], det, sdr2;
 
-    // preset the status
-    FITStatus status = FIT_OK;
-    bool singular;
-
     // variable initializations to avoid compiler warnings
     double a = 0.0;
     double b = 0.0;
@@ -72,23 +68,23 @@ FITStatus fitxy(bool sbr, int nsamples, const XYSamples expected, const XYSample
     double d_old = 0.0;
     double sdr2_old = 0.0;
 
-    // float the number of samples
-    const double num_samples = (double) nsamples;
+    // get floating-point value of the number of samples
+    auto num_samples = (const double) nsamples;
+
+    // preset the status
+    FITStatus status = FIT_OK;
+    bool singular;
 
     // 6 independent coefficients?
     if (sbr == false) {
 
+        // ----------------------------
         // six-coefficient linear model
         // ----------------------------
 
         // check enough samples
         if (nsamples >= 3) {
-
             // form summations
-            sum_x_expected = 0.0;
-            sum_y_expected = 0.0;
-            sum_x_measured = 0.0;
-            sum_y_measured = 0.0;
             double sum_xe_xm = 0.0;
             double sum_xe_ym = 0.0;
             double sum_ye_ym = 0.0;
@@ -96,6 +92,11 @@ FITStatus fitxy(bool sbr, int nsamples, const XYSamples expected, const XYSample
             double sum_xm_xm = 0.0;
             double sum_xm_ym = 0.0;
             double sum_ym_ym = 0.0;
+            sum_x_expected = 0.0;
+            sum_y_expected = 0.0;
+            sum_x_measured = 0.0;
+            sum_y_measured = 0.0;
+
             for (i = 0; i < nsamples; i++) {
                 x_expected = expected[i][0];
                 y_expected = expected[i][1];
@@ -147,6 +148,7 @@ FITStatus fitxy(bool sbr, int nsamples, const XYSamples expected, const XYSample
         }
     } else {
 
+        // ------------------------------------------
         // four-coefficient solid body rotation model
         // ------------------------------------------
 
@@ -154,17 +156,18 @@ FITStatus fitxy(bool sbr, int nsamples, const XYSamples expected, const XYSample
         if (nsamples >= 2) {
 
             // try two solutions, first without then with flip in X
-            for (int solution = 1; solution <= 2; solution++) {
-                const double sign = solution == 1? 1.0: -1.0;
+            for (int solution = 0; solution <= 1; solution++) {
+                const double sign = solution == 0? 1.0: -1.0;
 
                 // form summations
+                double sum_xx_yy = 0.0;
+                double sum_xy_yx = 0.0;
+                double sum_x2_y2 = 0.0;
                 sum_x_expected = 0.0;
                 sum_y_expected = 0.0;
                 sum_x_measured = 0.0;
                 sum_y_measured = 0.0;
-                double sum_xx_yy = 0.0;
-                double sum_xy_yx = 0.0;
-                double sum_x2_y2 = 0.0;
+
                 for (i = 0; i < nsamples; i++) {
                     x_expected = expected[i][0] * sign;
                     y_expected = expected[i][1];
@@ -224,14 +227,13 @@ FITStatus fitxy(bool sbr, int nsamples, const XYSamples expected, const XYSample
                 }
 
                 // if first pass and non-singular, save variables
-                if (solution == 1 && singular == false) {
+                if (solution == 0 && singular == false) {
                     a_old = a;
                     b_old = b;
                     c_old = c;
                     d_old = d;
                     sdr2_old = sdr2;
                 }
-
             }
 
             // pick the best of the two solutions
@@ -254,7 +256,6 @@ FITStatus fitxy(bool sbr, int nsamples, const XYSamples expected, const XYSample
                 status = FIT_NONE;
             }
         } else {
-
             // insufficient data for 4-coefficient fit
             status = FIT_INSUFFICIENT;
         }
