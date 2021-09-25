@@ -42,26 +42,30 @@ namespace sla {
  * Original FORTRAN code by P.T. Wallace / Rutherford Appleton Laboratory.
  *
  * @param n Number of unknowns (range: [1..3]).
- * @param mat Source matrix; after the call, contains inverse matrix (if source matrix is singular, contents after
- *   the call is undefined).
- * @param vec Known vector; after the call, contains solution vector.
- * @param det Return value: determinant; if input matrix is singular, 0.0f is returned.
- * @param ws Workspace.
+ * @param mat Source matrix of size [n][n]; after the call, contains inverse matrix (if source matrix is singular,
+ * contents after the call is undefined).
+ * @param vec Known vector of `n` elements; after the call, contains solution vector.
+ * @param det Return value: determinant; if input matrix is singular, 0.0 is returned.
+ * @param ws Workspace (integer array of `n` elements).
  * @return `true` if input matrix is singular, `false` otherwise.
  */
-bool dmat(int n, Matrix<double> mat, Vector<double> vec, double& det, int ws[3]) {
-    constexpr double EPSILON = 1.0e-20;
+bool dmat(int n, double* mat, double* vec, double& det, int* ws) {
+    // variable-size matrix accessor
+    auto element = [mat, n](int i1, int i2) -> double& {
+        return mat[i2 * n + i1];
+    };
 
+    constexpr double EPSILON = 1.0e-20;
     bool singular = false;
     det = 1.0;
 
     int i, j, k;
     for (k = 0; k < n; k++) {
-        double amx = std::abs(mat[k][k]);
+        double amx = std::abs(element(k, k));
         int imx = k;
         if (k != n) {
             for (i = k + 1; i < n; i++) {
-                const double t0 = std::abs(mat[i][k]);
+                const double t0 = std::abs(element(i, k));
                 if (t0 > amx) {
                     amx = t0;
                     imx = i;
@@ -73,9 +77,9 @@ bool dmat(int n, Matrix<double> mat, Vector<double> vec, double& det, int ws[3])
         } else {
             if (imx != k) {
                 for (j = 0; j < n; j++) {
-                    const double t1 = mat[k][j];
-                    mat[k][j] = mat[imx][j];
-                    mat[imx][j] = t1;
+                    const double t1 = element(k, j);
+                    element(k, j) = element(imx, j);
+                    element(imx, j) = t1;
                 }
                 const double t2 = vec[k];
                 vec[k] = vec[imx];
@@ -83,26 +87,26 @@ bool dmat(int n, Matrix<double> mat, Vector<double> vec, double& det, int ws[3])
                 det = -det;
             }
             ws[k] = imx;
-            double akk = mat[k][k];
+            double akk = element(k, k);
             det = det * akk;
             if (std::abs(det) < EPSILON) {
                 singular = true;
             } else {
                 akk = 1.0 / akk;
-                mat[k][k] = akk;
+                element(k, k) = akk;
                 for (j = 0; j < n; j++) {
                     if (j != k) {
-                        mat[k][j] = mat[k][j] * akk;
+                        element(k, j) = element(k, j) * akk;
                     }
                 }
                 const double yk = vec[k] * akk;
                 vec[k] = yk;
                 for (i = 0; i < n; i++) {
-                    const double aik = mat[i][k];
+                    const double aik = element(i, k);
                     if (i != k) {
                         for (j = 0; j < n; j++) {
                             if (j != k) {
-                                mat[i][j] = mat[i][j] - aik * mat[k][j];
+                                element(i, j) = element(i, j) - aik * element(k, j);
                             }
                         }
                         vec[i] = vec[i] - aik * yk;
@@ -110,7 +114,7 @@ bool dmat(int n, Matrix<double> mat, Vector<double> vec, double& det, int ws[3])
                 }
                 for (i = 0; i < n; i++) {
                     if (i != k) {
-                        mat[i][k] = -mat[i][k] * akk;
+                        element(i, k) = -element(i, k) * akk;
                     }
                 }
             }
@@ -125,9 +129,9 @@ bool dmat(int n, Matrix<double> mat, Vector<double> vec, double& det, int ws[3])
             const int ki = ws[np1mk];
             if (np1mk != ki) {
                 for (i = 0; i < n; i++) {
-                    const double t3 = mat[i][np1mk];
-                    mat[i][np1mk] = mat[i][ki];
-                    mat[i][ki] = t3;
+                    const double t3 = element(i, np1mk);
+                    element(i, np1mk) = element(i, ki);
+                    element(i, ki) = t3;
                 }
             }
         }

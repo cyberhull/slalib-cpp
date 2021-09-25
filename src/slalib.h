@@ -321,7 +321,10 @@ void refco(double oh, double atk, double apm, double arh, double wl, double phi,
 void refv(const Vector<double> vec, double refa, double refb, Vector<double> rvec);
 double refz(double zu, double refa, double refb);
 void ecmat(double date, Matrix<double> mat);
-bool dmat(int n, Matrix<double> mat, Vector<double> vec, double& det, int ws[3]);
+bool dmat(int n, double* mat, double* vec, double& det, int* ws);
+inline bool dmat(Matrix<double> mat, Vector<double> vec, double& det, int* ws) {
+    return dmat(3, (double*) mat, (double*) vec, det, ws);
+}
 bool smat(int n, float* mat, float* vec, float& det, int* ws);
 void altaz(const Spherical<double>& dir, double phi, AltazMount& am);
 void nutc(double tdb, double& psi, double& eps, double& eps0);
