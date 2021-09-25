@@ -54,7 +54,7 @@ bool smat(int n, float* mat, float* vec, float& det, int* ws) {
 
     // variable-size matrix accessor
     auto element = [mat, n](int i1, int i2) -> float& {
-        return mat[i2 * n + i1];
+        return mat[i1 * n + i2];
     };
 
     bool singular = false;

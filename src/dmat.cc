@@ -52,7 +52,7 @@ namespace sla {
 bool dmat(int n, double* mat, double* vec, double& det, int* ws) {
     // variable-size matrix accessor
     auto element = [mat, n](int i1, int i2) -> double& {
-        return mat[i2 * n + i1];
+        return mat[i1 * n + i2];
     };
 
     constexpr double EPSILON = 1.0e-20;
