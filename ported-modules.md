@@ -99,7 +99,7 @@ that you have to look at the markdown source to see the difference):
 * etrms.f:         SUBROUTINE sla_ETRMS (EP, EV)
 * euler.f:         SUBROUTINE sla_EULER (ORDER, PHI, THETA, PSI, RMAT)
 - evp.f:           SUBROUTINE sla_EVP (DATE, DEQX, DVB, DPB, DVH, DPH)
-- fitxy.f:         SUBROUTINE sla_FITXY (ITYPE,NP,XYE,XYM,COEFFS,J)
+* fitxy.f:         SUBROUTINE sla_FITXY (ITYPE,NP,XYE,XYM,COEFFS,J)
 - fk425.f:         SUBROUTINE sla_FK425 (R1950, D1950, DR1950, DD1950, P1950, V1950, R2000, D2000, DR2000, DD2000, P2000, V2000)
 - fk45z.f:         SUBROUTINE sla_FK45Z (R1950, D1950, BEPOCH, R2000, D2000)
 - fk524.f:         SUBROUTINE sla_FK524 (R2000, D2000, DR2000, DD2000, P2000, V2000, R1950, D1950, DR1950, DD1950, P1950, V1950)

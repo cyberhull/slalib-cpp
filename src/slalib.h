@@ -58,6 +58,13 @@ enum T2DStatus {
     T2D_BAD_SECONDS  ///< seconds outside of range [0..60)
 };
 
+/// Status codes for the fitxy() function.
+enum FITStatus {
+    FIT_OK = 0,       ///< succeeded
+    FIT_INSUFFICIENT, // insufficient data
+    FIT_NONE          // no solution
+};
+
 /// Generic 3-component vector of floating-point elements.
 template<typename T, std::enable_if_t<std::is_floating_point<T>::value, bool> = true>
 using Vector = T[3];
@@ -65,6 +72,30 @@ using Vector = T[3];
 /// Generic 3x3 matrix of floating-point elements.
 template<typename T, std::enable_if_t<std::is_floating_point<T>::value, bool> = true>
 using Matrix = T[3][3];
+
+/// Base class for homogenous structures that can also be accessed as arrays.
+template <typename T, int N, std::enable_if_t<std::is_floating_point<T>::value, bool> = true>
+class Array {
+    T a_data[N]; ///< fields of the derived structure
+
+protected:
+    [[nodiscard]] T get(int i) const {
+        assert(i < N);
+        return a_data[i];
+    }
+    void set(int i, T value) {
+        assert(i < N);
+        a_data[i] = value;
+    }
+
+public:
+    [[nodiscard]] int get_nfields() const { return N; }
+    [[nodiscard]] T* operator()() { return a_data; }
+    [[nodiscard]] T& operator[](int i) {
+        assert(i < N);
+        return a_data[i];
+    }
+};
 
 /**
  * Representation of partial spherical coordinates (direction-only): longitude/latitude, or right ascension/
@@ -247,6 +278,33 @@ public:
     void set_sign(bool sign) { cr_sign = sign; }
 };
 
+/// Input samples for the fitxy() function
+using XYSamples = double[][2];
+
+/// Coefficients for the fitxy() function
+class FitCoeffs: public Array<double, 6> {
+    enum {
+        I_A = 0, I_B, I_C, I_D, I_E, I_F
+    };
+
+public:
+    void set_a(double a) { set(I_A, a); }
+    [[nodiscard]] double get_a() const { return get(I_A); }
+    void set_b(double b) { set(I_B, b); }
+    [[nodiscard]] double get_b() const { return get(I_B); }
+    void set_c(double c) { set(I_C, c); }
+    [[nodiscard]] double get_c() const { return get(I_C); }
+    void set_d(double d) { set(I_D, d); }
+    [[nodiscard]] double get_d() const { return get(I_D); }
+    void set_e(double e) { set(I_E, e); }
+    [[nodiscard]] double get_e() const { return get(I_E); }
+    void set_f(double f) { set(I_F, f); }
+    [[nodiscard]] double get_f() const { return get(I_F); }
+
+    Vector<double>& get_abc() { return (Vector<double>&) (*this)[I_A]; }
+    Vector<double>& get_def() { return (Vector<double>&) (*this)[I_D]; }
+};
+
 // auxiliary functions (used internally by API functions)
 int process_year_defaults(int year);
 G2JStatus validate_gregorian_day(int year, int month, int day);
@@ -364,6 +422,7 @@ double eqeqx(double date);
 void eqecl(const Spherical<double>& dir, double date, Spherical<double>& edir);
 void eqgal(const Spherical<double>& dir, Spherical<double>& gal);
 void galeq(const Spherical<double>& gal, Spherical<double>& dir);
+FITStatus fitxy(bool sbr, int nsamples, const XYSamples expected, const XYSamples measured, FitCoeffs& coeffs);
 void wait(float seconds);
 
 } // sla namespace
