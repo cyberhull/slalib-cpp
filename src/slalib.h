@@ -423,6 +423,7 @@ void eqecl(const Spherical<double>& dir, double date, Spherical<double>& edir);
 void eqgal(const Spherical<double>& dir, Spherical<double>& gal);
 void galeq(const Spherical<double>& gal, Spherical<double>& dir);
 FITStatus fitxy(bool sbr, int nsamples, const XYSamples expected, const XYSamples measured, FitCoeffs& coeffs);
+void xy2xy(double x1, double y1, const FitCoeffs& coeffs, double& x2, double& y2);
 void wait(float seconds);
 
 } // sla namespace
