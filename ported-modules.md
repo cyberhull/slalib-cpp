@@ -159,7 +159,7 @@ that you have to look at the markdown source to see the difference):
 - pv2el.f:         SUBROUTINE sla_PV2EL (PV, DATE, PMASS, JFORMR, JFORM, EPOCH, ORBINC, ANODE, PERIH, AORQ, E, AORL, DM, JSTAT)
 - pv2ue.f:         SUBROUTINE sla_PV2UE (PV, DATE, PMASS, U, JSTAT)
 * pvobs.f:         SUBROUTINE sla_PVOBS (P, H, STL, PV)
-- pxy.f:           SUBROUTINE sla_PXY (NP, XYE, XYM, COEFFS, XYP, XRMS, YRMS, RRMS)
+* pxy.f:           SUBROUTINE sla_PXY (NP, XYE, XYM, COEFFS, XYP, XRMS, YRMS, RRMS)
 - random.Fdefault: REAL FUNCTION sla_RANDOM (SEED)
 * range.f:         REAL FUNCTION sla_RANGE (ANGLE)
 * ranorm.f:        REAL FUNCTION sla_RANORM (ANGLE)
