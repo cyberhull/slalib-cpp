@@ -24,8 +24,8 @@ namespace sla {
  * Given arrays of "expected" and "measured" [x,y] coordinates, and a linear model relating them (as produced by
  * sla::fitxy()), computes the array of "predicted" coordinates and the RMS residuals (double precision).
  *
- * The model is supplied in the array/structure `coeffs` (with coefficients accessible as `coeffs.get_a()`,
- * `coeffs.get_b(), etc.); the model is applied as follows (suffix 'P' stands for "predicted", 'M' for "measured",
+ * The model is supplied in the array/structure `model` (with coefficients accessible as `model.get_a()`,
+ * `model.get_b(), etc.); the model is applied as follows (suffix 'P' stands for "predicted", 'M' for "measured",
  * and 'E' for "expected"):
  *
  *   XP = A + B * XM + C * YM
@@ -41,13 +41,13 @@ namespace sla {
  *   and the RMS residuals are all zero.
  * @param expected Expected [x,y] for each sample.
  * @param measured Measured [x,y] for each sample.
- * @param coeffs Coefficients of model.
+ * @param model Coefficients of model.
  * @param predicted Predicted [x,y] for each sample.
  * @param x_rms Return value: RMS in X.
  * @param y_rms Return value: RMS in Y.
  * @param rms Return value: total RMS (vector sum of `x_rms` and `y_rms`).
  */
-void pxy(int nsamples, const XYSamples expected, const XYSamples measured, const FitCoeffs& coeffs,
+void pxy(int nsamples, const XYSamples expected, const XYSamples measured, const FitCoeffs& model,
     XYSamples predicted, double& x_rms, double& y_rms, double& rms) {
 
     // initialize summations
@@ -58,7 +58,7 @@ void pxy(int nsamples, const XYSamples expected, const XYSamples measured, const
     for (int i = 0; i < nsamples; i++) {
         // transform "measured" [X,Y] to "predicted" [X,Y]
         double x_predicted, y_predicted;
-        xy2xy(measured[i][0], measured[i][1], coeffs, x_predicted, y_predicted);
+        xy2xy(measured[i][0], measured[i][1], model, x_predicted, y_predicted);
         predicted[i][0] = x_predicted;
         predicted[i][1] = y_predicted;
 

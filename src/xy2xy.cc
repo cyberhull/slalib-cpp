@@ -23,7 +23,7 @@ namespace sla {
  * Transforms one [x,y] into another using a linear model of the type produced by the sla::fitxy() routine (double
  * precision).
  *
- * The model relates two sets of [x,y] coordinates using A, B, C, D, and F coefficients stored in `coeffs`
+ * The model relates two sets of [x,y] coordinates using A, B, C, D, and F coefficients stored in `model`
  * transformation coefficients as follows:
  *
  *   `x2` = A + B * `x1` + C * `y1`
@@ -35,13 +35,13 @@ namespace sla {
  *
  * @param x1 X coordinate.
  * @param y1 Y coordinate.
- * @param coeffs Transformation coefficients.
+ * @param model Transformation coefficients.
  * @param x2 Return value: transformed X coordinate.
  * @param y2 Return value: transformed Y coordinate.
  */
-void xy2xy(double x1, double y1, const FitCoeffs& coeffs, double& x2, double& y2) {
-    x2 = coeffs.get_a() + coeffs.get_b() * x1 + coeffs.get_c() * y1;
-    y2 = coeffs.get_d() + coeffs.get_e() * x1 + coeffs.get_f() * y1;
+void xy2xy(double x1, double y1, const FitCoeffs& model, double& x2, double& y2) {
+    x2 = model.get_a() + model.get_b() * x1 + model.get_c() * y1;
+    y2 = model.get_d() + model.get_e() * x1 + model.get_f() * y1;
 }
 
 }

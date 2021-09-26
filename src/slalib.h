@@ -422,9 +422,9 @@ double eqeqx(double date);
 void eqecl(const Spherical<double>& dir, double date, Spherical<double>& edir);
 void eqgal(const Spherical<double>& dir, Spherical<double>& gal);
 void galeq(const Spherical<double>& gal, Spherical<double>& dir);
-FITStatus fitxy(bool sbr, int nsamples, const XYSamples expected, const XYSamples measured, FitCoeffs& coeffs);
-void xy2xy(double x1, double y1, const FitCoeffs& coeffs, double& x2, double& y2);
-void pxy(int nsamples, const XYSamples expected, const XYSamples measured, const FitCoeffs& coeffs,
+FITStatus fitxy(bool sbr, int nsamples, const XYSamples expected, const XYSamples measured, FitCoeffs& model);
+void xy2xy(double x1, double y1, const FitCoeffs& model, double& x2, double& y2);
+void pxy(int nsamples, const XYSamples expected, const XYSamples measured, const FitCoeffs& model,
     XYSamples predicted, double& x_rms, double& y_rms, double& rms);
 bool invf(const FitCoeffs& model, FitCoeffs& inverse);
 void dcmpf(const FitCoeffs& model, double& xz, double& yz, double& xs, double& ys,  double& perp, double& orient);

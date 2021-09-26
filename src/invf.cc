@@ -35,10 +35,12 @@ namespace sla {
  *
  * Two successive calls to sla::invf() will thus deliver a set of coefficients equal to the starting values.
  *
+ * See also sla::fitxy(), sla::pxy(), sla::xy2xy(), and sla::dcmpf() functions.
+ *
  * Original FORTRAN code by P.T. Wallace.
  *
  * @param model Model coefficients.
- * @param inverse Inverse model.
+ * @param inverse Return value: coefficients of the inverse model.
  * @return `true` if successful, `false` if there is no inverse transform.
  */
 bool invf(const FitCoeffs& model, FitCoeffs& inverse) {

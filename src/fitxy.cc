@@ -22,14 +22,14 @@ namespace sla {
 /**
  * Fits a linear model to relate two sets of [x,y] coordinates.
  *
- * `sbr`, which is a boolean, selects the type of model fitted. Both `sbr` values produce a model `coeffs` which
+ * `sbr`, which is a boolean, selects the type of model fitted. Both `sbr` values produce a model `model` which
  * consists of six coefficients, namely the zero points and, for each of XE and YE, the coefficient of XM and YM.
  * For `sbr`==`false`, all six coefficients are independent, modelling squash and shear as well as origin, scale,
- * and orientation. However, `sbr`==`true` selects the "solid body rotation" option; the model `coeffs` still
+ * and orientation. However, `sbr`==`true` selects the "solid body rotation" option; the model `model` still
  * consists of the same six coefficients, but now two of them are used twice (appropriately signed). Origin, scale
  * and orientation are still modelled, but not squash or shear -- the units of X and Y have to be the same.
  *
- * For the returned `coeffs` (which can be fetched using `coeffs.get_a()` etc.), the model is:
+ * For the returned `model` (which can be fetched using `model.get_a()` etc.), the model is:
  *
  *   XE = A + B * XM + C * YM
  *   YE = D + E * XM + F * YM
@@ -47,11 +47,11 @@ namespace sla {
  *   coefficients, `nsamples` must be at least 3.
  * @param expected Expected [x,y] for each sample.
  * @param measured Measured [x,y] for each sample.
- * @param coeffs Return value: coefficients of the model.
- * @return A `FITResult` constant; if an error occurs and `FIT_INSUFFICIENT` is returned, `coeffs` are unchanged;
- *   if `FIT_NONE` is returned, then `coeffs` may have changed.
+ * @param model Return value: coefficients of the model.
+ * @return A `FITResult` constant; if an error occurs and `FIT_INSUFFICIENT` is returned, `model` is unchanged;
+ *   if `FIT_NONE` is returned, then `model` may have changed.
  */
-FITStatus fitxy(bool sbr, int nsamples, const XYSamples expected, const XYSamples measured, FitCoeffs& coeffs) {
+FITStatus fitxy(bool sbr, int nsamples, const XYSamples expected, const XYSamples measured, FitCoeffs& model) {
     int i, workspace[4];
     double x_expected, y_expected, x_measured, y_measured,
         sum_x_expected, sum_y_expected, sum_x_measured, sum_y_measured,
@@ -131,13 +131,13 @@ FITStatus fitxy(bool sbr, int nsamples, const XYSamples expected, const XYSample
             singular = dmat(3, (double*) mat3, vec, det, workspace);
             if (singular == false) {
                 for (i = 0; i < 3; i++) {
-                    coeffs[i] = vec[i];
+                    model[i] = vec[i];
                 }
                 // solve for d,E,F in  y_expected = d + E*x_measured + F*y_measured
                 vec[0] = sum_y_expected;
                 vec[1] = sum_ye_xm;
                 vec[2] = sum_ye_ym;
-                dmxv(mat3, vec, coeffs.get_def());
+                dmxv(mat3, vec, model.get_def());
             } else {
                 // singular matrix, no 6-coefficient solution possible
                 status = FIT_NONE;
@@ -238,25 +238,25 @@ FITStatus fitxy(bool sbr, int nsamples, const XYSamples expected, const XYSample
 
             // pick the best of the two solutions
             if (sdr2_old >= 0.0 && (sdr2_old <= sdr2 || nsamples == 2)) {
-                coeffs[0] = a_old;
-                coeffs[1] = b_old;
-                coeffs[2] = -c_old;
-                coeffs[3] = d_old;
-                coeffs[4] = c_old;
-                coeffs[5] = b_old;
+                model[0] = a_old;
+                model[1] = b_old;
+                model[2] = -c_old;
+                model[3] = d_old;
+                model[4] = c_old;
+                model[5] = b_old;
             } else if (singular == false) {
-                coeffs[0] = -a;
-                coeffs[1] = -b;
-                coeffs[2] = c;
-                coeffs[3] = d;
-                coeffs[4] = c;
-                coeffs[5] = b;
+                model[0] = -a;
+                model[1] = -b;
+                model[2] = c;
+                model[3] = d;
+                model[4] = c;
+                model[5] = b;
             } else {
                 // no 4-coefficient fit possible
                 status = FIT_NONE;
             }
         } else {
-            // insufficient data for 4-coefficient fit
+            // insufficient data for the 4-coefficient fit
             status = FIT_INSUFFICIENT;
         }
     }
