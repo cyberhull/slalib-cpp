@@ -44,7 +44,7 @@ that you have to look at the markdown source to see the difference):
 - dbjin.f:         SUBROUTINE sla_DBJIN (STRING, NSTRT, DRESLT, J1, J2)
 * dc62s.f:         SUBROUTINE sla_DC62S (V, A, B, R, AD, BD, RD)
 * dcc2s.f:         SUBROUTINE sla_DCC2S (V, A, B)
-- dcmpf.f:         SUBROUTINE sla_DCMPF (COEFFS, XZ, YZ, XS, YS, PERP, ORIENT)
+* dcmpf.f:         SUBROUTINE sla_DCMPF (COEFFS, XZ, YZ, XS, YS, PERP, ORIENT)
 * dcs2c.f:         SUBROUTINE sla_DCS2C (A, B, V)
 * dd2tf.f:         SUBROUTINE sla_DD2TF (NDP, DAYS, SIGN, IHMSF)
 * de2h.f:          SUBROUTINE sla_DE2H (HA, DEC, PHI, AZ, EL)

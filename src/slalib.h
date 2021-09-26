@@ -427,6 +427,7 @@ void xy2xy(double x1, double y1, const FitCoeffs& coeffs, double& x2, double& y2
 void pxy(int nsamples, const XYSamples expected, const XYSamples measured, const FitCoeffs& coeffs,
     XYSamples predicted, double& x_rms, double& y_rms, double& rms);
 bool invf(const FitCoeffs& model, FitCoeffs& inverse);
+void dcmpf(const FitCoeffs& model, double& xz, double& yz, double& xs, double& ys,  double& perp, double& orient);
 void wait(float seconds);
 
 } // sla namespace
