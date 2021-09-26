@@ -121,7 +121,7 @@ that you have to look at the markdown source to see the difference):
 - idchi.f:         SUBROUTINE sla__IDCHI (STRING, NPTR, NVEC, DIGIT)
 * imxv.f:          SUBROUTINE sla_IMXV (RM, VA, VB)
 - intin.f:         SUBROUTINE sla_INTIN (STRING, NSTRT, IRESLT, JFLAG)
-- invf.f:          SUBROUTINE sla_INVF (FWDS,BKWDS,J)
+* invf.f:          SUBROUTINE sla_INVF (FWDS,BKWDS,J)
 - kbj.f:           SUBROUTINE sla_KBJ (JB, E, K, J)
 * m2av.f:          SUBROUTINE sla_M2AV (RMAT, AXVEC)
 - map.f:           SUBROUTINE sla_MAP (RM, DM, PR, PD, PX, RV, EQ, DATE, RA, DA)
