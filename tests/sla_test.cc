@@ -959,6 +959,87 @@ static void t_galeq(bool& status) {
     vvd(dir.get_latitude(), -0.7834003666745548, 1.0e-12, "sla::galeq", "dec", status);
 }
 
+// tests sla::fitxy(), sla::pxy(), sla::invf(), sla::xy2xy(), and sla::dcmpf() functions
+static void t_fitxy(bool& status) {
+    constexpr int NUM_POINTS = 8;
+    static const XYSamples expected = {
+        {-23.4, -12.1}, {32.0, -15.3}, {10.9, 23.7}, {-3.0, 16.1},
+        {45.0, 32.5}, {8.6, -17.0}, {15.3, 10.0}, {121.7, -3.8}
+    };
+    static const XYSamples measured = {
+        {-23.41, 12.12}, {32.03, 15.34}, {10.93, -23.72}, {-3.01, -16.10},
+        {44.90, -32.46}, {8.55, 17.02}, {15.31, -10.07}, {120.92, 3.81}
+    };
+    double predicted[NUM_POINTS][2], x_rms, y_rms, rms, x2, y2, xz, yz, xs, ys, perp, orient;
+    FitCoeffs model, inverse;
+
+    // fit a 4-coeff linear model to relate two sets of (x,y) coordinates
+    FITStatus result = fitxy(true, NUM_POINTS, expected, measured, model);
+    vvd(model[0], -7.938263381515947e-3, 1.0e-12, "sla::fitxy", "4/0", status);
+    vvd(model[1], 1.004640925187200, 1.0e-12, "sla::fitxy", "4/1", status);
+    vvd(model[2], 3.976948048238268e-4, 1.0e-12, "sla::fitxy", "4/2", status);
+    vvd(model[3], -2.501031681585021e-2, 1.0e-12, "sla::fitxy", "4/3", status);
+    vvd(model[4], 3.976948048238268e-4, 1.0e-12, "sla::fitxy", "4/4", status);
+    vvd(model[5], -1.004640925187200, 1.0e-12, "sla::fitxy", "4/5", status);
+    viv(result, FIT_OK, "sla::fitxy", "4/result", status);
+
+    // same but 6-coeff
+    result = fitxy(false, NUM_POINTS, expected, measured, model);
+    vvd(model[0], -2.617232551841476e-2, 1.0e-12, "sla::fitxy", "6/0", status);
+    vvd(model[1], 1.005634905041421, 1.0e-12, "sla::fitxy", "6/1", status);
+    vvd(model[2], 2.133045023329208e-3, 1.0e-12, "sla::fitxy", "6/2", status);
+    vvd(model[3], 3.846993364417779909e-3, 1.0e-12, "sla::fitxy", "6/3", status);
+    vvd(model[4], 1.301671386431460e-4, 1.0e-12, "sla::fitxy", "6/4", status);
+    vvd(model[5], -0.9994827065693964, 1.0e-12, "sla::fitxy", "6/5", status);
+    viv(result, FIT_OK, "sla::fitxy", "6/result", status);
+
+    // compute predicted coordinates and residuals
+    pxy(NUM_POINTS, expected, measured, model, predicted, x_rms, y_rms, rms);
+    vvd(predicted[0][0], -23.542232946855340, 1.0e-12, "sla::pxy", "x0", status);
+    vvd(predicted[0][1], -12.11293062297230597, 1.0e-12, "sla::pxy", "y0", status);
+    vvd(predicted[1][0], 32.217034593616180, 1.0e-12, "sla::pxy", "x1", status);
+    vvd(predicted[1][1], -15.324048471959370, 1.0e-12, "sla::pxy", "y1", status);
+    vvd(predicted[2][0], 10.914821358630950, 1.0e-12, "sla::pxy", "x2", status);
+    vvd(predicted[2][1], 23.712999520015880, 1.0e-12, "sla::pxy", "y2", status);
+    vvd(predicted[3][0], -3.087475414568693, 1.0e-12, "sla::pxy", "x3", status);
+    vvd(predicted[3][1], 16.09512676604438414, 1.0e-12, "sla::pxy", "y3", status);
+    vvd(predicted[4][0], 45.05759626938414666, 1.0e-12, "sla::pxy", "x4", status);
+    vvd(predicted[4][1], 32.45290015313210889, 1.0e-12, "sla::pxy", "y4", status);
+    vvd(predicted[5][0], 8.608310538882801, 1.0e-12, "sla::pxy", "x5", status);
+    vvd(predicted[5][1], -17.006235743411300, 1.0e-12, "sla::pxy", "y5", status);
+    vvd(predicted[6][0], 15.348618307280820, 1.0e-12, "sla::pxy", "x6", status);
+    vvd(predicted[6][1], 10.07063070741086835, 1.0e-12, "sla::pxy", "y6", status);
+    vvd(predicted[7][0], 121.5833272936291482, 1.0e-12, "sla::pxy", "x7", status);
+    vvd(predicted[7][1], -3.788442308260240, 1.0e-12, "sla::pxy", "y7", status);
+    vvd(x_rms ,0.1087247110488075, 1.0e-13, "sla::pxy", "x_rms", status);
+    vvd(y_rms, 0.03224481175794666, 1.0e-13, "sla::pxy", "y_rms", status);
+    vvd(rms, 0.1134054261398109, 1.0e-13, "sla::pxy", "rms", status);
+
+    // invert the model
+    bool success = invf(model, inverse);
+    vvd(inverse[0], 0.02601750208015891, 1.0e-12, "sla::invf", "0", status);
+    vvd(inverse[1], 0.9943963945040283, 1.0e-12, "sla::invf", "1", status);
+    vvd(inverse[2], 0.002122190075497872, 1.0e-12, "sla::invf", "2", status);
+    vvd(inverse[3], 0.003852372795357474353, 1.0e-12, "sla::invf", "3", status);
+    vvd(inverse[4], 0.0001295047252932767, 1.0e-12, "sla::invf", "4", status);
+    vvd(inverse[5], -1.000517284779212, 1.0e-12, "sla::invf", "5", status);
+    viv(success, (int) true, "sla::invf", "success", status);
+
+    // transform one [x,y]
+    xy2xy(44.5, 32.5, model, x2, y2);
+    vvd(x2, 44.793904912083030, 1.0e-11, "sla::xy2xy", "x", status);
+    vvd(y2, -32.473548532471330, 1.0e-11, "sla::xy2xy", "y", status);
+
+    // decompose the fit into scales etc.
+    dcmpf(model, xz, yz, xs, ys, perp, orient);
+    vvd(xz, -0.0260175020801628646, 1.0e-12, "sla::dcmpf", "xz", status);
+    vvd(yz, -0.003852372795357474353, 1.0e-12, "sla::dcmpf", "yz", status);
+    vvd(xs, -1.00563491346569, 1.0e-12, "sla::dcmpf", "xs", status);
+    vvd(ys, 0.999484982684761, 1.0e-12, "sla::dcmpf", "ys", status);
+    vvd(perp,-0.002004707996156263, 1.0e-12, "sla::dcmpf", "perp", status);
+    vvd(orient, 3.14046086182333, 1.0e-12, "sla::dcmpf", "orient", status);
+}
+
 ///////////////////////////////////////////////////////////////////////////////
 // MODULE ENTRY POINT
 ///////////////////////////////////////////////////////////////////////////////
@@ -1015,6 +1096,7 @@ bool sla_test() {
     t_eqecl(status);
     t_eqgal(status);
     t_galeq(status);
+    t_fitxy(status);
     return status;
 }
 
