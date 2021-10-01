@@ -435,6 +435,7 @@ void dcmpf(const FitCoeffs& model, double& xz, double& yz, double& xs, double& y
 void pm(const Spherical<double>& dir_ep0, const Spherical<double>& motion, double parallax, double r_velocity,
     double ep0, double ep1, Spherical<double>& dir_ep1);
 void earth(int year, int day, float fraction, VectorPV<float>& pv);
+void ecor(Spherical<float> dir, int year, int day, float fraction, float& velocity, float& lt);
 void wait(float seconds);
 
 } // sla namespace
