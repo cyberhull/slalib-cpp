@@ -21,32 +21,32 @@
 project(SLALibrary)
 
 add_library(slalib
-  airmas.cc
-  av2m.cc dav2m.cc cc2s.cc dcc2s.cc cs2c.cc dcs2c.cc euler.cc deuler.cc imxv.cc dimxv.cc
-  m2av.cc dm2av.cc mxm.cc dmxm.cc mxv.cc dmxv.cc vdv.cc dvdv.cc vn.cc dvn.cc vxv.cc dvxv.cc
-  zd.cc pa.cc
-  bear.cc dbear.cc pav.cc dpav.cc
-  e2h.cc de2h.cc h2e.cc dh2e.cc
-  caf2r.cc daf2r.cc
-  cldj.cc caldj.cc clyd.cc calyd.cc djcal.cc djcl.cc
-  cd2tf.cc dd2tf.cc cr2af.cc dr2af.cc cr2tf.cc dr2tf.cc
-  ctf2d.cc dtf2d.cc ctf2r.cc dtf2r.cc
-  dat.cc dt.cc dtt.cc rcc.cc gmst.cc gmsta.cc
-  range.cc drange.cc ranorm.cc dranrm.cc
-  atmdsp.cc refcoq.cc refro.cc refco.cc refv.cc refz.cc
-  ecmat.cc dmat.cc smat.cc altaz.cc
-  nutc.cc nut.cc nutc80.cc
-  epj2d.cc epj.cc epb2d.cc epb.cc
-  prec.cc precl.cc prenut.cc
-  dsepv.cc sepv.cc dsep.cc sep.cc
-  prebn.cc preces.cc supgal.cc
-  rverot.cc rvgalc.cc rvlg.cc rvlsrd.cc rvlsrk.cc
-  cc62s.cc dc62s.cc cs2c6.cc ds2c6.cc
-  etrms.cc addet.cc subet.cc
-  geoc.cc pvobs.cc pcd.cc unpcd.cc
-  eqeqx.cc eqecl.cc eqgal.cc galeq.cc
-  fitxy.cc xy2xy.cc pxy.cc invf.cc dcmpf.cc
-  pm.cc
-  wait.cc
-  f77_utils.h
-  slalib.cc slalib.h)
+    airmas.cc
+    av2m.cc dav2m.cc cc2s.cc dcc2s.cc cs2c.cc dcs2c.cc euler.cc deuler.cc imxv.cc dimxv.cc
+    m2av.cc dm2av.cc mxm.cc dmxm.cc mxv.cc dmxv.cc vdv.cc dvdv.cc vn.cc dvn.cc vxv.cc dvxv.cc
+    zd.cc pa.cc
+    bear.cc dbear.cc pav.cc dpav.cc
+    e2h.cc de2h.cc h2e.cc dh2e.cc
+    caf2r.cc daf2r.cc
+    cldj.cc caldj.cc clyd.cc calyd.cc djcal.cc djcl.cc
+    cd2tf.cc dd2tf.cc cr2af.cc dr2af.cc cr2tf.cc dr2tf.cc
+    ctf2d.cc dtf2d.cc ctf2r.cc dtf2r.cc
+    dat.cc dt.cc dtt.cc rcc.cc gmst.cc gmsta.cc
+    range.cc drange.cc ranorm.cc dranrm.cc
+    atmdsp.cc refcoq.cc refro.cc refco.cc refv.cc refz.cc
+    ecmat.cc dmat.cc smat.cc altaz.cc
+    nutc.cc nut.cc nutc80.cc
+    epj2d.cc epj.cc epb2d.cc epb.cc
+    prec.cc precl.cc prenut.cc
+    dsepv.cc sepv.cc dsep.cc sep.cc
+    prebn.cc preces.cc supgal.cc
+    rverot.cc rvgalc.cc rvlg.cc rvlsrd.cc rvlsrk.cc
+    cc62s.cc dc62s.cc cs2c6.cc ds2c6.cc
+    etrms.cc addet.cc subet.cc
+    geoc.cc pvobs.cc pcd.cc unpcd.cc
+    eqeqx.cc eqecl.cc eqgal.cc galeq.cc
+    fitxy.cc xy2xy.cc pxy.cc invf.cc dcmpf.cc
+    pm.cc
+    wait.cc
+    f77_utils.h
+    slalib.cc slalib.h)
