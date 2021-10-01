@@ -189,8 +189,12 @@ public:
 
     void set_dlong(T rput) { spv_velo.set_longitude(rput); }
     [[nodiscard]] T get_dlong() const { return spv_velo.get_longitude(); }
+    void set_dra(T rput) { spv_velo.set_longitude(rput); }
+    [[nodiscard]] T get_dra() const { return spv_velo.get_longitude(); }
     void set_dlat(T rput) { spv_velo.set_latitude(rput); }
     [[nodiscard]] T get_dlat() const { return spv_velo.get_latitude(); }
+    void set_ddec(T rput) { spv_velo.set_latitude(rput); }
+    [[nodiscard]] T get_ddec() const { return spv_velo.get_latitude(); }
     void set_ddist(T der) { spv_velo.set_dist(der); }
     [[nodiscard]] T get_ddist() const { return spv_velo.get_dist(); }
 
@@ -430,6 +434,7 @@ bool invf(const FitCoeffs& model, FitCoeffs& inverse);
 void dcmpf(const FitCoeffs& model, double& xz, double& yz, double& xs, double& ys,  double& perp, double& orient);
 void pm(const Spherical<double>& dir_ep0, const Spherical<double>& motion, double parallax, double r_velocity,
     double ep0, double ep1, Spherical<double>& dir_ep1);
+void earth(int year, int day, float fraction, VectorPV<float>& pv);
 void wait(float seconds);
 
 } // sla namespace
