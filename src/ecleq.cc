@@ -26,7 +26,7 @@ namespace sla {
  *
  * @param ecliptic Ecliptic longitude and latitude (mean of date, IAU 1980 theory, radians).
  * @param date TDB (Barycentric Dynamical Time; loosely ET) as Modified Julian Date (JD - 2400000.5).
- * @param equatorial J2000.0 mean RA,Dec (radians).
+ * @param equatorial Return value: J2000.0 mean RA, Dec (radians).
  */
 void ecleq(const Spherical<double>& ecliptic, double date, Spherical<double>& equatorial) {
     // spherical to Cartesian
