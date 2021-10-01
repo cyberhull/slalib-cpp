@@ -1062,6 +1062,15 @@ static void t_earth(bool& status) {
     vvd(pv.get_dz(), 2.512001677e-9, 1.0e-13, "sla::earth", "dz", status);
 }
 
+// tests sla::earth() function
+static void t_ecor(bool& status) {
+    float velocity, lt;
+    ecor({2.345f, -0.567f}, 1995, 306, 0.037f, velocity, lt);
+
+    vvd(velocity, -19.182460, 1.0e-3, "sla::ecor", "velocity", status);
+    vvd(lt, -120.36632, 1.0e-2, "sla::ecor", "lt", status);
+}
+
 ///////////////////////////////////////////////////////////////////////////////
 // MODULE ENTRY POINT
 ///////////////////////////////////////////////////////////////////////////////
@@ -1121,6 +1130,7 @@ bool sla_test() {
     t_fitxy(status);
     t_pm(status);
     t_earth(status);
+    t_ecor(status);
     return status;
 }
 
