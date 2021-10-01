@@ -149,7 +149,7 @@ that you have to look at the markdown source to see the difference):
 - planet.f:        SUBROUTINE sla_PLANET (DATE, NP, PV, JSTAT)
 - plante.f:        SUBROUTINE sla_PLANTE (DATE, ELONG, PHI, JFORM, EPOCH, ORBINC, ANODE, PERIH, AORQ, E, AORL, DM, RA, DEC, R, JSTAT)
 - plantu.f:        SUBROUTINE sla_PLANTU (DATE, ELONG, PHI, U, RA, DEC, R, JSTAT)
-- pm.f:            SUBROUTINE sla_PM (R0, D0, PR, PD, PX, RV, EP0, EP1, R1, D1)
+* pm.f:            SUBROUTINE sla_PM (R0, D0, PR, PD, PX, RV, EP0, EP1, R1, D1)
 - polmo.f:         SUBROUTINE sla_POLMO (ELONGM, PHIM, XP, YP, ELONG, PHI, DAZ)
 * prebn.f:         SUBROUTINE sla_PREBN (BEP0, BEP1, RMATP)
 * preces.f:        SUBROUTINE sla_PRECES (SYSTEM, EP0, EP1, RA, DC)

@@ -428,6 +428,8 @@ void pxy(int nsamples, const XYSamples expected, const XYSamples measured, const
     XYSamples predicted, double& x_rms, double& y_rms, double& rms);
 bool invf(const FitCoeffs& model, FitCoeffs& inverse);
 void dcmpf(const FitCoeffs& model, double& xz, double& yz, double& xs, double& ys,  double& perp, double& orient);
+void pm(const Spherical<double>& dir_ep0, const Spherical<double>& motion, double parallax, double r_velocity,
+    double ep0, double ep1, Spherical<double>& dir_ep1);
 void wait(float seconds);
 
 } // sla namespace

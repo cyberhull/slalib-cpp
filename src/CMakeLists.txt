@@ -46,6 +46,7 @@ add_library(slalib
   geoc.cc pvobs.cc pcd.cc unpcd.cc
   eqeqx.cc eqecl.cc eqgal.cc galeq.cc
   fitxy.cc xy2xy.cc pxy.cc invf.cc dcmpf.cc
+  pm.cc
   wait.cc
   f77_utils.h
   slalib.cc slalib.h)
