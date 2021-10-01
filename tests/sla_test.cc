@@ -1062,13 +1062,22 @@ static void t_earth(bool& status) {
     vvd(pv.get_dz(), 2.512001677e-9, 1.0e-13, "sla::earth", "dz", status);
 }
 
-// tests sla::earth() function
+// tests sla::ecor() function
 static void t_ecor(bool& status) {
     float velocity, lt;
     ecor({2.345f, -0.567f}, 1995, 306, 0.037f, velocity, lt);
 
     vvd(velocity, -19.182460, 1.0e-3, "sla::ecor", "velocity", status);
     vvd(lt, -120.36632, 1.0e-2, "sla::ecor", "lt", status);
+}
+
+// tests sla::ecleq() function
+static void t_ecleq(bool& status) {
+    Spherical<double> dir;
+    ecleq({1.234, -0.123}, 43210.0, dir);
+
+    vvd(dir.get_ra(), 1.229910118208851, 1.0e-12, "sla::ecleq", "ra", status);
+    vvd(dir.get_dec(), 0.2638461400411088, 1.0e-12, "sla::ecleq", "dec", status);
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -1131,6 +1140,7 @@ bool sla_test() {
     t_pm(status);
     t_earth(status);
     t_ecor(status);
+    t_ecleq(status);
     return status;
 }
 
