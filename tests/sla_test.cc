@@ -1040,6 +1040,15 @@ static void t_fitxy(bool& status) {
     vvd(orient, 3.14046086182333, 1.0e-12, "sla::dcmpf", "orient", status);
 }
 
+// tests sla::galeq() function
+static void t_pm(bool& status) {
+    Spherical<double> dir;
+    pm({5.43, -0.87}, {-0.33e-5, 0.77e-5},
+        0.7, 50.3*365.2422/365.25, 1899.0, 1943.0, dir);
+    vvd(dir.get_ra(), 5.429855087793875, 1.0e-12, "sla::pm", "ra", status);
+    vvd(dir.get_dec(), -0.8696617307805072, 1.0e-12, "sla::pm", "dec", status);
+}
+
 ///////////////////////////////////////////////////////////////////////////////
 // MODULE ENTRY POINT
 ///////////////////////////////////////////////////////////////////////////////
@@ -1097,6 +1106,7 @@ bool sla_test() {
     t_eqgal(status);
     t_galeq(status);
     t_fitxy(status);
+    t_pm(status);
     return status;
 }
 
