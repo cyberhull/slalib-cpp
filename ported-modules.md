@@ -82,7 +82,7 @@ that you have to look at the markdown source to see the difference):
 * dvxv.f:          SUBROUTINE sla_DVXV (VA, VB, VC)
 * e2h.f:           SUBROUTINE sla_E2H (HA, DEC, PHI, AZ, EL)
 * earth.f:         SUBROUTINE sla_EARTH (IY, ID, FD, PV)
-- ecleq.f:         SUBROUTINE sla_ECLEQ (DL, DB, DATE, DR, DD)
+* ecleq.f:         SUBROUTINE sla_ECLEQ (DL, DB, DATE, DR, DD)
 * ecmat.f:         SUBROUTINE sla_ECMAT (DATE, RMAT)
 * ecor.f:          SUBROUTINE sla_ECOR (RM, DM, IY, ID, FD, RV, TL)
 - eg50.f:          SUBROUTINE sla_EG50 (DR, DD, DL, DB)

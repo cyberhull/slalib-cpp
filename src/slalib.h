@@ -436,6 +436,7 @@ void pm(const Spherical<double>& dir_ep0, const Spherical<double>& motion, doubl
     double ep0, double ep1, Spherical<double>& dir_ep1);
 void earth(int year, int day, float fraction, VectorPV<float>& pv);
 void ecor(Spherical<float> dir, int year, int day, float fraction, float& velocity, float& lt);
+void ecleq(const Spherical<double>& ecliptic, double date, Spherical<double>& equatorial);
 void wait(float seconds);
 
 } // sla namespace
