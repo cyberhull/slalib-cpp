@@ -1040,13 +1040,26 @@ static void t_fitxy(bool& status) {
     vvd(orient, 3.14046086182333, 1.0e-12, "sla::dcmpf", "orient", status);
 }
 
-// tests sla::galeq() function
+// tests sla::pm() function
 static void t_pm(bool& status) {
     Spherical<double> dir;
     pm({5.43, -0.87}, {-0.33e-5, 0.77e-5},
         0.7, 50.3*365.2422/365.25, 1899.0, 1943.0, dir);
     vvd(dir.get_ra(), 5.429855087793875, 1.0e-12, "sla::pm", "ra", status);
     vvd(dir.get_dec(), -0.8696617307805072, 1.0e-12, "sla::pm", "dec", status);
+}
+
+// tests sla::earth() function
+static void t_earth(bool& status) {
+    VectorPV<float> pv;
+    earth(1978, 174, 0.87f, pv);
+
+    vvd(pv.get_x(), 3.590867086e-2, 1.0e-6, "sla::earth", "x", status);
+    vvd(pv.get_y(), -9.319285116e-1, 1.0e-6, "sla::earth", "y", status);
+    vvd(pv.get_z(), -4.041039435e-1, 1.0e-6, "sla::earth", "z", status);
+    vvd(pv.get_dx(), 1.956930055e-7, 1.0e-13, "sla::earth", "dx", status);
+    vvd(pv.get_dy(), 5.743797400e-9, 1.0e-13, "sla::earth", "dy", status);
+    vvd(pv.get_dz(), 2.512001677e-9, 1.0e-13, "sla::earth", "dz", status);
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -1107,6 +1120,7 @@ bool sla_test() {
     t_galeq(status);
     t_fitxy(status);
     t_pm(status);
+    t_earth(status);
     return status;
 }
 
