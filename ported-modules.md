@@ -273,7 +273,7 @@ that you have to look at the markdown source to see the difference):
 - svdsol.f:        SUBROUTINE sla_SVDSOL (M, N, MP, NP, B, U, W, V, WORK, X)
 * tp2s.f:          SUBROUTINE sla_TP2S (XI, ETA, RAZ, DECZ, RA, DEC)
 - tp2v.f:          SUBROUTINE sla_TP2V (XI, ETA, V0, V)
-- tps2c.f:         SUBROUTINE sla_TPS2C (XI, ETA, RA, DEC, RAZ1, DECZ1, RAZ2, DECZ2, N)
+* tps2c.f:         SUBROUTINE sla_TPS2C (XI, ETA, RA, DEC, RAZ1, DECZ1, RAZ2, DECZ2, N)
 - tpv2c.f:         SUBROUTINE sla_TPV2C (XI, ETA, V, V01, V02, N)
 - ue2el.f:         SUBROUTINE sla_UE2EL (U, JFORMR, JFORM, EPOCH, ORBINC, ANODE, PERIH, AORQ, E, AORL, DM, JSTAT)
 - ue2pv.f:         SUBROUTINE sla_UE2PV (DATE, U, PV, JSTAT)
