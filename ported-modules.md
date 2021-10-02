@@ -108,7 +108,7 @@ that you have to look at the markdown source to see the difference):
 - fk5hz.f:         SUBROUTINE sla_FK5HZ (R5, D5, EPOCH, RH, DH)
 - flotin.f:        SUBROUTINE sla_FLOTIN (STRING, NSTRT, RESLT, JFLAG)
 * galeq.f:         SUBROUTINE sla_GALEQ (DL, DB, DR, DD)
-- galsup.f:        SUBROUTINE sla_GALSUP (DL, DB, DSL, DSB)
+* galsup.f:        SUBROUTINE sla_GALSUP (DL, DB, DSL, DSB)
 - ge50.f:          SUBROUTINE sla_GE50 (DL, DB, DR, DD)
 * geoc.f:          SUBROUTINE sla_GEOC (P, H, R, Z)
 * gmsta.f:         DOUBLE PRECISION FUNCTION sla_GMSTA (DATE, UT)
