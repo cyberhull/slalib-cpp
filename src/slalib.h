@@ -65,6 +65,14 @@ enum FITStatus {
     FIT_NONE          // no solution
 };
 
+/// Status codes for tangent plane projection function s2tp()
+enum TPPStatus {
+    TPP_OK = 0,       ///< OK, star on tangent plane
+    TPP_TOO_FAR,      ///< error, star too far from axis
+    TPP_ASTAR_ON_TP,  ///< error, antistar on tangent plane
+    TPP_ASTAR_TOO_FAR ///< error, antistar too far from axis
+};
+
 /// Generic 3-component vector of floating-point elements.
 template<typename T, std::enable_if_t<std::is_floating_point<T>::value, bool> = true>
 using Vector = T[3];
@@ -439,6 +447,7 @@ void ecor(Spherical<float> dir, int year, int day, float fraction, float& veloci
 void ecleq(const Spherical<double>& ecliptic, double date, Spherical<double>& equatorial);
 void polmo(double m_long, double m_phi, double x_pm, double y_pm, double& t_long, double& t_phi, double& d_az);
 void galsup(const Spherical<double>& galactic, Spherical<double>& supergalactic);
+TPPStatus s2tp(const Spherical<float>& point, const Spherical<float>& tangent, float& xi, float& eta);
 void wait(float seconds);
 
 } // sla namespace

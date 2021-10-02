@@ -47,6 +47,7 @@ add_library(slalib
     eqeqx.cc eqecl.cc eqgal.cc galeq.cc
     fitxy.cc xy2xy.cc pxy.cc invf.cc dcmpf.cc
     pm.cc earth.cc ecor.cc ecleq.cc polmo.cc galsup.cc
+    s2tp.cc
     wait.cc
     f77_utils.h
     slalib.cc slalib.h)
