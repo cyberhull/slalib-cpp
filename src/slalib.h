@@ -453,6 +453,8 @@ void tp2s(float xi, float eta, const Spherical<float>& tangent, Spherical<float>
 void dtp2s(double xi, double eta, const Spherical<double>& tangent, Spherical<double>& point);
 int tps2c(float xi, float eta, const Spherical<float>& point,
     Spherical<float>& solution1, Spherical<float>& solution2);
+int dtps2c(double xi, double eta, const Spherical<double>& point,
+    Spherical<double>& solution1, Spherical<double>& solution2);
 void wait(float seconds);
 
 } // sla namespace
