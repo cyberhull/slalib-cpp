@@ -459,6 +459,7 @@ void tp2v(float xi, float eta, const Vector<float> v0, Vector<float> v);
 void dtp2v(double xi, double eta, const Vector<double> v0, Vector<double> v);
 TPPStatus v2tp(const Vector<float> v, const Vector<float> v0, float& xi, float& eta);
 TPPStatus dv2tp(const Vector<double> v, const Vector<double> v0, double& xi, double& eta);
+int tpv2c(float xi, float eta, const Vector<float> v, Vector<float> v1, Vector<float> v2);
 void wait(float seconds);
 
 } // sla namespace
