@@ -48,7 +48,7 @@ add_library(slalib
     fitxy.cc xy2xy.cc pxy.cc invf.cc dcmpf.cc
     pm.cc earth.cc ecor.cc ecleq.cc polmo.cc galsup.cc
     s2tp.cc ds2tp.cc tp2s.cc dtp2s.cc tps2c.cc dtps2c.cc
-    tp2v.cc dtp2v.cc
+    tp2v.cc dtp2v.cc v2tp.cc
     wait.cc
     f77_utils.h
     slalib.cc slalib.h)
