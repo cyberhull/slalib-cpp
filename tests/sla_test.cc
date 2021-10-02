@@ -1099,6 +1099,51 @@ static void t_galsup(bool& status) {
     vvd(supergalactic.get_latitude(), -0.01862369899731829, 1.0e-12, "sla::galsup", "lat", status);
 }
 
+// tests sla::s2tp(), sla::ds2tp(), sla::dtps2c(), sla::tp2s(), sla::dtp2s(), and sla::tps2c() functions
+static void t_tp(bool& status) {
+    const float r0 = 3.1f;
+    const float d0 = -0.9f;
+    const float r1 = r0 + 0.2f;
+    const float d1 = d0 - 0.1f;
+    float x, y;
+    TPPStatus result = s2tp({r1, d1}, {r0, d0}, x, y);
+    vvd(x, 0.1086112301590404, 1.0e-6, "sla::s2tp", "x", status);
+    vvd(y, -0.1095506200711452, 1.0e-6, "sla::s2tp", "y", status);
+    viv(result, TPP_OK, "sla::s2tp", "result", status);
+    Spherical<float> point;
+    tp2s(x, y, {r0, d0}, point);
+    vvd(point.get_ra() - r1, 0.0, 1.0e-6, "sla::tp2s", "ra", status);
+    vvd(point.get_dec() - d1, 0.0, 1.0e-6, "sla::tp2s", "dec", status);
+    Spherical<float> s1, s2;
+    int n = tps2c(x, y, point, s1, s2);
+    vvd(s1.get_ra(),  3.1, 1.0e-6, "sla::tps2c", "ra1", status);
+    vvd(s1.get_dec(), -0.9, 1.0e-6, "sla::tps2c", "dec1", status);
+    vvd(s2.get_ra(), 0.3584073464102072, 1.0e-6, "sla::tps2c", "ra2", status);
+    vvd(s2.get_dec(), -2.023361658234722, 1.0e-6, "sla::tps2c", "dec2", status);
+    viv(n, 1, "sla::tps2c", "n", status);
+
+    const double dr0 = 3.1;
+    const double dd0 = -0.9;
+    const double dr1 = dr0 + 0.2;
+    const double dd1 = dd0 - 0.1;
+    double dx, dy;
+    result = ds2tp({dr1, dd1}, {dr0, dd0}, dx, dy);
+    vvd(dx, 0.1086112301590404, 1.0e-12, "sla::ds2tp", "x", status);
+    vvd(dy, -0.1095506200711452, 1.0e-12, "sla::ds2tp", "y", status);
+    viv(result, TPP_OK, "sla::ds2tp", "result", status);
+    Spherical<double> dpoint;
+    dtp2s(dx, dy, {dr0, dd0}, dpoint);
+    vvd(dpoint.get_ra() - dr1, 0.0, 1.0e-12, "sla::dtp2s", "ra", status);
+    vvd(dpoint.get_dec() - dd1, 0.0, 1.0e-12, "sla::dtp2s", "dec", status);
+    Spherical<double> ds1, ds2;
+    n = dtps2c(dx, dy, dpoint, ds1, ds2);
+    vvd(ds1.get_ra(),  3.1, 1.0e-12, "sla::dtps2c", "ra1", status);
+    vvd(ds1.get_dec(), -0.9, 1.0e-12, "sla::dtps2c", "dec1", status);
+    vvd(ds2.get_ra(), 0.3584073464102072, 1.0e-12, "sla::dtps2c", "ra2", status);
+    vvd(ds2.get_dec(), -2.023361658234722, 1.0e-12, "sla::dtps2c", "dec2", status);
+    viv(n, 1, "sla::dtps2c", "n", status);
+}
+
 ///////////////////////////////////////////////////////////////////////////////
 // MODULE ENTRY POINT
 ///////////////////////////////////////////////////////////////////////////////
@@ -1162,6 +1207,7 @@ bool sla_test() {
     t_ecleq(status);
     t_polmo(status);
     t_galsup(status);
+    t_tp(status);
     return status;
 }
 
