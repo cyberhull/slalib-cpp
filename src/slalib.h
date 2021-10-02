@@ -450,6 +450,7 @@ void galsup(const Spherical<double>& galactic, Spherical<double>& supergalactic)
 TPPStatus s2tp(const Spherical<float>& point, const Spherical<float>& tangent, float& xi, float& eta);
 TPPStatus ds2tp(const Spherical<double>& point, const Spherical<double>& tangent, double& xi, double& eta);
 void tp2s(float xi, float eta, const Spherical<float>& tangent, Spherical<float>& point);
+void dtp2s(double xi, double eta, const Spherical<double>& tangent, Spherical<double>& point);
 void wait(float seconds);
 
 } // sla namespace
