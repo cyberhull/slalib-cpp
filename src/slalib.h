@@ -455,6 +455,7 @@ int tps2c(float xi, float eta, const Spherical<float>& point,
     Spherical<float>& solution1, Spherical<float>& solution2);
 int dtps2c(double xi, double eta, const Spherical<double>& point,
     Spherical<double>& solution1, Spherical<double>& solution2);
+void tp2v(float xi, float eta, const Vector<float> v0, Vector<float> v);
 void wait(float seconds);
 
 } // sla namespace
