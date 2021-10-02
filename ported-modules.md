@@ -74,7 +74,7 @@ that you have to look at the markdown source to see the difference):
 * dtp2s.f:         SUBROUTINE sla_DTP2S (XI, ETA, RAZ, DECZ, RA, DEC)
 * dtp2v.f:         SUBROUTINE sla_DTP2V (XI, ETA, V0, V)
 * dtps2c.f:        SUBROUTINE sla_DTPS2C (XI, ETA, RA, DEC, RAZ1, DECZ1, RAZ2, DECZ2, N)
-- dtpv2c.f:        SUBROUTINE sla_DTPV2C (XI, ETA, V, V01, V02, N)
+* dtpv2c.f:        SUBROUTINE sla_DTPV2C (XI, ETA, V, V01, V02, N)
 * dtt.f:           DOUBLE PRECISION FUNCTION sla_DTT (UTC)
 * dv2tp.f:         SUBROUTINE sla_DV2TP (V, V0, XI, ETA, J)
 * dvdv.f:          DOUBLE PRECISION FUNCTION sla_DVDV (VA, VB)
