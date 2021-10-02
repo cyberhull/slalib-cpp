@@ -1080,6 +1080,16 @@ static void t_ecleq(bool& status) {
     vvd(dir.get_dec(), 0.2638461400411088, 1.0e-12, "sla::ecleq", "dec", status);
 }
 
+// tests sla::polmo() function
+static void t_polmo(bool& status) {
+    double t_long, t_phi, d_az;
+    polmo(0.7, -0.5, 1.0e-6, -2.0e-6, t_long, t_phi, d_az);
+
+    vvd(t_long,  0.7000004837322044, 1.0e-12, "sla::polmo", "long", status);
+    vvd(t_phi, -0.4999979467222241, 1.0e-12, "sla::polmo", "phi", status);
+    vvd(d_az,  1.008982781275728e-6, 1.0e-12, "sla::polmo", "az", status);
+}
+
 ///////////////////////////////////////////////////////////////////////////////
 // MODULE ENTRY POINT
 ///////////////////////////////////////////////////////////////////////////////
@@ -1141,6 +1151,7 @@ bool sla_test() {
     t_earth(status);
     t_ecor(status);
     t_ecleq(status);
+    t_polmo(status);
     return status;
 }
 
