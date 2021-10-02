@@ -1090,6 +1090,15 @@ static void t_polmo(bool& status) {
     vvd(d_az,  1.008982781275728e-6, 1.0e-12, "sla::polmo", "az", status);
 }
 
+// tests sla::galsup() function
+static void t_galsup(bool& status) {
+    Spherical<double> supergalactic;
+    galsup({6.1, -1.4}, supergalactic);
+
+    vvd(supergalactic.get_longitude(), 4.567933268859171, 1.0e-12, "sla::galsup", "long", status);
+    vvd(supergalactic.get_latitude(), -0.01862369899731829, 1.0e-12, "sla::galsup", "lat", status);
+}
+
 ///////////////////////////////////////////////////////////////////////////////
 // MODULE ENTRY POINT
 ///////////////////////////////////////////////////////////////////////////////
@@ -1152,6 +1161,7 @@ bool sla_test() {
     t_ecor(status);
     t_ecleq(status);
     t_polmo(status);
+    t_galsup(status);
     return status;
 }
 
