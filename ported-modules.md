@@ -65,7 +65,7 @@ that you have to look at the markdown source to see the difference):
 * drange.f:        DOUBLE PRECISION FUNCTION sla_DRANGE (ANGLE)
 * dranrm.f:        DOUBLE PRECISION FUNCTION sla_DRANRM (ANGLE)
 * ds2c6.f:         SUBROUTINE sla_DS2C6 (A, B, R, AD, BD, RD, V)
-- ds2tp.f:         SUBROUTINE sla_DS2TP (RA, DEC, RAZ, DECZ, XI, ETA, J)
+* ds2tp.f:         SUBROUTINE sla_DS2TP (RA, DEC, RAZ, DECZ, XI, ETA, J)
 * dsep.f:          DOUBLE PRECISION FUNCTION sla_DSEP (A1, B1, A2, B2)
 * dsepv.f:         DOUBLE PRECISION FUNCTION sla_DSEPV (V1, V2)
 * dtf2d.f:         SUBROUTINE sla_DTF2D (IHOUR, IMIN, SEC, DAYS, J)

@@ -65,7 +65,7 @@ enum FITStatus {
     FIT_NONE          // no solution
 };
 
-/// Status codes for tangent plane projection function s2tp()
+/// Status codes for tangent plane projection functions s2tp() and ds2tp()
 enum TPPStatus {
     TPP_OK = 0,       ///< OK, star on tangent plane
     TPP_TOO_FAR,      ///< error, star too far from axis
@@ -448,6 +448,7 @@ void ecleq(const Spherical<double>& ecliptic, double date, Spherical<double>& eq
 void polmo(double m_long, double m_phi, double x_pm, double y_pm, double& t_long, double& t_phi, double& d_az);
 void galsup(const Spherical<double>& galactic, Spherical<double>& supergalactic);
 TPPStatus s2tp(const Spherical<float>& point, const Spherical<float>& tangent, float& xi, float& eta);
+TPPStatus ds2tp(const Spherical<double>& point, const Spherical<double>& tangent, double& xi, double& eta);
 void wait(float seconds);
 
 } // sla namespace
