@@ -469,6 +469,7 @@ TPPStatus dv2tp(const Vector<double> point, const Vector<double> tangent, double
 int tpv2c(float xi, float eta, const Vector<float> point, Vector<float> solution1, Vector<float> solution2);
 int dtpv2c(double xi, double eta, const Vector<double> point, Vector<double> solution1, Vector<double> solution2);
 CPStatus combn(int nsel, int ncand, int* list);
+CPStatus permut(int n, int* state, int* order);
 void wait(float seconds);
 
 } // sla namespace

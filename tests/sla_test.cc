@@ -1207,6 +1207,20 @@ static void t_tpv(bool& status) {
     viv(n, 1, "sla::dtpv2c", "n", status);
 }
 
+// tests sla::combn() and sla::permut() functions
+static void t_percom(bool& status) {
+    int list[3], I, J, ISTATE[4], IORDER[4];
+
+    list[0] = 0;
+    for (I = 0; I < 11; I++) {
+        J = combn(3, 5, list);
+    }
+    viv(J, CPS_NO_MORE, "sla::combn", "J", status);
+    viv(list[0], 1, "sla::combn", "list[0]", status);
+    viv(list[1], 2, "sla::combn", "list[1]", status);
+    viv(list[2], 3, "sla::combn", "list[2]", status);
+}
+
 ///////////////////////////////////////////////////////////////////////////////
 // MODULE ENTRY POINT
 ///////////////////////////////////////////////////////////////////////////////
@@ -1272,6 +1286,7 @@ bool sla_test() {
     t_galsup(status);
     t_tp(status);
     t_tpv(status);
+    t_percom(status);
     return status;
 }
 
