@@ -65,6 +65,13 @@ enum FITStatus {
     FIT_NONE          // no solution
 };
 
+/// Status codes for combn() and permut() functions.
+enum CPStatus {
+    CPS_OK = 0,      ///< successfully generated next combination or permutation
+    CPS_NO_MORE,     ///< no more combinations or permutations available
+    CPS_INVALID_ARG  ///< illegal argument provided
+};
+
 /// Status codes for tangent plane projection functions s2tp(), ds2tp(), v2tp(), and dv2tp().
 enum TPPStatus {
     TPP_OK = 0,       ///< OK, star on tangent plane
@@ -461,6 +468,7 @@ TPPStatus v2tp(const Vector<float> point, const Vector<float> tangent, float& xi
 TPPStatus dv2tp(const Vector<double> point, const Vector<double> tangent, double& xi, double& eta);
 int tpv2c(float xi, float eta, const Vector<float> point, Vector<float> solution1, Vector<float> solution2);
 int dtpv2c(double xi, double eta, const Vector<double> point, Vector<double> solution1, Vector<double> solution2);
+CPStatus combn(int nsel, int ncand, int* list);
 void wait(float seconds);
 
 } // sla namespace
