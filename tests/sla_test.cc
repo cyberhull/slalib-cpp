@@ -1210,26 +1210,24 @@ static void t_tpv(bool& status) {
 // tests sla::combn() and sla::permut() functions
 static void t_percom(bool& status) {
     CPStatus result;
-    int list[3];
-    list[0] = 0;
+    int list[3] = {0};
     for (int i = 0; i < 11; i++) {
         result = combn(3, 5, list);
     }
     viv(result, CPS_NO_MORE, "sla::combn", "result", status);
-    viv(list[0], 1, "sla::combn", "list[0]", status);
-    viv(list[1], 2, "sla::combn", "list[1]", status);
-    viv(list[2], 3, "sla::combn", "list[2]", status);
+    viv(list[0], 1, "sla::combn", "list:0", status);
+    viv(list[1], 2, "sla::combn", "list:1", status);
+    viv(list[2], 3, "sla::combn", "list:2", status);
 
-    int state[4], order[4];
-    state[0] = -1;
+    int state[4] = {-1}, order[4];
     for (int j = 0; j < 25; j++) {
         result = permut(4, state, order);
     }
-    viv(result, CPS_NO_MORE, "sla_PERMUT", "result", status);
-    viv(order[0], 4, "sla::permut", "order[0]", status);
-    viv(order[1], 3, "sla::permut", "order[1]", status);
-    viv(order[2], 2, "sla::permut", "order[2]", status);
-    viv(order[3], 1, "sla::permut", "order[3]", status);
+    viv(result, CPS_NO_MORE, "sla::permut", "result", status);
+    viv(order[0], 4, "sla::permut", "order:0", status);
+    viv(order[1], 3, "sla::permut", "order:1", status);
+    viv(order[2], 2, "sla::permut", "order:2", status);
+    viv(order[3], 1, "sla::permut", "order:3", status);
 }
 
 ///////////////////////////////////////////////////////////////////////////////
