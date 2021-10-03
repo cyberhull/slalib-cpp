@@ -239,7 +239,7 @@ that you have to look at the markdown source to see the difference):
 * sla_test.f:      SUBROUTINE T_PCD (STATUS)
 - sla_test.f:      SUBROUTINE T_PDA2H (STATUS)
 - sla_test.f:      SUBROUTINE T_PDQ2H (STATUS)
-- sla_test.f:      SUBROUTINE T_PERCOM (STATUS)
+* sla_test.f:      SUBROUTINE T_PERCOM (STATUS)
 - sla_test.f:      SUBROUTINE T_PLANET (STATUS)
 * sla_test.f:      SUBROUTINE T_PM (STATUS)
 * sla_test.f:      SUBROUTINE T_POLMO (STATUS)
