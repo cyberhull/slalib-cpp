@@ -258,7 +258,7 @@ that you have to look at the markdown source to see the difference):
 * sla_test.f:      SUBROUTINE T_SUPGAL (STATUS)
 - sla_test.f:      SUBROUTINE T_SVD (STATUS)
 * sla_test.f:      SUBROUTINE T_TP (STATUS)
-- sla_test.f:      SUBROUTINE T_TPV (STATUS)
+* sla_test.f:      SUBROUTINE T_TPV (STATUS)
 * sla_test.f:      SUBROUTINE T_VECMAT (STATUS)
 * sla_test.f:      SUBROUTINE T_ZD (STATUS)
 * sla_test.f:      SUBROUTINE VCS (S, SOK, FUNC, TEST, STATUS)

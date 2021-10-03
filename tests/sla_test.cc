@@ -1144,6 +1144,69 @@ static void t_tp(bool& status) {
     viv(n, 1, "sla::dtps2c", "n", status);
 }
 
+// tests sla::tp2v(), sla::v2tp(), sla::tpv2c(), sla::dtp2v(), sla::dv2tp(), and sla::dtpv2c() functions
+static void t_tpv(bool& status) {
+    float fr_xi, fr_eta;
+    Vector<float> fr_v, fs_v1, fs_v2;
+    double dr_xi, dr_eta;
+    Vector<double> dr_v, ds_v1, ds_v2;
+
+    const double d_xi = -0.1;
+    const double d_eta = 0.055;
+    const float f_xi = (float) d_xi;
+    const float f_eta = (float) d_eta;
+
+    double x = -0.7;
+    double y = -0.13;
+    double z = std::sqrt(1.0 - x * x - y * y);
+    const Vector<float> f_v = {(float) x, (float) y, (float) z};
+    const Vector<double> d_v = {x, y, z};
+
+    x = -0.72;
+    y = -0.16;
+    z = std::sqrt(1.0 - x * x - y * y);
+    const Vector<float> f_v0 = {(float) x, (float) y, (float) z};
+    const Vector<double> d_v0 = {x, y, z};
+
+    tp2v(f_xi, f_eta, f_v0, fr_v);
+    vvd(fr_v[0], -0.700887428128, 1.0e-6, "sla::tp2v", "v0", status);
+    vvd(fr_v[1], -0.05397407, 1.0e-6, "sla::tp2v", "v1", status);
+    vvd(fr_v[2], 0.711226836562, 1.0e-6, "sla::tp2v", "v2", status);
+
+    dtp2v(d_xi, d_eta, d_v0, dr_v);
+    vvd(dr_v[0], -0.7008874281280771, 1.0e-13, "sla::dtp2v", "v0", status);
+    vvd(dr_v[1], -0.05397406827952735, 1.0e-13, "sla::dtp2v", "v1", status);
+    vvd(dr_v[2], 0.7112268365615617, 1.0e-13, "sla::dtp2v", "v2", status);
+
+    TPPStatus result = v2tp(f_v, f_v0, fr_xi, fr_eta);
+    vvd(fr_xi, -0.02497229197, 1.0e-6, "sla::v2tp", "d_xi", status);
+    vvd(fr_eta, 0.03748140764, 1.0e-6, "sla::v2tp", "d_eta", status);
+    viv(result, TPP_OK, "sla::v2tp", "result", status);
+
+    result = dv2tp(d_v, d_v0, dr_xi, dr_eta);
+    vvd(dr_xi, -0.02497229197023852, 1.0e-13, "sla::dv2tp", "d_xi", status);
+    vvd(dr_eta, 0.03748140764224765, 1.0e-13, "sla::dv2tp", "d_eta", status);
+    viv(result, TPP_OK, "sla::dv2tp", "result", status);
+
+    int n = tpv2c(f_xi, f_eta, f_v, fs_v1, fs_v2);
+    vvd(fs_v1[0], -0.7074573732537283, 1.0e-6, "sla::tpv2c", "v1:0", status);
+    vvd(fs_v1[1], -0.2372965765309941, 1.0e-6, "sla::tpv2c", "v1:1", status);
+    vvd(fs_v1[2], 0.6657284730245545, 1.0e-6, "sla::tpv2c", "v1:2", status);
+    vvd(fs_v2[0], -0.6680480104758149, 1.0e-6, "sla::tpv2c", "v2:0", status);
+    vvd(fs_v2[1], -0.02915588494045333, 1.0e-6, "sla::tpv2c", "v2:1", status);
+    vvd(fs_v2[2], 0.7435467638774610, 1.0e-6, "sla::tpv2c", "v2:2", status);
+    viv(n, 1, "sla::tpv2c", "n", status);
+
+    n = dtpv2c(d_xi, d_eta, d_v, ds_v1, ds_v2);
+    vvd(ds_v1[0], -0.7074573732537283, 1.0e-13, "sla::dtpv2c", "v1:0", status);
+    vvd(ds_v1[1], -0.2372965765309941, 1.0e-13, "sla::dtpv2c", "v1:1", status);
+    vvd(ds_v1[2], 0.6657284730245545, 1.0e-13, "sla::dtpv2c", "v1:2", status);
+    vvd(ds_v2[0], -0.6680480104758149, 1.0e-13, "sla::dtpv2c", "v2:0", status);
+    vvd(ds_v2[1], -0.02915588494045333, 1.0e-13, "sla::dtpv2c", "v2:1", status);
+    vvd(ds_v2[2], 0.7435467638774610, 1.0e-13, "sla::dtpv2c", "v2:2", status);
+    viv(n, 1, "sla::dtpv2c", "n", status);
+}
+
 ///////////////////////////////////////////////////////////////////////////////
 // MODULE ENTRY POINT
 ///////////////////////////////////////////////////////////////////////////////
@@ -1208,6 +1271,7 @@ bool sla_test() {
     t_polmo(status);
     t_galsup(status);
     t_tp(status);
+    t_tpv(status);
     return status;
 }
 
