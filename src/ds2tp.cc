@@ -48,23 +48,23 @@ TPPStatus ds2tp(const Spherical<double>& point, const Spherical<double>& tangent
     double denom = sin_dec * sin_tdec + cos_dec * cos_tdec * cos_ra_diff;
 
     // handle vectors too far from axis
-    TPPStatus result;
+    TPPStatus status;
     if (denom > TINY) {
-        result = TPP_OK;
+        status = TPP_OK;
     } else if (denom >= 0.0) {
-        result = TPP_TOO_FAR;
+        status = TPP_TOO_FAR;
         denom = TINY;
     } else if (denom > -TINY) {
-        result = TPP_ASTAR_ON_TP;
+        status = TPP_ASTAR_ON_TP;
         denom = -TINY;
     } else {
-        result = TPP_ASTAR_TOO_FAR;
+        status = TPP_ASTAR_TOO_FAR;
     }
 
     // compute tangent plane coordinates (even in dubious cases)
     xi = cos_dec * sin_ra_diff / denom;
     eta = (sin_dec * cos_tdec - cos_dec * sin_tdec * cos_ra_diff) / denom;
-    return result;
+    return status;
 }
 
 }

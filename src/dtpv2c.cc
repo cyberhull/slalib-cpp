@@ -30,7 +30,7 @@ namespace sla {
  *
  * Also near the poles, cases can arise where there are two useful solutions. The return value indicates whether the
  * second of the two solutions returned is useful. Returned value of 1 indicates only one useful solution, the usual
- * case; under these circumstances, the second solution can be regarded as valid if the vector `v2` is interpreted
+ * case; under these circumstances, the second solution can be regarded as valid if the vector `solution2` is interpreted
  * as the "over-the-pole" case.
  *
  * This function is the Cartesian equivalent of the function sla::dtps2c().
@@ -39,16 +39,16 @@ namespace sla {
  *
  * @param xi Tangent plane coordinate of star.
  * @param eta Tangent plane coordinate of star.
- * @param v Direction cosines of star; must be of unit length or the result will be wrong.
- * @param v1 Return value: direction cosines of tangent point, solution 1.
- * @param v2 Return value: direction cosines of tangent point, solution 2.
+ * @param point Direction cosines of star; must be of unit length or the result will be wrong.
+ * @param solution1 Return value: direction cosines of tangent point, solution 1.
+ * @param solution2 Return value: direction cosines of tangent point, solution 2.
  * @return Number of solutions; 0: no solutions returned, 1: only the first solution is useful, 2: both solutions
  *   are useful.
  */
-int dtpv2c(double xi, double eta, const Vector<double> v, Vector<double> v1, Vector<double> v2) {
-    const double x = v[0];
-    const double y = v[1];
-    const double z = v[2];
+int dtpv2c(double xi, double eta, const Vector<double> point, Vector<double> solution1, Vector<double> solution2) {
+    const double x = point[0];
+    const double y = point[1];
+    const double z = point[2];
     const double rxy2 = x * x + y * y;
     const double xi2 = xi * xi;
     const double eta2p1 = eta * eta + 1.0;
@@ -57,14 +57,14 @@ int dtpv2c(double xi, double eta, const Vector<double> v, Vector<double> v1, Vec
     if (r2 > 0.0) {
         double r = std::sqrt(r2);
         double c = (sdf * eta + r) / (eta2p1 * std::sqrt(rxy2 * (r2 + xi2)));
-        v1[0] = c * (x * r + y * xi);
-        v1[1] = c * (y * r - x * xi);
-        v1[2] = (sdf - eta * r) / eta2p1;
+        solution1[0] = c * (x * r + y * xi);
+        solution1[1] = c * (y * r - x * xi);
+        solution1[2] = (sdf - eta * r) / eta2p1;
         r = -r;
         c = (sdf * eta + r) / (eta2p1 * std::sqrt(rxy2 * (r2 + xi2)));
-        v2[0] = c * (x * r + y * xi);
-        v2[1] = c * (y * r - x * xi);
-        v2[2] = (sdf - eta * r) / eta2p1;
+        solution2[0] = c * (x * r + y * xi);
+        solution2[1] = c * (y * r - x * xi);
+        solution2[2] = (sdf - eta * r) / eta2p1;
         if (std::abs(sdf) < 1.0) {
             return 1;
         } else {

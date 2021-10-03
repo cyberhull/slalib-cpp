@@ -28,23 +28,23 @@ namespace sla {
  *
  * Original FORTRAN code by P.T. Wallace / Rutherford Appleton Laboratory.
  *
- * @param v Direction cosines of star; if this vector is of zero length, the results will be wrong.
- * @param v0 Direction cosines of tangent point; if this vector is not of unit length, the results will be wrong; if
+ * @param point Direction cosines of star; if this vector is of zero length, the results will be wrong.
+ * @param tangent Direction cosines of tangent point; if this vector is not of unit length, the results will be wrong; if
  *   this vector points at a pole, the returned `xi`,`eta` will be based on the arbitrary assumption that the RA of
  *   the tangent point is zero.
  * @param xi Return value: tangent plane coordinate of star.
  * @param eta Return value: tangent plane coordinate of star.
  * @return A `TPPStatus` constant (status).
  */
-TPPStatus dv2tp(const Vector<double> v, const Vector<double> v0, double& xi, double& eta) {
+TPPStatus dv2tp(const Vector<double> point, const Vector<double> tangent, double& xi, double& eta) {
     constexpr double TINY = 1e-6;
 
-    const double x = v[0];
-    const double y = v[1];
-    const double z = v[2];
-    double x0 = v0[0];
-    const double y0 = v0[1];
-    const double z0 = v0[2];
+    const double x = point[0];
+    const double y = point[1];
+    const double z = point[2];
+    double x0 = tangent[0];
+    const double y0 = tangent[1];
+    const double z0 = tangent[2];
     const double r2 = x0 * x0 + y0 * y0;
     double r = std::sqrt(r2);
     if (r == 0.0f) {
