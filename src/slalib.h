@@ -470,6 +470,7 @@ int tpv2c(float xi, float eta, const Vector<float> point, Vector<float> solution
 int dtpv2c(double xi, double eta, const Vector<double> point, Vector<double> solution1, Vector<double> solution2);
 CPStatus combn(int nsel, int ncand, int* list);
 CPStatus permut(int n, int* state, int* order);
+void evp(double date, double deqx, Vector<double> bvelo, Vector<double> bpos, Vector<double> hvelo, Vector<double> hpos);
 void wait(float seconds);
 
 } // sla namespace
