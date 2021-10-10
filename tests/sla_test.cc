@@ -1230,6 +1230,39 @@ static void t_percom(bool& status) {
     viv(order[3], 1, "sla::permut", "order:3", status);
 }
 
+// tests sla::evp() and sla::epv() functions
+static void t_evp(bool& status) {
+    Vector<double> bvelo, bpos, hvelo, hpos;
+
+    evp(50100.0, 1990.0, bvelo, bpos, hvelo, hpos);
+    vvd(bvelo[0], -1.807210068604058436e-7, 1e-14, "sla::evp", "bvelo:x", status);
+    vvd(bvelo[1], -8.385891022440320e-8, 1e-14, "sla::evp", "bvelo:y", status);
+    vvd(bvelo[2], -3.635846882638055e-8, 1e-14, "sla::evp", "bvelo:z", status);
+    vvd(bpos[0], -0.4515615297360333, 1e-7, "sla::evp", "bpos:x", status);
+    vvd(bpos[1],  0.8103788166239596, 1e-7, "sla::evp", "bpos:y", status);
+    vvd(bpos[2],  0.3514505204144827, 1e-7, "sla::evp", "bpos:z", status);
+    vvd(hvelo[0], -1.806354061156890855e-7, 1e-14, "sla::evp", "hvelo:x", status);
+    vvd(hvelo[1], -8.383798678086174e-8, 1e-14, "sla::evp", "hvelo:y", status);
+    vvd(hvelo[2], -3.635185843644782e-8, 1e-14, "sla::evp", "hvelo:z", status);
+    vvd(hpos[0], -0.4478571659918565, 1e-7, "sla::evp", "hpos:x", status);
+    vvd(hpos[1],  0.8036439916076232, 1e-7, "sla::evp", "hpos:y", status);
+    vvd(hpos[2],  0.3484298459102053, 1e-7, "sla::evp", "hpos:z", status);
+
+    epv(53411.52501161, hpos, hvelo, bpos, bvelo);
+    vvd(hpos[0], -0.7757238809297653, 1.0e-12, "sla::epv", "hpos:x", status);
+    vvd(hpos[1], +0.5598052241363390, 1.0e-12, "sla::epv", "hpos:y", status);
+    vvd(hpos[2], +0.2426998466481708, 1.0e-12, "sla::epv", "hpos:z", status);
+    vvd(hvelo[0], -0.0109189182414732, 1.0e-12, "sla::epv", "hvelo:x", status);
+    vvd(hvelo[1], -0.0124718726844084, 1.0e-12, "sla::epv", "hvelo:y", status);
+    vvd(hvelo[2], -0.0054075694180650, 1.0e-12, "sla::epv", "hvelo:z", status);
+    vvd(bpos[0], -0.7714104440491060, 1.0e-12, "sla::epv", "bpos:x", status);
+    vvd(bpos[1], +0.5598412061824225, 1.0e-12, "sla::epv", "bpos:y", status);
+    vvd(bpos[2], +0.2425996277722475, 1.0e-12, "sla::epv", "bpos:z", status);
+    vvd(bvelo[0], -0.0109187426811683, 1.0e-12, "sla::epv", "bvelo:x", status);
+    vvd(bvelo[1], -0.0124652546173285, 1.0e-12, "sla::epv", "bvelo:y", status);
+    vvd(bvelo[2], -0.0054047731809662, 1.0e-12, "sla::epv", "bvelo:z", status);
+}
+
 ///////////////////////////////////////////////////////////////////////////////
 // MODULE ENTRY POINT
 ///////////////////////////////////////////////////////////////////////////////
@@ -1296,6 +1329,7 @@ bool sla_test() {
     t_tp(status);
     t_tpv(status);
     t_percom(status);
+    t_evp(status);
     return status;
 }
 
