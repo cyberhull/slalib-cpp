@@ -92,7 +92,7 @@ that you have to look at the markdown source to see the difference):
 - epco.f:          DOUBLE PRECISION FUNCTION sla_EPCO (K0, K, E)
 * epj2d.f:         DOUBLE PRECISION FUNCTION sla_EPJ2D (EPJ)
 * epj.f:           DOUBLE PRECISION FUNCTION sla_EPJ (DATE)
-- epv.f:           SUBROUTINE sla_EPV (DATE, PH, VH, PB, VB)
+* epv.f:           SUBROUTINE sla_EPV (DATE, PH, VH, PB, VB)
 * eqecl.f:         SUBROUTINE sla_EQECL (DR, DD, DATE, DL, DB)
 * eqeqx.f:         DOUBLE PRECISION FUNCTION sla_EQEQX (DATE)
 * eqgal.f:         SUBROUTINE sla_EQGAL (DR, DD, DL, DB)

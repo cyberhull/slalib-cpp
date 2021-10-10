@@ -471,6 +471,7 @@ int dtpv2c(double xi, double eta, const Vector<double> point, Vector<double> sol
 CPStatus combn(int nsel, int ncand, int* list);
 CPStatus permut(int n, int* state, int* order);
 void evp(double date, double deqx, Vector<double> bvelo, Vector<double> bpos, Vector<double> hvelo, Vector<double> hpos);
+void epv(double date, Vector<double> hpos, Vector<double> hvelo, Vector<double> bpos, Vector<double> bvelo);
 void wait(float seconds);
 
 } // sla namespace

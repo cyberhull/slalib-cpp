@@ -50,7 +50,7 @@ add_library(slalib
     s2tp.cc ds2tp.cc tp2s.cc dtp2s.cc tps2c.cc dtps2c.cc
     tp2v.cc dtp2v.cc v2tp.cc dv2tp.cc tpv2c.cc dtpv2c.cc
     combn.cc permut.cc
-    evp.cc
+    evp.cc epv.cc
     wait.cc
     f77_utils.h
     slalib.cc slalib.h)
