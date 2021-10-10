@@ -25,13 +25,13 @@ namespace sla {
 
 /// Catalogues of fundamental stars: celestial reference frames.
 enum Catalogue {
-    CAT_NONE, ///< Unspecified
-    CAT_FC,   ///< Fundamental-Catalog by Auwers [1879], 539 stars
-    CAT_NFK,  ///< Neuer Fundamentalkatalog by J. Peters, 925 stars
-    CAT_FK3,  ///< Third Fundamental Catalogue by Kopff [1937]
-    CAT_FK4,  ///< Fourth Fundamental Catalogue [1963], 1,535 stars
-    CAT_FK5,  ///< Fifth Fundamental Catalogue [1988], 1,535 stars
-    CAT_FK6   ///< Sixth Fundamental Catalogue [2000], 4,150 stars
+    CAT_NONE = 0, ///< Unspecified
+    CAT_FC,       ///< Fundamental-Catalog by Auwers [1879], 539 stars
+    CAT_NFK,      ///< Neuer Fundamentalkatalog by J. Peters, 925 stars
+    CAT_FK3,      ///< Third Fundamental Catalogue by Kopff [1937]
+    CAT_FK4,      ///< Fourth Fundamental Catalogue [1963], 1,535 stars
+    CAT_FK5,      ///< Fifth Fundamental Catalogue [1988], 1,535 stars
+    CAT_FK6       ///< Sixth Fundamental Catalogue [2000], 4,150 stars
 };
 
 /// Status codes for the caf2r() procedure (degrees to radians conversion).
@@ -52,7 +52,7 @@ enum G2JStatus {
 
 /// Status codes for the dtf2d() and ctf2d() procedures.
 enum T2DStatus {
-    T2D_OK,          ///< all arguments fit their ranges, conversion successful
+    T2D_OK = 0,      ///< all arguments fit their ranges, conversion successful
     T2D_BAD_HOURS,   ///< hours outside of range [0..23]
     T2D_BAD_MINUTES, ///< minutes outside of range [0..59]
     T2D_BAD_SECONDS  ///< seconds outside of range [0..60)
@@ -61,8 +61,8 @@ enum T2DStatus {
 /// Status codes for the fitxy() function.
 enum FITStatus {
     FIT_OK = 0,       ///< succeeded
-    FIT_INSUFFICIENT, // insufficient data
-    FIT_NONE          // no solution
+    FIT_INSUFFICIENT, ///< insufficient data
+    FIT_NONE          ///< no solution
 };
 
 /// Status codes for combn() and permut() functions.
@@ -297,10 +297,10 @@ public:
     void set_sign(bool sign) { cr_sign = sign; }
 };
 
-/// Input samples for the fitxy() function
+/// Input samples for the fitxy() and pxy() functions.
 using XYSamples = double[][2];
 
-/// Coefficients for the fitxy() function
+/// Coefficients for the fitxy(), dcmpf(), invf(), pxy(), and xy2xy() functions.
 class FitCoeffs: public Array<double, 6> {
     enum {
         I_A = 0, I_B, I_C, I_D, I_E, I_F
