@@ -89,7 +89,7 @@ that you have to look at the markdown source to see the difference):
 - el2ue.f:         SUBROUTINE sla_EL2UE (DATE, JFORM, EPOCH, ORBINC, ANODE, PERIH, AORQ, E, AORL, DM, U, JSTAT)
 * epb2d.f:         DOUBLE PRECISION FUNCTION sla_EPB2D (EPB)
 * epb.f:           DOUBLE PRECISION FUNCTION sla_EPB (DATE)
-- epco.f:          DOUBLE PRECISION FUNCTION sla_EPCO (K0, K, E)
+* epco.f:          DOUBLE PRECISION FUNCTION sla_EPCO (K0, K, E)
 * epj2d.f:         DOUBLE PRECISION FUNCTION sla_EPJ2D (EPJ)
 * epj.f:           DOUBLE PRECISION FUNCTION sla_EPJ (DATE)
 * epv.f:           SUBROUTINE sla_EPV (DATE, PH, VH, PB, VB)

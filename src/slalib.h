@@ -411,6 +411,7 @@ double epj2d(double je);
 double epj(double mjd);
 double epb2d(double be);
 double epb(double mjd);
+double epco(char result, char given, double epoch);
 void prec(double ep0, double ep1, Matrix<double> mat);
 void precl(double ep0, double ep1, Matrix<double> mat);
 void prenut(double je, double mjd, Matrix<double> mat);

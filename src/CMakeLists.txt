@@ -36,7 +36,7 @@ add_library(slalib
     atmdsp.cc refcoq.cc refro.cc refco.cc refv.cc refz.cc
     ecmat.cc dmat.cc smat.cc altaz.cc
     nutc.cc nut.cc nutc80.cc
-    epj2d.cc epj.cc epb2d.cc epb.cc
+    epj2d.cc epj.cc epb2d.cc epb.cc epco.cc
     prec.cc precl.cc prenut.cc
     dsepv.cc sepv.cc dsep.cc sep.cc
     prebn.cc preces.cc supgal.cc
