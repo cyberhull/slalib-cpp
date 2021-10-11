@@ -1263,12 +1263,20 @@ static void t_evp(bool& status) {
     vvd(bvelo[2], -0.0054047731809662, 1.0e-12, "sla::epv", "bvelo:z", status);
 }
 
-// tests sla::evp() and sla::epv() functions
+// tests sla::eg50() function
 static void t_eg50(bool& status) {
     Spherical<double> gal;
     eg50({3.012, 1.234}, gal);
     vvd(gal.get_longitude(), 2.305557953813397, 1.0e-12, "sla::eg50", "l", status);
     vvd(gal.get_latitude(), 0.7903600886585871, 1.0e-12, "sla::eg50", "b", status);
+}
+
+// tests sla::ge50() function
+static void t_ge50(bool& status) {
+    Spherical<double> loc;
+    ge50({6.1, -1.55}, loc);
+    vvd(loc.get_ra(), 0.1966825219934508, 1.0e-12, "sla::ge50", "ra", status);
+    vvd(loc.get_dec(), -0.4924752701678960, 1.0e-12, "sla::ge50", "dec", status);
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -1339,6 +1347,7 @@ bool sla_test() {
     t_percom(status);
     t_evp(status);
     t_eg50(status);
+    t_ge50(status);
     return status;
 }
 
