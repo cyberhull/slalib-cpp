@@ -1263,6 +1263,14 @@ static void t_evp(bool& status) {
     vvd(bvelo[2], -0.0054047731809662, 1.0e-12, "sla::epv", "bvelo:z", status);
 }
 
+// tests sla::evp() and sla::epv() functions
+static void t_eg50(bool& status) {
+    Spherical<double> gal;
+    eg50({3.012, 1.234}, gal);
+    vvd(gal.get_longitude(), 2.305557953813397, 1.0e-12, "sla::eg50", "l", status);
+    vvd(gal.get_latitude(), 0.7903600886585871, 1.0e-12, "sla::eg50", "b", status);
+}
+
 ///////////////////////////////////////////////////////////////////////////////
 // MODULE ENTRY POINT
 ///////////////////////////////////////////////////////////////////////////////
@@ -1330,6 +1338,7 @@ bool sla_test() {
     t_tpv(status);
     t_percom(status);
     t_evp(status);
+    t_eg50(status);
     return status;
 }
 
