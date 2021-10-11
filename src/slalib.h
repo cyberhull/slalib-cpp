@@ -473,6 +473,7 @@ CPStatus permut(int n, int* state, int* order);
 void evp(double date, double deqx, Vector<double> bvelo, Vector<double> bpos, Vector<double> hvelo, Vector<double> hpos);
 void epv(double date, Vector<double> hpos, Vector<double> hvelo, Vector<double> bpos, Vector<double> bvelo);
 void eg50(const Spherical<double>& fk4, Spherical<double>& gal);
+void ge50(const Spherical<double>& gal, Spherical<double>& fk4);
 void wait(float seconds);
 
 } // sla namespace
