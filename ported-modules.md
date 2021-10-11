@@ -85,7 +85,7 @@ that you have to look at the markdown source to see the difference):
 * ecleq.f:         SUBROUTINE sla_ECLEQ (DL, DB, DATE, DR, DD)
 * ecmat.f:         SUBROUTINE sla_ECMAT (DATE, RMAT)
 * ecor.f:          SUBROUTINE sla_ECOR (RM, DM, IY, ID, FD, RV, TL)
-- eg50.f:          SUBROUTINE sla_EG50 (DR, DD, DL, DB)
+* eg50.f:          SUBROUTINE sla_EG50 (DR, DD, DL, DB)
 - el2ue.f:         SUBROUTINE sla_EL2UE (DATE, JFORM, EPOCH, ORBINC, ANODE, PERIH, AORQ, E, AORL, DM, U, JSTAT)
 * epb2d.f:         DOUBLE PRECISION FUNCTION sla_EPB2D (EPB)
 * epb.f:           DOUBLE PRECISION FUNCTION sla_EPB (DATE)

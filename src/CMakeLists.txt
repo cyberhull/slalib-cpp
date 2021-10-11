@@ -51,6 +51,7 @@ add_library(slalib
     tp2v.cc dtp2v.cc v2tp.cc dv2tp.cc tpv2c.cc dtpv2c.cc
     combn.cc permut.cc
     evp.cc epv.cc
+    eg50.cc
     wait.cc
     f77_utils.h
     slalib.cc slalib.h)
