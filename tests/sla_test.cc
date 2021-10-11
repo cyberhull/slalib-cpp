@@ -704,6 +704,13 @@ static void t_epb(bool& status) {
     vvd(epb(45123.0), 1982.419793168669, 1.0e-8, "sla::epb", "", status);
 }
 
+// tests sla::epco() function
+static void t_epco(bool& status) {
+    vvd(epco('B', 'J', 2000.0 ), 2000.001277513665, 1.0e-7, "sla::epco", "bj", status);
+    vvd(epco('J', 'B', 1950.0 ), 1949.999790442300, 1.0e-7, "sla::epco", "jb", status);
+    vvd(epco('J', 'J', 2000.0 ), 2000, 1.0e-7, "sla::epco", "jj", status);
+}
+
 // tests sla::prec() and sla::precl() functions
 static void t_prec(bool& status) {
     Matrix<double> mat;
@@ -1316,6 +1323,7 @@ bool sla_test() {
     t_epj(status);
     t_epb2d(status);
     t_epb(status);
+    t_epco(status);
     t_prec(status);
     t_prenut(status);
     t_sep(status);
