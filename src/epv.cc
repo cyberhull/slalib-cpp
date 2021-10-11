@@ -107,12 +107,12 @@ void epv(double date, Vector<double> hpos, Vector<double> hvelo, Vector<double> 
      * NbnZ respectively. The parameter Mbn is the biggest of the three, and defines the array size. Unused elements
      * are not initialized and are never accessed.
      */
-    static constexpr int NE0X = 501, NE0Y = 501, NE0Z = 137, ME0 = NE0X;
-    static constexpr int NE1X = 79, NE1Y = 80, NE1Z = 12, ME1 = NE1Y;
-    static constexpr int NE2X = 5, NE2Y = 5, NE2Z = 3, ME2 = NE2X;
-    static constexpr int NS0X = 212, NS0Y = 213, NS0Z = 69, MS0 = NS0Y;
-    static constexpr int NS1X = 50, NS1Y = 50, NS1Z = 14, MS1 = NS1X;
-    static constexpr int NS2X = 9, NS2Y = 9, NS2Z = 2, MS2 = NS2X;
+    constexpr int NE0X = 501, NE0Y = 501, NE0Z = 137, ME0 = NE0X;
+    constexpr int NE1X = 79, NE1Y = 80, NE1Z = 12, ME1 = NE1Y;
+    constexpr int NE2X = 5, NE2Y = 5, NE2Z = 3, ME2 = NE2X;
+    constexpr int NS0X = 212, NS0Y = 213, NS0Z = 69, MS0 = NS0Y;
+    constexpr int NS1X = 50, NS1Y = 50, NS1Z = 14, MS1 = NS1X;
+    constexpr int NS2X = 9, NS2Y = 9, NS2Z = 2, MS2 = NS2X;
 
     static const int NE0[3] = {NE0X, NE0Y, NE0Z};
     static const int NE1[3] = {NE1X, NE1Y, NE1Z};
