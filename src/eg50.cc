@@ -29,7 +29,7 @@ namespace sla {
  *
  * @param fk4 B1950.0 'FK4' RA,Dec (radians); use the function sla::eqgal() if conversion from J2000.0 coordinates
  *   is required.
- * @param gal Galactic longitude and latitude L2,B2 (radians).
+ * @param gal Return value: galactic longitude and latitude L2,B2 (radians).
  */
 void eg50(const Spherical<double>& fk4, Spherical<double>& gal) {
     /*
