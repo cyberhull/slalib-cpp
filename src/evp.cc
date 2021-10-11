@@ -77,9 +77,9 @@ void evp(double date, double deqx,
     };
     //
     // constants DCEPS[i] and CCSEL[k][i] of slowly changing elements
-    //  i==0            i==1           i==2
+    //  i==0             i==1            i==2
     static const double DCEPS[3] = {
-        4.093198e-01,  -2.271110e-04, -2.860401e-08
+        4.093198e-01,   -2.271110e-04,  -2.860401e-08
     };
     static const float CCSEL[17][3] = {
         {1.675104e-02f, -4.179579e-05f, -1.260516e-07f},
@@ -123,7 +123,7 @@ void evp(double date, double deqx,
     };
     //
     // amplitudes CCAMPS[k][n] of the short-period perturbations
-    //  n==0         n==1         n==2         n==3         n==4
+    //    n==0           n==1           n==2           n==3           n==4
     static const float CCAMPS[15][5] = {
         {-2.279594e-5f,  1.407414e-5f,  8.273188e-6f,  1.340565e-5f, -2.490817e-7f},
         {-3.494537e-5f,  2.860401e-7f,  1.289448e-7f,  1.627237e-5f, -1.823138e-7f},
@@ -143,7 +143,7 @@ void evp(double date, double deqx,
     };
     //
     // constants of the secular perturbations in longitude CCSEC3 and CCSEC[k][n]
-    //   n==0          n==1          n==2
+    //   n==0           n==1           n==2
     constexpr float CCSEC3 = -7.757020e-08f;
     static const float CCSEC[4][3] = {
         {1.289600e-06f, 5.550147e-01f, 2.076942e+00f},
@@ -366,11 +366,11 @@ void evp(double date, double deqx,
     // was precession to another equinox requested?
     if (deq) {
 
-        // yes: compute precession matrix from MJD date to Julian epoch deqx
+        // yes: compute precession matrix from MJD date to Julian epoch `deqx`
         Matrix<double> mat;
         prec(depj, deqx, mat);
 
-        // rotate hvelo
+        // rotate `hvelo`
         Vector<double> vec;
         double w;
         int i, j;
@@ -385,7 +385,7 @@ void evp(double date, double deqx,
             hvelo[j] = vec[j];
         }
 
-        // rotate bvelo
+        // rotate `bvelo`
         for (j = 0; j < 3; j++) {
             w = 0.0;
             for (i = 0; i < 3; i++) {
@@ -397,7 +397,7 @@ void evp(double date, double deqx,
             bvelo[j] = vec[j];
         }
 
-        // rotate hpos
+        // rotate `hpos`
         for (j = 0; j < 3; j++) {
             w = 0.0;
             for (i = 0; i < 3; i++) {
@@ -409,7 +409,7 @@ void evp(double date, double deqx,
             hpos[j] = vec[j];
         }
 
-        // rotate bpos
+        // rotate `bpos`
         for (j = 0; j < 3; j++) {
             w = 0.0;
             for (i = 0; i < 3; i++) {
