@@ -22,7 +22,7 @@
 namespace sla {
 
 /**
- * Calculates Hour Angle corresponding to a given parallactic angle (double precision).
+ * Calculates hour angle corresponding to a given parallactic angle (double precision).
  *
  * Original FORTRAN code by P.T. Wallace / Rutherford Appleton Laboratory.
  *
@@ -54,7 +54,7 @@ void pdq2h(double lat, double dec, double pa, double& ha1, bool& ha1_valid, doub
     }
     double dn = drange(dec);
     if (std::fabs(std::fabs(dec) - std::fabs(lat)) < TINY ||
-      std::fabs(std::fabs(dec) - DEG_90) < TINY) {
+        std::fabs(std::fabs(dec) - DEG_90) < TINY) {
         dn -= f_sign(TINY, dn);
     }
 
@@ -81,8 +81,7 @@ void pdq2h(double lat, double dec, double pa, double& ha1, bool& ha1_valid, doub
         ha1_valid = ha1 * qn >= 0.0;
         ha2_valid = ha2 * qn >= 0.0;
     } else {
-        ha1_valid = false;
-        ha2_valid = false;
+        ha1_valid = ha2_valid = false;
     }
 }
 
