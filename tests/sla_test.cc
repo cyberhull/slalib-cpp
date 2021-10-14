@@ -1298,6 +1298,18 @@ static void t_pdq2h(bool& status) {
     viv(ha2_valid, true, "sla::pdq2h", "ha2_v", status);
 }
 
+// tests sla::pda2h() function
+static void t_pda2h(bool& status) {
+    double ha1, ha2;
+    bool ha1_valid, ha2_valid;
+
+    pda2h(-0.51, -1.31, 3.1, ha1, ha1_valid, ha2, ha2_valid);
+    vvd(ha1, -0.1161784556585304927, 1.0e-14, "sla::pda2h", "ha1", status);
+    viv(ha1_valid, true, "sla::pda2h", "ha1_v", status);
+    vvd(ha2, -2.984787179226459, 1.0e-13, "sla::pda2h", "ha2", status);
+    viv(ha2_valid, true, "sla::pda2h", "ha2_v", status);
+}
+
 ///////////////////////////////////////////////////////////////////////////////
 // MODULE ENTRY POINT
 ///////////////////////////////////////////////////////////////////////////////
@@ -1369,6 +1381,7 @@ bool sla_test() {
     t_eg50(status);
     t_ge50(status);
     t_pdq2h(status);
+    t_pda2h(status);
     return status;
 }
 
