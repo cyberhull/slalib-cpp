@@ -141,7 +141,7 @@ that you have to look at the markdown source to see the difference):
 * pav.f:           REAL FUNCTION sla_PAV (V1, V2)
 * pcd.f:           SUBROUTINE sla_PCD (DISCO,X,Y)
 - pda2h.f:         SUBROUTINE sla_PDA2H (P, D, A, H1, J1, H2, J2)
-- pdq2h.f:         SUBROUTINE sla_PDQ2H (P, D, Q, H1, J1, H2, J2)
+* pdq2h.f:         SUBROUTINE sla_PDQ2H (P, D, Q, H1, J1, H2, J2)
 * permut.f:        SUBROUTINE sla_PERMUT (N, ISTATE, IORDER, J)
 - pertel.f:        SUBROUTINE sla_PERTEL (JFORM, DATE0, DATE1, EPOCH0, ORBI0, ANODE0, PERIH0, AORQ0, E0, AM0, EPOCH1, ORBI1, ANODE1, PERIH1, AORQ1, E1, AM1, JSTAT)
 - pertue.f:        SUBROUTINE sla_PERTUE (DATE, U, JSTAT)

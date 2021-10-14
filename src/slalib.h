@@ -475,6 +475,7 @@ void evp(double date, double deqx, Vector<double> bvelo, Vector<double> bpos, Ve
 void epv(double date, Vector<double> hpos, Vector<double> hvelo, Vector<double> bpos, Vector<double> bvelo);
 void eg50(const Spherical<double>& fk4, Spherical<double>& gal);
 void ge50(const Spherical<double>& gal, Spherical<double>& fk4);
+void pdq2h(double lat, double dec, double pa, double& ha1, bool& ha1_valid, double& ha2, bool& ha2_valid);
 void wait(float seconds);
 
 } // sla namespace
