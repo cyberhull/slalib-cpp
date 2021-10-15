@@ -33,7 +33,7 @@ namespace sla {
  *   `N` the minor version, and `R` the release number.
  */
 int veri() {
-    return SLALIB_PACKAGE_VERSION_MAJOR * 1000000 + SLALIB_PACKAGE_VERSION_MINOR * 1000 +
+    return SLALIB_PACKAGE_VERSION_MAJOR * 1'000'000 + SLALIB_PACKAGE_VERSION_MINOR * 1'000 +
         SLALIB_PACKAGE_VERSION_RELEASE;
 }
 
