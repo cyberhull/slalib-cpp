@@ -53,6 +53,6 @@ add_library(slalib
     evp.cc epv.cc
     eg50.cc ge50.cc
     pdq2h.cc pda2h.cc
-    veri.cc wait.cc
+    veri.cc vers.cc wait.cc
     f77_utils.h
     slalib.cc slalib.h)

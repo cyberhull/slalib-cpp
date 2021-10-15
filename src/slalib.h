@@ -486,6 +486,7 @@ void ge50(const Spherical<double>& gal, Spherical<double>& fk4);
 void pdq2h(double lat, double dec, double pa, double& ha1, bool& ha1_valid, double& ha2, bool& ha2_valid);
 void pda2h(double lat, double dec, double azimuth, double& ha1, bool& ha1_valid, double& ha2, bool& ha2_valid);
 int veri();
+const char* vers();
 void wait(float seconds);
 
 } // sla namespace

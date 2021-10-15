@@ -281,7 +281,7 @@ that you have to look at the markdown source to see the difference):
 * v2tp.f:          SUBROUTINE sla_V2TP (V, V0, XI, ETA, J)
 * vdv.f:           REAL FUNCTION sla_VDV (VA, VB)
 * veri.f.in:       INTEGER FUNCTION sla_VERI ()
-- vers.f.in:       SUBROUTINE sla_VERS (VERSION)
+* vers.f.in:       SUBROUTINE sla_VERS (VERSION)
 * vn.f:            SUBROUTINE sla_VN (V, UV, VM)
 * vxv.f:           SUBROUTINE sla_VXV (VA, VB, VC)
 * wait.fdefault:   SUBROUTINE sla_WAIT (DELAY)
