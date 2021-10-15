@@ -23,6 +23,14 @@
 
 namespace sla {
 
+/*
+ * Constants for veri() and vers() functions; implemented as `#define`s (vs. `constexpr`s) for us to be able to use
+ * "stringizing" in the implementation of the vers() function.
+ */
+#define SLALIB_PACKAGE_VERSION_MAJOR 2
+#define SLALIB_PACKAGE_VERSION_MINOR 5
+#define SLALIB_PACKAGE_VERSION_RELEASE 7
+
 /// Catalogues of fundamental stars: celestial reference frames.
 enum Catalogue {
     CAT_NONE = 0, ///< Unspecified
@@ -477,6 +485,7 @@ void eg50(const Spherical<double>& fk4, Spherical<double>& gal);
 void ge50(const Spherical<double>& gal, Spherical<double>& fk4);
 void pdq2h(double lat, double dec, double pa, double& ha1, bool& ha1_valid, double& ha2, bool& ha2_valid);
 void pda2h(double lat, double dec, double azimuth, double& ha1, bool& ha1_valid, double& ha2, bool& ha2_valid);
+int veri();
 void wait(float seconds);
 
 } // sla namespace

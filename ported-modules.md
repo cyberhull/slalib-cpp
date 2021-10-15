@@ -280,7 +280,7 @@ that you have to look at the markdown source to see the difference):
 * unpcd.f:         SUBROUTINE sla_UNPCD (DISCO, X, Y)
 * v2tp.f:          SUBROUTINE sla_V2TP (V, V0, XI, ETA, J)
 * vdv.f:           REAL FUNCTION sla_VDV (VA, VB)
-- veri.f.in:       INTEGER FUNCTION sla_VERI ()
+* veri.f.in:       INTEGER FUNCTION sla_VERI ()
 - vers.f.in:       SUBROUTINE sla_VERS (VERSION)
 * vn.f:            SUBROUTINE sla_VN (V, UV, VM)
 * vxv.f:           SUBROUTINE sla_VXV (VA, VB, VC)
