@@ -497,6 +497,7 @@ void pda2h(double lat, double dec, double azimuth, double& ha1, bool& ha1_valid,
 int veri();
 const char* vers();
 float random(float seed);
+float gresid(float stdev);
 void wait(float seconds);
 
 } // sla namespace

@@ -113,7 +113,7 @@ that you have to look at the markdown source to see the difference):
 * geoc.f:          SUBROUTINE sla_GEOC (P, H, R, Z)
 * gmsta.f:         DOUBLE PRECISION FUNCTION sla_GMSTA (DATE, UT)
 * gmst.f:          DOUBLE PRECISION FUNCTION sla_GMST (UT1)
-- gresid.Fdefault: REAL FUNCTION sla_GRESID (S)
+* gresid.Fdefault: REAL FUNCTION sla_GRESID (S)
 * h2e.f:           SUBROUTINE sla_H2E (AZ, EL, PHI, HA, DEC)
 - h2fk5.f:         SUBROUTINE sla_H2FK5 (RH, DH, DRH, DDH, R5, D5, DR5, DD5)
 - hfk5z.f:         SUBROUTINE sla_HFK5Z (RH, DH, EPOCH, R5, D5, DR5, DD5)
