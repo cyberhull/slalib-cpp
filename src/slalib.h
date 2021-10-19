@@ -23,6 +23,15 @@
 
 namespace sla {
 
+/// Set this to a non-zero value if the library is used in a multi-threaded application.
+#define SLALIB_THREAD_SAFE 0
+
+#if SLALIB_THREAD_SAFE
+  #define SLALIB_THREAD_LOCAL thread_local
+#else
+  #define SLALIB_THREAD_LOCAL
+#endif
+
 /*
  * Constants for veri() and vers() functions; implemented as `#define`s (vs. `constexpr`s) for us to be able to use
  * "stringizing" in the implementation of the vers() function.
@@ -487,6 +496,7 @@ void pdq2h(double lat, double dec, double pa, double& ha1, bool& ha1_valid, doub
 void pda2h(double lat, double dec, double azimuth, double& ha1, bool& ha1_valid, double& ha2, bool& ha2_valid);
 int veri();
 const char* vers();
+float random(float seed);
 void wait(float seconds);
 
 } // sla namespace
