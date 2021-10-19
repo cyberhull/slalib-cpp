@@ -26,11 +26,13 @@ namespace sla {
  *
  * The Box-Muller algorithm is used. This is described in Numerical Recipes, section 7.2.
  *
+ * The C++ implementation is thread-safe if `SLALIB_THREAD_SAFE` is set to a non-zero value in the `slalib.h` header.
+ *
  * Original FORTRAN code by P.T. Wallace / Rutherford Appleton Laboratory.
  *
  * @param stdev Standard deviation.
- * @return The results of many calls to this function will be normally distributed with mean zero and standard
- *   deviation `stdev`.
+ * @return A pseudo-random `float` number; the results of many calls to this function will be normally distributed with
+ *   mean zero and standard deviation `stdev`.
  */
 float gresid(float stdev) {
     static SLALIB_THREAD_LOCAL std::default_random_engine generator;
@@ -41,8 +43,6 @@ float gresid(float stdev) {
         return std::generate_canonical<float, std::numeric_limits<float>::digits>(generator);
     };
 
-    float g;
-
     // first time through, initialise the random-number generator
     if (ftf) {
         generator.seed(123456789);
@@ -50,8 +50,8 @@ float gresid(float stdev) {
     }
 
     // second normal deviate of the pair available?
+    float g;
     if (first) {
-
         // no - generate two random numbers inside unit circle
         float x, y, r;
         do {

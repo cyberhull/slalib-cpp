@@ -25,6 +25,8 @@ namespace sla {
 /**
  * Generates pseudo-random real number in the range [0.0f..1.0f) (single precision).
  *
+ * The C++ implementation is thread-safe if `SLALIB_THREAD_SAFE` is set to a non-zero value in the `slalib.h` header.
+ *
  * Original FORTRAN code by P.T. Wallace.
  *
  * @param seed An arbitrary `float` number; used first time through *only*.
@@ -33,6 +35,7 @@ namespace sla {
 float random(float seed) {
     static SLALIB_THREAD_LOCAL std::default_random_engine generator;
     static SLALIB_THREAD_LOCAL bool first_time = true;
+
     if (first_time) {
         /*
          * The following numeric gymnastics is, strictly speaking, not needed: we could have used some much simpler
@@ -41,7 +44,7 @@ float random(float seed) {
          * "initialize / restart" the generator). It's been decided to port the original implementation for maximum
          * compatibility of seeding the generator.
          */
-        float aseed = std::fabs(seed) + 1.0f;
+        const float aseed = std::fabs(seed) + 1.0f;
         int iseed = f_nint(aseed / std::pow(10.0f, (f_nint(std::log10(aseed)) - 6)));
         if ((iseed & 1) == 0) {
             iseed++;
