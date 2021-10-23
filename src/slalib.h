@@ -499,6 +499,7 @@ const char* vers();
 float random(float seed);
 float gresid(float stdev);
 void moon(int year, int day, float fraction, VectorPV<float>& pv);
+void dmoon(double date, VectorPV<double>& pv);
 void wait(float seconds);
 
 } // sla namespace
