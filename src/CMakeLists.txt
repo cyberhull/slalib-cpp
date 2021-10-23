@@ -54,5 +54,6 @@ add_library(slalib
     eg50.cc ge50.cc
     pdq2h.cc pda2h.cc
     veri.cc vers.cc random.cc gresid.cc wait.cc
+    moon.cc
     f77_utils.h
     slalib.cc slalib.h)
