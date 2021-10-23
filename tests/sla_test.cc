@@ -1310,6 +1310,19 @@ static void t_pda2h(bool& status) {
     viv(ha2_valid, true, "sla::pda2h", "ha2_v", status);
 }
 
+// tests sla::moon() function
+static void t_moon(bool& status) {
+    VectorPV<float> pv;
+
+    moon(1999, 365, 0.9f, pv);
+    vvd(pv.get_x(), -2.155729505970773e-3, 1.0e-6, "sla::moon", "x", status);
+    vvd(pv.get_y(), -1.538107758633427e-3, 1.0e-6, "sla::moon", "y", status);
+    vvd(pv.get_z(), -4.003940552689305e-4, 1.0e-6, "sla::moon", "z", status);
+    vvd(pv.get_dx(), 3.629209419071314e-9, 1.0e-12, "sla::moon", "dx", status);
+    vvd(pv.get_dy(), -4.989667166259157e-9, 1.0e-12, "sla::moon", "dy", status);
+    vvd(pv.get_dz(), -2.160752457288307e-9, 1.0e-12, "sla::moon", "dz", status);
+}
+
 ///////////////////////////////////////////////////////////////////////////////
 // MODULE ENTRY POINT
 ///////////////////////////////////////////////////////////////////////////////
@@ -1382,6 +1395,7 @@ bool sla_test() {
     t_ge50(status);
     t_pdq2h(status);
     t_pda2h(status);
+    t_moon(status);
     return status;
 }
 
