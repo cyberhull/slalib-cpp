@@ -136,7 +136,7 @@ that you have to look at the markdown source to see the difference):
 * nut.f:           SUBROUTINE sla_NUT (DATE, RMATN)
 - oap.f:           SUBROUTINE sla_OAP (TYPE, OB1, OB2, DATE, DUT, ELONGM, PHIM, XP, YP, TDK, PMB, RH, WL, TLR, AOB, ZOB, HOB, DOB, ROB)
 - oapqk.f:         SUBROUTINE sla_OAPQK (TYPE, OB1, OB2, AOPRMS, RAP, DAP)
-- obs.f:           SUBROUTINE sla_OBS (N, C, NAME, W, P, H)
+* obs.f:           SUBROUTINE sla_OBS (N, C, NAME, W, P, H)
 * pa.f:            DOUBLE PRECISION FUNCTION sla_PA (HA, DEC, PHI)
 * pav.f:           REAL FUNCTION sla_PAV (V1, V2)
 * pcd.f:           SUBROUTINE sla_PCD (DISCO,X,Y)

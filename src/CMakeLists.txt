@@ -55,5 +55,6 @@ add_library(slalib
     pdq2h.cc pda2h.cc
     veri.cc vers.cc random.cc gresid.cc wait.cc
     moon.cc dmoon.cc
+    obs.cc
     f77_utils.h
     slalib.cc slalib.h)

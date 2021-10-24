@@ -244,6 +244,15 @@ struct Date {
     double d_fraction;  ///< Fraction of the day, [0..1.0f)
 };
 
+/// Data returned from the `sla::obs()` function.
+struct Observatory {
+    const char* o_id;     ///< identifier, up to 10 characters long, upper-case
+    const char* o_name;   ///< name, up to 40 characters long, mixed-case
+    double      o_long;   ///< longitude (radians, West positive)
+    double      o_lat;    ///< geodetic latitude (radians, North positive)
+    double      o_height; ///< height above sea level (meters)
+};
+
 /// Representation of the parameters for an AltAz telescope mount.
 class AltazMount {
     double am_azimuth;   ///< azimuth (radians, range: [0..2pi]); north is zero, and east is +pi/2
@@ -500,6 +509,7 @@ float random(float seed);
 float gresid(float stdev);
 void moon(int year, int day, float fraction, VectorPV<float>& pv);
 void dmoon(double date, VectorPV<double>& pv);
+bool obs(int n, const char* id, Observatory& obs);
 void wait(float seconds);
 
 } // sla namespace
