@@ -1310,7 +1310,7 @@ static void t_pda2h(bool& status) {
     viv(ha2_valid, true, "sla::pda2h", "ha2_v", status);
 }
 
-// tests sla::moon() function
+// tests sla::moon() and sla::dmoon() functions
 static void t_moon(bool& status) {
     VectorPV<float> pv;
     moon(1999, 365, 0.9f, pv);
