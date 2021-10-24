@@ -1313,7 +1313,6 @@ static void t_pda2h(bool& status) {
 // tests sla::moon() function
 static void t_moon(bool& status) {
     VectorPV<float> pv;
-
     moon(1999, 365, 0.9f, pv);
     vvd(pv.get_x(), -2.155729505970773e-3, 1.0e-6, "sla::moon", "x", status);
     vvd(pv.get_y(), -1.538107758633427e-3, 1.0e-6, "sla::moon", "y", status);
@@ -1321,6 +1320,27 @@ static void t_moon(bool& status) {
     vvd(pv.get_dx(), 3.629209419071314e-9, 1.0e-12, "sla::moon", "dx", status);
     vvd(pv.get_dy(), -4.989667166259157e-9, 1.0e-12, "sla::moon", "dy", status);
     vvd(pv.get_dz(), -2.160752457288307e-9, 1.0e-12, "sla::moon", "dz", status);
+
+    /*
+     * The original FORTRAN implementation of the `T_MOON` subroutine was missing test for the `sla_DMOON`
+     * subroutine, even though it was mentioned in its comment ("Test sla_MOON and sla_DMOON routines.").
+     *
+     * The below test was put together by simply converting the date (365-th day of the year 1999) used in the
+     * `sla::moon()` test above to MJD, adding 0.9 `fraction` to it, and feeding to the `sla::dmoon()`. The position
+     * part of the result matches that of the `sla::moon()` down to specified accuracy, while tolerance for the
+     * velocity part had to be increased from 1e-12 to 1e-11. This does not mean, of course, that the results of
+     * `sla::dmoon()` are less precise; quite the opposite is true: below, we're essentially comparing output of the
+     * reference FORTRAN implementation of single-precision `sla_MOON` to the actual output of the
+     * double-precision `sla::dmoon()` implementing a more complete version of the algorithm.
+     */
+    VectorPV<double> dpv;
+    dmoon(51543.9, dpv);
+    vvd(dpv.get_x(), -2.155729505970773e-3, 1.0e-6, "sla::dmoon", "x", status);
+    vvd(dpv.get_y(), -1.538107758633427e-3, 1.0e-6, "sla::dmoon", "y", status);
+    vvd(dpv.get_z(), -4.003940552689305e-4, 1.0e-6, "sla::dmoon", "z", status);
+    vvd(dpv.get_dx(), 3.629209419071314e-9, 1.0e-11 , "sla::dmoon", "dx", status);
+    vvd(dpv.get_dy(), -4.989667166259157e-9, 1.0e-11, "sla::dmoon", "dy", status);
+    vvd(dpv.get_dz(), -2.160752457288307e-9, 1.0e-11, "sla::dmoon", "dz", status);
 }
 
 ///////////////////////////////////////////////////////////////////////////////
