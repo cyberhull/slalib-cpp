@@ -1343,6 +1343,36 @@ static void t_moon(bool& status) {
     vvd(dpv.get_dz(), -2.160752457288307e-9, 1.0e-11, "sla::dmoon", "dz", status);
 }
 
+// tests sla::obs() function
+static void t_obs(bool& status) {
+    Observatory o;
+
+    obs(-1, "MMT", o);
+    vcs(o.o_id, "MMT", "sla::obs", "1:id", status);
+    vcs(o.o_name, "MMT 6.5m, Mt Hopkins", "sla::obs", "1:name", status);
+    vvd(o.o_long, 1.935300584055477, 1.0e-8, "sla::obs", "1:long", status);
+    vvd(o.o_lat, 0.5530735081550342238, 1.0e-10, "sla::obs", "1:lat", status);
+    vvd(o.o_height, 2608.0, 1.0e-10, "sla::obs", "1:height", status);
+
+    obs(60, nullptr, o);
+    vcs(o.o_id, "KECK1", "sla::obs", "2:id", status);
+    vcs(o.o_name, "Keck 10m Telescope #1", "sla::obs", "2:name", status);
+    vvd(o.o_long, 2.713545757918895, 1.0e-8, "sla::obs", "2:long", status);
+    vvd(o.o_lat, 0.3460280563536619, 1.0e-8, "sla::obs", "2:lat", status);
+    vvd(o.o_height, 4160.0, 1.0e-10, "sla::obs", "2:height", status);
+
+    obs(82, nullptr, o);
+    vcs(o.o_id, "MAGELLAN2", "sla::obs", "3:id", status);
+    vcs(o.o_name, "Magellan 2, 6.5m, Las Campanas", "sla::obs", "3:name", status);
+    vvd(o.o_long, 1.233819305534497, 1.0e-8, "sla::obs", "3:long", status);
+    vvd(o.o_lat, -0.506389344359954, 1.0e-8, "sla::obs", "3:lat", status);
+    vvd(o.o_height, 2408.0, 1.0e-10, "sla::obs", "3:height", status);
+
+    obs(85, nullptr, o);
+    vcs(o.o_id, "?", "sla::obs", "4:id", status);
+    vcs(o.o_name, "?", "sla::obs", "4:name", status);
+}
+
 ///////////////////////////////////////////////////////////////////////////////
 // MODULE ENTRY POINT
 ///////////////////////////////////////////////////////////////////////////////
@@ -1416,6 +1446,7 @@ bool sla_test() {
     t_pdq2h(status);
     t_pda2h(status);
     t_moon(status);
+    t_obs(status);
     return status;
 }
 
