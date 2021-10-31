@@ -46,19 +46,22 @@ namespace sla {
  *   after the call is undefined).
  * @param vec The `n`-long vector; after the call, contains solution vector.
  * @param det Return value: determinant; if input matrix is singular, 0.0f is returned.
- * @param ws Workspace.
+ * @param ws Workspace (integer array of `n` elements).
  * @return `true` if input matrix is singular, `false` otherwise.
  */
 bool smat(int n, float* mat, float* vec, float& det, int* ws) {
-    constexpr float EPSILON = 1.0e-20f;
+    assert(mat && vec && ws);
 
     // variable-size matrix accessor
     auto element = [mat, n](int i1, int i2) -> float& {
+        assert(i1 < n && i2 < n);
         return mat[i1 * n + i2];
     };
 
+    constexpr float EPSILON = 1.0e-20f;
     bool singular = false;
     det = 1.0f;
+
     int i, k;
     for (k = 0; k < n; k++) {
         float v_max = std::abs(element(k, k));

@@ -41,17 +41,20 @@ namespace sla {
  *
  * Original FORTRAN code by P.T. Wallace / Rutherford Appleton Laboratory.
  *
- * @param n Number of unknowns (range: [1..3]).
+ * @param n Number of unknowns.
  * @param mat Source matrix of size [n][n]; after the call, contains inverse matrix (if source matrix is singular,
- * contents after the call is undefined).
+ *   contents after the call is undefined).
  * @param vec Known vector of `n` elements; after the call, contains solution vector.
  * @param det Return value: determinant; if input matrix is singular, 0.0 is returned.
  * @param ws Workspace (integer array of `n` elements).
  * @return `true` if input matrix is singular, `false` otherwise.
  */
 bool dmat(int n, double* mat, double* vec, double& det, int* ws) {
+    assert(mat && vec && ws);
+
     // variable-size matrix accessor
     auto element = [mat, n](int i1, int i2) -> double& {
+        assert(i1 < n && i2 < n);
         return mat[i1 * n + i2];
     };
 
