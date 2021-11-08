@@ -57,7 +57,7 @@ namespace sla {
  * @param v Output value: `np`x`np` array containing `n`x`n` orthogonal matrix V; note: it contains matrix V, not the
  *   transpose of matrix V (VT).
  * @param ws Workspace (`np`-long array containing `n` elements).
- * @return 0 = OK, -1 = A of wrong shape, >0 = index of W for which convergence failed; ff returned status is greater
+ * @return 0 = OK, -1 = A of wrong shape, >0 = index of W for which convergence failed; if returned status is greater
  *   than zero, this need not necessarily be treated as a failure; it means that, due to chance properties of the
  *   matrix A, the QR transformation phase of the routine did not fully converge in a predefined number of
  *   iterations, something that very seldom occurs; when this condition does arise, it is possible that the elements
