@@ -432,6 +432,7 @@ bool smat(int n, float* mat, float* vec, float& det, int* ws);
 int svd(int m, int n, int mp, int np, double* a, double* w, double* v, double* ws);
 void svdsol(int m, int n, int mp, int np, const double* b, const double* u, const double* w, const double* v,
     double* ws, double* x);
+void svdcov(int n, int np, int nc, const double* w, const double* v, double* ws, double* cvm);
 void altaz(const Spherical<double>& dir, double phi, AltazMount& am);
 void nutc(double tdb, double& psi, double& eps, double& eps0);
 void nut(double tdb, Matrix<double> mat);
