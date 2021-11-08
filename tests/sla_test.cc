@@ -642,6 +642,107 @@ static void t_smat(bool& status) {
     viv((int) singular, 0, "sla::smat", "singular", status);
 }
 
+// tests sla::svd(), sla::svdsol(), and sla::svdcov() functions
+static void t_svd(bool& status) {
+    constexpr int MP = 10;
+    constexpr int NP = 6;
+    constexpr int NC = 7;
+    constexpr int M = 5;
+    constexpr int N = 4;
+
+    double a[MP][NP], w[NP], v[NP][NP], ws[NP], b[MP], x[NP], c[NC][NC];
+    for (int k = 0; k < M; k++) {
+        const double val = (double)(k + 1) / 2.0;
+        b[k] = 23.0 - 3.0 * val - 11.0 * std::sin(val) + 13.0 * std::cos(val);
+        a[k][0] = 1.0;
+        a[k][1] = val;
+        a[k][2] = std::sin(val);
+        a[k][3] = std::cos(val);
+    }
+
+    int result = svd(M, N, MP, NP, (double*) a, w, (double*) v, ws);
+
+    // allow U and v to have reversed signs
+    if (a[0][0] > 0.0) {
+        for (int i = 0; i < M; i++) {
+            for (int j = 0; j < N; j++) {
+                a[i][j] = -a[i][j];
+                v[i][j] = -v[i][j];
+            }
+        }
+    }
+
+    viv(result, 0, "sla::svd", "result", status);
+    vvd(a[0][0], -0.21532492989299, 1.0e-12, "sla::svd", "a00", status);
+    vvd(a[0][1], 0.67675050651267, 1.0e-12, "sla::svd", "a01", status);
+    vvd(a[0][2], -0.37267876361644, 1.0e-12, "sla::svd", "a02", status);
+    vvd(a[0][3], 0.58330405917160, 1.0e-12, "sla::svd", "a03", status);
+    vvd(a[1][0], -0.33693420368121, 1.0e-12, "sla::svd", "a10", status);
+    vvd(a[1][1], 0.48011695963936, 1.0e-12, "sla::svd", "a11", status);
+    vvd(a[1][2], 0.62656568539705, 1.0e-12, "sla::svd", "a12", status);
+    vvd(a[1][3], -0.17479918328198, 1.0e-12, "sla::svd", "a13", status);
+    vvd(a[2][0], -0.44396825906047, 1.0e-12, "sla::svd", "a20", status);
+    vvd(a[2][1], 0.18255923809825, 1.0e-12, "sla::svd", "a21", status);
+    vvd(a[2][2], 0.02228154115994, 1.0e-12, "sla::svd", "a22", status);
+    vvd(a[2][3], -0.51743308030238, 1.0e-12, "sla::svd", "a23", status);
+    vvd(a[3][0], -0.53172583816951, 1.0e-12, "sla::svd", "a30", status);
+    vvd(a[3][1], -0.16537863535943, 1.0e-12, "sla::svd", "a31", status);
+    vvd(a[3][2], -0.61134201569990, 1.0e-12, "sla::svd", "a32", status);
+    vvd(a[3][3], -0.28871221824912, 1.0e-12, "sla::svd", "a33", status);
+    vvd(a[4][0], -0.60022523682867, 1.0e-12, "sla::svd", "a40", status);
+    vvd(a[4][1], -0.50081781972404, 1.0e-12, "sla::svd", "a41", status);
+    vvd(a[4][2], 0.30706750690326, 1.0e-12, "sla::svd", "a42", status);
+    vvd(a[4][3], 0.52736124480318, 1.0e-12, "sla::svd", "a43", status);
+
+    vvd(w[0], 4.57362714220621, 1.0e-12, "sla::svd", "w0", status);
+    vvd(w[1], 1.64056393111226, 1.0e-12, "sla::svd", "w1", status);
+    vvd(w[2], 0.03999179717447, 1.0e-12, "sla::svd", "w2", status);
+    vvd(w[3], 0.37267332634218, 1.0e-12, "sla::svd", "w3", status);
+
+    vvd(v[0][0], -0.46531525230679, 1.0e-12, "sla::svd", "v00", status);
+    vvd(v[0][1], 0.41036514115630, 1.0e-12, "sla::svd", "v01", status);
+    vvd(v[0][2], -0.70279526907678, 1.0e-12, "sla::svd", "v02", status);
+    vvd(v[0][3], 0.34808185338758, 1.0e-12, "sla::svd", "v03", status);
+    vvd(v[1][0], -0.80342444002914, 1.0e-12, "sla::svd", "v10", status);
+    vvd(v[1][1], -0.29896472833787, 1.0e-12, "sla::svd", "v11", status);
+    vvd(v[1][2], 0.46592932810178, 1.0e-12, "sla::svd", "v12", status);
+    vvd(v[1][3], 0.21917828721921, 1.0e-12, "sla::svd", "v13", status);
+    vvd(v[2][0], -0.36564497020801, 1.0e-12, "sla::svd", "v20", status);
+    vvd(v[2][1], 0.28066812941896, 1.0e-12, "sla::svd", "v21", status);
+    vvd(v[2][2], -0.03324480702665, 1.0e-12, "sla::svd", "v22", status);
+    vvd(v[2][3], -0.88680546891402, 1.0e-12, "sla::svd", "v23", status);
+    vvd(v[3][0], 0.06553350971918, 1.0e-12, "sla::svd", "v30", status);
+    vvd(v[3][1], 0.81452191085452, 1.0e-12, "sla::svd", "v31", status);
+    vvd(v[3][2], 0.53654771808636, 1.0e-12, "sla::svd", "v32", status);
+    vvd(v[3][3], 0.21065602782287, 1.0e-12, "sla::svd", "v33", status);
+
+    svdsol(M, N, MP, NP, b, (double*) a, w, (double*) v, ws, x);
+
+    vvd(x[0],  23.0, 1.0e-12, "sla::svdsol", "x0", status);
+    vvd(x[1],  -3.0, 1.0e-12, "sla::svdsol", "x1", status);
+    vvd(x[2], -11.0, 1.0e-12, "sla::svdsol", "x2", status);
+    vvd(x[3],  13.0, 1.0e-12, "sla::svdsol", "x3", status);
+
+    svdcov(N, NP, NC, w, (double*) v, ws, (double*) c);
+
+    vvd(c[0][0],  309.77269378273270, 1.0e-10, "sla::svdcov", "c00", status);
+    vvd(c[0][1], -204.22043941662150, 1.0e-10, "sla::svdcov", "c01", status);
+    vvd(c[0][2],   12.43704316907477, 1.0e-10, "sla::svdcov", "c02", status);
+    vvd(c[0][3], -235.12299986206710, 1.0e-10, "sla::svdcov", "c03", status);
+    vvd(c[1][0], -204.22043941662150, 1.0e-10, "sla::svdcov", "c10", status);
+    vvd(c[1][1],  136.14695961108110, 1.0e-10, "sla::svdcov", "c11", status);
+    vvd(c[1][2],  -11.10167446246327, 1.0e-10, "sla::svdcov", "c12", status);
+    vvd(c[1][3],  156.54937371198730, 1.0e-10, "sla::svdcov", "c13", status);
+    vvd(c[2][0],   12.43704316907477, 1.0e-10, "sla::svdcov", "c20", status);
+    vvd(c[2][1],  -11.10167446246327, 1.0e-10, "sla::svdcov", "c21", status);
+    vvd(c[2][2],    6.38909830090602, 1.0e-10, "sla::svdcov", "c22", status);
+    vvd(c[2][3],  -12.41424302586736, 1.0e-10, "sla::svdcov", "c23", status);
+    vvd(c[3][0], -235.12299986206710, 1.0e-10, "sla::svdcov", "c30", status);
+    vvd(c[3][1],  156.54937371198730, 1.0e-10, "sla::svdcov", "c31", status);
+    vvd(c[3][2],  -12.41424302586736, 1.0e-10, "sla::svdcov", "c32", status);
+    vvd(c[3][3],  180.56719842359560, 1.0e-10, "sla::svdcov", "c33", status);
+}
+
 // tests sla::altaz() function
 static void t_altaz(bool& status) {
     AltazMount am;
@@ -1404,6 +1505,7 @@ bool sla_test() {
     t_ecmat(status);
     t_dmat(status);
     t_smat(status);
+    t_svd(status);
     t_altaz(status);
     t_nut(status);
     t_epj2d(status);
