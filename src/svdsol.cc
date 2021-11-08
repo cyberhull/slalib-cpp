@@ -73,7 +73,7 @@ namespace sla {
  */
 void svdsol(int m, int n, int mp, int np, const double* b, const double* u, const double* w, const double* v,
     double* ws, double* x) {
-    assert(m < mp && n < np && b && u && w && v && ws && x);
+    assert(m <= mp && n <= np && b && u && w && v && ws && x);
 
     auto u_elem = [u, m, n, np](int row, int col) -> const double& {
         assert(row < m && col < n);
