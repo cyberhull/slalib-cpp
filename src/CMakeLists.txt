@@ -34,7 +34,7 @@ add_library(slalib
     dat.cc dt.cc dtt.cc rcc.cc gmst.cc gmsta.cc
     range.cc drange.cc ranorm.cc dranrm.cc
     atmdsp.cc refcoq.cc refro.cc refco.cc refv.cc refz.cc
-    ecmat.cc dmat.cc smat.cc altaz.cc
+    ecmat.cc dmat.cc smat.cc svd.cc altaz.cc
     nutc.cc nut.cc nutc80.cc
     epj2d.cc epj.cc epb2d.cc epb.cc epco.cc
     prec.cc precl.cc prenut.cc
